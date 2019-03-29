@@ -8,10 +8,9 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-
+import YouTube from 'react-native-youtube';
 import { Icon, Button, Avatar, ListItem } from 'react-native-elements';
-// import Video from 'react-native-video';
-
+import config from 'HowRipeMobile/youTubeConfig';
 const list = [
   {
     name: 'Amy Farha',
@@ -86,27 +85,24 @@ export default class CurrentVideos extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container}>
           <Text style={{ color: 'white' }}> trailers go here here </Text>
-          {list.map((l, i) => (
+          {/* {list.map((l, i) => (
             <ListItem
               key={i}
               leftAvatar={{ source: { uri: l.avatar_url } }}
               title={l.name}
               subtitle={l.subtitle}
             />
-          ))}
-          {/* <Video
-            source={{ uri: 'https://www.youtube.com/embed/1OadSg3Qu58' }}
-            // source={{
-            //   uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-            // }} // Can be a URL or a local file.
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="cover"
-            shouldPlay
-            isLooping
-            style={{ width: 150, height: 150 }}
-          /> */}
+          ))} */}
+          <YouTube
+            apiKey={config}
+            videoId="1OadSg3Qu58" // The YouTube video ID
+            play={true} // control playback of video with true/false
+            onReady={e => this.setState({ isReady: true })}
+            onChangeState={e => this.setState({ status: e.state })}
+            onChangeQuality={e => this.setState({ quality: e.quality })}
+            onError={e => this.setState({ error: e.error })}
+            style={{ alignSelf: 'stretch', height: 300 }}
+          />
         </ScrollView>
       </View>
     );
