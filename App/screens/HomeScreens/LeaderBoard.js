@@ -8,79 +8,78 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-
-import { Icon, Button, Avatar, ListItem } from 'react-native-elements';
+import { ListItem, Left, Right, Body } from 'native-base';
+import { Icon, Button, Avatar } from 'react-native-elements';
 const list = [
   {
-    name: 'Amy Farha',
-    avatar_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    subtitle: 'Vice President'
+    name: 'Greg',
+    currentRank: 1,
+    score: 8,
+    scoreChange: '+8'
   },
   {
-    name: 'Chris Jackson',
-    avatar_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Vice Chairman'
+    name: 'Annika',
+    currentRank: 2,
+    score: 8,
+    scoreChange: '+4'
   },
   {
-    name: 'Chris Jackson',
-    avatar_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Vice Chairman'
+    name: 'Noah',
+    currentRank: 3,
+    score: 8,
+    scoreChange: '+4'
+  },
+  {
+    name: 'Keith',
+    currentRank: 7,
+    score: 8,
+    scoreChange: '+1'
   }
 ];
 export default class LeaderBoard extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'How Ripe',
-      headerStyle: {
-        backgroundColor: '#6e3737',
-        borderBottomWidth: 0
-      },
-      headerTitleStyle: {
-        color: 'white',
-        fontSize: 18
-      },
-      headerLeft: (
-        <Button
-          type="clear"
-          onPress={() => navigation.goBack()}
-          icon={<Icon name="menu" type="material" color="white" size={30} />}
-        />
-      ),
-      headerRight: (
-        <Avatar
-          size="medium"
-          source={{ uri: 'https://loremflickr.com/320/240' }}
-          rounded
-          title="MT"
-          containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          onPress={() => console.log('Works!')}
-          activeOpacity={0.7}
-        />
-      )
-    };
-  };
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
-          <Text style={{ color: 'white' }}> LEADERBOARD</Text>
-          <Text style={{ color: 'white' }}> league of champions/global </Text>
+      <ScrollView style={styles.container}>
+        <View style={{ justifyContent: 'center' }}>
+          <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
+            LEADERBOARD
+          </Text>
+          <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
+            League of Champs / Global
+          </Text>
           {list.map((l, i) => (
             <ListItem
+              style={{
+                backgroundColor: '#6e3737',
+                marginLeft: 50,
+                marginRight: 50
+              }}
               key={i}
-              leftAvatar={{ source: { uri: l.avatar_url } }}
-              title={l.name}
-              subtitle={l.subtitle}
-            />
+            >
+              <Left>
+                <Text style={{ color: 'white' }}>
+                  {l.currentRank + '. ' + l.name}{' '}
+                </Text>
+              </Left>
+              <Body>
+                <Text style={{ color: 'white' }}> {l.score.toString()} </Text>
+              </Body>
+              <Right>
+                <Text style={{ color: 'white' }}>{l.scoreChange}</Text>
+              </Right>
+            </ListItem>
           ))}
-          <Text style={{ color: 'white' }}> leader board here </Text>
-          <Text style={{ color: 'white' }}> Splatter Master: </Text>
-        </ScrollView>
-      </View>
+
+          <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
+            SPLATTER MASTER: Molly
+          </Text>
+        </View>
+      </ScrollView>
     );
   }
 }

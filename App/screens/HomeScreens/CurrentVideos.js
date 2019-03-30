@@ -44,37 +44,6 @@ const list = [
   }
 ];
 export default class CurrentVideos extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'How Ripe',
-      headerStyle: {
-        backgroundColor: '#6e3737',
-        borderBottomWidth: 0
-      },
-      headerTitleStyle: {
-        color: 'white',
-        fontSize: 18
-      },
-      headerLeft: (
-        <Button
-          type="clear"
-          onPress={() => navigation.goBack()}
-          icon={<Icon name="menu" type="material" color="white" size={30} />}
-        />
-      ),
-      headerRight: (
-        <Avatar
-          size="medium"
-          source={{ uri: 'https://loremflickr.com/320/240' }}
-          rounded
-          title="MT"
-          containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          onPress={() => console.log('Works!')}
-          activeOpacity={0.7}
-        />
-      )
-    };
-  };
   constructor(props) {
     super(props);
     this.state = {};
@@ -82,8 +51,8 @@ export default class CurrentVideos extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}>
+        <View>
           <Text style={{ color: 'white' }}> trailers go here here </Text>
           {/* {list.map((l, i) => (
             <ListItem
@@ -93,18 +62,38 @@ export default class CurrentVideos extends React.Component {
               subtitle={l.subtitle}
             />
           ))} */}
-          <YouTube
-            apiKey={config}
-            videoId="1OadSg3Qu58" // The YouTube video ID
+          {/* <YouTube
+            videoId="CtWoJ-YhTeg" // The YouTube video ID
             play={true} // control playback of video with true/false
+            apiKey={config.YOUTUBE_API_KEY}
             onReady={e => this.setState({ isReady: true })}
             onChangeState={e => this.setState({ status: e.state })}
             onChangeQuality={e => this.setState({ quality: e.quality })}
             onError={e => this.setState({ error: e.error })}
             style={{ alignSelf: 'stretch', height: 300 }}
-          />
-        </ScrollView>
-      </View>
+          /> */}
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'pink'
+            }}
+          >
+            <YouTube
+              videoId="kHUz0Z_xFXw" // The YouTube video ID
+              play={true} // control playback of video with true/false
+              apiKey={config.YOUTUBE_API_KEY}
+              fullScreen={true}
+              onReady={e => this.setState({ isReady: true })}
+              onChangeState={e => this.setState({ status: e.state })}
+              onChangeQuality={e => this.setState({ quality: e.quality })}
+              onError={e => this.setState({ error: e.error })}
+              style={{ alignSelf: 'stretch', height: 300 }}
+            />
+          </View>
+        </View>
+      </ScrollView>
     );
   }
 }

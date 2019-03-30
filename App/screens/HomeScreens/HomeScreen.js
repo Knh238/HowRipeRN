@@ -50,7 +50,6 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <Text style={{ color: 'white' }}> nothing yet </Text>
           <View style={styles.subscreen}>
             <LeaderBoard />
           </View>
