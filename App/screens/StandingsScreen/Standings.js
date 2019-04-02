@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
-import LeaderBoard from './LeaderBoard';
-import CurrentVideos from './CurrentVideos';
+import StandingsGraph from './StandingsGraph';
+import StandingsKey from './StandingsKey';
 
-export default class HomeScreen extends React.Component {
+export default class Standings extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       // headerTitle: (
@@ -57,10 +57,12 @@ export default class HomeScreen extends React.Component {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <View style={styles.subscreen}>
-            <LeaderBoard />
+            <Text> score graph </Text>
+            <StandingsGraph />
           </View>
           <View style={styles.subscreen}>
-            <CurrentVideos />
+            <Text> key </Text>
+            <StandingsKey />
           </View>
         </View>
       </SafeAreaView>

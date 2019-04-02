@@ -36,7 +36,7 @@ const list = [
     scoreChange: '+1'
   }
 ];
-export default class LeaderBoard extends React.Component {
+export default class StandingsKey extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

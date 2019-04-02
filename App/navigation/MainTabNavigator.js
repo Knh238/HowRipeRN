@@ -1,12 +1,14 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
 import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+// import splatter from '/imageAssets/';
 
 import HomeScreen from '../screens/HomeScreens/HomeScreen';
+import Standings from '../screens/StandingsScreen/Standings';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -22,7 +24,7 @@ HomeStack.navigationOptions = {
 };
 
 const StandingsStack = createStackNavigator({
-  Links: LinksScreen
+  Standings: Standings
 });
 
 StandingsStack.navigationOptions = {
@@ -44,7 +46,13 @@ const SplatterStack = createStackNavigator({
 
 SplatterStack.navigationOptions = {
   tabBarLabel: 'Splatter',
-  tabBarIcon: <Icon type="feather" name="message-circle" color="white" />
+  tabBarIcon: (
+    <Image
+      source={require('HowRipeMobile/imageAssets/splatter.png')}
+      style={{ width: 30, height: 30 }}
+    />
+  )
+  // tabBarIcon: <Icon type="feather" name="message-circle" color="white" />
 };
 const TheRipeStack = createStackNavigator({
   Settings: SettingsScreen
