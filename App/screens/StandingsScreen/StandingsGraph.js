@@ -6,31 +6,68 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Dimensions,
   View
 } from 'react-native';
 import { ListItem, Left, Right, Body } from 'native-base';
 import { Icon, Button, Avatar } from 'react-native-elements';
-import {
-  // LineChart,
-  // BarChart,
-  // PieChart,
-  // ProgressChart,
-  ContributionGraph
-  // StackedBarChart
-} from 'react-native-chart-kit';
+import { ContributionGraph } from 'react-native-chart-kit';
 const commitsData = [
-  { date: '2017-01-02', count: 1 },
-  { date: '2017-01-03', count: 2 },
-  { date: '2017-01-04', count: 3 },
-  { date: '2017-01-05', count: 4 },
-  { date: '2017-01-06', count: 5 },
-  { date: '2017-01-30', count: 2 },
-  { date: '2017-01-31', count: 3 },
-  { date: '2017-03-01', count: 2 },
-  { date: '2017-04-02', count: 4 },
-  { date: '2017-03-05', count: 2 },
-  { date: '2017-02-30', count: 4 }
+  {
+    name: 'person',
+    date: '2017-01-02',
+    count: 1,
+    legendFontColor: '#ffebee',
+    legendFontSize: 15
+  },
+  {
+    name: 'person',
+    date: '2017-01-03',
+    count: 2,
+    legendFontColor: '#ffebee',
+    legendFontSize: 15
+  },
+  {
+    name: 'person',
+    date: '2017-01-04',
+    count: 3,
+    legendFontColor: '#ffebee',
+    legendFontSize: 15
+  },
+  {
+    name: 'person',
+    date: '2017-01-05',
+    count: 4,
+    legendFontColor: '#ffebee',
+    legendFontSize: 15
+  },
+  {
+    name: 'person',
+    date: '2017-01-06',
+    count: 5,
+    legendFontColor: '#ffffff',
+    legendFontSize: 15
+  },
+  {
+    name: 'person',
+    date: '2017-02-30',
+    count: 4,
+    legendFontColor: '#ffffff',
+    legendFontSize: 15
+  }
 ];
+
+const chartConfig = {
+  backgroundColor: '#ffffff',
+  backgroundGradientFrom: '#6e3737',
+  backgroundGradientTo: '#c62828',
+  // labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+  color: (opacity = 1) => `rgba(255,255,255,${opacity})`,
+  strokeWidth: 2, // optional, default 3,
+  style: {
+    borderRadius: 16
+  }
+};
 export default class StandingsGraph extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +75,7 @@ export default class StandingsGraph extends React.Component {
   }
 
   render() {
+    var { height, width } = Dimensions.get('window');
     return (
       <ScrollView style={styles.container}>
         <View style={{ justifyContent: 'center' }}>
@@ -48,24 +86,15 @@ export default class StandingsGraph extends React.Component {
             League of Champs / Global
           </Text>
           <ContributionGraph
+            style={{ alignSelf: 'center', marginVertical: 8 }}
             values={commitsData}
             endDate={new Date('2017-04-01')}
             numDays={105}
-            width={screenWidth}
-            height={220}
+            width={300}
+            height={height}
+            yAxisLabel={'names'}
             chartConfig={chartConfig}
           />
-          {/* <Image
-            source={require('HowRipeMobile/imageAssets/crown.png')}
-            style={{ width: 40, height: 40 }}
-          /> */}
-          <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
-            <Image
-              source={require('HowRipeMobile/imageAssets/crown.png')}
-              style={{ width: 30, height: 30 }}
-            />
-            SPLATTER MASTER: Molly
-          </Text>
         </View>
       </ScrollView>
     );

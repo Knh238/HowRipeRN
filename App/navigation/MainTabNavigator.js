@@ -9,6 +9,7 @@ import { Icon } from 'react-native-elements';
 
 import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
+import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -33,7 +34,7 @@ StandingsStack.navigationOptions = {
 };
 
 const ScoresStack = createStackNavigator({
-  Settings: SettingsScreen
+  Scores: ScoresScreen
 });
 
 ScoresStack.navigationOptions = {
