@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { ListItem, Left, Right, Body } from 'native-base';
 import { Icon, Button, Avatar } from 'react-native-elements';
+import { ProgressCircle } from 'react-native-svg-charts';
 const list = [
   {
     name: 'Greg',
@@ -47,33 +48,16 @@ export default class StandingsKey extends React.Component {
       <ScrollView style={styles.container}>
         <View style={{ justifyContent: 'center' }}>
           <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            LEADERBOARD
+            TEST Graph
           </Text>
           <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-            League of Champs / Global
+            Progress Circle
           </Text>
-          {list.map((l, i) => (
-            <ListItem
-              style={{
-                backgroundColor: '#6e3737',
-                marginLeft: 50,
-                marginRight: 50
-              }}
-              key={i}
-            >
-              <Left>
-                <Text style={{ color: 'white' }}>
-                  {l.currentRank + '. ' + l.name}{' '}
-                </Text>
-              </Left>
-              <Body>
-                <Text style={{ color: 'white' }}> {l.score.toString()} </Text>
-              </Body>
-              <Right>
-                <Text style={{ color: 'white' }}>{l.scoreChange}</Text>
-              </Right>
-            </ListItem>
-          ))}
+          <ProgressCircle
+            style={{ height: 200 }}
+            progress={0.7}
+            progressColor={'#f44336'}
+          />
           {/* <Image
             source={require('HowRipeMobile/imageAssets/crown.png')}
             style={{ width: 40, height: 40 }}

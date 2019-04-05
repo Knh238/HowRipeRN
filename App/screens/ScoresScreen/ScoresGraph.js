@@ -43,10 +43,10 @@ export default class ScoresGraph extends React.Component {
       <ScrollView style={styles.container}>
         <View style={{ justifyContent: 'center' }}>
           <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            LEADERBOARD
+            Test graph
           </Text>
           <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-            League of Champs / Global
+            progress chart with 3 rings
           </Text>
 
           <ProgressChart

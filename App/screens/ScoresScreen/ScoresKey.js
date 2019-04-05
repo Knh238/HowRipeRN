@@ -50,7 +50,7 @@ const data = [
     dates: 400
   }
 ];
-const colors = ['#7b4173', '#a55194', '#ce6dbd', '#de9ed6'];
+const colors = ['#ff8a80', '#ff5252', '#ff1744', '#d50000'];
 const keys = ['apples', 'bananas', 'cherries', 'dates'];
 // const data = {
 //   labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
@@ -89,10 +89,10 @@ export default class ScoresKey extends React.Component {
       <ScrollView style={styles.container}>
         <View style={{ justifyContent: 'center' }}>
           <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            LEADERBOARD
+            TEST Graph
           </Text>
           <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-            League of Champs / Global
+            stack bar chart
           </Text>
           {/* <LineChart
             data={data}

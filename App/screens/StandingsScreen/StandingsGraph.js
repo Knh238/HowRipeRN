@@ -40,29 +40,15 @@ const commitsData = [
     count: 4,
     legendFontColor: '#ffebee',
     legendFontSize: 15
-  },
-  {
-    name: 'person',
-    date: '2017-01-06',
-    count: 5,
-    legendFontColor: '#ffffff',
-    legendFontSize: 15
-  },
-  {
-    name: 'person',
-    date: '2017-02-30',
-    count: 4,
-    legendFontColor: '#ffffff',
-    legendFontSize: 15
   }
 ];
 
 const chartConfig = {
-  backgroundColor: '#ffffff',
-  backgroundGradientFrom: '#6e3737',
-  backgroundGradientTo: '#c62828',
+  backgroundColor: '#fff',
+  // backgroundGradientFrom: '#d50000',
+  // backgroundGradientTo: '#757575',
   // labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-  color: (opacity = 1) => `rgba(255,255,255,${opacity})`,
+  color: (opacity = 1) => `rgba(244, 87, 34, ${opacity})`,
   strokeWidth: 2, // optional, default 3,
   style: {
     borderRadius: 16
@@ -91,7 +77,7 @@ export default class StandingsGraph extends React.Component {
             endDate={new Date('2017-04-01')}
             numDays={105}
             width={300}
-            height={height}
+            height={height / 3}
             yAxisLabel={'names'}
             chartConfig={chartConfig}
           />
