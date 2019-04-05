@@ -73,11 +73,11 @@ export default class ScoresScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6e3737'
+    backgroundColor: '#441515'
   },
   subscreen: {
     flex: 2,
     height: '50%',
-    backgroundColor: '#6e3737'
+    backgroundColor: '#441515'
   }
 });

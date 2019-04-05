@@ -20,9 +20,9 @@ import {
 } from 'react-native-chart-kit';
 const data = [0.4, 0.6, 0.8];
 const chartConfig = {
-  backgroundGradientFrom: '#6e3737',
-  backgroundGradientTo: '#c62828',
-  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  backgroundGradientFrom: '#411414',
+  backgroundGradientTo: '#6e3737',
+  color: (opacity = 1) => `rgba(255,255,255, ${opacity})`,
   strokeWidth: 2 // optional, default 3
 };
 // const chartConfig = {
@@ -65,6 +65,6 @@ export default class ScoresGraph extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6e3737'
+    backgroundColor: '#441515'
   }
 });

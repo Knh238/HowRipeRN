@@ -55,7 +55,7 @@ export default class LeaderBoard extends React.Component {
           {list.map((l, i) => (
             <ListItem
               style={{
-                backgroundColor: '#6e3737',
+                backgroundColor: '#441515',
                 marginLeft: 50,
                 marginRight: 50
               }}
@@ -94,6 +94,6 @@ export default class LeaderBoard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6e3737'
+    backgroundColor: '#441515'
   }
 });

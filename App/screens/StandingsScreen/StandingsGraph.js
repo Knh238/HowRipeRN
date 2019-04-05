@@ -104,6 +104,6 @@ export default class StandingsGraph extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6e3737'
+    backgroundColor: '#441515'
   }
 });
