@@ -14,41 +14,44 @@ import { Icon, Button, Avatar } from 'react-native-elements';
 import { ContributionGraph } from 'react-native-chart-kit';
 const commitsData = [
   {
+    name: 'person2',
+    date: '2017-01-02',
+    count: 1
+  },
+  {
+    name: 'person2',
+    date: '2017-02-02',
+    count: 2
+  },
+  {
+    name: 'person2',
+    date: '2017-03-02',
+    count: 4
+  },
+
+  {
     name: 'person',
     date: '2017-01-02',
-    count: 1,
-    legendFontColor: '#ffebee',
-    legendFontSize: 15
+    count: 2
   },
   {
     name: 'person',
-    date: '2017-01-03',
-    count: 2,
-    legendFontColor: '#ffebee',
-    legendFontSize: 15
+    date: '2017-02-02',
+    count: 3
   },
   {
     name: 'person',
-    date: '2017-01-04',
-    count: 3,
-    legendFontColor: '#ffebee',
-    legendFontSize: 15
-  },
-  {
-    name: 'person',
-    date: '2017-01-05',
-    count: 4,
-    legendFontColor: '#ffebee',
-    legendFontSize: 15
+    date: '2017-03-02',
+    count: 4
   }
 ];
 
 const chartConfig = {
   backgroundColor: '#fff',
-  // backgroundGradientFrom: '#d50000',
-  // backgroundGradientTo: '#757575',
+  backgroundGradientFrom: '#441515',
+  backgroundGradientTo: '#6e3737',
   // labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-  color: (opacity = 1) => `rgba(244, 87, 34, ${opacity})`,
+  color: (opacity = 1) => `rgba(244, 255, 255, ${opacity})`,
   strokeWidth: 2, // optional, default 3,
   style: {
     borderRadius: 16
@@ -77,6 +80,7 @@ export default class StandingsGraph extends React.Component {
             endDate={new Date('2017-04-01')}
             numDays={105}
             width={300}
+            accessor="count"
             height={height / 3}
             yAxisLabel={'names'}
             chartConfig={chartConfig}
