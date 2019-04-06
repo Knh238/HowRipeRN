@@ -60,7 +60,7 @@ export default class Standings extends React.Component {
             <Text> score graph </Text>
             <StandingsGraph />
           </View>
-          <View style={styles.subscreen}>
+          <View style={styles.subscreenKey}>
             <Text> key </Text>
             <StandingsKey />
           </View>
@@ -76,8 +76,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#6e3737'
   },
   subscreen: {
-    flex: 2,
-    height: '50%',
+    // flex: 1,
+    height: '80%',
+    backgroundColor: '#6e3737'
+  },
+  subscreenKey: {
+    // flex: 1,
+    height: '20%',
     backgroundColor: '#6e3737'
   }
 });
