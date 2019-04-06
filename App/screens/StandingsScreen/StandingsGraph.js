@@ -34,139 +34,172 @@ const leagueScores = [
     name: 'Greg',
     rank: 1,
     total: 14,
-    wk1: 4,
-    wk2: 2,
-    wk3: 4,
-    wk4: 8,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 2, film2: 6, film3: 4 },
+    wk2: { film1: 6, film2: 2, film3: 4 },
+    wk3: { film1: 4, film2: 4, film3: 8 },
+    wk4: { film1: 6, film2: 8, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Annika',
     rank: 2,
     total: 24,
-    wk1: 8,
-    wk2: 2,
-    wk3: 2,
-    wk4: 4,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 8, film2: 2, film3: 6 },
+    wk2: { film1: 4, film2: 6, film3: 6 },
+    wk3: { film1: 2, film2: 2, film3: 4 },
+    wk4: { film1: 4, film2: 4, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Jill',
     rank: 3,
     total: 30,
-    wk1: 4,
-    wk2: 4,
-    wk3: 4,
-    wk4: 4,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 4, film2: 2, film3: 2 },
+    wk2: { film1: 2, film2: 2, film3: 4 },
+    wk3: { film1: 5, film2: 4, film3: 8 },
+    wk4: { film1: 2, film2: 2, film3: 2 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Vikas',
     rank: 4,
     total: 30,
-    wk1: 6,
-    wk2: 4,
-    wk3: 2,
-    wk4: 2,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 2, film2: 6, film3: 4 },
+    wk2: { film1: 6, film2: 2, film3: 4 },
+    wk3: { film1: 4, film2: 4, film3: 8 },
+    wk4: { film1: 6, film2: 8, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Keith',
     rank: 5,
     total: 30,
-    wk1: 8,
-    wk2: 2,
-    wk3: 8,
-    wk4: 2,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 4, film2: 2, film3: 2 },
+    wk2: { film1: 2, film2: 2, film3: 4 },
+    wk3: { film1: 5, film2: 4, film3: 8 },
+    wk4: { film1: 2, film2: 2, film3: 2 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Noah',
     rank: 6,
     total: 30,
-    wk1: 2,
-    wk2: 2,
-    wk3: 2,
-    wk4: 4,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 8, film2: 2, film3: 6 },
+    wk2: { film1: 4, film2: 6, film3: 6 },
+    wk3: { film1: 2, film2: 2, film3: 4 },
+    wk4: { film1: 4, film2: 4, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Molly',
     rank: 7,
     total: 30,
-    wk1: 2,
-    wk2: 6,
-    wk3: 6,
-    wk4: 4,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 2, film2: 6, film3: 4 },
+    wk2: { film1: 6, film2: 2, film3: 4 },
+    wk3: { film1: 4, film2: 4, film3: 8 },
+    wk4: { film1: 6, film2: 8, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Cayla',
-    rank: 7,
+    rank: 8,
     total: 30,
-    wk1: 8,
-    wk2: 6,
-    wk3: 6,
-    wk4: 4,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 8, film2: 2, film3: 6 },
+    wk2: { film1: 4, film2: 6, film3: 6 },
+    wk3: { film1: 2, film2: 2, film3: 4 },
+    wk4: { film1: 4, film2: 4, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Brandon',
-    rank: 7,
+    rank: 9,
     total: 30,
-    wk1: 2,
-    wk2: 6,
-    wk3: 8,
-    wk4: 2,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 2, film2: 6, film3: 4 },
+    wk2: { film1: 6, film2: 2, film3: 4 },
+    wk3: { film1: 4, film2: 4, film3: 8 },
+    wk4: { film1: 6, film2: 8, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Siobhan',
-    rank: 7,
+    rank: 10,
     total: 30,
-    wk1: 2,
-    wk2: 4,
-    wk3: 8,
-    wk4: 4,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 2, film2: 6, film3: 4 },
+    wk2: { film1: 6, film2: 2, film3: 4 },
+    wk3: { film1: 4, film2: 4, film3: 8 },
+    wk4: { film1: 6, film2: 8, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'Chris',
-    rank: 7,
+    rank: 11,
     total: 30,
-    wk1: 2,
-    wk2: 4,
-    wk3: 8,
-    wk4: 2,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 8, film2: 2, film3: 6 },
+    wk2: { film1: 4, film2: 6, film3: 6 },
+    wk3: { film1: 2, film2: 2, film3: 4 },
+    wk4: { film1: 4, film2: 4, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
     name: 'John',
-    rank: 7,
+    rank: 12,
     total: 30,
-    wk1: 4,
-    wk2: 2,
-    wk3: 6,
-    wk4: 1,
-    wk5: 0,
-    wk6: 0
+    wk1: { film1: 8, film2: 2, film3: 6 },
+    wk2: { film1: 4, film2: 6, film3: 6 },
+    wk3: { film1: 2, film2: 2, film3: 4 },
+    wk4: { film1: 4, film2: 4, film3: 4 },
+    wk5: { film1: 0, film2: 0, film3: 0 },
+    wk6: { film1: 0, film2: 0, film3: 0 }
   }
 ];
 export default class StandingsGraph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+  renderPlayerWeek(week) {
+    return (
+      <View>
+        <View
+          style={{
+            width: 15,
+            height: 25,
+            backgroundColor: colorsKey[week.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 25,
+            backgroundColor: colorsKey[week.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 25,
+            backgroundColor: colorsKey[week2.film3],
+            borderColor: 'black',
+            borderRightWidth: 0.5
+          }}
+        />
+      </View>
+    );
   }
   renderPlayerRow(player) {
     return (
@@ -182,7 +215,7 @@ export default class StandingsGraph extends React.Component {
       >
         <View
           style={{
-            width: 90,
+            width: 100,
             height: 25,
             backgroundColor: 'white'
           }}
@@ -202,58 +235,167 @@ export default class StandingsGraph extends React.Component {
         >
           <Text style={{ fontSize: 20 }}> {player.total} </Text>
         </View>
+
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: colorsKey[player.wk1],
-            borderColor: 'black',
-            borderLeftWidth: 0.5
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk1.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: colorsKey[player.wk2],
-            borderColor: 'black',
-            borderLeftWidth: 0.5
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk1.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: colorsKey[player.wk3],
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk1.film3],
             borderColor: 'black',
-            borderLeftWidth: 0.5
+            borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: colorsKey[player.wk4],
-            borderColor: 'black',
-            borderLeftWidth: 0.5
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk2.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: colorsKey[player.wk5],
-            borderColor: 'black',
-            borderLeftWidth: 0.5
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk2.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: colorsKey[player.wk6],
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk2.film3],
             borderColor: 'black',
-            borderLeftWidth: 0.5
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk3.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk3.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk3.film3],
+            borderColor: 'black',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk4.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk4.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk4.film3],
+            borderColor: 'black',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk5.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk5.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk5.film3],
+            borderColor: 'black',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk6.film1],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk6.film2],
+            borderColor: 'white',
+            borderRightWidth: 0.5
+          }}
+        />
+        <View
+          style={{
+            width: 15,
+            height: 35,
+            backgroundColor: colorsKey[player.wk6.film3],
+            borderColor: 'black',
+            borderRightWidth: 0.5
           }}
         />
       </View>
@@ -263,7 +405,7 @@ export default class StandingsGraph extends React.Component {
   render() {
     return (
       <ScrollView horizontal={true} style={styles.container}>
-        <View style={{ justifyContent: 'center' }}>
+        <View style={{ justifyContent: 'space-around' }}>
           <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
             Standings
           </Text>
@@ -277,7 +419,7 @@ export default class StandingsGraph extends React.Component {
           >
             <View
               style={{
-                width: 90,
+                width: 100,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
@@ -297,7 +439,7 @@ export default class StandingsGraph extends React.Component {
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
@@ -307,7 +449,7 @@ export default class StandingsGraph extends React.Component {
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
@@ -317,7 +459,7 @@ export default class StandingsGraph extends React.Component {
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
@@ -327,7 +469,7 @@ export default class StandingsGraph extends React.Component {
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
@@ -337,7 +479,7 @@ export default class StandingsGraph extends React.Component {
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
@@ -347,7 +489,7 @@ export default class StandingsGraph extends React.Component {
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
