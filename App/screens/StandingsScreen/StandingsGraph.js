@@ -174,7 +174,7 @@ export default class StandingsGraph extends React.Component {
         <View
           style={{
             width: 15,
-            height: 25,
+            height: 35,
             backgroundColor: colorsKey[week.film1],
             borderColor: 'white',
             borderRightWidth: 0.5
@@ -183,7 +183,7 @@ export default class StandingsGraph extends React.Component {
         <View
           style={{
             width: 15,
-            height: 25,
+            height: 35,
             backgroundColor: colorsKey[week.film2],
             borderColor: 'white',
             borderRightWidth: 0.5
@@ -192,8 +192,8 @@ export default class StandingsGraph extends React.Component {
         <View
           style={{
             width: 15,
-            height: 25,
-            backgroundColor: colorsKey[week2.film3],
+            height: 35,
+            backgroundColor: colorsKey[week.film3],
             borderColor: 'black',
             borderRightWidth: 0.5
           }}
@@ -235,7 +235,7 @@ export default class StandingsGraph extends React.Component {
         >
           <Text style={{ fontSize: 20 }}> {player.total} </Text>
         </View>
-
+        {/* {this.renderPlayerWeek(player.wk1)} */}
         <View
           style={{
             width: 15,
