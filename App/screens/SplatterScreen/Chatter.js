@@ -4,82 +4,24 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View
 } from 'react-native';
-import { ListItem, Left, Right, Body } from 'native-base';
+import {
+  ListItem,
+  Left,
+  Right,
+  Body,
+  Card,
+  CardItem,
+  Thumbnail,
+  List,
+  Text
+} from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 import { Icon, Button, Avatar } from 'react-native-elements';
-import { ProgressCircle, StackedAreaChart } from 'react-native-svg-charts';
 
-import * as shape from 'd3-shape';
-const list = [
-  {
-    name: 'Greg',
-    currentRank: 1,
-    score: 8,
-    scoreChange: '+8'
-  },
-  {
-    name: 'Annika',
-    currentRank: 2,
-    score: 8,
-    scoreChange: '+4'
-  },
-  {
-    name: 'Noah',
-    currentRank: 3,
-    score: 8,
-    scoreChange: '+4'
-  },
-  {
-    name: 'Keith',
-    currentRank: 7,
-    score: 8,
-    scoreChange: '+1'
-  }
-];
-
-const data = [
-  {
-    month: new Date(2015, 0, 1),
-    Ben: 6,
-    Bob: 4,
-    Bailey: 2,
-    Bob: 1
-  },
-  {
-    month: new Date(2015, 1, 1),
-    Ben: 4,
-    Bob: 1,
-    Bailey: 6,
-    Dog: 1
-  },
-  {
-    month: new Date(2015, 2, 1),
-    Ben: 7,
-    Bob: 2,
-    Bailey: 8,
-    Dog: 4
-  },
-  {
-    month: new Date(2015, 3, 1),
-    Ben: 1,
-    Bob: 3,
-    Bailey: 5,
-    Dog: 3
-  }
-];
-
-const colors = ['#ff8a80', '#ff5252', '#ff1744', '#d50000'];
-const keys = ['Ben', 'Bob', 'Bailey', 'Dog'];
-const svgs = [
-  { onPress: () => console.log('apples') },
-  { onPress: () => console.log('bananas') },
-  { onPress: () => console.log('cherries') },
-  { onPress: () => console.log('dates') }
-];
-export default class StandingsKey extends React.Component {
+export default class Chatter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -88,27 +30,107 @@ export default class StandingsKey extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            TEST Graph
-          </Text>
-          <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-            Progress Circle
-          </Text>
-          {/* <ProgressCircle
-            style={{ height: 200 }}
-            progress={0.7}
-            progressColor={'#f44336'}
-          /> */}
-          <StackedAreaChart
-            style={{ height: 200, paddingVertical: 16 }}
-            data={data}
-            keys={keys}
-            colors={colors}
-            curve={shape.curveNatural}
-            showGrid={true}
-            svgs={svgs}
-          />
+        <View
+          style={{
+            backgroundColor: '#441515',
+            marginLeft: 10,
+            marginRight: 10
+          }}
+        >
+          <List>
+            <ListItem>
+              <LinearGradient
+                colors={['#6b3535', '#5b2d2d', '#492424']}
+                style={styles.linearGradient}
+              >
+                <Body>
+                  <Thumbnail
+                    style={{ marginTop: 5, alignSelf: 'flex-start' }}
+                    source={{ uri: 'https://loremflickr.com/320/240' }}
+                  />
+                  <Text
+                    style={{
+                      color: '#A89C9C',
+                      fontSize: 20,
+                      alignSelf: 'center'
+                    }}
+                  >
+                    author
+                  </Text>
+                  <Text
+                    style={{
+                      color: '#A89C9C',
+                      fontSize: 18,
+                      alignSelf: 'center'
+                    }}
+                  >
+                    Chatter
+                  </Text>
+                  <Button
+                    type="clear"
+                    style={{ alignSelf: 'flex-end' }}
+                    icon={
+                      <Icon
+                        type="font-awesome"
+                        name="thumbs-up"
+                        size={20}
+                        color="white"
+                      />
+                    }
+                    title=" 6"
+                    titleStyle={{ color: 'white' }}
+                  />
+                </Body>
+              </LinearGradient>
+            </ListItem>
+
+            <ListItem>
+              <LinearGradient
+                colors={['#6b3535', '#5b2d2d', '#492424']}
+                style={styles.linearGradient}
+              >
+                <Body>
+                  <Thumbnail
+                    style={{ marginTop: 5, alignSelf: 'flex-start' }}
+                    source={{ uri: 'https://loremflickr.com/320/240' }}
+                  />
+                  <Text
+                    style={{
+                      color: '#A89C9C',
+                      fontSize: 20,
+                      alignSelf: 'center'
+                    }}
+                  >
+                    author
+                  </Text>
+                  <Text
+                    style={{
+                      color: '#A89C9C',
+                      fontSize: 18,
+                      alignSelf: 'center'
+                    }}
+                  >
+                    Chatter
+                  </Text>
+                  <Button
+                    type="clear"
+                    style={{ alignSelf: 'flex-end' }}
+                    icon={
+                      <Icon
+                        type="font-awesome"
+                        name="thumbs-up"
+                        size={20}
+                        color="white"
+                      />
+                    }
+                    title=" 6"
+                    titleStyle={{ color: 'white' }}
+                  />
+                </Body>
+              </LinearGradient>
+            </ListItem>
+          </List>
+          {/* </View> */}
           <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
             <Image
               source={require('HowRipeMobile/imageAssets/crown.png')}
@@ -126,5 +148,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#441515'
+  },
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
   }
 });

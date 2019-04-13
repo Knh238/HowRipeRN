@@ -21,6 +21,7 @@
     "react-native-chart-kit": "^2.4.0",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.1.0",
+    "react-native-linear-gradient": "^2.5.4",
     "react-native-svg": "^9.3.7",
     "react-native-svg-charts": "^5.2.0",
     "react-native-vector-icons": "^6.4.2",

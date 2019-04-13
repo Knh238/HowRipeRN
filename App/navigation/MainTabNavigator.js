@@ -10,6 +10,7 @@ import { Icon } from 'react-native-elements';
 import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
 import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
+import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -39,10 +40,10 @@ const ScoresStack = createStackNavigator({
 
 ScoresStack.navigationOptions = {
   tabBarLabel: 'Scores',
-  tabBarIcon: <Icon type="feather" name="percent" color="white" />
+  tabBarIcon: <Icon type="font-awesome" name="percent" color="white" />
 };
 const SplatterStack = createStackNavigator({
-  Settings: SettingsScreen
+  Spallter: SplatterScreen
 });
 
 SplatterStack.navigationOptions = {
@@ -53,7 +54,6 @@ SplatterStack.navigationOptions = {
       style={{ width: 30, height: 30 }}
     />
   )
-  // tabBarIcon: <Icon type="feather" name="message-circle" color="white" />
 };
 const TheRipeStack = createStackNavigator({
   Settings: SettingsScreen

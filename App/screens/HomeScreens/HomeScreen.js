@@ -55,13 +55,9 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <View style={styles.subscreen}>
-            <LeaderBoard />
-          </View>
-          <View style={styles.subscreen}>
-            <CurrentVideos />
-          </View>
+        <View style={{ flex: 1 }}>
+          <LeaderBoard />
+          <CurrentVideos />
         </View>
       </SafeAreaView>
     );
@@ -74,8 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6e3737'
   },
   subscreen: {
-    flex: 2,
-    height: '50%',
+    height: '40%',
     backgroundColor: '#6e3737'
   }
 });
