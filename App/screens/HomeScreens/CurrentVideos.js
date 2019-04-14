@@ -30,10 +30,37 @@ export default class CurrentVideos extends React.Component {
           }}
         >
           <Text style={{ color: 'white' }}> trailers go here here</Text>
-
+          <YouTube
+            videoId={'CtWoJ-YhTeg'}
+            play={false}
+            // fullscreen={true}
+            loop={false}
+            apiKey={config.API_KEY}
+            controls={1}
+            onReady={e => this.setState({ isReady: true })}
+            onChangeState={e => this.setState({ status: e.state })}
+            onChangeQuality={e => this.setState({ quality: e.quality })}
+            onError={e => this.setState({ error: e.error })}
+            style={{ alignSelf: 'stretch', height: 300 }}
+          />
           <YouTube
             videoId={'BunklIatIK4'}
-            play={true}
+            play={false}
+            // fullscreen={true}
+            loop={false}
+            apiKey={config.API_KEY}
+            controls={1}
+            onReady={e => this.setState({ isReady: true })}
+            onChangeState={e => this.setState({ status: e.state })}
+            onChangeQuality={e => this.setState({ quality: e.quality })}
+            onError={e => this.setState({ error: e.error })}
+            style={{ alignSelf: 'stretch', height: 300 }}
+          />
+          <YouTube
+            videoId={'YAU6omaYU6U'}
+            play={false}
+            // fullscreen={true}
+            loop={false}
             apiKey={config.API_KEY}
             controls={1}
             onReady={e => this.setState({ isReady: true })}
