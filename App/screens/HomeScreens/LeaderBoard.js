@@ -44,49 +44,44 @@ export default class LeaderBoard extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            LEADERBOARD
-          </Text>
-          <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-            League of Champs / Global
-          </Text>
-          {list.map((l, i) => (
-            <ListItem
-              style={{
-                backgroundColor: '#441515',
-                marginLeft: 50,
-                marginRight: 50
-              }}
-              key={i}
-            >
-              <Left>
-                <Text style={{ color: 'white' }}>
-                  {l.currentRank + '. ' + l.name}{' '}
-                </Text>
-              </Left>
-              <Body>
-                <Text style={{ color: 'white' }}> {l.score.toString()} </Text>
-              </Body>
-              <Right>
-                <Text style={{ color: 'white' }}>{l.scoreChange}</Text>
-              </Right>
-            </ListItem>
-          ))}
-          {/* <Image
+      <View style={{ justifyContent: 'center' }}>
+        <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
+          LEADERBOARD
+        </Text>
+        <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
+          League of Champs / Global
+        </Text>
+        {list.map((l, i) => (
+          <ListItem
+            style={{
+              backgroundColor: '#441515',
+              marginLeft: 50,
+              marginRight: 50
+            }}
+            key={i}
+          >
+            <Left>
+              <Text style={{ color: 'white' }}>
+                {l.currentRank + '. ' + l.name}{' '}
+              </Text>
+            </Left>
+            <Body>
+              <Text style={{ color: 'white' }}> {l.score.toString()} </Text>
+            </Body>
+            <Right>
+              <Text style={{ color: 'white' }}>{l.scoreChange}</Text>
+            </Right>
+          </ListItem>
+        ))}
+
+        <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
+          <Image
             source={require('HowRipeMobile/imageAssets/crown.png')}
-            style={{ width: 40, height: 40 }}
-          /> */}
-          <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
-            <Image
-              source={require('HowRipeMobile/imageAssets/crown.png')}
-              style={{ width: 30, height: 30 }}
-            />
-            SPLATTER MASTER: Molly
-          </Text>
-        </View>
-      </ScrollView>
+            style={{ width: 30, height: 30 }}
+          />
+          SPLATTER MASTER: Molly
+        </Text>
+      </View>
     );
   }
 }

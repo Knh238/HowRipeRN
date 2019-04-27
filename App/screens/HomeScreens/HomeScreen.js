@@ -16,12 +16,6 @@ import CurrentVideos from './CurrentVideos';
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      // headerTitle: (
-      //   <Image
-      //     source={require('HowRipeMobile/imageAssets/Logov1.0.png')}
-      //     style={{ width: 30, height: 30, color: 'white' }}
-      //   />
-      // ),
       title: 'How Ripe',
       headerStyle: {
         backgroundColor: '#6e3737',
@@ -29,7 +23,9 @@ export default class HomeScreen extends React.Component {
       },
       headerTitleStyle: {
         color: 'white',
-        fontSize: 18
+        fontSize: 20,
+        fontFamily: 'NotoSans',
+        fontWeight: 'bold'
       },
       headerLeft: (
         <Button
@@ -56,7 +52,6 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <LeaderBoard />
           <CurrentVideos />
         </View>
       </SafeAreaView>

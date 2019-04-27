@@ -5,8 +5,6 @@ import {
   createBottomTabNavigator
 } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-// import splatter from '/imageAssets/';
-
 import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
 import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
@@ -21,7 +19,13 @@ const HomeStack = createStackNavigator({
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: (
-    <Icon type="foundation" name="home" color="white" underlayColor="pink" />
+    <Icon
+      type="foundation"
+      name="home"
+      color="#a39595"
+      underlayColor="white"
+      size={30}
+    />
   )
 };
 
@@ -31,7 +35,15 @@ const StandingsStack = createStackNavigator({
 
 StandingsStack.navigationOptions = {
   tabBarLabel: 'Standings',
-  tabBarIcon: <Icon type="foundation" name="graph-bar" color="white" />
+  tabBarIcon: (
+    <Icon
+      type="foundation"
+      name="graph-bar"
+      color="#a39595"
+      underlayColor="white"
+      size={30}
+    />
+  )
 };
 
 const ScoresStack = createStackNavigator({
@@ -40,7 +52,15 @@ const ScoresStack = createStackNavigator({
 
 ScoresStack.navigationOptions = {
   tabBarLabel: 'Scores',
-  tabBarIcon: <Icon type="font-awesome" name="percent" color="white" />
+  tabBarIcon: (
+    <Icon
+      type="font-awesome"
+      name="percent"
+      color="#a39595"
+      underlayColor="white"
+      size={30}
+    />
+  )
 };
 const SplatterStack = createStackNavigator({
   Spallter: SplatterScreen
@@ -50,8 +70,8 @@ SplatterStack.navigationOptions = {
   tabBarLabel: 'Splatter',
   tabBarIcon: (
     <Image
-      source={require('HowRipeMobile/imageAssets/splatter.png')}
-      style={{ width: 30, height: 30 }}
+      source={require('HowRipeMobile/imageAssets/splatterGrey.png')}
+      style={{ width: 32, height: 30 }}
     />
   )
 };
@@ -61,7 +81,15 @@ const TheRipeStack = createStackNavigator({
 
 TheRipeStack.navigationOptions = {
   tabBarLabel: 'TheRipe',
-  tabBarIcon: <Icon type="material-community" name="movie-roll" color="white" />
+  tabBarIcon: (
+    <Icon
+      type="material-community"
+      name="movie-roll"
+      color="#a39595"
+      underlayColor="white"
+      size={30}
+    />
+  )
 };
 
 export default createBottomTabNavigator(
@@ -76,8 +104,10 @@ export default createBottomTabNavigator(
     tabBarOptions: {
       activeBackgroundColor: '#6e3737',
       inactiveBackgroundColor: '#6e3737',
-      activeTintColor: 'pink',
-      safeAreaInset: { forceInset: { top: 'never', bottom: 'always' } }
+      activeTintColor: 'white',
+      safeAreaInset: { forceInset: { top: 'never', bottom: 'always' } },
+      labelStyle: { fontFamily: 'NotoSans' },
+      style: { borderTopWidth: 0.5, borderColor: '#a39595' }
     }
   }
 );

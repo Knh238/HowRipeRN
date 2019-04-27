@@ -12,6 +12,7 @@ import {
 import { ListItem, Left, Right, Body } from 'native-base';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import { ContributionGraph } from 'react-native-chart-kit';
+import StandingsKey from './StandingsKey';
 
 const colorsKey = {
   0: 'white',
@@ -21,19 +22,12 @@ const colorsKey = {
   6: '#a11123',
   8: '#f9b631'
 };
-// const colorsKey = {
-//   0: 'white',
-//   1: '#ff8a80',
-//   2: '#ff5252',
-//   4: '#ff1744',
-//   6: '#d50000',
-//   8: '#f9b631'
-// };
+
 const leagueScores = [
   {
     name: 'Greg',
     rank: 1,
-    total: 14,
+    total: 31,
     wk1: { film1: 2, film2: 6, film3: 4 },
     wk2: { film1: 6, film2: 2, film3: 4 },
     wk3: { film1: 4, film2: 4, film3: 8 },
@@ -44,7 +38,7 @@ const leagueScores = [
   {
     name: 'Annika',
     rank: 2,
-    total: 24,
+    total: 28,
     wk1: { film1: 8, film2: 2, film3: 6 },
     wk2: { film1: 4, film2: 6, film3: 6 },
     wk3: { film1: 2, film2: 2, film3: 4 },
@@ -55,7 +49,7 @@ const leagueScores = [
   {
     name: 'Jill',
     rank: 3,
-    total: 30,
+    total: 27,
     wk1: { film1: 4, film2: 2, film3: 2 },
     wk2: { film1: 2, film2: 2, film3: 4 },
     wk3: { film1: 5, film2: 4, film3: 8 },
@@ -64,9 +58,9 @@ const leagueScores = [
     wk6: { film1: 0, film2: 0, film3: 0 }
   },
   {
-    name: 'Vikas',
+    name: 'Kristin',
     rank: 4,
-    total: 30,
+    total: 24,
     wk1: { film1: 2, film2: 6, film3: 4 },
     wk2: { film1: 6, film2: 2, film3: 4 },
     wk3: { film1: 4, film2: 4, film3: 8 },
@@ -77,7 +71,7 @@ const leagueScores = [
   {
     name: 'Keith',
     rank: 5,
-    total: 30,
+    total: 22,
     wk1: { film1: 4, film2: 2, film3: 2 },
     wk2: { film1: 2, film2: 2, film3: 4 },
     wk3: { film1: 5, film2: 4, film3: 8 },
@@ -88,7 +82,7 @@ const leagueScores = [
   {
     name: 'Noah',
     rank: 6,
-    total: 30,
+    total: 21,
     wk1: { film1: 8, film2: 2, film3: 6 },
     wk2: { film1: 4, film2: 6, film3: 6 },
     wk3: { film1: 2, film2: 2, film3: 4 },
@@ -99,7 +93,7 @@ const leagueScores = [
   {
     name: 'Molly',
     rank: 7,
-    total: 30,
+    total: 20,
     wk1: { film1: 2, film2: 6, film3: 4 },
     wk2: { film1: 6, film2: 2, film3: 4 },
     wk3: { film1: 4, film2: 4, film3: 8 },
@@ -110,7 +104,7 @@ const leagueScores = [
   {
     name: 'Cayla',
     rank: 8,
-    total: 30,
+    total: 17,
     wk1: { film1: 8, film2: 2, film3: 6 },
     wk2: { film1: 4, film2: 6, film3: 6 },
     wk3: { film1: 2, film2: 2, film3: 4 },
@@ -121,7 +115,7 @@ const leagueScores = [
   {
     name: 'Brandon',
     rank: 9,
-    total: 30,
+    total: 14,
     wk1: { film1: 2, film2: 6, film3: 4 },
     wk2: { film1: 6, film2: 2, film3: 4 },
     wk3: { film1: 4, film2: 4, film3: 8 },
@@ -132,7 +126,7 @@ const leagueScores = [
   {
     name: 'Siobhan',
     rank: 10,
-    total: 30,
+    total: 12,
     wk1: { film1: 2, film2: 6, film3: 4 },
     wk2: { film1: 6, film2: 2, film3: 4 },
     wk3: { film1: 4, film2: 4, film3: 8 },
@@ -143,7 +137,7 @@ const leagueScores = [
   {
     name: 'Chris',
     rank: 11,
-    total: 30,
+    total: 11,
     wk1: { film1: 8, film2: 2, film3: 6 },
     wk2: { film1: 4, film2: 6, film3: 6 },
     wk3: { film1: 2, film2: 2, film3: 4 },
@@ -154,7 +148,7 @@ const leagueScores = [
   {
     name: 'John',
     rank: 12,
-    total: 30,
+    total: 8,
     wk1: { film1: 8, film2: 2, film3: 6 },
     wk2: { film1: 4, film2: 6, film3: 6 },
     wk3: { film1: 2, film2: 2, film3: 4 },
@@ -170,11 +164,11 @@ export default class StandingsGraph extends React.Component {
   }
   renderPlayerWeek(week) {
     return (
-      <View>
+      <View style={{ backgroundColor: '#4b1818' }}>
         <View
           style={{
             width: 15,
-            height: 35,
+            height: 30,
             backgroundColor: colorsKey[week.film1],
             borderColor: 'white',
             borderRightWidth: 0.5
@@ -183,7 +177,7 @@ export default class StandingsGraph extends React.Component {
         <View
           style={{
             width: 15,
-            height: 35,
+            height: 30,
             backgroundColor: colorsKey[week.film2],
             borderColor: 'white',
             borderRightWidth: 0.5
@@ -205,9 +199,10 @@ export default class StandingsGraph extends React.Component {
     return (
       <View
         style={{
-          flex: 1,
+          // flex: 1,
           flexDirection: 'row',
-          borderColor: 'black',
+          height: 35,
+          borderColor: '#6e3737',
           borderBottomWidth: 0.5,
           borderRightWidth: 0.5
         }}
@@ -215,49 +210,110 @@ export default class StandingsGraph extends React.Component {
       >
         <View
           style={{
+            width: 40,
+            height: 35,
+            backgroundColor: '#4b1818',
+            justifyContent: 'center'
+          }}
+        >
+          {player.name === 'Keith' ? (
+            <Text
+              style={{
+                fontSize: 20,
+                color: 'white',
+                alignSelf: 'center',
+                fontWeight: 'bold'
+              }}
+            >
+              {player.rank}
+            </Text>
+          ) : (
+            <Text
+              style={{ fontSize: 18, color: '#a39595', alignSelf: 'center' }}
+            >
+              {player.rank}
+            </Text>
+          )}
+        </View>
+        <View
+          style={{
             width: 100,
-            height: 25,
-            backgroundColor: 'white'
+            height: 35,
+            backgroundColor: '#4b1818',
+            justifyContent: 'center'
           }}
         >
-          <Text style={{ fontSize: 20 }}>
-            {player.rank} {player.name}{' '}
-          </Text>
+          {player.name === 'Keith' ? (
+            <Text
+              style={{
+                fontSize: 20,
+                color: 'white',
+                alignSelf: 'center',
+                fontWeight: 'bold'
+              }}
+            >
+              {player.name}
+            </Text>
+          ) : (
+            <Text
+              style={{ fontSize: 20, color: '#a39595', alignSelf: 'center' }}
+            >
+              {player.name}{' '}
+            </Text>
+          )}
         </View>
         <View
           style={{
-            width: 50,
-            height: 25,
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderLeftWidth: 0.5
+            width: 45,
+            height: 35,
+            backgroundColor: '#4b1818',
+            borderColor: '#6e3737',
+            borderLeftWidth: 0.5,
+            justifyContent: 'center'
           }}
         >
-          <Text style={{ fontSize: 20 }}> {player.total} </Text>
+          {player.name === 'Keith' ? (
+            <Text
+              style={{
+                fontSize: 20,
+                color: 'white',
+                alignSelf: 'center',
+                fontWeight: 'bold'
+              }}
+            >
+              {player.total}
+            </Text>
+          ) : (
+            <Text
+              style={{ fontSize: 20, color: '#a39595', alignSelf: 'center' }}
+            >
+              {player.total}{' '}
+            </Text>
+          )}
         </View>
-        {/* {this.renderPlayerWeek(player.wk1)} */}
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk1.film1],
-            borderColor: 'white',
+            borderColor: '#6e3737',
             borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk1.film2],
-            borderColor: 'white',
+            borderColor: '#6e3737',
             borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
+            flex: 1,
             backgroundColor: colorsKey[player.wk1.film3],
             borderColor: 'black',
             borderRightWidth: 0.5
@@ -265,25 +321,25 @@ export default class StandingsGraph extends React.Component {
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk2.film1],
-            borderColor: 'white',
+            borderColor: '#6e3737',
             borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk2.film2],
-            borderColor: 'white',
+            borderColor: '#6e3737',
             borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk2.film3],
             borderColor: 'black',
@@ -292,32 +348,32 @@ export default class StandingsGraph extends React.Component {
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk3.film1],
-            borderColor: 'white',
+            borderColor: '#6e3737',
             borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk3.film2],
-            borderColor: 'white',
+            borderColor: '#6e3737',
             borderRightWidth: 0.5
           }}
         />
         <View
           style={{
-            width: 15,
+            width: 20,
             height: 35,
             backgroundColor: colorsKey[player.wk3.film3],
             borderColor: 'black',
             borderRightWidth: 0.5
           }}
         />
-        <View
+        {/* <View
           style={{
             width: 15,
             height: 35,
@@ -397,7 +453,7 @@ export default class StandingsGraph extends React.Component {
             borderColor: 'black',
             borderRightWidth: 0.5
           }}
-        />
+        /> */}
       </View>
     );
   }
@@ -406,36 +462,143 @@ export default class StandingsGraph extends React.Component {
     return (
       <ScrollView horizontal={true} style={styles.container}>
         <View style={{ justifyContent: 'space-around' }}>
-          <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            Standings
+          <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
+            League of Champs / Global
           </Text>
           <View
             style={{
-              // flex: 1,
               flexDirection: 'row',
               height: 25,
-              backgroundColor: '#bdbdbd'
+              backgroundColor: '#4b1818'
             }}
           >
             <View
               style={{
+                width: 40,
+                height: 25,
+                borderColor: '#6e3737',
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{ fontSize: 15, color: '#bfadad', alignSelf: 'center' }}
+              >
+                Rank
+              </Text>
+            </View>
+            <View
+              style={{
                 width: 100,
                 height: 25,
-                borderColor: 'black',
-                borderLeftWidth: 0.5
+                borderColor: '#6e3737',
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                justifyContent: 'center'
               }}
             >
-              <Text style={{ fontSize: 20 }}> player </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#bfadad',
+                  alignSelf: 'center',
+                  textShadowColor: 'black'
+                }}
+              >
+                Player{' '}
+              </Text>
             </View>
             <View
               style={{
-                width: 50,
+                width: 45,
+                height: 25,
+                borderColor: '#6e3737',
+                borderWidth: 0.5,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#bfadad',
+                  alignSelf: 'center',
+                  textShadowColor: 'black'
+                }}
+              >
+                Points
+              </Text>
+            </View>
+            <View
+              style={{
+                width: 60,
+                height: 25,
+                borderColor: '#6e3737',
+                borderWidth: 0.5,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#bfadad',
+                  textDecorationLine: 'underline',
+                  alignSelf: 'center',
+                  textShadowColor: 'black'
+                }}
+              >
+                Wk 5{' '}
+              </Text>
+            </View>
+            <View
+              style={{
+                width: 60,
+                height: 25,
+                borderColor: '#6e3737',
+                borderWidth: 0.5,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#bfadad',
+                  textDecorationLine: 'underline',
+                  alignSelf: 'center'
+                }}
+              >
+                Wk 4{' '}
+              </Text>
+            </View>
+            <View
+              style={{
+                width: 60,
+                height: 25,
+                borderColor: '#6e3737',
+                borderWidth: 0.5,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#bfadad',
+                  textDecorationLine: 'underline',
+                  alignSelf: 'center'
+                }}
+              >
+                Wk 3{' '}
+              </Text>
+            </View>
+            {/* <View
+              style={{
+                width: 45,
                 height: 25,
                 borderColor: 'black',
                 borderLeftWidth: 0.5
               }}
             >
-              <Text style={{ fontSize: 20 }}> total </Text>
+              <Text style={{ fontSize: 20, color: '#a39595' }}> wk 4 </Text>
             </View>
             <View
               style={{
@@ -445,7 +608,7 @@ export default class StandingsGraph extends React.Component {
                 borderLeftWidth: 0.5
               }}
             >
-              <Text style={{ fontSize: 20 }}> wk 1 </Text>
+              <Text style={{ fontSize: 20, color: '#a39595' }}> wk 5 </Text>
             </View>
             <View
               style={{
@@ -455,48 +618,8 @@ export default class StandingsGraph extends React.Component {
                 borderLeftWidth: 0.5
               }}
             >
-              <Text style={{ fontSize: 20 }}> wk 2 </Text>
-            </View>
-            <View
-              style={{
-                width: 45,
-                height: 25,
-                borderColor: 'black',
-                borderLeftWidth: 0.5
-              }}
-            >
-              <Text style={{ fontSize: 20 }}> wk 3 </Text>
-            </View>
-            <View
-              style={{
-                width: 45,
-                height: 25,
-                borderColor: 'black',
-                borderLeftWidth: 0.5
-              }}
-            >
-              <Text style={{ fontSize: 20 }}> wk 4 </Text>
-            </View>
-            <View
-              style={{
-                width: 45,
-                height: 25,
-                borderColor: 'black',
-                borderLeftWidth: 0.5
-              }}
-            >
-              <Text style={{ fontSize: 20 }}> wk 5 </Text>
-            </View>
-            <View
-              style={{
-                width: 45,
-                height: 25,
-                borderColor: 'black',
-                borderLeftWidth: 0.5
-              }}
-            >
-              <Text style={{ fontSize: 20 }}> wk 6 </Text>
-            </View>
+              <Text style={{ fontSize: 20, color: '#a39595' }}> wk 6 </Text>
+            </View> */}
           </View>
           {leagueScores.map(player => this.renderPlayerRow(player))}
         </View>
@@ -508,7 +631,7 @@ export default class StandingsGraph extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#4b1818',
     fontFamily: 'NotoSans'
   }
 });

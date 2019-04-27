@@ -10,26 +10,24 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 import StandingsGraph from './StandingsGraph';
 import StandingsKey from './StandingsKey';
+import StandingsSnapShot from './StandingsSnapShot';
 
 export default class Standings extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      // headerTitle: (
-      //   <Image
-      //     source={require('HowRipeMobile/imageAssets/Logov1.0.png')}
-      //     style={{ width: 30, height: 30, color: 'white' }}
-      //   />
-      // ),
-      title: 'How Ripe',
+      title: 'STANDINGS',
       headerStyle: {
         backgroundColor: '#6e3737',
         borderBottomWidth: 0
       },
       headerTitleStyle: {
         color: 'white',
-        fontSize: 18
+        fontFamily: 'NotoSans',
+        fontWeight: 'bold',
+        fontSize: 25
       },
       headerLeft: (
         <Button
@@ -52,17 +50,98 @@ export default class Standings extends React.Component {
     };
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { selected: 'detailed' };
+  }
+
+  handleSelect(view) {
+    this.setState({ selected: view });
+  }
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <View style={styles.subscreen}>
-            <Text> score graph </Text>
-            <StandingsGraph />
-          </View>
-          <View style={styles.subscreenKey}>
-            <Text> key </Text>
-            <StandingsKey />
+          {this.state.selected === 'detailed' ? (
+            <View>
+              <View style={styles.subscreen}>
+                <StandingsGraph />
+              </View>
+              <View style={{ height: '10%', backgroundColor: '#6e3737' }}>
+                <StandingsKey />
+              </View>
+            </View>
+          ) : (
+            <StandingsSnapShot />
+          )}
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              height: '25%',
+              justifyContent: 'center',
+              backgroundColor: '#4b1818'
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                width: '32%',
+                height: '22%',
+                borderRightWidth: 1.5,
+                borderColor: 'grey'
+              }}
+              onPress={() => this.handleSelect('snapshot')}
+            >
+              <LinearGradient
+                colors={['#9a1021', '#6b0b17']}
+                style={{
+                  flex: 1,
+                  borderTopLeftRadius: 10,
+                  borderBottomLeftRadius: 10
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: 'NotoSans',
+                    fontSize: 20,
+                    color: '#a39595',
+                    alignSelf: 'center'
+                  }}
+                >
+                  Snapshot
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                width: '32%',
+                height: '22%',
+                borderLeftWidth: 1,
+                borderColor: 'grey'
+              }}
+              onPress={() => this.handleSelect('detailed')}
+            >
+              <LinearGradient
+                colors={['#9a1021', '#6b0b17']}
+                style={{
+                  flex: 1,
+                  borderTopRightRadius: 10,
+                  borderBottomRightRadius: 10
+                }}
+              >
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontFamily: 'NotoSans',
+                    fontSize: 20,
+                    color: 'white'
+                  }}
+                >
+                  Detailed{' '}
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </View>
       </SafeAreaView>
@@ -73,16 +152,17 @@ export default class Standings extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6e3737'
+    backgroundColor: '#4b1818'
   },
   subscreen: {
-    // flex: 1,
     height: '80%',
-    backgroundColor: '#6e3737'
+    backgroundColor: '#4b1818'
   },
   subscreenKey: {
-    // flex: 1,
-    height: '20%',
-    backgroundColor: '#6e3737'
+    display: 'flex',
+    flexDirection: 'row',
+    height: '25%',
+    justifyContent: 'center',
+    backgroundColor: '#4b1818'
   }
 });

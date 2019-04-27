@@ -82,6 +82,21 @@ export default class ScoresKey extends React.Component {
     super(props);
     this.state = {};
   }
+  func() {
+    var longestCommonPrefix = function(strs) {
+      let commonPrefix = '';
+      let wordLengths = strs.sort((a, b) => b.length < a.length);
+      const shortestWord = wordLengths[0];
+      for (let k = 0; k < strs.length - 1; k++) {
+        for (let i = 0; i < shortestWord.length; i++) {
+          if (strs[k][i] === strs[k + 1][i] && k === strs.length - 2) {
+            commonPrefix += strs[k][i];
+          }
+        }
+      }
+      return commonPrefix;
+    };
+  }
 
   render() {
     var { height, width } = Dimensions.get('window');
@@ -94,14 +109,7 @@ export default class ScoresKey extends React.Component {
           <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
             stack bar chart
           </Text>
-          {/* <LineChart
-            data={data}
-            style={{ alignSelf: 'center', backgroundColor: 'pink' }}
-            width={width - 20}
-            height={height / 4}
-            chartConfig={chartConfig}
-            bezier
-          /> */}
+
           <StackedBarChart
             style={{ height: 200 }}
             keys={keys}

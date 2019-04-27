@@ -210,24 +210,17 @@ export default class StandingsKey extends React.Component {
 
   render() {
     return (
-      <ScrollView horozontal={true} style={styles.container}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
-            Standings
-          </Text>
-          <Text style={{ color: 'white', fontSize: 14, alignSelf: 'center' }}>
-            Progress Circle
-          </Text>
-
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'space-around',
-              paddingLeft: 5,
-              paddingTop: 5,
-              flexDirection: 'row'
-            }}
-          >
+      <View style={styles.container}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'space-around',
+            paddingLeft: 5,
+            paddingTop: 5,
+            flexDirection: 'row'
+          }}
+        >
+          <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 width: 20,
@@ -237,7 +230,9 @@ export default class StandingsKey extends React.Component {
                 borderWidth: 0.5
               }}
             />
-            <Text style={{ alignSelf: 'center', fontSize: 14 }}> = 8 pts</Text>
+            <Text style={{ fontSize: 12, color: '#a39595' }}> = 8pts</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 width: 20,
@@ -247,7 +242,9 @@ export default class StandingsKey extends React.Component {
                 borderWidth: 0.5
               }}
             />
-            <Text style={{ alignSelf: 'center', fontSize: 14 }}> = 6 pts</Text>
+            <Text style={{ fontSize: 12, color: '#a39595' }}> = 6pts</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 width: 20,
@@ -257,7 +254,9 @@ export default class StandingsKey extends React.Component {
                 borderWidth: 0.5
               }}
             />
-            <Text style={{ alignSelf: 'center', fontSize: 14 }}> = 4 pts</Text>
+            <Text style={{ fontSize: 12, color: '#a39595' }}> = 4pts</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 width: 20,
@@ -267,7 +266,9 @@ export default class StandingsKey extends React.Component {
                 borderWidth: 0.5
               }}
             />
-            <Text style={{ alignSelf: 'center', fontSize: 14 }}> = 2 pts</Text>
+            <Text style={{ fontSize: 12, color: '#a39595' }}> = 2pts</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
             <View
               style={{
                 width: 20,
@@ -277,10 +278,10 @@ export default class StandingsKey extends React.Component {
                 borderWidth: 0.5
               }}
             />
-            <Text style={{ alignSelf: 'center', fontSize: 14 }}> = 1 pts</Text>
+            <Text style={{ fontSize: 12, color: '#a39595' }}> = 1pts</Text>
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -288,8 +289,10 @@ export default class StandingsKey extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    fontFamily: 'NotoSans'
+    backgroundColor: '#4b1818',
+    fontFamily: 'NotoSans',
+    justifyContent: 'center',
+    paddingTop: 10
   },
   cellStyle: {},
   cellHeader: {}
