@@ -25,7 +25,7 @@ export default class HomeScreen extends React.Component {
       headerTitleStyle: {
         color: 'white',
         fontSize: 20,
-        fontFamily: 'NotoSans',
+        fontFamily: 'Avenir',
         fontWeight: 'bold'
       },
       headerLeft: (

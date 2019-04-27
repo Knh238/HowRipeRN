@@ -106,7 +106,7 @@ const leagueScores = [
     wk6: 0
   }
 ];
-// const colors = ['#ff8a80', '#ff5252', '#ff1744', '#d50000'];
+
 const keys = ['Ben', 'Bob', 'Bailey', 'Dog'];
 
 export default class StandingsKey extends React.Component {
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4b1818',
-    fontFamily: 'NotoSans',
+    fontFamily: 'Avenir',
     justifyContent: 'center',
     paddingTop: 10
   },

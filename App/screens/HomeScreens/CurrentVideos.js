@@ -4,7 +4,6 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  // Text,
   TouchableOpacity,
   View
 } from 'react-native';
@@ -249,7 +248,8 @@ export default class CurrentVideos extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#441515'
+    backgroundColor: '#441515',
+    fontFamily: 'Avenir'
   },
   videoBackground: {
     // flex: 1,

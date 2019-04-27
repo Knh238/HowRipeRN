@@ -632,6 +632,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4b1818',
-    fontFamily: 'NotoSans'
+    fontFamily: 'Avenir'
   }
 });

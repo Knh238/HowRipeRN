@@ -106,7 +106,7 @@ export default createBottomTabNavigator(
       inactiveBackgroundColor: '#6e3737',
       activeTintColor: 'white',
       safeAreaInset: { forceInset: { top: 'never', bottom: 'always' } },
-      labelStyle: { fontFamily: 'NotoSans' },
+      labelStyle: { fontFamily: 'Avenir' },
       style: { borderTopWidth: 0.5, borderColor: '#a39595' }
     }
   }

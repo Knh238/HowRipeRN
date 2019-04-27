@@ -25,7 +25,7 @@ export default class Standings extends React.Component {
       },
       headerTitleStyle: {
         color: 'white',
-        fontFamily: 'NotoSans',
+        fontFamily: 'Avenir',
         fontWeight: 'bold',
         fontSize: 25
       },
@@ -102,7 +102,7 @@ export default class Standings extends React.Component {
               >
                 <Text
                   style={{
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'Avenir',
                     fontSize: 20,
                     color: '#a39595',
                     alignSelf: 'center'
@@ -133,7 +133,7 @@ export default class Standings extends React.Component {
                 <Text
                   style={{
                     alignSelf: 'center',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'Avenir',
                     fontSize: 20,
                     color: 'white'
                   }}
