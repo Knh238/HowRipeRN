@@ -61,15 +61,20 @@ export default class LeaderBoard extends React.Component {
             key={i}
           >
             <Left>
-              <Text style={{ color: 'white' }}>
+              <Text style={{ color: 'white', fontSize: 20 }}>
                 {l.currentRank + '. ' + l.name}{' '}
               </Text>
             </Left>
             <Body>
-              <Text style={{ color: 'white' }}> {l.score.toString()} </Text>
+              <Text style={{ color: 'white', fontSize: 20 }}>
+                {' '}
+                {l.score.toString()}{' '}
+              </Text>
             </Body>
             <Right>
-              <Text style={{ color: 'white' }}>{l.scoreChange}</Text>
+              <Text style={{ color: 'white', fontSize: 20 }}>
+                {l.scoreChange}
+              </Text>
             </Right>
           </ListItem>
         ))}
@@ -90,6 +95,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#441515',
-    fontFamily: 'Avenir'
+    fontFamily: 'AvenirBold'
   }
 });

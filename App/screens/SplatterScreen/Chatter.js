@@ -89,6 +89,50 @@ export default class Chatter extends React.Component {
                 colors={['#6b3535', '#5b2d2d', '#492424']}
                 style={styles.linearGradient}
               >
+                <Thumbnail
+                  style={{ marginTop: 5, alignSelf: 'flex-start' }}
+                  source={{ uri: 'https://loremflickr.com/320/240' }}
+                />
+
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontSize: 20,
+                    alignSelf: 'center'
+                  }}
+                >
+                  author
+                </Text>
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontSize: 18,
+                    alignSelf: 'center'
+                  }}
+                >
+                  Chatter
+                </Text>
+                <Button
+                  type="clear"
+                  style={{ alignSelf: 'flex-end' }}
+                  icon={
+                    <Icon
+                      type="font-awesome"
+                      name="thumbs-up"
+                      size={20}
+                      color="white"
+                    />
+                  }
+                  title=" 6"
+                  titleStyle={{ color: 'white' }}
+                />
+              </LinearGradient>
+            </ListItem>
+            <ListItem>
+              <LinearGradient
+                colors={['#6b3535', '#5b2d2d', '#492424']}
+                style={styles.linearGradient}
+              >
                 <Body>
                   <Thumbnail
                     style={{ marginTop: 5, alignSelf: 'flex-start' }}

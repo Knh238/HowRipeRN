@@ -72,7 +72,9 @@ export default class Standings extends React.Component {
               </View>
             </View>
           ) : (
-            <StandingsSnapShot />
+            <View style={{ height: '90%', backgroundColor: '#4b1818' }}>
+              <StandingsSnapShot />
+            </View>
           )}
           <View
             style={{

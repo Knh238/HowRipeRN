@@ -5,10 +5,12 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  View
+  View,
+  Linking,
+  WebView
 } from 'react-native';
 import YouTube from 'react-native-youtube';
-import { Icon, Button, Avatar, ListItem } from 'react-native-elements';
+import { Icon, Button, Avatar, ListItem, Divider } from 'react-native-elements';
 import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
 import config from 'HowRipeMobile/youTubeConfig';
 import LeaderBoard from './LeaderBoard';
@@ -18,6 +20,11 @@ export default class CurrentVideos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  openInfo(uri) {
+    // const uri = 'https://www.imdb.com/title/tt4575576/';
+    return Linking.openURL(uri);
   }
 
   render() {
@@ -61,142 +68,214 @@ export default class CurrentVideos extends React.Component {
               </Text>
             </LinearGradient>
           </View>
-          <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-            <CardItem
-              style={{ backgroundColor: '#441515', flexDirection: 'row' }}
+          <View
+            style={{
+              borderBottomWidth: 1,
+              borderColor: '#A89C9C',
+              flex: 1,
+              width: '100%',
+              paddingBottom: 15
+            }}
+          >
+            <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
+              <CardItem
+                style={{ backgroundColor: '#441515', flexDirection: 'row' }}
+              >
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontFamily: 'NotoSans',
+                    alignSelf: 'center',
+                    fontSize: 20,
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Christopher Robin
+                </Text>
+
+                <Text
+                  style={{
+                    paddingLeft: 30,
+                    color: '#A89C9C',
+                    alignSelf: 'flex-end',
+                    fontFamily: 'NotoSans',
+                    fontSize: 16
+                  }}
+                >
+                  1/3
+                </Text>
+              </CardItem>
+            </Card>
+            <YouTube
+              videoId={'0URpDxIjZrQ'}
+              play={false}
+              // fullscreen={true}
+              loop={false}
+              apiKey={config.API_KEY}
+              controls={1}
+              onReady={e => this.setState({ isReady: true })}
+              onChangeState={e => this.setState({ status: e.state })}
+              onChangeQuality={e => this.setState({ quality: e.quality })}
+              onError={e => this.setState({ error: e.error })}
+              style={{ alignSelf: 'stretch', height: 300 }}
+            />
+            <TouchableOpacity
+              onPress={() =>
+                this.openInfo('https://www.imdb.com/title/tt4575576/')
+              }
             >
               <Text
                 style={{
                   color: '#A89C9C',
                   fontFamily: 'NotoSans',
-                  alignSelf: 'center',
-                  fontSize: 20,
-                  fontWeight: 'bold'
+                  fontSize: 16,
+                  textDecorationLine: 'underline',
+                  alignSelf: 'center'
                 }}
               >
-                Christopher Robin
+                Learn more about the cast
               </Text>
-
-              <Text
-                style={{
-                  paddingLeft: 30,
-                  color: '#A89C9C',
-                  alignSelf: 'flex-end',
-                  fontFamily: 'NotoSans',
-                  fontSize: 16
-                }}
-              >
-                1/3
-              </Text>
-            </CardItem>
-          </Card>
-
-          <YouTube
-            videoId={'0URpDxIjZrQ'}
-            play={false}
-            // fullscreen={true}
-            loop={false}
-            apiKey={config.API_KEY}
-            controls={1}
-            onReady={e => this.setState({ isReady: true })}
-            onChangeState={e => this.setState({ status: e.state })}
-            onChangeQuality={e => this.setState({ quality: e.quality })}
-            onError={e => this.setState({ error: e.error })}
-            style={{ alignSelf: 'stretch', height: 300 }}
-          />
-          <Text
+            </TouchableOpacity>
+          </View>
+          <View
             style={{
-              color: '#A89C9C',
-              fontFamily: 'NotoSans',
-              fontSize: 20,
-              textDecorationLine: 'underline'
+              borderBottomWidth: 1,
+              borderColor: '#A89C9C',
+              flex: 1,
+              width: '100%',
+              paddingBottom: 15
             }}
           >
-            more about the cast
-          </Text>
-          <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-            <CardItem style={{ backgroundColor: '#441515' }}>
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  fontFamily: 'NotoSans',
-                  fontSize: 20
-                }}
+            <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
+              <CardItem
+                style={{ backgroundColor: '#441515', flexDirection: 'row' }}
               >
-                Film title
-              </Text>
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  justifyContent: 'flex-end',
-                  fontFamily: 'NotoSans',
-                  fontSize: 20
-                }}
-              >
-                1/3
-              </Text>
-            </CardItem>
-          </Card>
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontFamily: 'NotoSans',
+                    alignSelf: 'center',
+                    fontSize: 20,
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Avengers End Game
+                </Text>
 
-          <YouTube
-            videoId={'CtWoJ-YhTeg'}
-            play={false}
-            // fullscreen={true}
-            loop={false}
-            apiKey={config.API_KEY}
-            controls={1}
-            onReady={e => this.setState({ isReady: true })}
-            onChangeState={e => this.setState({ status: e.state })}
-            onChangeQuality={e => this.setState({ quality: e.quality })}
-            onError={e => this.setState({ error: e.error })}
-            style={{ alignSelf: 'stretch', height: 300 }}
-          />
-          <Text
-            style={{ color: '#A89C9C', fontFamily: 'NotoSans', fontSize: 20 }}
-          >
-            more about the cast
-          </Text>
-          <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-            <CardItem style={{ backgroundColor: '#441515' }}>
+                <Text
+                  style={{
+                    paddingLeft: 30,
+                    color: '#A89C9C',
+                    alignSelf: 'flex-end',
+                    fontFamily: 'NotoSans',
+                    fontSize: 16
+                  }}
+                >
+                  2/3
+                </Text>
+              </CardItem>
+            </Card>
+            <YouTube
+              videoId={'hA6hldpSTF8'}
+              play={false}
+              loop={false}
+              apiKey={config.API_KEY}
+              controls={1}
+              onReady={e => this.setState({ isReady: true })}
+              onChangeState={e => this.setState({ status: e.state })}
+              onChangeQuality={e => this.setState({ quality: e.quality })}
+              onError={e => this.setState({ error: e.error })}
+              style={{ alignSelf: 'stretch', height: 300 }}
+            />
+            <TouchableOpacity
+              onPress={() =>
+                this.openInfo(
+                  'https://www.imdb.com/title/tt4154796/?ref_=nv_sr_1?ref_=nv_sr_1'
+                )
+              }
+            >
               <Text
                 style={{
                   color: '#A89C9C',
                   fontFamily: 'NotoSans',
-                  fontSize: 20
+                  fontSize: 20,
+                  textDecorationLine: 'underline',
+                  alignSelf: 'center'
                 }}
               >
-                Film title
+                more about the cast
               </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              borderBottomWidth: 1,
+              borderColor: '#A89C9C',
+              flex: 1,
+              width: '100%',
+              paddingBottom: 15
+            }}
+          >
+            <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
+              <CardItem
+                style={{ backgroundColor: '#441515', flexDirection: 'row' }}
+              >
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontFamily: 'NotoSans',
+                    alignSelf: 'center',
+                    fontSize: 20,
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Shazam
+                </Text>
+
+                <Text
+                  style={{
+                    paddingLeft: 30,
+                    color: '#A89C9C',
+                    alignSelf: 'flex-end',
+                    fontFamily: 'NotoSans',
+                    fontSize: 16
+                  }}
+                >
+                  3/3
+                </Text>
+              </CardItem>
+            </Card>
+            <YouTube
+              videoId={'-oD7B7oiBtw'}
+              play={false}
+              // fullscreen={true}
+              loop={false}
+              apiKey={config.API_KEY}
+              controls={1}
+              onReady={e => this.setState({ isReady: true })}
+              onChangeState={e => this.setState({ status: e.state })}
+              onChangeQuality={e => this.setState({ quality: e.quality })}
+              onError={e => this.setState({ error: e.error })}
+              style={{ alignSelf: 'stretch', height: 300 }}
+            />
+            <TouchableOpacity
+              onPress={() =>
+                this.openInfo('https://www.imdb.com/title/tt0448115/')
+              }
+            >
               <Text
                 style={{
                   color: '#A89C9C',
-                  alignSelf: 'flex-end',
                   fontFamily: 'NotoSans',
-                  fontSize: 20
+                  fontSize: 20,
+                  textDecorationLine: 'underline',
+                  alignSelf: 'center'
                 }}
               >
-                2/3
+                more about the cast
               </Text>
-            </CardItem>
-          </Card>
-          <YouTube
-            videoId={'BunklIatIK4'}
-            play={false}
-            // fullscreen={true}
-            loop={false}
-            apiKey={config.API_KEY}
-            controls={1}
-            onReady={e => this.setState({ isReady: true })}
-            onChangeState={e => this.setState({ status: e.state })}
-            onChangeQuality={e => this.setState({ quality: e.quality })}
-            onError={e => this.setState({ error: e.error })}
-            style={{ alignSelf: 'stretch', height: 300 }}
-          />
-          <Text
-            style={{ color: '#A89C9C', fontFamily: 'NotoSans', fontSize: 20 }}
-          >
-            more about the cast
-          </Text>
+            </TouchableOpacity>
+          </View>
           <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
             <CardItem style={{ backgroundColor: '#441515' }}>
               <Text
@@ -220,9 +299,8 @@ export default class CurrentVideos extends React.Component {
               </Text>
             </CardItem>
           </Card>
-
           <YouTube
-            videoId={'YAU6omaYU6U'}
+            videoId={'CtWoJ-YhTeg'}
             play={false}
             // fullscreen={true}
             loop={false}
@@ -235,7 +313,12 @@ export default class CurrentVideos extends React.Component {
             style={{ alignSelf: 'stretch', height: 300 }}
           />
           <Text
-            style={{ color: '#A89C9C', fontFamily: 'NotoSans', fontSize: 20 }}
+            style={{
+              color: '#A89C9C',
+              fontFamily: 'NotoSans',
+              fontSize: 20,
+              alignSelf: 'center'
+            }}
           >
             more about the cast
           </Text>

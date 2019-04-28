@@ -202,9 +202,10 @@ export default class StandingsGraph extends React.Component {
           // flex: 1,
           flexDirection: 'row',
           height: 35,
+          borderRightWidth: 0.5,
           borderColor: '#6e3737',
-          borderBottomWidth: 0.5,
-          borderRightWidth: 0.5
+          borderTopWidth: 1,
+          borderBottomWidth: 1
         }}
         key={player.name}
       >

@@ -100,7 +100,7 @@ export default class StandingsSnapShot extends React.Component {
             justifyContent: 'center'
           }}
         >
-          <Text style={{ color: 'white', alignSelf: 'center' }}>
+          <Text style={{ color: 'white', alignSelf: 'center', fontSize: 16 }}>
             {player.currentRank + '. '}
           </Text>
         </View>
@@ -128,7 +128,7 @@ export default class StandingsSnapShot extends React.Component {
             justifyContent: 'center'
           }}
         >
-          <Text style={{ color: 'white', alignSelf: 'center' }}>
+          <Text style={{ color: 'white', alignSelf: 'center', fontSize: 16 }}>
             {player.name + '. '}
           </Text>
         </View>
@@ -139,7 +139,7 @@ export default class StandingsSnapShot extends React.Component {
             justifyContent: 'center'
           }}
         >
-          <Text style={{ color: 'white', alignSelf: 'center' }}>
+          <Text style={{ color: 'white', alignSelf: 'center', fontSize: 16 }}>
             {' '}
             {player.score.toString()}{' '}
           </Text>
@@ -151,7 +151,7 @@ export default class StandingsSnapShot extends React.Component {
             justifyContent: 'center'
           }}
         >
-          <Text style={{ color: 'white', alignSelf: 'center' }}>
+          <Text style={{ color: 'white', alignSelf: 'center', fontSize: 16 }}>
             {player.scoreChange}
           </Text>
         </View>
@@ -187,7 +187,7 @@ export default class StandingsSnapShot extends React.Component {
               }}
             >
               <Text
-                style={{ fontSize: 15, color: '#bfadad', alignSelf: 'center' }}
+                style={{ fontSize: 16, color: '#bfadad', alignSelf: 'center' }}
               >
                 Rank
               </Text>
@@ -210,7 +210,7 @@ export default class StandingsSnapShot extends React.Component {
             >
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 16,
                   color: '#bfadad',
                   alignSelf: 'center',
                   textShadowColor: 'black'
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4b1818',
-    fontFamily: 'NotoSans'
+    fontFamily: 'Avenir'
   },
   subscreen: {
     height: '80%',

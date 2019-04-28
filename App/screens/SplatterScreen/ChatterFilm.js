@@ -44,7 +44,8 @@ export default class ChatterFilm extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      // <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <View style={{ justifyContent: 'center' }}>
           <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
             WEEK 2
@@ -102,11 +103,12 @@ export default class ChatterFilm extends React.Component {
             </Text>
             <Image
               source={require('HowRipeMobile/imageAssets/pooh.jpg')}
-              style={{ width: 260, height: 200 }}
+              style={{ width: 240, height: 136 }}
+              resizeMode={'contain'}
             />
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#441515',
-    fontFamily: 'NotoSans'
+    fontFamily: 'Avenir',
+    paddingBottom: 10
   }
 });
