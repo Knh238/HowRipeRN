@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6e3737'
   },
   subscreen: {
-    flex: 2,
+    flex: 1,
     // height: '30%',
     backgroundColor: '#6e3737'
   }
