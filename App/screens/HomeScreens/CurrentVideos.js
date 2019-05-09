@@ -10,7 +10,15 @@ import {
   WebView
 } from 'react-native';
 import YouTube from 'react-native-youtube';
-import { Icon, Button, Avatar, ListItem, Divider } from 'react-native-elements';
+import Modal from 'react-native-modal';
+import {
+  Icon,
+  Button,
+  Avatar,
+  ListItem,
+  Divider,
+  Input
+} from 'react-native-elements';
 import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
 import config from 'HowRipeMobile/youTubeConfig';
 import LeaderBoard from './LeaderBoard';
@@ -19,13 +27,21 @@ import LinearGradient from 'react-native-linear-gradient';
 export default class CurrentVideos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { isModalVisible: false };
   }
 
   openInfo(uri) {
     // const uri = 'https://www.imdb.com/title/tt4575576/';
     return Linking.openURL(uri);
   }
+  handleStateChange(e) {
+    console.log('e status is =====', e.status);
+    this.setState({ status: e.state });
+  }
+  toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
+  // openScoreModal(videoId) {}
 
   render() {
     return (
@@ -114,11 +130,72 @@ export default class CurrentVideos extends React.Component {
               apiKey={config.API_KEY}
               controls={1}
               onReady={e => this.setState({ isReady: true })}
-              onChangeState={e => this.setState({ status: e.state })}
+              onChangeState={e => this.handleStateChange(e)}
               onChangeQuality={e => this.setState({ quality: e.quality })}
               onError={e => this.setState({ error: e.error })}
               style={{ alignSelf: 'stretch', height: 300 }}
             />
+
+            {/* <View style={{ flex: 1 }}> */}
+            <Button
+              icon={
+                <Icon
+                  name="thermometer"
+                  type="font-awesome"
+                  size={25}
+                  color="white"
+                />
+              }
+              title="score this trailer"
+              onPress={this.toggleModal}
+            />
+            <Modal isVisible={this.state.isModalVisible}>
+              {/* <View style={{ flex: 1 }}> */}
+              <Text style={{ color: 'white' }}>
+                Hello do you see any of this ? !
+              </Text>
+              <Text
+                style={{
+                  color: '#A89C9C',
+                  fontFamily: 'NotoSans',
+                  alignSelf: 'center',
+                  fontSize: 20,
+                  fontWeight: 'bold'
+                }}
+              >
+                Christopher Robin
+              </Text>
+
+              <Text
+                style={{
+                  paddingLeft: 30,
+                  color: '#A89C9C',
+                  alignSelf: 'flex-end',
+                  fontFamily: 'NotoSans',
+                  fontSize: 16
+                }}
+              >
+                1/3
+              </Text>
+              <Text style={{ color: 'white' }}>
+                Hello do you see any of this ? !
+              </Text>
+              <Input
+                placeholder="1 to 100"
+                inputStyle={{ backgroundColor: 'white', width: 80 }}
+                inputContainerStyle={{ width: 70, alignSelf: 'center' }}
+              />
+              <Button
+                buttonStyle={{
+                  backgroundColor: 'green',
+                  alignSelf: 'center',
+                  width: 100
+                }}
+                title="Score"
+                onPress={this.toggleModal}
+              />
+            </Modal>
+
             <TouchableOpacity
               onPress={() =>
                 this.openInfo('https://www.imdb.com/title/tt4575576/')
