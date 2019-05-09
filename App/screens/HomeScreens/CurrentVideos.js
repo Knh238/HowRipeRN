@@ -146,14 +146,15 @@ export default class CurrentVideos extends React.Component {
                   color="white"
                 />
               }
+              buttonStyle={{
+                backgroundColor: 'green'
+                // alignSelf: 'center',
+                // width: 100
+              }}
               title="score this trailer"
               onPress={this.toggleModal}
             />
             <Modal isVisible={this.state.isModalVisible}>
-              {/* <View style={{ flex: 1 }}> */}
-              <Text style={{ color: 'white' }}>
-                Hello do you see any of this ? !
-              </Text>
               <Text
                 style={{
                   color: '#A89C9C',
@@ -181,14 +182,23 @@ export default class CurrentVideos extends React.Component {
                 Hello do you see any of this ? !
               </Text>
               <Input
-                placeholder="1 to 100"
+                placeholder="enter here"
                 inputStyle={{ backgroundColor: 'white', width: 80 }}
-                inputContainerStyle={{ width: 70, alignSelf: 'center' }}
+                inputContainerStyle={{ width: 90, alignSelf: 'center' }}
+                rightIcon={
+                  <Icon
+                    name="percent"
+                    type="font-awesome"
+                    size={25}
+                    color="white"
+                  />
+                }
               />
               <Button
                 buttonStyle={{
                   backgroundColor: 'green',
                   alignSelf: 'center',
+                  marginTop: 10,
                   width: 100
                 }}
                 title="Score"
