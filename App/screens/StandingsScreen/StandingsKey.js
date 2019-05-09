@@ -134,7 +134,7 @@ export default class StandingsKey extends React.Component {
             backgroundColor: 'white'
           }}
         >
-          <Text style={{ fontFamily: 'NotoSans' }}>
+          <Text style={{ fontFamily: 'avenir' }}>
             {player.rank} {player.name}{' '}
           </Text>
         </View>

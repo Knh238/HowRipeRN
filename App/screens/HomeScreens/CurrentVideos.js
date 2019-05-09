@@ -27,7 +27,7 @@ import LinearGradient from 'react-native-linear-gradient';
 export default class CurrentVideos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isModalVisible: false };
+    this.state = { isModalVisible: false, isModalVisible2: false };
   }
 
   openInfo(uri) {
@@ -41,7 +41,9 @@ export default class CurrentVideos extends React.Component {
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   };
-  // openScoreModal(videoId) {}
+  toggleModal2 = () => {
+    this.setState({ isModalVisible2: !this.state.isModalVisible2 });
+  };
 
   render() {
     return (
@@ -75,7 +77,7 @@ export default class CurrentVideos extends React.Component {
               <Text
                 style={{
                   color: 'white',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   paddingLeft: 5,
                   fontSize: 20
                 }}
@@ -100,7 +102,7 @@ export default class CurrentVideos extends React.Component {
                 <Text
                   style={{
                     color: '#A89C9C',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'avenir',
                     alignSelf: 'center',
                     fontSize: 20,
                     fontWeight: 'bold'
@@ -114,7 +116,7 @@ export default class CurrentVideos extends React.Component {
                     paddingLeft: 30,
                     color: '#A89C9C',
                     alignSelf: 'flex-end',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'avenir',
                     fontSize: 16
                   }}
                 >
@@ -136,7 +138,6 @@ export default class CurrentVideos extends React.Component {
               style={{ alignSelf: 'stretch', height: 300 }}
             />
 
-            {/* <View style={{ flex: 1 }}> */}
             <Button
               icon={
                 <Icon
@@ -144,12 +145,11 @@ export default class CurrentVideos extends React.Component {
                   type="font-awesome"
                   size={25}
                   color="white"
+                  iconStyle={{ marginRight: 10 }}
                 />
               }
               buttonStyle={{
                 backgroundColor: 'green'
-                // alignSelf: 'center',
-                // width: 100
               }}
               title="score this trailer"
               onPress={this.toggleModal}
@@ -157,22 +157,22 @@ export default class CurrentVideos extends React.Component {
             <Modal isVisible={this.state.isModalVisible}>
               <Text
                 style={{
-                  color: '#A89C9C',
-                  fontFamily: 'NotoSans',
-                  alignSelf: 'center',
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  alignSelf: 'flex-end',
                   fontSize: 20,
                   fontWeight: 'bold'
                 }}
               >
-                Christopher Robin
+                week 2
               </Text>
 
               <Text
                 style={{
                   paddingLeft: 30,
-                  color: '#A89C9C',
+                  color: 'white',
                   alignSelf: 'flex-end',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   fontSize: 16
                 }}
               >
@@ -182,7 +182,6 @@ export default class CurrentVideos extends React.Component {
                 Hello do you see any of this ? !
               </Text>
               <Input
-                placeholder="enter here"
                 inputStyle={{ backgroundColor: 'white', width: 80 }}
                 inputContainerStyle={{ width: 90, alignSelf: 'center' }}
                 rightIcon={
@@ -196,9 +195,10 @@ export default class CurrentVideos extends React.Component {
               />
               <Button
                 buttonStyle={{
-                  backgroundColor: 'green',
+                  backgroundColor: '#3e8e41',
                   alignSelf: 'center',
                   marginTop: 10,
+                  borderRadius: 5,
                   width: 100
                 }}
                 title="Score"
@@ -214,7 +214,7 @@ export default class CurrentVideos extends React.Component {
               <Text
                 style={{
                   color: '#A89C9C',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   fontSize: 16,
                   textDecorationLine: 'underline',
                   alignSelf: 'center'
@@ -223,6 +223,109 @@ export default class CurrentVideos extends React.Component {
                 Learn more about the cast
               </Text>
             </TouchableOpacity>
+            <Button
+              icon={
+                <Icon
+                  name="chat"
+                  type="entypo"
+                  size={25}
+                  color="white"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
+              buttonStyle={{
+                backgroundColor: 'orange'
+              }}
+              title="splatter chatter"
+              onPress={this.toggleModal2}
+            />
+            <Modal isVisible={this.state.isModalVisible2}>
+              <Text
+                style={{
+                  color: '#A89C9C',
+                  fontFamily: 'avenir',
+                  alignSelf: 'flex-end',
+                  fontSize: 20,
+                  fontWeight: 'bold'
+                }}
+              >
+                week 2
+              </Text>
+
+              <Text
+                style={{
+                  paddingLeft: 30,
+                  color: '#A89C9C',
+                  alignSelf: 'flex-end',
+                  fontFamily: 'avenir',
+                  fontSize: 16
+                }}
+              >
+                1/3
+              </Text>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 35,
+                  fontFamily: 'avenir',
+                  fontWeight: 'bold',
+                  alignSelf: 'center'
+                }}
+              >
+                Score Submitted!
+              </Text>
+              <Image
+                source={require('HowRipeMobile/imageAssets/splatterGreen.png')}
+                style={{ width: 50, height: 50 }}
+              />
+              <Input
+                placeholder="enter your splatter chatter here"
+                inputContainerStyle={{
+                  alignSelf: 'center',
+                  height: 100,
+                  borderWidth: 3,
+                  borderColor: '#3e8e41',
+                  backgroundColor: 'white'
+                }}
+                rightIcon={
+                  <Icon
+                    name="percent"
+                    type="font-awesome"
+                    size={25}
+                    color="white"
+                  />
+                }
+              />
+              <Image
+                source={require('HowRipeMobile/imageAssets/splatterGreen.png')}
+                style={{ width: 50, height: 50, alignSelf: 'flex-end' }}
+              />
+              <Button
+                buttonStyle={{
+                  backgroundColor: '#3e8e41',
+                  alignSelf: 'center',
+                  marginTop: 10,
+                  width: 100,
+                  borderRadius: 5
+                }}
+                title="POST!"
+                titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+                onPress={this.toggleModal2}
+              />
+
+              <Button
+                buttonStyle={{
+                  backgroundColor: '#910f1f',
+                  alignSelf: 'center',
+                  marginTop: 10,
+                  width: 120,
+                  borderRadius: 5
+                }}
+                title="next trailer"
+                titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+                onPress={this.toggleModal2}
+              />
+            </Modal>
           </View>
           <View
             style={{
@@ -240,7 +343,7 @@ export default class CurrentVideos extends React.Component {
                 <Text
                   style={{
                     color: '#A89C9C',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'avenir',
                     alignSelf: 'center',
                     fontSize: 20,
                     fontWeight: 'bold'
@@ -254,7 +357,7 @@ export default class CurrentVideos extends React.Component {
                     paddingLeft: 30,
                     color: '#A89C9C',
                     alignSelf: 'flex-end',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'avenir',
                     fontSize: 16
                   }}
                 >
@@ -284,7 +387,7 @@ export default class CurrentVideos extends React.Component {
               <Text
                 style={{
                   color: '#A89C9C',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   fontSize: 20,
                   textDecorationLine: 'underline',
                   alignSelf: 'center'
@@ -310,7 +413,7 @@ export default class CurrentVideos extends React.Component {
                 <Text
                   style={{
                     color: '#A89C9C',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'avenir',
                     alignSelf: 'center',
                     fontSize: 20,
                     fontWeight: 'bold'
@@ -324,7 +427,7 @@ export default class CurrentVideos extends React.Component {
                     paddingLeft: 30,
                     color: '#A89C9C',
                     alignSelf: 'flex-end',
-                    fontFamily: 'NotoSans',
+                    fontFamily: 'avenir',
                     fontSize: 16
                   }}
                 >
@@ -353,7 +456,7 @@ export default class CurrentVideos extends React.Component {
               <Text
                 style={{
                   color: '#A89C9C',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   fontSize: 20,
                   textDecorationLine: 'underline',
                   alignSelf: 'center'
@@ -368,7 +471,7 @@ export default class CurrentVideos extends React.Component {
               <Text
                 style={{
                   color: '#A89C9C',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   fontSize: 20
                 }}
               >
@@ -378,7 +481,7 @@ export default class CurrentVideos extends React.Component {
                 style={{
                   color: '#A89C9C',
                   justifyContent: 'flex-end',
-                  fontFamily: 'NotoSans',
+                  fontFamily: 'avenir',
                   fontSize: 20
                 }}
               >
@@ -402,7 +505,7 @@ export default class CurrentVideos extends React.Component {
           <Text
             style={{
               color: '#A89C9C',
-              fontFamily: 'NotoSans',
+              fontFamily: 'avenir',
               fontSize: 20,
               alignSelf: 'center'
             }}
