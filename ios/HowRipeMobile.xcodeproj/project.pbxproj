@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00A398A5C2624558A0120F04 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D08CF674ECF2427399705372 /* Entypo.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -56,6 +57,7 @@
 		5981371C6FFB49F6871E62F5 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 865A916606A74F90A59A8F35 /* Octicons.ttf */; };
 		5C266D71F3EC49C2B57F64F2 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A85C391E7F7A413794748DE2 /* NotoSans-Regular.ttf */; };
 		633DEC39226399F200F6CDDF /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 633DEC0A226399F200F6CDDF /* YTPlayerView-iframe-player.html */; };
+		63D7E64C2287556F00F33DE7 /* Logo v1.0 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 63D7E61D2287556E00F33DE7 /* Logo v1.0 (1).png */; };
 		64DF09112F764BAF99798C05 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72BD6E047A2B4ABDB9A7ED89 /* Roboto_medium.ttf */; };
 		6665B35936344BD8A3C06D23 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 357999A4E1BC47C89FB866EF /* FontAwesome5_Regular.ttf */; };
 		67AE29E4393F40DAA337A52E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0C79744D41647779E3E9670 /* FontAwesome.ttf */; };
@@ -473,6 +475,7 @@
 		5C8112E41457412CAB61D1B6 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		633DEC0A226399F200F6CDDF /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "YTPlayerView-iframe-player.html"; path = "../node_modules/react-native-youtube/assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		63D7E61D2287556E00F33DE7 /* Logo v1.0 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo v1.0 (1).png"; sourceTree = "<group>"; };
 		6962ED81D1B9497AA119E69F /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		6B27D829CE5A48049A879558 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		72BD6E047A2B4ABDB9A7ED89 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -702,6 +705,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				63D7E61D2287556E00F33DE7 /* Logo v1.0 (1).png */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -1450,6 +1454,7 @@
 				64DF09112F764BAF99798C05 /* Roboto_medium.ttf in Resources */,
 				71342E93DB1B4DAE84E4C255 /* Roboto.ttf in Resources */,
 				4D8280CE61D44B0E88DC8C31 /* rubicon-icon-font.ttf in Resources */,
+				63D7E64C2287556F00F33DE7 /* Logo v1.0 (1).png in Resources */,
 				2D2AD08BA5E2458F9458A995 /* SimpleLineIcons.ttf in Resources */,
 				633DEC39226399F200F6CDDF /* YTPlayerView-iframe-player.html in Resources */,
 				2E1026539001483CA53DCC9D /* Zocial.ttf in Resources */,
