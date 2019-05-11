@@ -64,7 +64,7 @@ export default class CurrentVideos extends React.Component {
             fontWeight: 'bold'
           }}
         >
-          week 2
+          WEEK 2
         </Text>
 
         <Text
@@ -78,23 +78,46 @@ export default class CurrentVideos extends React.Component {
         >
           1/3
         </Text>
-        <Text style={{ color: 'white' }}>Hello do you see any of this ? !</Text>
+
+        <Image
+          source={require('HowRipeMobile/imageAssets/thermometerScore.png')}
+          style={{ width: 330, height: 40 }}
+          resizeMode="contain"
+        />
         <Input
-          inputStyle={{ backgroundColor: 'white', width: 80 }}
-          inputContainerStyle={{ width: 90, alignSelf: 'center' }}
+          inputStyle={{
+            width: 80,
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#910f1f'
+          }}
+          inputContainerStyle={{
+            width: 90,
+            marginTop: 20,
+            alignSelf: 'center',
+            borderColor: '#910f1f',
+            borderWidth: 1,
+            backgroundColor: 'white'
+          }}
           rightIcon={
-            <Icon name="percent" type="font-awesome" size={25} color="white" />
+            <Icon
+              name="percent"
+              type="font-awesome"
+              size={25}
+              color="#910f1f"
+            />
           }
         />
         <Button
           buttonStyle={{
             backgroundColor: '#3e8e41',
             alignSelf: 'center',
-            marginTop: 10,
+            marginTop: 20,
             borderRadius: 5,
             width: 100
           }}
-          title="Score"
+          title="Submit!"
+          titleStyle={{ fontWeight: 'bold', fontFamily: 'avenir' }}
           onPress={this.toggleModal}
         />
       </Modal>
@@ -203,8 +226,9 @@ export default class CurrentVideos extends React.Component {
             style={{
               display: 'flex',
               flexDirection: 'row',
+              // flexWrap: 'wrap',
               height: '2%',
-              justifyContent: 'center',
+              justifyContent: 'space-around',
               backgroundColor: '#4b1818'
             }}
           >
@@ -212,8 +236,10 @@ export default class CurrentVideos extends React.Component {
               colors={['#6b3535', '#5b2d2d', '#492424']}
               style={{
                 flex: 1,
+                flexDirection: 'row',
                 borderTopLeftRadius: 10,
-                borderBottomLeftRadius: 10
+                borderBottomLeftRadius: 10,
+                justifyContent: 'space-between'
               }}
             >
               <Text
@@ -226,6 +252,16 @@ export default class CurrentVideos extends React.Component {
               >
                 Week 3
               </Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row'
+                }}
+              >
+                <Icon name="check-circle" type="material" color="green" />
+                <Icon name="cancel" type="material" color="red" />
+                <Icon name="cancel" type="material" color="red" />
+              </View>
             </LinearGradient>
           </View>
           <View
