@@ -27,7 +27,14 @@ import LinearGradient from 'react-native-linear-gradient';
 export default class CurrentVideos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isModalVisible: false, isModalVisible2: false };
+    this.state = {
+      isModalVisible: false,
+      isModalVisible2: false,
+      scored: true,
+      chatted: false
+    };
+    this.renderScoreModal = this.renderScoreModal.bind(this);
+    this.renderSplatterModal = this.renderSplatterModal.bind(this);
   }
 
   openInfo(uri) {
@@ -44,6 +51,141 @@ export default class CurrentVideos extends React.Component {
   toggleModal2 = () => {
     this.setState({ isModalVisible2: !this.state.isModalVisible2 });
   };
+
+  renderScoreModal() {
+    return (
+      <Modal isVisible={this.state.isModalVisible}>
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'avenir',
+            alignSelf: 'flex-end',
+            fontSize: 20,
+            fontWeight: 'bold'
+          }}
+        >
+          week 2
+        </Text>
+
+        <Text
+          style={{
+            paddingLeft: 30,
+            color: 'white',
+            alignSelf: 'flex-end',
+            fontFamily: 'avenir',
+            fontSize: 16
+          }}
+        >
+          1/3
+        </Text>
+        <Text style={{ color: 'white' }}>Hello do you see any of this ? !</Text>
+        <Input
+          inputStyle={{ backgroundColor: 'white', width: 80 }}
+          inputContainerStyle={{ width: 90, alignSelf: 'center' }}
+          rightIcon={
+            <Icon name="percent" type="font-awesome" size={25} color="white" />
+          }
+        />
+        <Button
+          buttonStyle={{
+            backgroundColor: '#3e8e41',
+            alignSelf: 'center',
+            marginTop: 10,
+            borderRadius: 5,
+            width: 100
+          }}
+          title="Score"
+          onPress={this.toggleModal}
+        />
+      </Modal>
+    );
+  }
+  renderSplatterModal() {
+    return (
+      <Modal isVisible={this.state.isModalVisible2}>
+        <Text
+          style={{
+            color: '#A89C9C',
+            fontFamily: 'avenir',
+            alignSelf: 'flex-end',
+            fontSize: 20,
+            fontWeight: 'bold'
+          }}
+        >
+          week 2
+        </Text>
+
+        <Text
+          style={{
+            paddingLeft: 30,
+            color: '#A89C9C',
+            alignSelf: 'flex-end',
+            fontFamily: 'avenir',
+            fontSize: 16
+          }}
+        >
+          1/3
+        </Text>
+        <Text
+          style={{
+            color: 'white',
+            fontSize: 35,
+            fontFamily: 'avenir',
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          }}
+        >
+          Score Submitted!
+        </Text>
+        <Image
+          source={require('HowRipeMobile/imageAssets/splatterGreen.png')}
+          style={{ width: 50, height: 50 }}
+        />
+        <Input
+          placeholder="enter your splatter chatter here"
+          inputContainerStyle={{
+            alignSelf: 'center',
+            height: 100,
+            borderWidth: 3,
+            borderColor: '#3e8e41',
+            backgroundColor: 'white'
+          }}
+          rightIcon={
+            <Icon name="percent" type="font-awesome" size={25} color="white" />
+          }
+        />
+        <Image
+          source={require('HowRipeMobile/imageAssets/splatterGreen.png')}
+          style={{ width: 50, height: 50, alignSelf: 'flex-end' }}
+        />
+        <Button
+          buttonStyle={{
+            backgroundColor: '#3e8e41',
+            alignSelf: 'center',
+            marginTop: 10,
+            width: 100,
+            borderRadius: 5
+          }}
+          title="POST!"
+          titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+          onPress={this.toggleModal2}
+        />
+
+        <Button
+          buttonStyle={{
+            backgroundColor: '#910f1f',
+            alignSelf: 'center',
+            marginTop: 10,
+            width: 120,
+            borderRadius: 5
+          }}
+          title="next trailer"
+          titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+          onPress={this.toggleModal2}
+        />
+      </Modal>
+    );
+  }
 
   render() {
     return (
@@ -137,8 +279,26 @@ export default class CurrentVideos extends React.Component {
               onError={e => this.setState({ error: e.error })}
               style={{ alignSelf: 'stretch', height: 300 }}
             />
-
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  fontFamily: 'avenir',
+                  color: 'white',
+                  fontSize: 16,
+                  fontWeight: 'bold'
+                }}
+              >
+                Scored:{' '}
+              </Text>
+              {this.state.scored ? (
+                <Icon name="check-circle" type="material" color="green" />
+              ) : (
+                <Icon name="cancel" type="material" color="red" />
+              )}
+            </View>
             <Button
+              type="outline"
               icon={
                 <Icon
                   name="thermometer"
@@ -149,63 +309,52 @@ export default class CurrentVideos extends React.Component {
                 />
               }
               buttonStyle={{
-                backgroundColor: 'green'
+                borderColor: 'white'
               }}
               title="score this trailer"
+              titleStyle={{ color: 'white' }}
               onPress={this.toggleModal}
             />
-            <Modal isVisible={this.state.isModalVisible}>
+            {this.renderScoreModal()}
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
               <Text
                 style={{
-                  color: 'white',
+                  alignSelf: 'center',
                   fontFamily: 'avenir',
-                  alignSelf: 'flex-end',
-                  fontSize: 20,
+                  color: 'white',
+                  fontSize: 16,
                   fontWeight: 'bold'
                 }}
               >
-                week 2
+                {' '}
+                Chatter:{' '}
               </Text>
-
-              <Text
-                style={{
-                  paddingLeft: 30,
-                  color: 'white',
-                  alignSelf: 'flex-end',
-                  fontFamily: 'avenir',
-                  fontSize: 16
-                }}
-              >
-                1/3
-              </Text>
-              <Text style={{ color: 'white' }}>
-                Hello do you see any of this ? !
-              </Text>
-              <Input
-                inputStyle={{ backgroundColor: 'white', width: 80 }}
-                inputContainerStyle={{ width: 90, alignSelf: 'center' }}
-                rightIcon={
-                  <Icon
-                    name="percent"
-                    type="font-awesome"
-                    size={25}
-                    color="white"
-                  />
-                }
-              />
-              <Button
-                buttonStyle={{
-                  backgroundColor: '#3e8e41',
-                  alignSelf: 'center',
-                  marginTop: 10,
-                  borderRadius: 5,
-                  width: 100
-                }}
-                title="Score"
-                onPress={this.toggleModal}
-              />
-            </Modal>
-
+              {this.state.chatted ? (
+                <Icon name="check-circle" type="material" color="green" />
+              ) : (
+                <Icon name="cancel" type="material" color="red" />
+              )}
+            </View>
+            <Button
+              type="outline"
+              icon={
+                <Icon
+                  name="chat"
+                  type="entypo"
+                  size={25}
+                  color="white"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
+              buttonStyle={{
+                borderColor: 'white'
+              }}
+              title="splatter chatter"
+              titleStyle={{ color: 'white' }}
+              onPress={this.toggleModal2}
+            />
+            {this.renderSplatterModal()}
             <TouchableOpacity
               onPress={() =>
                 this.openInfo('https://www.imdb.com/title/tt4575576/')
@@ -223,109 +372,6 @@ export default class CurrentVideos extends React.Component {
                 Learn more about the cast
               </Text>
             </TouchableOpacity>
-            <Button
-              icon={
-                <Icon
-                  name="chat"
-                  type="entypo"
-                  size={25}
-                  color="white"
-                  iconStyle={{ marginRight: 10 }}
-                />
-              }
-              buttonStyle={{
-                backgroundColor: 'orange'
-              }}
-              title="splatter chatter"
-              onPress={this.toggleModal2}
-            />
-            <Modal isVisible={this.state.isModalVisible2}>
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  fontFamily: 'avenir',
-                  alignSelf: 'flex-end',
-                  fontSize: 20,
-                  fontWeight: 'bold'
-                }}
-              >
-                week 2
-              </Text>
-
-              <Text
-                style={{
-                  paddingLeft: 30,
-                  color: '#A89C9C',
-                  alignSelf: 'flex-end',
-                  fontFamily: 'avenir',
-                  fontSize: 16
-                }}
-              >
-                1/3
-              </Text>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 35,
-                  fontFamily: 'avenir',
-                  fontWeight: 'bold',
-                  alignSelf: 'center'
-                }}
-              >
-                Score Submitted!
-              </Text>
-              <Image
-                source={require('HowRipeMobile/imageAssets/splatterGreen.png')}
-                style={{ width: 50, height: 50 }}
-              />
-              <Input
-                placeholder="enter your splatter chatter here"
-                inputContainerStyle={{
-                  alignSelf: 'center',
-                  height: 100,
-                  borderWidth: 3,
-                  borderColor: '#3e8e41',
-                  backgroundColor: 'white'
-                }}
-                rightIcon={
-                  <Icon
-                    name="percent"
-                    type="font-awesome"
-                    size={25}
-                    color="white"
-                  />
-                }
-              />
-              <Image
-                source={require('HowRipeMobile/imageAssets/splatterGreen.png')}
-                style={{ width: 50, height: 50, alignSelf: 'flex-end' }}
-              />
-              <Button
-                buttonStyle={{
-                  backgroundColor: '#3e8e41',
-                  alignSelf: 'center',
-                  marginTop: 10,
-                  width: 100,
-                  borderRadius: 5
-                }}
-                title="POST!"
-                titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-                onPress={this.toggleModal2}
-              />
-
-              <Button
-                buttonStyle={{
-                  backgroundColor: '#910f1f',
-                  alignSelf: 'center',
-                  marginTop: 10,
-                  width: 120,
-                  borderRadius: 5
-                }}
-                title="next trailer"
-                titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-                onPress={this.toggleModal2}
-              />
-            </Modal>
           </View>
           <View
             style={{
