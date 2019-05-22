@@ -80,7 +80,7 @@ export default class CurrentVideos extends React.Component {
         </Text>
 
         <Image
-          source={require('HowRipeMobile/imageAssets/thermometerScore.png')}
+          source={require('HowRipeMobile/imageAssets/ThermometerScoreSubmission.png')}
           style={{ width: 330, height: 40 }}
           resizeMode="contain"
         />

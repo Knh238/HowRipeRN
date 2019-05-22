@@ -1,29 +1,17 @@
-// import React from 'react';
-// import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-// import { Provider } from 'react-redux';
-// import { createStore, applyMiddleware } from 'redux';
-// import AppNavigator from './navigation/AppNavigator';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import logger from 'redux-logger';
+import login from 'reducers/loginReducer';
+// import profile from 'reducers/profileReducer';
+// import posts from 'reducers/postReducer';
 
-// export default class App extends React.Component {
-//   render() {
-//     return (
-//       <Provider store={store}>
-//         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-//           <View style={styles.container}>
-//             {/* {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />} */}
-//             <AppNavigator />
-//           </View>
-//         </SafeAreaView>
-//       </Provider>
-//     );
-//   }
-// }
+import thunkMiddleware from 'redux-thunk';
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center'
-//     // justifyContent: 'center'
-//   }
-// });
+const reducer = combineReducers({ login, profile, posts });
+const store = createStore(reducer, applyMiddleware(thunkMiddleware, logger));
+
+export * from 'reducers/loginReducer';
+// export * from 'reducers/profileReducer';
+// export * from 'reducers/postReducer';
+
+export default store;

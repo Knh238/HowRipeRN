@@ -15,6 +15,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "firebase": "^6.0.2",
     "native-base": "^2.12.1",
     "react": "16.8.3",
     "react-native": "^0.59.2",

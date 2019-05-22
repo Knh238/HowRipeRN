@@ -9,11 +9,13 @@ import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
 import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
 import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
-import LinksScreen from '../screens/LinksScreen';
+
 import SettingsScreen from '../screens/SettingsScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen
+  Home: HomeScreen,
+  Login: LoginScreen
 });
 
 HomeStack.navigationOptions = {
