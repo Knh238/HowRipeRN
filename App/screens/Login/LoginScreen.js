@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar, Input } from 'react-native-elements';
-
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
 import firebase from 'HowRipeMobile/firebase';
 
@@ -55,10 +55,13 @@ export default class LoginScreen extends React.Component {
       modalOpen: false,
       errorMessage: null,
       initialized: false,
-      inviteCode: ''
+      inviteCode: '',
+      isLoading: false,
+      error: ''
     };
-    // this.closeModal = this.closeModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.submitInput = this.submitInput.bind(this);
+    this.facebookLogin = this.facebookLogin.bind(this);
   }
 
   componentDidMount() {
@@ -81,6 +84,44 @@ export default class LoginScreen extends React.Component {
       }
     });
   }
+  componentDidUpdate(prevProps) {
+    if (!prevProps.authenticated && this.props.authenticated) {
+      this.setState({ ...this.state, authenticated: true });
+      this.props.navigation.navigate('MainScreen');
+    }
+  }
+
+  async facebookLogin() {
+    try {
+      this.setState({ isLoading: true, error: '' });
+
+      if (Model.isAuthenticated()) {
+        await Model.getUser();
+        this.setState({ isLoading: false, error: '' });
+        return;
+      }
+
+      const result = await LoginManager.logInWithReadPermissions([
+        'public_profile',
+        'email'
+      ]);
+      if (result.isCancelled) {
+        throw new Error('You canceled the sign in request'); // Handle this however fits the flow of your app
+      }
+
+      const token = await AccessToken.getCurrentAccessToken();
+      const credential = firebase.auth.FacebookAuthProvider.credential(
+        token.accessToken
+      );
+      await firebase.auth().signInWithCredential(credential);
+      await Model.getUser();
+      this.props.navigation.navigate('DiscoverScreen');
+    } catch (e) {
+      console.log(e);
+      this.setState({ isLoading: false, error: e.message });
+    }
+  }
+
   async submitInput() {
     const inviteRef = db.collection('codes').doc(this.state.inviteCode);
     const user = firebase.auth().currentUser;
@@ -100,104 +141,112 @@ export default class LoginScreen extends React.Component {
     }
   }
 
+  closeModal() {
+    this.setState({ ...this.state, modalOpen: false });
+  }
+
   render() {
     StatusBar.setBarStyle('light-content', true);
-    return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1, backgroundColor: '#6e3737' }}>
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 35,
-              fontFamily: 'avenir',
-              fontWeight: 'bold',
-              alignSelf: 'center'
-            }}
-          >
-            Login
-          </Text>
-          <Input
-            inputStyle={{
-              width: 80,
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: '#910f1f'
-            }}
-            label="email"
-            inputContainerStyle={{
-              width: 90,
-              marginTop: 20,
-              alignSelf: 'center',
-              borderColor: '#910f1f',
-              borderWidth: 1,
-              backgroundColor: 'white'
-            }}
-          />
-          <Input
-            inputStyle={{
-              width: 80,
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: '#910f1f'
-            }}
-            inputContainerStyle={{
-              width: 90,
-              marginTop: 20,
-              alignSelf: 'center',
-              borderColor: '#910f1f',
-              borderWidth: 1,
-              backgroundColor: 'white'
-            }}
-          />
+    if (!this.state.initialized) {
+      return <View />;
+    } else {
+      return (
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: '#6e3737' }}>
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 35,
+                fontFamily: 'avenir',
+                fontWeight: 'bold',
+                alignSelf: 'center'
+              }}
+            >
+              Login
+            </Text>
+            <Input
+              inputStyle={{
+                width: 80,
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: '#910f1f'
+              }}
+              label="email"
+              inputContainerStyle={{
+                width: 90,
+                marginTop: 20,
+                alignSelf: 'center',
+                borderColor: '#910f1f',
+                borderWidth: 1,
+                backgroundColor: 'white'
+              }}
+            />
+            <Input
+              inputStyle={{
+                width: 80,
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: '#910f1f'
+              }}
+              inputContainerStyle={{
+                width: 90,
+                marginTop: 20,
+                alignSelf: 'center',
+                borderColor: '#910f1f',
+                borderWidth: 1,
+                backgroundColor: 'white'
+              }}
+            />
 
-          <Button
-            buttonStyle={{
-              backgroundColor: '#910f1f',
-              alignSelf: 'center',
-              marginTop: 10,
-              width: 120,
-              borderRadius: 5
-            }}
-            title="Sign in with Facebook"
-            titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-            onPress={() => this.props.navigation.navigate('Home')}
-            // onPress={() => this.facebookLogin()}
-            leftIcon={
-              <Icon
-                name="facebook-with-circle"
-                type="Entypo"
-                style={{ color: 'white', fontSize: 30 }}
-              />
-            }
-          />
-          <Button
-            buttonStyle={{
-              backgroundColor: '#910f1f',
-              alignSelf: 'center',
-              marginTop: 10,
-              width: 120,
-              borderRadius: 5
-            }}
-            title="Login"
-            titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-            onPress={() => this.props.navigation.navigate('Home')}
-          />
+            <Button
+              buttonStyle={{
+                backgroundColor: '#910f1f',
+                alignSelf: 'center',
+                marginTop: 10,
+                width: 120,
+                borderRadius: 5
+              }}
+              title="Sign in with Facebook"
+              titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+              //   onPress={() => this.props.navigation.navigate('Home')}
+              onPress={() => this.facebookLogin()}
+              leftIcon={
+                <Icon
+                  name="facebook-with-circle"
+                  type="Entypo"
+                  style={{ color: 'white', fontSize: 30 }}
+                />
+              }
+            />
+            <Button
+              buttonStyle={{
+                backgroundColor: '#910f1f',
+                alignSelf: 'center',
+                marginTop: 10,
+                width: 120,
+                borderRadius: 5
+              }}
+              title="Login"
+              titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+              onPress={() => this.props.navigation.navigate('Home')}
+            />
 
-          <Button
-            buttonStyle={{
-              backgroundColor: '#910f1f',
-              alignSelf: 'center',
-              marginTop: 10,
-              width: 120,
-              borderRadius: 5
-            }}
-            title="Sign up"
-            titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-            onPress={() => this.props.navigation.navigate('Home')}
-          />
-        </View>
-      </SafeAreaView>
-    );
+            <Button
+              buttonStyle={{
+                backgroundColor: '#910f1f',
+                alignSelf: 'center',
+                marginTop: 10,
+                width: 120,
+                borderRadius: 5
+              }}
+              title="Sign up"
+              titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
+              onPress={() => this.props.navigation.navigate('SignUp')}
+            />
+          </View>
+        </SafeAreaView>
+      );
+    }
   }
 }
 

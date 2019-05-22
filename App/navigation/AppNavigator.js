@@ -1,5 +1,9 @@
 import React from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  createStackNavigator
+} from 'react-navigation';
 import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/Login/SignUpScreen';
 import MainTabNavigator from './MainTabNavigator';
@@ -10,11 +14,14 @@ import MainTabNavigator from './MainTabNavigator';
 //   })
 // );
 
+const LoginStack = createStackNavigator({
+  Login: LoginScreen,
+  SignUp: SignUpScreen
+});
 export default createAppContainer(
   createSwitchNavigator(
     {
-      Login: LoginScreen,
-      Signup: SignUpScreen,
+      Login: LoginStack,
       Main: MainTabNavigator
     },
     {

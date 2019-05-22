@@ -21,6 +21,7 @@
     "react-native": "^0.59.2",
     "react-native-chart-kit": "^2.4.0",
     "react-native-elements": "^1.1.0",
+    "react-native-fbsdk": "^0.8.0",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-linear-gradient": "^2.5.4",
     "react-native-modal": "^10.0.0",

@@ -1,9 +1,50 @@
 import React, { Component } from 'react';
-import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
+import {
+  Card,
+  Button,
+  FormLabel,
+  FormInput,
+  Icon,
+  Avatar
+} from 'react-native-elements';
 import { View, Keyboard } from 'react-native';
-// import firebase from '../firebase';
+import firebase from 'HowRipeMobile/firebase';
+import { LoginButton } from 'react-native-fbsdk';
 
 export default class SignUpScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'How Ripe',
+      headerStyle: {
+        backgroundColor: '#6e3737',
+        borderBottomWidth: 0
+      },
+      headerTitleStyle: {
+        color: 'white',
+        fontSize: 20,
+        fontFamily: 'Avenir',
+        fontWeight: 'bold'
+      },
+      headerLeft: (
+        <Button
+          type="clear"
+          onPress={() => navigation.goBack()}
+          icon={<Icon name="menu" type="material" color="white" size={30} />}
+        />
+      ),
+      headerRight: (
+        <Avatar
+          size="medium"
+          source={{ uri: 'https://loremflickr.com/320/240' }}
+          rounded
+          title="MT"
+          containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
+          onPress={() => console.log('Works!')}
+          activeOpacity={0.7}
+        />
+      )
+    };
+  };
   constructor() {
     super();
     this.state = {};
@@ -50,7 +91,7 @@ export default class SignUpScreen extends Component {
           alignContent: 'center'
         }}
       >
-        <Card
+        {/* <Card
           title="Sign up as a new user"
           style={{ justifyContent: 'center', alignContent: 'center' }}
         >
@@ -68,9 +109,25 @@ export default class SignUpScreen extends Component {
             onChangeText={pass => this.setState({ pass })}
             inputStyle={{ width: undefined }}
             secureTextEntry
-          />
+          /> */}
+        <LoginButton
+          publishPermissions={['email']}
+          onLoginFinished={(error, result) => {
+            if (error) {
+              alert('Login failed with error: ' + error.message);
+            } else if (result.isCancelled) {
+              alert('Login was cancelled');
+            } else {
+              alert(
+                'Login was successful with permissions: ' +
+                  result.grantedPermissions
+              );
+            }
+          }}
+          onLogoutFinished={() => alert('User logged out')}
+        />
 
-          <Button
+        {/* <Button
             title="SIGN UP"
             buttonStyle={{
               width: '100%',
@@ -89,8 +146,8 @@ export default class SignUpScreen extends Component {
               marginTop: 10
             }}
             onPress={() => nav.navigate('Login')}
-          />
-        </Card>
+          /> */}
+        {/* </Card> */}
       </View>
     );
   }
