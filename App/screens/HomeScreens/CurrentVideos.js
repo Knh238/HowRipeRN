@@ -303,7 +303,7 @@ export default class CurrentVideos extends React.Component {
               </CardItem>
             </Card>
             <YouTube
-              videoId={'0URpDxIjZrQ'}
+              videoId={'azvR__GRQic'}
               play={false}
               // fullscreen={true}
               loop={false}

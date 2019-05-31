@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar, Input } from 'react-native-elements';
-import { AccessToken, LoginManager } from 'react-native-fbsdk';
+
 import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
 import firebase from 'HowRipeMobile/firebase';
 

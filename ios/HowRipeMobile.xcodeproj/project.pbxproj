@@ -16,6 +16,7 @@
 		01C823F768184D1D85A7FB1B /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EBBD447F36448CAABA4FC1 /* libRNSVG-tvOS.a */; };
 		0312C82AF19F4F82B14A818F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 565C170B9228451ABB5F7F23 /* Zocial.ttf */; };
 		0354E0A068D14C9FAB9F972D /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594C8F0C4C9946808590E61F /* Foundation.ttf */; };
+		0F72FB736BE978019B34BACE /* Pods_HowRipeMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEBED91896E12AFBCA1FBD0 /* Pods_HowRipeMobile.framework */; };
 		1076AC1E61874054BEA3B965 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C430157BF22462E9D342CB6 /* libRNSVG.a */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -46,6 +47,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* HowRipeMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HowRipeMobileTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2E1026539001483CA53DCC9D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8751CF0AD6C4D9D8AA82D59 /* Zocial.ttf */; };
+		32839C90C17AFE929EA7DCCA /* Pods_HowRipeMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D060D2253FB39E7F4AC2D88 /* Pods_HowRipeMobileTests.framework */; };
 		4088709D38FF43498DC9DEF1 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3682DAB0534CCE9C8FB881 /* Foundation.ttf */; };
 		492C74451CCC4BDB8FF9835A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52C731193A004EBA9D44F9E2 /* Entypo.ttf */; };
 		4A0899444F674C078638F9C0 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 503B3F7DB6414FBBA105A0CD /* Octicons.ttf */; };
@@ -60,6 +62,7 @@
 		64DF09112F764BAF99798C05 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72BD6E047A2B4ABDB9A7ED89 /* Roboto_medium.ttf */; };
 		6665B35936344BD8A3C06D23 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 357999A4E1BC47C89FB866EF /* FontAwesome5_Regular.ttf */; };
 		67AE29E4393F40DAA337A52E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0C79744D41647779E3E9670 /* FontAwesome.ttf */; };
+		6AB78A362AD5453FB044BAF7 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FDF40416C294ECC88C24971 /* libRCTFBSDK.a */; };
 		6E725D6E0C394E0BB08D4F3A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5242ACF42664B388D44FA91 /* MaterialIcons.ttf */; };
 		71342E93DB1B4DAE84E4C255 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6962ED81D1B9497AA119E69F /* Roboto.ttf */; };
 		73E8FDE7EAC1441991F88C23 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C56315D6F4FC43BA968D7032 /* libRNGestureHandler-tvOS.a */; };
@@ -69,6 +72,7 @@
 		7B7F6CB4B0ED455DB9907DE4 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4139AB04708E42A1A4AEB8D3 /* FontAwesome.ttf */; };
 		7D7AFD08710E4356BA367E85 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26B345ED6562464C92D8E605 /* FontAwesome5_Regular.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		88F0D58FF323B004EC8CB850 /* Pods_HowRipeMobile_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C6893D94A42791D7C1A362 /* Pods_HowRipeMobile_tvOS.framework */; };
 		995FE5744ADC49999DF09D67 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46315EEB13AE4D909B94D4C8 /* libRNVectorIcons-tvOS.a */; };
 		9C91A3D1516345C8AFC560B6 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C983141B58D34E5DA31B2905 /* Ionicons.ttf */; };
 		ACF678260C034CC29D199D17 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA736D1103FC443CBB11442B /* libRNVectorIcons.a */; };
@@ -80,13 +84,13 @@
 		D12CEE9414144B428169C76A /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B27D829CE5A48049A879558 /* FontAwesome5_Brands.ttf */; };
 		D6210E6EA47746829BCC3B5E /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 303767A3075C4D86B0EA8924 /* EvilIcons.ttf */; };
 		DB57B7D03CC84F5EAA14B0D4 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 470F8F88D93A4D53A49180A4 /* libRNGestureHandler.a */; };
+		E1BF80B9869B9178B7E86021 /* Pods_HowRipeMobile_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80BB2E372D52C1021583BE92 /* Pods_HowRipeMobile_tvOSTests.framework */; };
 		EB7E43C3548B45D382D514D9 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FBF42539BD94F01861B8ABE /* EvilIcons.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		F26C4A2AEE5C4293BB643D71 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7899CC53701D4ACFAD38CBE3 /* AntDesign.ttf */; };
 		F75C192E25874F3BB460E2EF /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B7063DD3E6740BB9613D316 /* MaterialCommunityIcons.ttf */; };
 		FA9BADD5F2FB43F79B8928FC /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4A3ACB984364C00BCDB0EFF /* FontAwesome5_Solid.ttf */; };
-		6AB78A362AD5453FB044BAF7 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FDF40416C294ECC88C24971 /* libRCTFBSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +318,13 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		63C22F762295D4C50070E440 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E9D95C3E8D447AB92EAF88E /* RCTFBSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
+			remoteInfo = RCTFBSDK;
+		};
 		63C391E02256A7EA008F7CA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -439,6 +450,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* HowRipeMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HowRipeMobileTests.m; sourceTree = "<group>"; };
 		0BBC5BF9A5054910858EE6A3 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		0E9D95C3E8D447AB92EAF88E /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		12A730F67F9C4EF4AAC4712A /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -452,6 +464,7 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1A3682DAB0534CCE9C8FB881 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		26B345ED6562464C92D8E605 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		26B9061B7A57638223E3A1AC /* Pods-HowRipeMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobile.debug.xcconfig"; path = "Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		2872CA4E90D542B2AF1BDB3D /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* HowRipeMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HowRipeMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* HowRipeMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HowRipeMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,6 +472,7 @@
 		303767A3075C4D86B0EA8924 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		32551A8B8CC44360BB6A6019 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		357999A4E1BC47C89FB866EF /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		3D060D2253FB39E7F4AC2D88 /* Pods_HowRipeMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBF42539BD94F01861B8ABE /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		4139AB04708E42A1A4AEB8D3 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		44F60C2A37454477A532BE13 /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSans-Bold.ttf"; path = "../assets/fonts/NotoSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -467,6 +481,8 @@
 		4C38B698E44D474FB69B3829 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		503B3F7DB6414FBBA105A0CD /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		52C731193A004EBA9D44F9E2 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		532B0BA14471CAA65BA9F0B4 /* Pods-HowRipeMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobileTests.release.xcconfig"; path = "Target Support Files/Pods-HowRipeMobileTests/Pods-HowRipeMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		548A7FBA8DD3B1F8DD0792DD /* Pods-HowRipeMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobile.release.xcconfig"; path = "Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile.release.xcconfig"; sourceTree = "<group>"; };
 		565C170B9228451ABB5F7F23 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		5893323227AB4AE4B3975766 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSans-Italic.ttf"; path = "../assets/fonts/NotoSans-Italic.ttf"; sourceTree = "<group>"; };
 		593B042F98394F079B3E0E13 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
@@ -478,10 +494,17 @@
 		63D7E61D2287556E00F33DE7 /* Logo v1.0 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo v1.0 (1).png"; sourceTree = "<group>"; };
 		6962ED81D1B9497AA119E69F /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		6B27D829CE5A48049A879558 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		6DEBED91896E12AFBCA1FBD0 /* Pods_HowRipeMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FDF40416C294ECC88C24971 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		72BD6E047A2B4ABDB9A7ED89 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
+		77C6893D94A42791D7C1A362 /* Pods_HowRipeMobile_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobile_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7899CC53701D4ACFAD38CBE3 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7A5B48B4B8040E4BE6810BA9 /* Pods-HowRipeMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-HowRipeMobile-tvOS/Pods-HowRipeMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7D7C5E07C659BF8AAF5CE7DB /* Pods-HowRipeMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-HowRipeMobile-tvOSTests/Pods-HowRipeMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		80BB2E372D52C1021583BE92 /* Pods_HowRipeMobile_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobile_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		851753FFF678E19412C4AD8E /* Pods-HowRipeMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-HowRipeMobile-tvOS/Pods-HowRipeMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		865A916606A74F90A59A8F35 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		88EBBD447F36448CAABA4FC1 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		9066C481CB1D432EA36BA8C3 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
@@ -495,9 +518,11 @@
 		A8751CF0AD6C4D9D8AA82D59 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		ACAEC9B7A6354CF38DC7B449 /* libRCTYouTube.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTYouTube.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		AFE259B5490A34B60DB4E7C4 /* Pods-HowRipeMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-HowRipeMobileTests/Pods-HowRipeMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B08BDB8967ED4F0F826F6729 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		C19000308FB147F595543930 /* NotoSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSans-BoldItalic.ttf"; path = "../assets/fonts/NotoSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C1C6FA51CA9942BA95FE0735 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		C3C925C8A6588F6695A8C168 /* Pods-HowRipeMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowRipeMobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-HowRipeMobile-tvOSTests/Pods-HowRipeMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C56315D6F4FC43BA968D7032 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
 		C983141B58D34E5DA31B2905 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		D08CF674ECF2427399705372 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -509,8 +534,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F0C79744D41647779E3E9670 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		0E9D95C3E8D447AB92EAF88E /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; name = "RCTFBSDK.xcodeproj"; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		6FDF40416C294ECC88C24971 /* libRCTFBSDK.a */ = {isa = PBXFileReference; name = "libRCTFBSDK.a"; path = "libRCTFBSDK.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				32839C90C17AFE929EA7DCCA /* Pods_HowRipeMobileTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +569,7 @@
 				1076AC1E61874054BEA3B965 /* libRNSVG.a in Frameworks */,
 				1709CCAB79FF4063B74DB588 /* libBVLinearGradient.a in Frameworks */,
 				6AB78A362AD5453FB044BAF7 /* libRCTFBSDK.a in Frameworks */,
+				0F72FB736BE978019B34BACE /* Pods_HowRipeMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +589,7 @@
 				73E8FDE7EAC1441991F88C23 /* libRNGestureHandler-tvOS.a in Frameworks */,
 				995FE5744ADC49999DF09D67 /* libRNVectorIcons-tvOS.a in Frameworks */,
 				01C823F768184D1D85A7FB1B /* libRNSVG-tvOS.a in Frameworks */,
+				88F0D58FF323B004EC8CB850 /* Pods_HowRipeMobile_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
+				E1BF80B9869B9178B7E86021 /* Pods_HowRipeMobile_tvOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +772,10 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				6DEBED91896E12AFBCA1FBD0 /* Pods_HowRipeMobile.framework */,
+				77C6893D94A42791D7C1A362 /* Pods_HowRipeMobile_tvOS.framework */,
+				80BB2E372D52C1021583BE92 /* Pods_HowRipeMobile_tvOSTests.framework */,
+				3D060D2253FB39E7F4AC2D88 /* Pods_HowRipeMobileTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -754,6 +785,14 @@
 			children = (
 				5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */,
 				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63C22F732295D4C40070E440 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63C22F772295D4C50070E440 /* libRCTFBSDK.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -769,6 +808,7 @@
 				9C430157BF22462E9D342CB6 /* libRNSVG.a */,
 				593B042F98394F079B3E0E13 /* libBVLinearGradient.a */,
 				88EBBD447F36448CAABA4FC1 /* libRNSVG-tvOS.a */,
+				6FDF40416C294ECC88C24971 /* libRCTFBSDK.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -871,6 +911,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				0B855F59833B482BA2B2BA31 /* Resources */,
 				63C391BA2256A7E8008F7CA1 /* Recovered References */,
+				E3136A6AB369BEF3B00A4254 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -897,6 +938,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E3136A6AB369BEF3B00A4254 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26B9061B7A57638223E3A1AC /* Pods-HowRipeMobile.debug.xcconfig */,
+				548A7FBA8DD3B1F8DD0792DD /* Pods-HowRipeMobile.release.xcconfig */,
+				851753FFF678E19412C4AD8E /* Pods-HowRipeMobile-tvOS.debug.xcconfig */,
+				7A5B48B4B8040E4BE6810BA9 /* Pods-HowRipeMobile-tvOS.release.xcconfig */,
+				7D7C5E07C659BF8AAF5CE7DB /* Pods-HowRipeMobile-tvOSTests.debug.xcconfig */,
+				C3C925C8A6588F6695A8C168 /* Pods-HowRipeMobile-tvOSTests.release.xcconfig */,
+				AFE259B5490A34B60DB4E7C4 /* Pods-HowRipeMobileTests.debug.xcconfig */,
+				532B0BA14471CAA65BA9F0B4 /* Pods-HowRipeMobileTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -904,6 +960,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HowRipeMobileTests" */;
 			buildPhases = (
+				546FBC6CC6ADAB62BED6ABED /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -922,10 +979,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HowRipeMobile" */;
 			buildPhases = (
+				A2F6100B64EA43FB7C0A6C92 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				349329A7F18A642824036D84 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -940,6 +999,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HowRipeMobile-tvOS" */;
 			buildPhases = (
+				1404BD9708BFB804D2B8E46A /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -958,6 +1018,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HowRipeMobile-tvOSTests" */;
 			buildPhases = (
+				2F2A9180B54420678B84E559 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -1024,6 +1085,10 @@
 				{
 					ProductGroup = ADBDB9201DFEBF0600ED6528 /* Products */;
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = 63C22F732295D4C40070E440 /* Products */;
+					ProjectRef = 0E9D95C3E8D447AB92EAF88E /* RCTFBSDK.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -1299,6 +1364,13 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		63C22F772295D4C50070E440 /* libRCTFBSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDK.a;
+			remoteRef = 63C22F762295D4C50070E440 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		63C391E12256A7EA008F7CA1 /* libjsi.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1501,6 +1573,28 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		1404BD9708BFB804D2B8E46A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HowRipeMobile-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1514,6 +1608,98 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		2F2A9180B54420678B84E559 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HowRipeMobile-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		349329A7F18A642824036D84 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/React/React.framework",
+				"${BUILT_PRODUCTS_DIR}/react-native-fbsdk/react_native_fbsdk.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_fbsdk.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		546FBC6CC6ADAB62BED6ABED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HowRipeMobileTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2F6100B64EA43FB7C0A6C92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HowRipeMobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1582,6 +1768,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFE259B5490A34B60DB4E7C4 /* Pods-HowRipeMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1624,6 +1811,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 532B0BA14471CAA65BA9F0B4 /* Pods-HowRipeMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1663,10 +1851,17 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26B9061B7A57638223E3A1AC /* Pods-HowRipeMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"~/Documents/FacebookSDK",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1691,9 +1886,16 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 548A7FBA8DD3B1F8DD0792DD /* Pods-HowRipeMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"~/Documents/FacebookSDK",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDK";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1718,6 +1920,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 851753FFF678E19412C4AD8E /* Pods-HowRipeMobile-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1765,6 +1968,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A5B48B4B8040E4BE6810BA9 /* Pods-HowRipeMobile-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1812,6 +2016,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D7C5E07C659BF8AAF5CE7DB /* Pods-HowRipeMobile-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1858,6 +2063,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3C925C8A6588F6695A8C168 /* Pods-HowRipeMobile-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

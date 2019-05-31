@@ -96,10 +96,11 @@ export default class ChatterFilm extends React.Component {
                 color: '#A89C9C',
                 fontSize: 22,
                 alignSelf: 'center',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                fontFamily: 'Avenir'
               }}
             >
-              No score
+              No scores
             </Text>
             <Image
               source={require('HowRipeMobile/imageAssets/pooh.jpg')}

@@ -37,134 +37,35 @@ export default class Chatter extends React.Component {
             marginRight: 10
           }}
         >
-          <List>
-            <ListItem avatar noBorder>
-              <LinearGradient
-                colors={['#6b3535', '#5b2d2d', '#492424']}
-                style={styles.linearGradient}
-              >
-                <Left>
-                  <Thumbnail
-                    style={{ marginTop: 5, alignSelf: 'flex-start' }}
-                    source={{ uri: 'https://loremflickr.com/320/240' }}
-                  />
-                </Left>
-                <Left>
-                  <Text
-                    style={{
-                      color: '#A89C9C',
-                      fontSize: 18
-                    }}
-                  >
-                    @Bailey
-                  </Text>
-                </Left>
-                <Body>
-                  <Text
-                    style={{
-                      color: '#A89C9C',
-                      fontSize: 18,
-                      alignSelf: 'center'
-                    }}
-                  >
-                    I want more Eeyore!
-                  </Text>
-                </Body>
-                <Right>
-                  <Button
-                    type="clear"
-                    style={{ alignSelf: 'flex-end' }}
-                    icon={
-                      <Icon
-                        type="font-awesome"
-                        name="thumbs-up"
-                        size={24}
-                        color="white"
-                      />
-                    }
-                    title=" 6"
-                    titleStyle={{ color: 'white' }}
-                  />
-                </Right>
-              </LinearGradient>
-            </ListItem>
-            <ListItem avatar noBorder style={{ paddingTop: 10 }}>
-              <LinearGradient
-                colors={['#6b3535', '#5b2d2d', '#492424']}
-                style={styles.linearGradient}
-              >
-                <Left>
-                  <Thumbnail
-                    style={{ marginTop: 5, alignSelf: 'flex-start' }}
-                    source={{ uri: 'https://loremflickr.com/320/240' }}
-                  />
-                </Left>
-                <Left>
-                  <Text
-                    style={{
-                      color: '#A89C9C',
-                      fontSize: 18
-                    }}
-                  >
-                    @WinniePooh
-                  </Text>
-                </Left>
-                <Body>
-                  <Text
-                    style={{
-                      color: '#A89C9C',
-                      fontSize: 18,
-                      alignSelf: 'center'
-                    }}
-                  >
-                    Oh Bother!
-                  </Text>
-                </Body>
-                <Right>
-                  <Button
-                    type="clear"
-                    style={{ alignSelf: 'flex-end' }}
-                    icon={
-                      <Icon
-                        type="font-awesome"
-                        name="thumbs-up"
-                        size={24}
-                        color="white"
-                      />
-                    }
-                    title=" 6"
-                    titleStyle={{ color: 'white' }}
-                  />
-                </Right>
-              </LinearGradient>
-            </ListItem>
-
-            <ListItem>
-              <LinearGradient
-                colors={['#6b3535', '#5b2d2d', '#492424']}
-                style={styles.linearGradient}
-              >
+          <LinearGradient
+            colors={['#6b3535', '#5b2d2d', '#492424']}
+            style={styles.linearGradient}
+          >
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ width: '20%', flex: 1, marginTop: 5 }}>
                 <Thumbnail
-                  style={{ marginTop: 5, alignSelf: 'flex-start' }}
+                  style={{ marginTop: 5 }}
                   source={{ uri: 'https://loremflickr.com/320/240' }}
                 />
+              </View>
+              <View style={{ width: '80%', marginTop: 5 }}>
                 <Text
                   style={{
                     color: '#A89C9C',
                     fontSize: 18,
-                    alignSelf: 'center'
+                    fontFamily: 'Avenir'
                   }}
                 >
-                  @WinniePooh
+                  Bailey
                 </Text>
                 <Text
                   style={{
                     color: '#A89C9C',
                     fontSize: 18,
-                    alignSelf: 'center'
+                    fontFamily: 'Avenir'
                   }}
                 >
-                  Oh Bother!
+                  I want more Eeyore!
                 </Text>
                 <Button
                   type="clear"
@@ -173,17 +74,17 @@ export default class Chatter extends React.Component {
                     <Icon
                       type="font-awesome"
                       name="thumbs-up"
-                      size={20}
+                      size={24}
                       color="white"
                     />
                   }
                   title=" 6"
                   titleStyle={{ color: 'white' }}
                 />
-              </LinearGradient>
-            </ListItem>
-          </List>
-          {/* </View> */}
+              </View>
+            </View>
+          </LinearGradient>
+
           <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
             <Image
               source={require('HowRipeMobile/imageAssets/crown.png')}
@@ -206,6 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 15,
     paddingRight: 15,
-    borderRadius: 5
+    borderRadius: 5,
+    borderWidth: 0.5
   }
 });

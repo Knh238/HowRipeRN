@@ -9,7 +9,6 @@ import {
 } from 'react-native-elements';
 import { View, Keyboard } from 'react-native';
 import firebase from 'HowRipeMobile/firebase';
-import { LoginButton } from 'react-native-fbsdk';
 
 export default class SignUpScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -110,22 +109,6 @@ export default class SignUpScreen extends Component {
             inputStyle={{ width: undefined }}
             secureTextEntry
           /> */}
-        <LoginButton
-          publishPermissions={['email']}
-          onLoginFinished={(error, result) => {
-            if (error) {
-              alert('Login failed with error: ' + error.message);
-            } else if (result.isCancelled) {
-              alert('Login was cancelled');
-            } else {
-              alert(
-                'Login was successful with permissions: ' +
-                  result.grantedPermissions
-              );
-            }
-          }}
-          onLogoutFinished={() => alert('User logged out')}
-        />
 
         {/* <Button
             title="SIGN UP"
