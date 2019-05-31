@@ -312,6 +312,7 @@ export default class CurrentVideos extends React.Component {
               onReady={e => this.setState({ isReady: true })}
               onChangeState={e => this.handleStateChange(e)}
               onChangeQuality={e => this.setState({ quality: e.quality })}
+              a
               onError={e => this.setState({ error: e.error })}
               style={{ alignSelf: 'stretch', height: 300 }}
             />
