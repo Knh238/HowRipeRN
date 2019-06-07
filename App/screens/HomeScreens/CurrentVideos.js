@@ -20,7 +20,7 @@ import {
   Input
 } from 'react-native-elements';
 import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
-import config from 'HowRipeMobile/youTubeConfig';
+import config from '../../../youTubeConfig';
 import LeaderBoard from './LeaderBoard';
 import LinearGradient from 'react-native-linear-gradient';
 

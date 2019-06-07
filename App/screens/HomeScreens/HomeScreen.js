@@ -13,8 +13,17 @@ import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LeaderBoard from './LeaderBoard';
 import CurrentVideos from './CurrentVideos';
+import firebase from '../../../firebase';
 
 export default class HomeScreen extends React.Component {
+
+  state = { currentUser: null }
+  componentDidMount() {
+    const { currentUser } = firebase.auth()
+    this.setState({ currentUser })
+    console.log('this is state in home screen' , this.currentUser)
+}
+
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'How Ripe',
@@ -50,6 +59,7 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    console.log('state here------------------------------', this.state)
     StatusBar.setBarStyle('light-content', true);
     return (
       <SafeAreaView style={{ flex: 1 }}>
