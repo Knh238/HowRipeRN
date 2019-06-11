@@ -13,16 +13,31 @@ import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LeaderBoard from './LeaderBoard';
 import CurrentVideos from './CurrentVideos';
-import firebase from '../../../firebase';
+import firebase from '../../.././firebase';
+// import db from '../../.././db';
 
+// function testDB() {
+//   db.collection('users')
+//     .add({
+//       first: 'abby2',
+//       last: 'B',
+//       born: 1996
+//     })
+//     .then(function(docRef) {
+//       console.log('Document written with ID: ', docRef.id);
+//     })
+//     .catch(function(error) {
+//       console.error('Error adding document: ', error);
+//     });
+// }
+// testDB();
 export default class HomeScreen extends React.Component {
-
-  state = { currentUser: null }
+  state = { currentUser: null };
   componentDidMount() {
-    const { currentUser } = firebase.auth()
-    this.setState({ currentUser })
-    console.log('this is state in home screen' , this.currentUser)
-}
+    const { currentUser } = firebase.auth();
+    this.setState({ currentUser });
+    console.log('this is state in home screen', this.currentUser);
+  }
 
   static navigationOptions = ({ navigation }) => {
     return {
@@ -59,7 +74,7 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    console.log('state here------------------------------', this.state)
+    console.log('state here------------------------------', this.state);
     StatusBar.setBarStyle('light-content', true);
     return (
       <SafeAreaView style={{ flex: 1 }}>

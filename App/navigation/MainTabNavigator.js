@@ -9,9 +9,11 @@ import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
 import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
 import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
-import fakeSignUp from '../screens/fakeSignup';
-import fakeLogin from '../screens/fakeLogin';
-import SettingsScreen from '../screens/SettingsScreen';
+import FakeSignUp from '../screens/FakeSignup';
+import FakeLogin from '../screens/FakeLogin';
+import FakeChooseIcon from '../screens/FakeChooseIcon';
+import FakeLandingScreen from '../screens/FakeLandingScreen';
+
 import LoginScreen from '../screens/Login/LoginScreen';
 
 const HomeStack = createStackNavigator({
@@ -79,9 +81,10 @@ SplatterStack.navigationOptions = {
   )
 };
 const TheRipeStack = createStackNavigator({
-  Settings: SettingsScreen,
-  fakeSignUp: fakeSignUp,
-  fakeLogin: fakeLogin
+  FakeLandingScreen: FakeLandingScreen,
+  FakeSignUp: FakeSignUp,
+  FakeLogin: FakeLogin,
+  FakeChooseIcon: FakeChooseIcon
 });
 
 TheRipeStack.navigationOptions = {

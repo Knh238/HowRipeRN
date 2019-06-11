@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-export default class fakeSignUp extends React.Component {
+export default class FakeSignUp extends React.Component {
   state = { email: '', password: '', errorMessage: null };
   render() {
     return (
@@ -33,9 +33,8 @@ export default class fakeSignUp extends React.Component {
               color: 'white',
               fontFamily: 'avenir',
               fontWeight: 'bold',
-              paddingLeft: 5,
-              fontSize: 20,
-              alignSelf: 'center'
+              marginLeft: 15,
+              fontSize: 20
             }}
           >
             Sign up{' '}

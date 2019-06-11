@@ -5,10 +5,12 @@ import {
   TextInput,
   View,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-export default class fakeSignUp extends React.Component {
+export default class FakeLogin extends React.Component {
   state = { email: '', password: '', errorMessage: null };
   render() {
     return (
@@ -33,12 +35,12 @@ export default class fakeSignUp extends React.Component {
               color: 'white',
               fontFamily: 'avenir',
               fontWeight: 'bold',
-              paddingLeft: 5,
-              fontSize: 20,
-              alignSelf: 'center'
+              marginLeft: 15,
+              marginTop: 10,
+              fontSize: 20
             }}
           >
-            Sign up{' '}
+            Login
           </Text>
           <TextInput
             style={styles.textInput}
@@ -55,6 +57,18 @@ export default class fakeSignUp extends React.Component {
             onChangeText={password => this.setState({ password })}
             value={this.state.password}
           />
+          <Text
+            style={{
+              color: '#886a6a',
+              fontFamily: 'avenir',
+              marginLeft: 15,
+              // alignSelf: 'center',
+              fontSize: 15,
+              textDecorationLine: 'underline'
+            }}
+          >
+            Forgot Password
+          </Text>
         </LinearGradient>
         <TouchableOpacity
           style={{
@@ -85,39 +99,48 @@ export default class fakeSignUp extends React.Component {
                 alignSelf: 'center'
               }}
             >
-              Sign Up
+              Log in
             </Text>
           </LinearGradient>
-        </TouchableOpacity>{' '}
+        </TouchableOpacity>
         <TouchableOpacity
           style={{
-            height: '5%',
+            height: '6%',
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 30,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 30
           }}
           onPress={this.handleLogin}
         >
           <LinearGradient
-            colors={['#405993', '#405993']}
+            colors={['#405993', '#263558']}
             style={{
               flex: 1,
               flexDirection: 'row',
-              borderRadius: 10
+              borderRadius: 5,
+              justifyContent: 'center'
             }}
           >
+            <Icon
+              style={{
+                marginTop: 10
+              }}
+              name="facebook-official"
+              type="font-awesome"
+              color="white"
+              size={25}
+            />
             <Text
               style={{
                 color: 'white',
                 fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 15,
-                alignSelf: 'center'
+                marginLeft: 15,
+                fontSize: 15
               }}
             >
-              Login with Facebook
+              Log In with Facebook
             </Text>
           </LinearGradient>
         </TouchableOpacity>

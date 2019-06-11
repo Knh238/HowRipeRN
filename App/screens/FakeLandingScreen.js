@@ -5,10 +5,12 @@ import {
   TextInput,
   View,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-export default class SettingsScreen extends React.Component {
+export default class FakeLandingScreen extends React.Component {
   // static navigationOptions = {
   //   header: null
   // };
@@ -40,25 +42,27 @@ export default class SettingsScreen extends React.Component {
             color: 'white',
             fontFamily: 'avenir',
             alignSelf: 'center',
-            fontSize: 28
+            fontSize: 28,
+            marginTop: 50
           }}
         >
           Watch Trailers
         </Text>
-        <Text
+
+        <Image
+          source={require('HowRipeMobile/imageAssets/redReel.png')}
           style={{
-            color: 'white',
-            fontFamily: 'avenir',
+            width: 180,
+            height: 180,
             alignSelf: 'center',
-            fontSize: 20
+            marginTop: 50
           }}
-        >
-          image here later
-        </Text>
+        />
         <View
           style={{
             display: 'flex',
             flex: 1,
+            marginTop: 20,
             flexDirection: 'row',
             justifyContent: 'center'
           }}
@@ -97,42 +101,10 @@ export default class SettingsScreen extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-
+            marginBottom: 20,
             justifyContent: 'center'
           }}
-          onPress={this.handleLogin}
-        >
-          <LinearGradient
-            colors={['#633836', '#5b2d2d', '#402423']}
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              borderRadius: 5,
-              justifyContent: 'center'
-            }}
-          >
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 20
-              }}
-            >
-              Login
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            marginTop: 30,
-            justifyContent: 'center'
-          }}
-          onPress={this.handleLogin}
+          onPress={() => this.props.navigation.navigate('FakeSignUp')}
         >
           <LinearGradient
             colors={['#902227', '#761b1f', '#5d1419']}
@@ -156,6 +128,38 @@ export default class SettingsScreen extends React.Component {
             </Text>
           </LinearGradient>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center'
+          }}
+          // onPress={this.handleLogin}
+          onPress={() => this.props.navigation.navigate('FakeLogin')}
+        >
+          <LinearGradient
+            colors={['#633836', '#5b2d2d', '#402423']}
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              borderRadius: 5,
+              justifyContent: 'center'
+            }}
+          >
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                paddingLeft: 5,
+                fontSize: 20
+              }}
+            >
+              Login
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={{
@@ -169,7 +173,7 @@ export default class SettingsScreen extends React.Component {
           onPress={this.handleLogin}
         >
           <LinearGradient
-            colors={['#405993', '#405993']}
+            colors={['#405993', '#263558']}
             style={{
               flex: 1,
               flexDirection: 'row',
@@ -177,6 +181,15 @@ export default class SettingsScreen extends React.Component {
               justifyContent: 'center'
             }}
           >
+            <Icon
+              style={{
+                marginTop: 10
+              }}
+              name="facebook-official"
+              type="font-awesome"
+              color="white"
+              size={25}
+            />
             <Text
               style={{
                 color: 'white',
@@ -190,11 +203,10 @@ export default class SettingsScreen extends React.Component {
             </Text>
           </LinearGradient>
         </TouchableOpacity>
-
         <Button
-          title="go to fake sign up screen"
+          title="choose fake icon"
           // onPress={() => this.props.navigation.navigate('Signup')}
-          onPress={() => this.props.navigation.navigate('fakeSignUp')}
+          onPress={() => this.props.navigation.navigate('FakeChooseIcon')}
         />
       </View>
     );
