@@ -6,13 +6,16 @@ import {
   USER_INFO_FETCHED,
   USER_INFO_NOT_FOUND,
   USER_UPDATED,
-  EDIT_USER_FAIL
-} from 'actions/login/index';
+  EDIT_USER_FAIL,
+  CHECK_IF_NEW_USER,
+  GOT_USER
+} from '../../actions/login/index';
 
 const initialState = {
   authenticated: false,
   userInfo: {},
-  errorMsg: ''
+  errorMsg: '',
+  newUser: ''
 };
 
 export default function(state = initialState, action) {
@@ -28,11 +31,21 @@ export default function(state = initialState, action) {
         authenticated: false,
         errorMsg: action.errorMsg
       };
+    case CHECK_IF_NEW_USER:
+      return {
+        ...state,
+          newUser: action.bool
+        };
     case CREATE_PROFILE_ERROR:
       return {
         ...state,
         errorMsg: action.errorMsg
       };
+    case GOT_USER:
+       return {
+        ...state,
+        userInfo: action.user
+        };
     case LOGOUT_SUCCESS:
       return {
         ...state,

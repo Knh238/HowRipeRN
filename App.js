@@ -7,10 +7,13 @@
  */
 
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 // import AppNavigator from './App/navigation/AppNavigator';
 import AppNavigator from './App/navigation/AppNavigator';
+import store from './App/Store'
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -20,8 +23,12 @@ const instructions = Platform.select({
 
 export default class App extends Component {
   render() {
-    return <AppNavigator StatusBarStyle="light-content" />;
-  }
+    return (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    );
+}
 }
 
 const styles = StyleSheet.create({

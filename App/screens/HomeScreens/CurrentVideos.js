@@ -42,7 +42,7 @@ export default class CurrentVideos extends React.Component {
     return Linking.openURL(uri);
   }
   handleStateChange(e) {
-    console.log('e status is =====', e.status);
+    console.log('e status is ============================================', e.status);
     this.setState({ status: e.state });
   }
   toggleModal = () => {

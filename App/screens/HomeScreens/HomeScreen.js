@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
+  Alert,
   Image,
   Platform,
   ScrollView,
@@ -13,18 +14,65 @@ import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LeaderBoard from './LeaderBoard';
 import CurrentVideos from './CurrentVideos';
-import firebase from '../../../firebase';
+import createUser from '../../Store/actions/login';
+import { connect } from 'react-redux';
+import firebase from '../../.././firebase';
+import db from '../../.././db';
 
-export default class HomeScreen extends React.Component {
+function testDB() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user != null) {
+      Alert.alert('this is state in home screen', user.uid);
+      db.collection('users')
+        .add({
+          first: user.uid,
+          last: user.email,
+          born: 1815
+        })
+        .then(function(docRef) {
+          console.log('Document written with ID: ', docRef.id);
+        })
+        .catch(function(error) {
+          console.error('Error adding document: ', error);
+        });
+    }
+  });
+ }
 
-  state = { currentUser: null }
+ testDB();
+
+class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+  this.state = {
+   currentUser: null
+  }
+  }
+
   componentDidMount() {
-    const { currentUser } = firebase.auth()
-    this.setState({ currentUser })
-    console.log('this is state in home screen' , this.currentUser)
+    // const currentUser = firebase.auth().currentUser
+    const user = {
+      name: 'Abby',
+      email: 'abby@abby.com'
+    }
+    this.setState({ user })
+
+      // this.props.createUser(user)
+      // db.collection('users')
+      // .add({
+      //   first: 'gfdfgsdfgdsfd',
+      //   last: '456fdgdgfd',
+      //   born: 1815
+      // })
+      // .then(function(docRef) {
+      //   console.log('Document written with ID: ', docRef.id);
+      // })
+
+
 }
 
   static navigationOptions = ({ navigation }) => {
+
     return {
       title: 'How Ripe',
       headerStyle: {
@@ -59,7 +107,6 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    console.log('state here------------------------------', this.state)
     StatusBar.setBarStyle('light-content', true);
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -70,6 +117,19 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch, user) => {
+  return {
+    createUser: () => {
+      dispatch(createUser(user));
+  }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {

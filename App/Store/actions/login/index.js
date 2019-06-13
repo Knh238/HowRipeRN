@@ -1,7 +1,6 @@
-import moment from 'moment';
-import firebase from 'db/firebase';
-import db from 'db/firestore';
-
+import db from '../../../../db';
+const firebase = require('firebase');
+const firestore = require('firebase/firestore');
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const CREATE_PROFILE_ERROR = 'CREATE_PROFILE_ERROR';
@@ -9,6 +8,15 @@ export const USER_INFO_FETCHED = 'USER_INFO_FETCHED';
 export const USER_INFO_NOT_FOUND = 'USER_INFO_NOT_FOUND';
 export const USER_UPDATED = 'USER_UPDATED';
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
+export const CHECK_IF_NEW_USER = 'CHECK_IF_NEW_USER'
+export const GOT_USER = 'GOT_USER'
+
+export const checkIfNewUser = bool => ({
+  type: CHECK_IF_NEW_USER,
+  bool
+});
+
+export const gotUser = user => ({ type: GOT_USER, user });
 
 export const userInfoFetched = userProfile => {
   return {
@@ -63,6 +71,42 @@ export const inviteError = () => {
   };
 };
 
+export const createUser = user => {
+  return async dispatch => {
+    try {
+      db.collection('users')
+      .add({
+        first: 'gfdfgsdfgdsfd',
+        last: '456fdgdgfd',
+        born: 1815
+      })
+      .then(function(docRef) {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      // const docRef = db.collection('users').doc(user.name);
+      //   await docRef.get().then(function(doc) {
+      //     if (!doc.exists) {
+      //       db.collection('users')
+      //         .doc(user.name)
+      //         .set({
+      //           uid: user.name,
+      //           email: user.email
+      //         });
+      //       dispatch(checkIfNewUser(true));
+      //     }
+      //   });
+        let userObj = {};
+        docRef.get().then(doc => {
+          userObj = doc.data();
+          dispatch(gotUser(userObj));;
+        });
+      }
+      catch (err) {
+      console.error(err);
+    }
+  };
+};
+
 export function doesUserExist(user) {
   const userRef = db.collection('users').doc(user.uid);
   return userRef.get().then(function(dbUser) {
@@ -88,36 +132,27 @@ export function logUserIn(user) {
   };
 }
 
-export function createUser(user) {
-  return async dispatch => {
-    const currTime = Date.now();
-    const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
-    const newUser = {
-      uid: user.uid,
-      provider: user.providerData[0].providerId,
-      providerID: user.providerData[0].uid,
-      displayName: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL + '?height=500',
-      lastLoginAt: currentTime,
-      followers: [],
-      following: [],
-      conversations: [],
-      socialNetworks: [{ source: 'facebook', sourceUrl: 'facebookprofileurl' }]
-    };
-    db.collection('users')
-      .doc(user.uid)
-      .set(newUser)
-      .then(function() {
-        dispatch(userUpdated(newUser));
-        dispatch(authSuccess());
-      })
-      .catch(function(error) {
-        console.error('Error adding document: ', error);
-        dispatch(createProfileError(error));
-      });
-  };
-}
+// export function createUser(user) {
+//   return async dispatch => {
+//     const newUser = {
+//       uid: user.uid,
+//       displayName: user.displayName,
+//       email: user.email,
+//       conversations: [],
+//     };
+//     db.collection('users')
+//       .doc(user.uid)
+//       .set(newUser)
+//       .then(function() {
+//         dispatch(userUpdated(newUser));
+//         dispatch(authSuccess());
+//       })
+//       .catch(function(error) {
+//         console.error('Error adding document: ', error);
+//         dispatch(createProfileError(error));
+//       });
+//   };
+// }
 
 export function userLogout() {
   return async dispatch => {
