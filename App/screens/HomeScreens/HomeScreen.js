@@ -18,18 +18,23 @@ import firebase from '../../.././firebase';
 import db from '../../.././db';
 
 function testDB() {
-  db.collection('users')
-    .add({
-      first: 'abby3',
-      last: 'B324324',
-      born: 1996
-    })
-    .then(function(docRef) {
-      Alert.alert('Document written with ID: ', docRef.id);
-    })
-    .catch(function(error) {
-      console.error('Error adding document: ', error);
-    });
+  firebase.auth().onAuthStateChanged(user => {
+    if (user != null) {
+      Alert.alert('this is state in home screen', user.uid);
+      db.collection('users')
+        .add({
+          first: user.uid,
+          last: user.email,
+          born: 1815
+        })
+        .then(function(docRef) {
+          console.log('Document written with ID: ', docRef.id);
+        })
+        .catch(function(error) {
+          console.error('Error adding document: ', error);
+        });
+    }
+  });
 }
 
 testDB();
