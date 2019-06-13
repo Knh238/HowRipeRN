@@ -7,30 +7,33 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StatusBar
+  StatusBar,
+  Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LeaderBoard from './LeaderBoard';
 import CurrentVideos from './CurrentVideos';
 import firebase from '../../.././firebase';
-// import db from '../../.././db';
+import db from '../../.././db';
 
-// function testDB() {
-//   db.collection('users')
-//     .add({
-//       first: 'abby2',
-//       last: 'B',
-//       born: 1996
-//     })
-//     .then(function(docRef) {
-//       console.log('Document written with ID: ', docRef.id);
-//     })
-//     .catch(function(error) {
-//       console.error('Error adding document: ', error);
-//     });
-// }
-// testDB();
+function testDB() {
+  db.collection('users')
+    .add({
+      first: 'abby3',
+      last: 'B324324',
+      born: 1996
+    })
+    .then(function(docRef) {
+      Alert.alert('Document written with ID: ', docRef.id);
+    })
+    .catch(function(error) {
+      console.error('Error adding document: ', error);
+    });
+}
+
+testDB();
+
 export default class HomeScreen extends React.Component {
   state = { currentUser: null };
   componentDidMount() {

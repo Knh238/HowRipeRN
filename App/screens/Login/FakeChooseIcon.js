@@ -184,6 +184,13 @@ export default class FakeChooseIcon extends React.Component {
             </Text>
           </LinearGradient>
         </TouchableOpacity>
+        <Button
+          title="enroll in a league"
+          // onPress={() => this.props.navigation.navigate('Signup')}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        />
       </View>
     );
   }
