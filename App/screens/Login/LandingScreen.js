@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-export default class FakeLandingScreen extends React.Component {
+export default class LandingScreen extends React.Component {
   // static navigationOptions = {
   //   header: null
   // };
@@ -18,25 +18,6 @@ export default class FakeLandingScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Text>Login</Text> */}
-        {/* {this.state.errorMessage && (
-          <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
-        {/* <TextInput
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Email"
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        /> */}
         <Text
           style={{
             color: 'white',
@@ -104,7 +85,7 @@ export default class FakeLandingScreen extends React.Component {
             marginBottom: 20,
             justifyContent: 'center'
           }}
-          onPress={() => this.props.navigation.navigate('FakeSignUp')}
+          onPress={() => this.props.navigation.navigate('SignUp')}
         >
           <LinearGradient
             colors={['#902227', '#761b1f', '#5d1419']}
@@ -136,8 +117,7 @@ export default class FakeLandingScreen extends React.Component {
             alignSelf: 'center',
             justifyContent: 'center'
           }}
-          // onPress={this.handleLogin}
-          onPress={() => this.props.navigation.navigate('FakeLogin')}
+          onPress={() => this.props.navigation.navigate('Login')}
         >
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
@@ -205,7 +185,6 @@ export default class FakeLandingScreen extends React.Component {
         </TouchableOpacity>
         <Button
           title="choose fake icon"
-          // onPress={() => this.props.navigation.navigate('Signup')}
           onPress={() => this.props.navigation.navigate('FakeChooseIcon')}
         />
       </View>

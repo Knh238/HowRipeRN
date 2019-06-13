@@ -1,158 +1,160 @@
-// import React, { Component } from 'react';
-// import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
-// import { View, Keyboard } from 'react-native';
-
-// export default class SignUpScreen extends Component {
-//   constructor() {
-//     super();
-//     this.state = {};
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   handleSubmit(nav) {
-//     const email = this.state.email.toLowerCase();
-//     const pass = this.state.pass;
-//     const displayName = this.state.name;
-//     if (email && pass) {
-//       firebase
-//         .auth()
-//         .createUserWithEmailAndPassword(email, pass)
-//         .catch(function(error) {
-//           console.error(error);
-//         });
-//       firebase.auth().onAuthStateChanged(function(user) {
-//         if (user) {
-//           const uid = user.uid;
-//           firebase
-//             .database()
-//             .ref('users/' + uid)
-//             .set({
-//               displayName,
-//               email
-//             });
-//         }
-//       });
-//     }
-//     this.setState = { email: '', pass: '' };
-//     Keyboard.dismiss();
-//     nav.navigate('Login');
-//   }
-
-//   render() {
-//     const nav = this.props.navigation;
-//     return (
-//       <View
-//         style={{
-//           flexDirection: 'column',
-//           flex: 1,
-//           justifyContent: 'center',
-//           alignContent: 'center'
-//         }}
-//       >
-//         <Card
-//           title="Sign up as a new user"
-//           style={{ justifyContent: 'center', alignContent: 'center' }}
-//         >
-//           <FormLabel>Name</FormLabel>
-//           <FormInput
-//             onChangeText={name => this.setState({ name })}
-//             inputStyle={{ width: undefined }}
-//           />
-
-//           <FormLabel>E-mail</FormLabel>
-//           <FormInput onChangeText={email => this.setState({ email })} />
-
-//           <FormLabel>Password</FormLabel>
-//           <FormInput
-//             onChangeText={pass => this.setState({ pass })}
-//             inputStyle={{ width: undefined }}
-//             secureTextEntry
-//           />
-
-//           <Button
-//             title="SIGN UP"
-//             buttonStyle={{
-//               width: '100%',
-//               height: 45,
-//               borderRadius: 5,
-//               marginTop: 10
-//             }}
-//             onPress={() => this.handleSubmit(nav)}
-//           />
-//           <Button
-//             title="BACK TO LOGIN"
-//             buttonStyle={{
-//               width: '100%',
-//               height: 45,
-//               borderRadius: 5,
-//               marginTop: 10
-//             }}
-//             onPress={() => nav.navigate('Login')}
-//           />
-//         </Card>
-//       </View>
-//     );
-//   }
-// }
-
-import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  TouchableOpacity,
+  Alert
+} from 'react-native';
+import moment from 'moment';
+import LinearGradient from 'react-native-linear-gradient';
+// import { createUser } from '../Store/actions/login';
 import firebase from '../../../firebase';
+import db from '../../.././db';
 
-export default class SignUp extends React.Component {
-  state = { email: '', password: '', errorMessage: null }
+export default class SignUpScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', errorMessage: '' };
+    this.handleSignUp = this.handleSignUp.bind(this);
+  }
 
-  handleSignUp = () => {
+  handleSignUp() {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.props.navigation.navigate('Home'))
-      .catch(error => this.setState({ errorMessage: error.message }))
+      .then(this.createUser());
+  }
+  createUser() {
+    const self = this;
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+        Alert.alert('this is state in home screen', user.uid);
+        const currTime = Date.now();
+        const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
+        const newUser = {
+          uid: user.uid,
+          email: user.email,
+          icon: 'red',
+          lastLoginAt: currentTime
+        };
+        db.collection('users')
+          .doc(user.uid)
+          .set(newUser)
+          .then(function(docRef) {
+            self.props.navigation.navigate('Home');
+          })
+          .catch(function(error) {
+            self.setState({ errorMessage: error.message });
+          });
+      }
+    });
   }
 
-render() {
+  render() {
     return (
       <View style={styles.container}>
-        <Text>Sign Up</Text>
-        {this.state.errorMessage &&
-          <Text style={{ color: 'red' }}>
-            {this.state.errorMessage}
-          </Text>}
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
-        <Button title="Sign Up" onPress={this.handleSignUp} />
-        <Button
-          title="Already have an account? Login"
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
+        <LinearGradient
+          colors={['#633836', '#5b2d2d', '#402423']}
+          style={{
+            height: '30%',
+            marginTop: '20%',
+            width: '85%',
+            borderRadius: 5,
+            justifyContent: 'center',
+            alignSelf: 'center',
+            alignContent: 'center'
+          }}
+        >
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              fontWeight: 'bold',
+              marginLeft: 15,
+              fontSize: 20
+            }}
+          >
+            Sign up{' '}
+          </Text>
+          {this.state.errorMessage ? (
+            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+          ) : null}
+          <TextInput
+            style={styles.textInput}
+            autoCapitalize="none"
+            placeholder="Email"
+            onChangeText={email => this.setState({ email })}
+            value={this.state.email}
+          />
+          <TextInput
+            secureTextEntry
+            style={styles.textInput}
+            autoCapitalize="none"
+            placeholder="Password"
+            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+          />
+        </LinearGradient>
+
+        <TouchableOpacity
+          style={{
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center',
+            marginTop: 30,
+            justifyContent: 'center'
+          }}
+          onPress={this.handleSignUp}
+        >
+          <LinearGradient
+            colors={['#902227', '#761b1f', '#5d1419']}
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              borderRadius: 5,
+              justifyContent: 'center'
+            }}
+          >
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                paddingLeft: 5,
+                fontSize: 20,
+                alignSelf: 'center'
+              }}
+            >
+              Sign Up
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
       </View>
-    )
+    );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: '#3c1715',
+    alignContent: 'center'
+  },
+  subscreen: {
+    height: '40%',
+    backgroundColor: '#6e3737'
   },
   textInput: {
     height: 40,
     width: '90%',
     borderColor: 'gray',
+    borderRadius: 5,
+    alignSelf: 'center',
+    backgroundColor: 'white',
     borderWidth: 1,
     marginTop: 8
   }
-})
+});

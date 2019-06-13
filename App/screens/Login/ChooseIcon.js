@@ -10,14 +10,23 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon } from 'react-native-elements';
-export default class FakeChooseIcon extends React.Component {
+export default class ChooseIcon extends React.Component {
   state = { email: '', password: '', errorMessage: null };
+
+  handleLogin = () => {
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(error => this.setState({ errorMessage: error.message }));
+  };
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.state.errorMessage && (
+        {this.state.errorMessage && (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
+        )}
         <View style={{ flex: 1 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
