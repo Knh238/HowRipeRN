@@ -57,48 +57,50 @@ export default class SignUpScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <LinearGradient
-          colors={['#633836', '#5b2d2d', '#402423']}
-          style={{
-            height: '30%',
-            marginTop: '20%',
-            width: '85%',
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignSelf: 'center',
-            alignContent: 'center'
-          }}
-        >
-          <Text
+        <View style={{ flex: 1, marginTop: 180 }}>
+          <LinearGradient
+            colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              color: 'white',
-              fontFamily: 'avenir',
-              fontWeight: 'bold',
-              marginLeft: 15,
-              fontSize: 20
+              height: '30%',
+              marginTop: '20%',
+              width: '85%',
+              borderRadius: 5,
+              justifyContent: 'center',
+              alignSelf: 'center',
+              alignContent: 'center'
             }}
           >
-            Sign up{' '}
-          </Text>
-          {this.state.errorMessage ? (
-            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          ) : null}
-          <TextInput
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="Email"
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-          />
-          <TextInput
-            secureTextEntry
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="Password"
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-          />
-        </LinearGradient>
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                fontWeight: 'bold',
+                marginLeft: 15,
+                fontSize: 20
+              }}
+            >
+              Sign up{' '}
+            </Text>
+            {this.state.errorMessage ? (
+              <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+            ) : null}
+            <TextInput
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Email"
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+            />
+            <TextInput
+              secureTextEntry
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Password"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
+          </LinearGradient>
+        </View>
 
         <TouchableOpacity
           style={{
@@ -106,7 +108,8 @@ export default class SignUpScreen extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 30,
+            marginTop: 500,
+            position: 'absolute',
             justifyContent: 'center'
           }}
           onPress={this.handleSignUp}

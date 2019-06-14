@@ -11,7 +11,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 // 886a6a
 // 816565
-export default class CreateLeague extends React.Component {
+export default class LeagueSettings extends React.Component {
   constructor(props) {
     super(props);
     this.state = { email: '', password: '', errorMessage: '' };
@@ -28,7 +28,7 @@ export default class CreateLeague extends React.Component {
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              height: '30%',
+              height: '50%',
               marginTop: '20%',
               width: '85%',
               borderRadius: 5,
@@ -38,7 +38,7 @@ export default class CreateLeague extends React.Component {
             }}
           >
             <View style={{ flex: 1, flexDirection: 'row' }}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={{
                   height: 50,
                   width: '50%',
@@ -46,20 +46,24 @@ export default class CreateLeague extends React.Component {
                   borderTopRightRadius: 7,
                   borderBottomRightRadius: 7
                 }}
+              > */}
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  fontWeight: 'bold',
+                  marginLeft: 10,
+                  fontSize: 20
+                }}
               >
-                <Text
-                  style={{
-                    color: '#673a38',
-                    fontFamily: 'avenir',
-                    marginLeft: 10,
-                    fontSize: 18
-                  }}
-                >
-                  Join a League
-                </Text>
-              </TouchableOpacity>
+                League Settings
+              </Text>
+              {/* </TouchableOpacity>
               <TouchableOpacity
                 style={{
+                  // backgroundColor: '#886a6a',
+                  // borderTopLeftRadius: 7,
+                  // borderBottomLeftRadius: 7,
                   width: '50%'
                 }}
               >
@@ -69,12 +73,12 @@ export default class CreateLeague extends React.Component {
                     fontFamily: 'avenir',
                     fontWeight: 'bold',
                     marginLeft: 10,
-                    fontSize: 18
+                    fontSize: 20
                   }}
                 >
                   Create a League
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
             <TextInput
               style={styles.textInput}
@@ -87,7 +91,26 @@ export default class CreateLeague extends React.Component {
               secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="League Password"
+              placeholder="Password"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                fontWeight: 'bold',
+                marginLeft: 10,
+                fontSize: 20
+              }}
+            >
+              Invite Players
+            </Text>
+            <TextInput
+              secureTextEntry
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Password"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />
@@ -100,10 +123,10 @@ export default class CreateLeague extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 500,
+            marginTop: 600,
             position: 'absolute'
           }}
-          onPress={() => this.props.navigation.navigate('LeagueSettings')}
+          // onPress={this.handleLogin}
         >
           <LinearGradient
             colors={['#902227', '#761b1f', '#5d1419']}
@@ -123,7 +146,7 @@ export default class CreateLeague extends React.Component {
                 alignSelf: 'center'
               }}
             >
-              Next
+              Finish
             </Text>
           </LinearGradient>
         </TouchableOpacity>

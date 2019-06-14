@@ -18,72 +18,76 @@ export default class LandingScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            color: 'white',
-            fontFamily: 'avenir',
-            alignSelf: 'center',
-            fontSize: 28,
-            marginTop: 50
-          }}
-        >
-          Watch Trailers
-        </Text>
+        <View style={{ flex: 1 }}>
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              alignSelf: 'center',
+              fontSize: 28,
+              marginTop: 50
+            }}
+          >
+            Watch Trailers
+          </Text>
 
-        <Image
-          source={require('HowRipeMobile/imageAssets/redReel.png')}
-          style={{
-            width: 180,
-            height: 180,
-            alignSelf: 'center',
-            marginTop: 50
-          }}
-        />
-        <View
-          style={{
-            display: 'flex',
-            flex: 1,
-            marginTop: 20,
-            flexDirection: 'row',
-            justifyContent: 'center'
-          }}
-        >
-          <TouchableOpacity
+          <Image
+            source={require('HowRipeMobile/imageAssets/redReel.png')}
             style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#942328',
-              marginRight: '7%'
+              width: 180,
+              height: 180,
+              alignSelf: 'center',
+              marginTop: 50
             }}
           />
-          <TouchableOpacity
+          <View
             style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#8a6c6c',
-              marginRight: '7%'
+              display: 'flex',
+              flex: 1,
+              marginTop: 20,
+              flexDirection: 'row',
+              justifyContent: 'center'
             }}
-          />
+          >
+            <TouchableOpacity
+              style={{
+                height: 16,
+                width: 16,
+                borderRadius: 8,
+                backgroundColor: '#942328',
+                marginRight: '7%'
+              }}
+            />
+            <TouchableOpacity
+              style={{
+                height: 16,
+                width: 16,
+                borderRadius: 8,
+                backgroundColor: '#8a6c6c',
+                marginRight: '7%'
+              }}
+            />
 
-          <TouchableOpacity
-            style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#8a6c6c'
-            }}
-          />
+            <TouchableOpacity
+              style={{
+                height: 16,
+                width: 16,
+                borderRadius: 8,
+                backgroundColor: '#8a6c6c'
+              }}
+            />
+          </View>
         </View>
+        {/* <View> */}
         <TouchableOpacity
           style={{
             height: '5%',
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginBottom: 20,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 450,
+            position: 'absolute'
           }}
           onPress={() => this.props.navigation.navigate('SignUp')}
         >
@@ -104,8 +108,7 @@ export default class LandingScreen extends React.Component {
                 fontSize: 20
               }}
             >
-              {' '}
-              Sign Up{' '}
+              Sign Up
             </Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -115,7 +118,9 @@ export default class LandingScreen extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 500,
+            position: 'absolute'
           }}
           onPress={() => this.props.navigation.navigate('Login')}
         >
@@ -147,8 +152,11 @@ export default class LandingScreen extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 30,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 560,
+            position: 'absolute'
+            // marginTop: 500,
+            // position: 'absolute'
           }}
           onPress={this.handleLogin}
         >
@@ -183,10 +191,50 @@ export default class LandingScreen extends React.Component {
             </Text>
           </LinearGradient>
         </TouchableOpacity>
-        <Button
-          title="choose fake icon"
-          onPress={() => this.props.navigation.navigate('FakeChooseIcon')}
-        />
+        <TouchableOpacity
+          style={{
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            marginTop: 630,
+            position: 'absolute',
+            borderWidth: 1,
+            borderColor: 'white'
+            // marginTop: 500,
+            // position: 'absolute'
+          }}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        >
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              paddingLeft: 5,
+              fontSize: 15,
+              alignSelf: 'center'
+            }}
+          >
+            sign up for a league
+          </Text>
+        </TouchableOpacity>
+        {/* <Button
+          title="sign up for a league"
+          style={{
+            marginTop: 50,
+            position: 'absolute',
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center'
+          }}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        /> */}
       </View>
     );
   }

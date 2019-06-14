@@ -13,7 +13,7 @@ import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
 // import FakeLogin from '../screens/Login/FakeLogin';
 import ChooseIcon from '../screens/Login/ChooseIcon';
 // import FakeLandingScreen from '../screens/Login/FakeLandingScreen';
-import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelectionScreen';
+// import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelectionScreen';
 
 import LoginScreen from '../screens/Login/LoginScreen';
 
@@ -85,8 +85,8 @@ const TheRipeStack = createStackNavigator({
   // FakeLandingScreen: FakeLandingScreen,
   // FakeSignUp: FakeSignUp,
   // FakeLogin: FakeLogin,
-  ChooseIcon: ChooseIcon,
-  LeagueSelectionScreen: LeagueSelectionScreen
+  ChooseIcon: ChooseIcon
+  // LeagueSelectionScreen: LeagueSelectionScreen
 });
 
 TheRipeStack.navigationOptions = {
