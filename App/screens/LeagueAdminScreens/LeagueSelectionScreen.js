@@ -9,7 +9,12 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 export default class LeagueSelectionScreen extends React.Component {
-  state = { email: '', password: '', errorMessage: null };
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', errorMessage: '' };
+    this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -37,12 +42,23 @@ export default class LeagueSelectionScreen extends React.Component {
               fontSize: 20
             }}
           >
-            Sign up{' '}
+            Join a League
+          </Text>
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              fontWeight: 'bold',
+              marginLeft: 15,
+              fontSize: 20
+            }}
+          >
+            Create a League
           </Text>
           <TextInput
             style={styles.textInput}
             autoCapitalize="none"
-            placeholder="Email"
+            placeholder="League Name"
             onChangeText={email => this.setState({ email })}
             value={this.state.email}
           />

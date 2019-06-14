@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
-// import { createUser } from '../Store/actions/login';
+
 import firebase from '../../../firebase';
 import db from '../../.././db';
 
@@ -38,13 +38,14 @@ export default class SignUpScreen extends React.Component {
           uid: user.uid,
           email: user.email,
           icon: 'red',
-          lastLoginAt: currentTime
+          lastLoginAt: currentTime,
+          userName: ''
         };
         db.collection('users')
           .doc(user.uid)
           .set(newUser)
           .then(function(docRef) {
-            self.props.navigation.navigate('Home');
+            self.props.navigation.navigate('ChooseIcon');
           })
           .catch(function(error) {
             self.setState({ errorMessage: error.message });

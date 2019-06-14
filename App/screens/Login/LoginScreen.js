@@ -13,16 +13,20 @@ import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
 
 export default class LoginScreen extends React.Component {
-  state = { email: '', password: '', errorMessage: null };
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', errorMessage: '' };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
 
-  handleLogin = () => {
+  handleLogin() {
     const { email, password } = this.state;
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Home'))
+      .then(() => this.props.navigation.navigate('ChooseIcon'))
       .catch(error => this.setState({ errorMessage: error.message }));
-  };
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -50,9 +54,9 @@ export default class LoginScreen extends React.Component {
           >
             Login
           </Text>
-          {this.state.errorMessage && (
+          {this.state.errorMessage ? (
             <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          )}
+          ) : null}
           <TextInput
             style={styles.textInput}
             autoCapitalize="none"
