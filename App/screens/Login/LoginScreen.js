@@ -1,249 +1,165 @@
-// import React from 'react';
-// import {
-//   Image,
-//   Platform,
-//   ScrollView,
-//   StyleSheet,
-//   TouchableOpacity,
-//   View,
-//   StatusBar
-// } from 'react-native';
-// import { SafeAreaView } from 'react-navigation';
-// import { Icon, Button, Avatar, Input } from 'react-native-elements';
-
-// import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
-// import firebase from 'HowRipeMobile/firebase';
-
-// export default class LoginScreen extends React.Component {
-//   static navigationOptions = ({ navigation }) => {
-//     return {
-//       title: 'How Ripe',
-//       headerStyle: {
-//         backgroundColor: '#6e3737',
-//         borderBottomWidth: 0
-//       },
-//       headerTitleStyle: {
-//         color: 'white',
-//         fontSize: 20,
-//         fontFamily: 'Avenir',
-//         fontWeight: 'bold'
-//       },
-//       headerLeft: (
-//         <Button
-//           type="clear"
-//           onPress={() => navigation.goBack()}
-//           icon={<Icon name="menu" type="material" color="white" size={30} />}
-//         />
-//       ),
-//       headerRight: (
-//         <Avatar
-//           size="medium"
-//           source={{ uri: 'https://loremflickr.com/320/240' }}
-//           rounded
-//           title="MT"
-//           containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-//           onPress={() => console.log('Works!')}
-//           activeOpacity={0.7}
-//         />
-//       )
-//     };
-//   };
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       authenticated: false,
-//       modalOpen: false,
-//       errorMessage: null,
-//       initialized: false,
-//       inviteCode: '',
-//       email: '',
-//       password: ''
-//     };
-//     // this.closeModal = this.closeModal.bind(this);
-//     this.submitInput = this.submitInput.bind(this);
-//   }
-
-//   componentDidMount() {
-//     firebase.auth().onAuthStateChanged(user => {
-//       if (user != null) {
-//         doesUserExist(user).then(exists => {
-//           if (exists) {
-//             store.dispatch(logUserIn(user));
-//           } else {
-//             this.setState({
-//               ...this.state,
-//               initialized: true,
-//               errorMessage: null
-//             });
-//             this.props.navigation.navigate('InviteCodePage');
-//           }
-//         });
-//       } else {
-//         this.setState({ ...this.state, initialized: true });
-//       }
-//     });
-//   }
-//   async submitInput() {
-//     const inviteRef = db.collection('codes').doc(this.state.inviteCode);
-//     const user = firebase.auth().currentUser;
-//     const dbCode = inviteRef.get();
-
-//     if (dbCode.exists) {
-//       await inviteRef.update({
-//         usersUsed: firebase.firestore.FieldValue.arrayUnion(user.uid)
-//       });
-//       this.setState({ ...this.state, modalOpen: false });
-//       store.dispatch(createUser(user));
-//     } else {
-//       this.setState({
-//         ...this.state,
-//         errorMessage: 'Wrong invite code. Please try again.'
-//       });
-//     }
-//   }
-
-//   render() {
-//     StatusBar.setBarStyle('light-content', true);
-//     return (
-//       <SafeAreaView style={{ flex: 1 }}>
-//         <View style={{ flex: 1, backgroundColor: '#6e3737' }}>
-//           <Text
-//             style={{
-//               color: 'white',
-//               fontSize: 35,
-//               fontFamily: 'avenir',
-//               fontWeight: 'bold',
-//               alignSelf: 'center'
-//             }}
-//           >
-//             Login
-//           </Text>
-//           <Input
-//             inputStyle={{
-//               width: 80,
-//               fontSize: 20,
-//               fontWeight: 'bold',
-//               color: '#910f1f'
-//             }}
-//             label="email"
-//             inputContainerStyle={{
-//               width: 90,
-//               marginTop: 20,
-//               alignSelf: 'center',
-//               borderColor: '#910f1f',
-//               borderWidth: 1,
-//               backgroundColor: 'white'
-//             }}
-//           />
-//           <Input
-//             inputStyle={{
-//               width: 80,
-//               fontSize: 20,
-//               fontWeight: 'bold',
-//               color: '#910f1f'
-//             }}
-//             inputContainerStyle={{
-//               width: 90,
-//               marginTop: 20,
-//               alignSelf: 'center',
-//               borderColor: '#910f1f',
-//               borderWidth: 1,
-//               backgroundColor: 'white'
-//             }}
-//           />
-
-//           <Button
-//             buttonStyle={{
-//               backgroundColor: '#910f1f',
-//               alignSelf: 'center',
-//               marginTop: 10,
-//               width: 120,
-//               borderRadius: 5
-//             }}
-//             title="Sign in with Facebook"
-//             titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-//             onPress={() => this.props.navigation.navigate('Home')}
-//             // onPress={() => this.facebookLogin()}
-//             leftIcon={
-//               <Icon
-//                 name="facebook-with-circle"
-//                 type="Entypo"
-//                 style={{ color: 'white', fontSize: 30 }}
-//               />
-//             }
-//           />
-//           <Button
-//             buttonStyle={{
-//               backgroundColor: '#910f1f',
-//               alignSelf: 'center',
-//               marginTop: 10,
-//               width: 120,
-//               borderRadius: 5
-//             }}
-//             title="Login"
-//             titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-//             onPress={() => this.props.navigation.navigate('Home')}
-//           />
-
-//           <Button
-//             buttonStyle={{
-//               backgroundColor: '#910f1f',
-//               alignSelf: 'center',
-//               marginTop: 10,
-//               width: 120,
-//               borderRadius: 5
-//             }}
-//             title="Sign up"
-//             titleStyle={{ fontFamily: 'avenir', fontWeight: 'bold' }}
-//             onPress={() => this.props.navigation.navigate('Home')}
-//           />
-//         </View>
-//       </SafeAreaView>
-//     );
-//   }
-// }
-
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  TouchableOpacity,
+  Image
+} from 'react-native';
+import { Icon } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
 
-export default class Login extends React.Component {
-  state = { email: '', password: '', errorMessage: null };
-  handleLogin = () => {
+export default class LoginScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', errorMessage: '' };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin() {
     const { email, password } = this.state;
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Home'))
+      .then(() => this.props.navigation.navigate('ChooseIcon'))
       .catch(error => this.setState({ errorMessage: error.message }));
-  };
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
-        {this.state.errorMessage && (
-          <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )}
-        <TextInput
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Email"
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('Signup')}
-        />
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <LinearGradient
+            colors={['#633836', '#5b2d2d', '#402423']}
+            style={{
+              height: 250,
+              width: '85%',
+              marginTop: '20%',
+              borderRadius: 5,
+              justifyContent: 'center',
+              alignSelf: 'center',
+              alignContent: 'center'
+            }}
+          >
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                fontWeight: 'bold',
+                marginLeft: 15,
+                marginTop: 10,
+                fontSize: 20
+              }}
+            >
+              Login
+            </Text>
+            {this.state.errorMessage ? (
+              <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+            ) : null}
+            <TextInput
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Email"
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+            />
+            <TextInput
+              secureTextEntry
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Password"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
+            <Text
+              style={{
+                color: '#886a6a',
+                fontFamily: 'avenir',
+                marginLeft: 15,
+                fontSize: 15,
+                textDecorationLine: 'underline'
+              }}
+            >
+              Forgot Password
+            </Text>
+          </LinearGradient>
+          <TouchableOpacity
+            style={{
+              height: '5%',
+              width: '60%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              marginTop: 30,
+              justifyContent: 'center'
+            }}
+            onPress={this.handleLogin}
+          >
+            <LinearGradient
+              colors={['#902227', '#761b1f', '#5d1419']}
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                borderRadius: 5,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  paddingLeft: 5,
+                  fontSize: 20,
+                  alignSelf: 'center'
+                }}
+              >
+                Log in
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              height: '6%',
+              width: '60%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginTop: 30
+            }}
+            onPress={this.handleLogin}
+          >
+            <LinearGradient
+              colors={['#405993', '#263558']}
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                borderRadius: 5,
+                justifyContent: 'center'
+              }}
+            >
+              <Icon
+                style={{
+                  marginTop: 10
+                }}
+                name="facebook-official"
+                type="font-awesome"
+                color="white"
+                size={25}
+              />
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  marginLeft: 15,
+                  fontSize: 15
+                }}
+              >
+                Log In with Facebook
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -252,16 +168,17 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3c1715'
+    backgroundColor: '#3c1715',
+    alignContent: 'center'
   },
-  subscreen: {
-    height: '40%',
-    backgroundColor: '#6e3737'
-  },
+
   textInput: {
     height: 40,
     width: '90%',
     borderColor: 'gray',
+    borderRadius: 5,
+    alignSelf: 'center',
+    backgroundColor: 'white',
     borderWidth: 1,
     marginTop: 8
   }

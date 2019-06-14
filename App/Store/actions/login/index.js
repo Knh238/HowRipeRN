@@ -1,6 +1,6 @@
 import moment from 'moment';
-import firebase from 'db/firebase';
-import db from 'db/firestore';
+import firebase from './firebase';
+import db from './db';
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -94,16 +94,9 @@ export function createUser(user) {
     const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
     const newUser = {
       uid: user.uid,
-      provider: user.providerData[0].providerId,
-      providerID: user.providerData[0].uid,
-      displayName: user.displayName,
       email: user.email,
-      photoURL: user.photoURL + '?height=500',
-      lastLoginAt: currentTime,
-      followers: [],
-      following: [],
-      conversations: [],
-      socialNetworks: [{ source: 'facebook', sourceUrl: 'facebookprofileurl' }]
+      photoURL: 'red',
+      lastLoginAt: currentTime
     };
     db.collection('users')
       .doc(user.uid)

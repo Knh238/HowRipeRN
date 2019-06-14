@@ -6,18 +6,49 @@ import {
   View,
   Button,
   TouchableOpacity,
+  Alert,
   Image
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon } from 'react-native-elements';
-export default class FakeChooseIcon extends React.Component {
-  state = { email: '', password: '', errorMessage: null };
+import firebase from '../../../firebase';
+import db from '../../.././db';
+
+export default class ChooseIcon extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedIcon: '', userName: '' };
+    this.submitInfo = this.submitInfo.bind(this);
+  }
+
+  submitInfo() {
+    const self = this;
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+        Alert.alert('this is state in home screen', user.uid);
+
+        db.collection('users')
+          .doc(user.uid)
+          .update({
+            icon: self.state.selectedIcon,
+            userName: self.state.userName
+          })
+          .then(function(docRef) {
+            self.props.navigation.navigate('Home');
+          })
+          .catch(function(error) {
+            self.setState({ errorMessage: error.message });
+          });
+      }
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.state.errorMessage && (
+        {this.state.errorMessage && (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
+        )}
         <View style={{ flex: 1 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
@@ -48,8 +79,8 @@ export default class FakeChooseIcon extends React.Component {
                 style={styles.textInput}
                 autoCapitalize="none"
                 placeholder="Username"
-                onChangeText={email => this.setState({ email })}
-                value={this.state.email}
+                onChangeText={userName => this.setState({ userName })}
+                value={this.state.userName}
               />
               <Text
                 style={{
@@ -74,66 +105,76 @@ export default class FakeChooseIcon extends React.Component {
                 justifyContent: 'space-around'
               }}
             >
-              {/* <TouchableOpacity
-            style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#942328',
-              marginRight: '7%'
-            }}
-          /> */}
-              <Image
-                source={require('HowRipeMobile/imageAssets/redReel.png')}
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignSelf: 'center'
-                  // marginTop: 50
-                }}
-              />
-              <Image
-                source={require('HowRipeMobile/imageAssets/yellowReel.png')}
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignSelf: 'center'
-                  // marginTop: 50
-                }}
-              />
-              <Image
-                source={require('HowRipeMobile/imageAssets/greenReel.png')}
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignSelf: 'center'
-                  // marginTop: 50
-                }}
-              />
-              <Image
-                source={require('HowRipeMobile/imageAssets/purpleReel.png')}
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignSelf: 'center'
-                  // marginTop: 50
-                }}
-              />
-              <Image
-                source={require('HowRipeMobile/imageAssets/blueReel.png')}
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignSelf: 'center'
-                  // marginTop: 50
-                }}
-              />
+              <TouchableOpacity
+                onPress={() => this.setState({ selectedIcon: 'red' })}
+              >
+                <Image
+                  source={require('HowRipeMobile/imageAssets/redReel.png')}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    alignSelf: 'center'
+                  }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ selectedIcon: 'yellow' })}
+              >
+                <Image
+                  source={require('HowRipeMobile/imageAssets/yellowReel.png')}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    alignSelf: 'center'
+                    // marginTop: 50
+                  }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ selectedIcon: 'green' })}
+              >
+                <Image
+                  source={require('HowRipeMobile/imageAssets/greenReel.png')}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    alignSelf: 'center'
+                    // marginTop: 50
+                  }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ selectedIcon: 'purple' })}
+              >
+                <Image
+                  source={require('HowRipeMobile/imageAssets/purpleReel.png')}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    alignSelf: 'center'
+                  }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ selectedIcon: 'blue' })}
+              >
+                <Image
+                  source={require('HowRipeMobile/imageAssets/blueReel.png')}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    alignSelf: 'center'
+                  }}
+                />
+              </TouchableOpacity>
+              {/* <TouchableOpacity onPress={() => this.selectIcon('red')}> */}
               <Icon
                 name="play-arrow"
                 type="materialIcons"
                 color="white"
                 size={38}
               />
+              {/* </TouchableOpacity> */}
             </View>
             <View style={{ display: 'flex', flex: 1, marginTop: 10 }}>
               <Text
@@ -160,7 +201,7 @@ export default class FakeChooseIcon extends React.Component {
             marginTop: 0,
             justifyContent: 'center'
           }}
-          onPress={this.handleLogin}
+          onPress={this.submitInfo}
         >
           <LinearGradient
             colors={['#902227', '#761b1f', '#5d1419']}
@@ -186,7 +227,6 @@ export default class FakeChooseIcon extends React.Component {
         </TouchableOpacity>
         <Button
           title="enroll in a league"
-          // onPress={() => this.props.navigation.navigate('Signup')}
           onPress={() =>
             this.props.navigation.navigate('LeagueSelectionScreen')
           }
