@@ -6,6 +6,7 @@ import LandingScreen from '../screens/Login/LandingScreen';
 import ChooseIcon from '../screens/Login/ChooseIcon';
 import MainTabNavigator from './MainTabNavigator';
 import Loading from '../screens/Login/Loading';
+import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelectionScreen';
 
 // export default createAppContainer(
 //   createSwitchNavigator({
@@ -21,7 +22,8 @@ export default createAppContainer(
       Login: LoginScreen,
       SignUp: SignUpScreen,
       ChooseIcon: ChooseIcon,
-      Main: MainTabNavigator
+      Main: MainTabNavigator,
+      LeagueSelectionScreen: LeagueSelectionScreen
     },
     {
       initialRouteName: 'LandingScreen'

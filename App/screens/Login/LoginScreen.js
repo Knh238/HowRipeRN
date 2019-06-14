@@ -30,135 +30,136 @@ export default class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <LinearGradient
-          colors={['#633836', '#5b2d2d', '#402423']}
-          style={{
-            height: '30%',
-            marginTop: '20%',
-            width: '85%',
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignSelf: 'center',
-            alignContent: 'center'
-          }}
-        >
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'avenir',
-              fontWeight: 'bold',
-              marginLeft: 15,
-              marginTop: 10,
-              fontSize: 20
-            }}
-          >
-            Login
-          </Text>
-          {this.state.errorMessage ? (
-            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          ) : null}
-          <TextInput
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="Email"
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-          />
-          <TextInput
-            secureTextEntry
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="Password"
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-          />
-          <Text
-            style={{
-              color: '#886a6a',
-              fontFamily: 'avenir',
-              marginLeft: 15,
-              // alignSelf: 'center',
-              fontSize: 15,
-              textDecorationLine: 'underline'
-            }}
-          >
-            Forgot Password
-          </Text>
-        </LinearGradient>
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            marginTop: 30,
-            justifyContent: 'center'
-          }}
-          onPress={this.handleLogin}
-        >
+        <View style={{ flex: 1, justifyContent: 'center' }}>
           <LinearGradient
-            colors={['#902227', '#761b1f', '#5d1419']}
+            colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              flex: 1,
-              flexDirection: 'row',
+              height: 250,
+              width: '85%',
+              marginTop: '20%',
               borderRadius: 5,
-              justifyContent: 'center'
+              justifyContent: 'center',
+              alignSelf: 'center',
+              alignContent: 'center'
             }}
           >
             <Text
               style={{
                 color: 'white',
                 fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 20,
-                alignSelf: 'center'
+                fontWeight: 'bold',
+                marginLeft: 15,
+                marginTop: 10,
+                fontSize: 20
               }}
             >
-              Log in
+              Login
             </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: '6%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            marginTop: 30
-          }}
-          onPress={this.handleLogin}
-        >
-          <LinearGradient
-            colors={['#405993', '#263558']}
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              borderRadius: 5,
-              justifyContent: 'center'
-            }}
-          >
-            <Icon
-              style={{
-                marginTop: 10
-              }}
-              name="facebook-official"
-              type="font-awesome"
-              color="white"
-              size={25}
+            {this.state.errorMessage ? (
+              <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+            ) : null}
+            <TextInput
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Email"
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+            />
+            <TextInput
+              secureTextEntry
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="Password"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
             />
             <Text
               style={{
-                color: 'white',
+                color: '#886a6a',
                 fontFamily: 'avenir',
                 marginLeft: 15,
-                fontSize: 15
+                fontSize: 15,
+                textDecorationLine: 'underline'
               }}
             >
-              Log In with Facebook
+              Forgot Password
             </Text>
           </LinearGradient>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              height: '5%',
+              width: '60%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              marginTop: 30,
+              justifyContent: 'center'
+            }}
+            onPress={this.handleLogin}
+          >
+            <LinearGradient
+              colors={['#902227', '#761b1f', '#5d1419']}
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                borderRadius: 5,
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  paddingLeft: 5,
+                  fontSize: 20,
+                  alignSelf: 'center'
+                }}
+              >
+                Log in
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              height: '6%',
+              width: '60%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginTop: 30
+            }}
+            onPress={this.handleLogin}
+          >
+            <LinearGradient
+              colors={['#405993', '#263558']}
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                borderRadius: 5,
+                justifyContent: 'center'
+              }}
+            >
+              <Icon
+                style={{
+                  marginTop: 10
+                }}
+                name="facebook-official"
+                type="font-awesome"
+                color="white"
+                size={25}
+              />
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  marginLeft: 15,
+                  fontSize: 15
+                }}
+              >
+                Log In with Facebook
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -170,10 +171,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3c1715',
     alignContent: 'center'
   },
-  subscreen: {
-    height: '40%',
-    backgroundColor: '#6e3737'
-  },
+
   textInput: {
     height: 40,
     width: '90%',
