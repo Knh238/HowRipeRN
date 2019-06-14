@@ -17,11 +17,13 @@
   "dependencies": {
     "braces": "^3.0.2",
     "firebase": "^6.0.2",
+    "firebase-admin": "^8.1.0",
     "native-base": "^2.12.1",
     "react": "16.8.3",
-    "react-native": "^0.59.9",
+    "react-native": "^0.59.2",
     "react-native-chart-kit": "^2.4.0",
     "react-native-elements": "^1.1.0",
+    "react-native-firebase": "^5.4.3",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-linear-gradient": "^2.5.4",
     "react-native-modal": "^10.0.0",
@@ -32,6 +34,7 @@
     "react-navigation": "^3.5.1",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },

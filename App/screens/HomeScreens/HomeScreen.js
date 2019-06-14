@@ -14,15 +14,17 @@ import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LeaderBoard from './LeaderBoard';
 import CurrentVideos from './CurrentVideos';
-import createUser from '../../Store/actions/login';
-import { connect } from 'react-redux';
-import firebase from '../../.././firebase';
-import db from '../../.././db';
+//import createUser from '../../Store/actions/login';
+//import { connect } from 'react-redux';
+//import firebase from '../../../firebase';
+const firebase = require('firebase')
+//import {db} from '../../../db';
+import 'firebase/firestore'
 
 function testDB() {
   firebase.auth().onAuthStateChanged(user => {
     if (user != null) {
-      Alert.alert('this is state in home screen', user.uid);
+     // Alert.alert('this is state in home screen', this.state);
       db.collection('users')
         .add({
           first: user.uid,
@@ -39,23 +41,43 @@ function testDB() {
   });
  }
 
- testDB();
+//  testDB();
 
-class HomeScreen extends Component {
+export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
   this.state = {
-   currentUser: null
+     uid: '',
+     email: ''
   }
   }
 
   componentDidMount() {
     // const currentUser = firebase.auth().currentUser
-    const user = {
-      name: 'Abby',
-      email: 'abby@abby.com'
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+       // Alert.alert('this is state in home screen', this.state);
+      let test = firebase.firestore();
+      test.collection('users')
+          .add({
+            uid: user.uid,
+            email: user.email
+          })
+          .then(function(docRef) {
+            console.log('Document written with ID: ', docRef.id);
+            this.setState({
+              uid: docRef.id,
+              email: docRef.email
+            })
+          })
+          .catch(function(error) {
+            console.error('Error adding document: ', error);
+          });
+      }
+    });
+    if(this.state !== null) {
+    Alert.alert('this is state in return', this.state);
     }
-    this.setState({ user })
 
       // this.props.createUser(user)
       // db.collection('users')
@@ -66,13 +88,11 @@ class HomeScreen extends Component {
       // })
       // .then(function(docRef) {
       //   console.log('Document written with ID: ', docRef.id);
-      // })
-
+      // }}
 
 }
 
   static navigationOptions = ({ navigation }) => {
-
     return {
       title: 'How Ripe',
       headerStyle: {
@@ -118,18 +138,18 @@ class HomeScreen extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, user) => {
-  return {
-    createUser: () => {
-      dispatch(createUser(user));
-  }
-  };
-};
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     createUser: () => {
+//       dispatch(createUser(ownProps));
+//   }
+//   };
+// };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(HomeScreen);
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,4 @@
-import db from '../../../../db';
-const firebase = require('firebase');
-const firestore = require('firebase/firestore');
+import {db} from '../../../../db';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const CREATE_PROFILE_ERROR = 'CREATE_PROFILE_ERROR';
