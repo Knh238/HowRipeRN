@@ -21,16 +21,16 @@ export default class LeagueSelectionScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.state.errorMessage && (
+        {this.state.errorMessage ? (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
-        <View style={{ flex: 1, marginTop: 180 }}>
+        ) : null}
+        <View style={{ flex: 1, marginTop: 180, marginBottom: 20 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
               height: '30%',
               marginTop: '20%',
-              width: '85%',
+              width: '89%',
               borderRadius: 5,
               justifyContent: 'center',
               alignSelf: 'center',
@@ -38,7 +38,10 @@ export default class LeagueSelectionScreen extends React.Component {
             }}
           >
             <View style={{ flex: 1, flexDirection: 'row' }}>
-              <TouchableOpacity style={{ height: 50, width: '50%' }}>
+              <TouchableOpacity
+                style={{ height: 50, width: '50%' }}
+                onPress={() => this.props.navigation.navigate('CreateLeague')}
+              >
                 <Text
                   style={{
                     color: 'white',
@@ -75,7 +78,7 @@ export default class LeagueSelectionScreen extends React.Component {
             <TextInput
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="League Name"
+              placeholder="  League Name"
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
             />
@@ -83,7 +86,7 @@ export default class LeagueSelectionScreen extends React.Component {
               secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="Password"
+              placeholder="  League Pass Phrase"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />

@@ -63,88 +63,157 @@ export default class Standings extends React.Component {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           {this.state.selected === 'detailed' ? (
-            <View>
-              <View style={styles.subscreen}>
-                <StandingsGraph />
-              </View>
-              <View style={{ height: '10%', backgroundColor: '#6e3737' }}>
-                <StandingsKey />
-              </View>
+            <View style={styles.subscreen}>
+              <StandingsGraph />
             </View>
           ) : (
-            <View style={{ height: '90%', backgroundColor: '#4b1818' }}>
+            <View style={{ height: '85%', backgroundColor: '#4b1818' }}>
               <StandingsSnapShot />
             </View>
           )}
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              height: '25%',
-              justifyContent: 'center',
-              backgroundColor: '#4b1818'
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                width: '32%',
-                height: '22%',
-                borderRightWidth: 1.5,
-                borderColor: 'grey'
-              }}
-              onPress={() => this.handleSelect('snapshot')}
-            >
-              <LinearGradient
-                colors={['#9a1021', '#6b0b17']}
-                style={{
-                  flex: 1,
-                  borderTopLeftRadius: 10,
-                  borderBottomLeftRadius: 10
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: 'Avenir',
-                    fontSize: 20,
-                    color: '#a39595',
-                    alignSelf: 'center'
-                  }}
-                >
-                  Snapshot
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
 
-            <TouchableOpacity
+          {this.state.selected === 'snapshot' ? (
+            // <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View
               style={{
-                width: '32%',
-                height: '22%',
-                borderLeftWidth: 1,
-                borderColor: 'grey'
+                display: 'flex',
+                marginTop: 30,
+                flexDirection: 'row',
+                height: '25%',
+                justifyContent: 'center',
+                backgroundColor: '#4b1818'
               }}
-              onPress={() => this.handleSelect('detailed')}
             >
-              <LinearGradient
-                colors={['#9a1021', '#6b0b17']}
+              <TouchableOpacity
                 style={{
-                  flex: 1,
-                  borderTopRightRadius: 10,
-                  borderBottomRightRadius: 10
+                  width: '32%',
+                  height: '22%',
+                  borderRightWidth: 1.5,
+                  borderColor: 'grey'
                 }}
+                onPress={() => this.handleSelect('snapshot')}
               >
-                <Text
+                <LinearGradient
+                  colors={['#9a1021', '#6b0b17']}
                   style={{
-                    alignSelf: 'center',
-                    fontFamily: 'Avenir',
-                    fontSize: 20,
-                    color: 'white'
+                    flex: 1,
+                    borderTopLeftRadius: 5,
+                    borderBottomLeftRadius: 5
                   }}
                 >
-                  Detailed{' '}
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
+                  <Text
+                    style={{
+                      fontFamily: 'Avenir',
+                      fontSize: 20,
+                      color: 'white',
+                      alignSelf: 'center'
+                    }}
+                  >
+                    Snapshot
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: '32%',
+                  height: '22%',
+                  borderLeftWidth: 1,
+                  borderColor: 'grey'
+                }}
+                onPress={() => this.handleSelect('detailed')}
+              >
+                <LinearGradient
+                  colors={['#5a3231', '#3a1615']}
+                  style={{
+                    flex: 1,
+                    borderTopRightRadius: 5,
+                    borderBottomRightRadius: 5
+                  }}
+                >
+                  <Text
+                    style={{
+                      alignSelf: 'center',
+                      fontFamily: 'Avenir',
+                      fontSize: 20,
+                      color: '#a39595'
+                    }}
+                  >
+                    Detailed{' '}
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View
+              style={{
+                display: 'flex',
+                marginTop: 30,
+                flexDirection: 'row',
+                height: '25%',
+                justifyContent: 'center',
+                backgroundColor: '#4b1818'
+              }}
+            >
+              <TouchableOpacity
+                style={{
+                  width: '32%',
+                  height: '22%',
+                  borderRightWidth: 1.5,
+                  borderColor: 'grey'
+                }}
+                onPress={() => this.handleSelect('snapshot')}
+              >
+                <LinearGradient
+                  colors={['#5a3231', '#3a1615']}
+                  style={{
+                    flex: 1,
+                    borderTopLeftRadius: 5,
+                    borderBottomLeftRadius: 5
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontFamily: 'Avenir',
+                      fontSize: 20,
+                      color: '#a39595',
+                      alignSelf: 'center'
+                    }}
+                  >
+                    Snapshot
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: '32%',
+                  height: '22%',
+                  borderLeftWidth: 1,
+                  borderColor: 'grey'
+                }}
+                onPress={() => this.handleSelect('detailed')}
+              >
+                <LinearGradient
+                  colors={['#9a1021', '#6b0b17']}
+                  style={{
+                    flex: 1,
+                    borderTopRightRadius: 5,
+                    borderBottomRightRadius: 5
+                  }}
+                >
+                  <Text
+                    style={{
+                      alignSelf: 'center',
+                      fontFamily: 'Avenir',
+                      fontSize: 20,
+                      color: 'white'
+                    }}
+                  >
+                    Detailed{' '}
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </SafeAreaView>
     );
@@ -157,7 +226,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4b1818'
   },
   subscreen: {
-    height: '80%',
+    height: '85%',
     backgroundColor: '#4b1818'
   },
   subscreenKey: {

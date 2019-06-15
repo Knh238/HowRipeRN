@@ -24,7 +24,7 @@ export default class LoginScreen extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('ChooseIcon'))
+      .then(() => this.props.navigation.navigate('Home'))
       .catch(error => this.setState({ errorMessage: error.message }));
   }
   render() {
@@ -34,9 +34,8 @@ export default class LoginScreen extends React.Component {
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              height: 250,
+              height: 200,
               width: '85%',
-              marginTop: '20%',
               borderRadius: 5,
               justifyContent: 'center',
               alignSelf: 'center',
@@ -49,7 +48,6 @@ export default class LoginScreen extends React.Component {
                 fontFamily: 'avenir',
                 fontWeight: 'bold',
                 marginLeft: 15,
-                marginTop: 10,
                 fontSize: 20
               }}
             >
@@ -61,7 +59,7 @@ export default class LoginScreen extends React.Component {
             <TextInput
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="Email"
+              placeholder="  Email"
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
             />
@@ -69,7 +67,7 @@ export default class LoginScreen extends React.Component {
               secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="Password"
+              placeholder="  Password"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />
@@ -79,6 +77,7 @@ export default class LoginScreen extends React.Component {
                 fontFamily: 'avenir',
                 marginLeft: 15,
                 fontSize: 15,
+                marginTop: 8,
                 textDecorationLine: 'underline'
               }}
             >
@@ -133,30 +132,37 @@ export default class LoginScreen extends React.Component {
               colors={['#405993', '#263558']}
               style={{
                 flex: 1,
-                flexDirection: 'row',
-                borderRadius: 5,
-                justifyContent: 'center'
+
+                borderRadius: 5
               }}
             >
-              <Icon
+              <View
                 style={{
-                  marginTop: 10
-                }}
-                name="facebook-official"
-                type="font-awesome"
-                color="white"
-                size={25}
-              />
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: 'avenir',
-                  marginLeft: 15,
-                  fontSize: 15
+                  flex: 1,
+                  flexDirection: 'row',
+                  marginTop: 10,
+                  justifyContent: 'center',
+                  alignContent: 'center'
                 }}
               >
-                Log In with Facebook
-              </Text>
+                <Icon
+                  name="facebook-official"
+                  type="font-awesome"
+                  color="white"
+                  size={25}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+                    marginLeft: 15,
+                    fontSize: 15,
+                    alignSelf: 'center'
+                  }}
+                >
+                  Log In with Facebook
+                </Text>
+              </View>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -177,6 +183,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderColor: 'gray',
     borderRadius: 5,
+    marginLeft: 2,
     alignSelf: 'center',
     backgroundColor: 'white',
     borderWidth: 1,

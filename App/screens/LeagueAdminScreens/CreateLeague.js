@@ -9,8 +9,6 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-// 886a6a
-// 816565
 export default class CreateLeague extends React.Component {
   constructor(props) {
     super(props);
@@ -21,16 +19,16 @@ export default class CreateLeague extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.state.errorMessage && (
+        {this.state.errorMessage ? (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
-        <View style={{ flex: 1, marginTop: 180 }}>
+        ) : null}
+        <View style={{ flex: 1, marginTop: 180, marginBottom: 20 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
               height: '30%',
               marginTop: '20%',
-              width: '85%',
+              width: '89%',
               borderRadius: 5,
               justifyContent: 'center',
               alignSelf: 'center',
@@ -40,19 +38,21 @@ export default class CreateLeague extends React.Component {
             <View style={{ flex: 1, flexDirection: 'row' }}>
               <TouchableOpacity
                 style={{
-                  height: 50,
                   width: '50%',
                   backgroundColor: '#886a6a',
                   borderTopRightRadius: 7,
                   borderBottomRightRadius: 7
                 }}
+                onPress={() =>
+                  this.props.navigation.navigate('LeagueSelectionScreen')
+                }
               >
                 <Text
                   style={{
                     color: '#673a38',
                     fontFamily: 'avenir',
                     marginLeft: 10,
-                    fontSize: 18
+                    fontSize: 20
                   }}
                 >
                   Join a League
@@ -60,8 +60,10 @@ export default class CreateLeague extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  width: '50%'
+                  width: '50%',
+                  height: 50
                 }}
+                onPress={() => this.props.navigation.navigate('CreateLeague')}
               >
                 <Text
                   style={{
@@ -69,25 +71,26 @@ export default class CreateLeague extends React.Component {
                     fontFamily: 'avenir',
                     fontWeight: 'bold',
                     marginLeft: 10,
-                    fontSize: 18
+                    fontSize: 20
                   }}
                 >
                   Create a League
                 </Text>
               </TouchableOpacity>
             </View>
+
             <TextInput
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="League Name"
+              placeholder="  League Name"
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
             />
             <TextInput
-              secureTextEntry
+              // secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="League Password"
+              placeholder="  League Pass Phrase"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />

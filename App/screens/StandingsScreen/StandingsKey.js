@@ -206,7 +206,6 @@ export default class StandingsKey extends React.Component {
       </View>
     );
   }
-  paintCell() {}
 
   render() {
     return (

@@ -9,10 +9,9 @@ import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
 import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
 import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
-// import FakeSignUp from '../screens/Login/FakeSignup';
-// import FakeLogin from '../screens/Login/FakeLogin';
+
 import ChooseIcon from '../screens/Login/ChooseIcon';
-// import FakeLandingScreen from '../screens/Login/FakeLandingScreen';
+
 // import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelectionScreen';
 
 import LoginScreen from '../screens/Login/LoginScreen';
