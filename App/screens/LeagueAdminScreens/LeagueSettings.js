@@ -8,9 +8,9 @@ import {
   TouchableOpacity
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import moment from 'moment';
+import { Icon } from 'react-native-elements';
 
-// 886a6a
-// 816565
 export default class LeagueSettings extends React.Component {
   constructor(props) {
     super(props);
@@ -18,17 +18,52 @@ export default class LeagueSettings extends React.Component {
     // this.handleSignUp = this.handleSignUp.bind(this);
   }
 
+  upcomingRounds() {
+    const nextDates = ['06/17/2019', '06/24/2019', '07/01/2019'];
+
+    return nextDates.map(date => (
+      <View style={{ flex: 1, marginLeft: 20 }} key={date}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Icon name="circle-o" type="font-awesome" color="white" size={20} />
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              fontWeight: 'bold',
+              marginLeft: 10,
+              fontSize: 18
+            }}
+          >
+            {moment(date).format('MMMM Do')}
+          </Text>
+        </View>
+        <Text
+          style={{
+            color: '#DAA520',
+            fontFamily: 'avenir',
+            marginLeft: 20,
+            fontSize: 16
+          }}
+        >
+          {moment(date)
+            .startOf('day')
+            .fromNow()}
+        </Text>
+      </View>
+    ));
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.state.errorMessage && (
+        {this.state.errorMessage ? (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
-        <View style={{ flex: 1, marginTop: 180 }}>
+        ) : null}
+        <View style={{ flex: 1, marginTop: 60 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              height: '50%',
+              height: '60%',
               marginTop: '20%',
               width: '85%',
               borderRadius: 5,
@@ -37,61 +72,32 @@ export default class LeagueSettings extends React.Component {
               alignContent: 'center'
             }}
           >
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              {/* <TouchableOpacity
-                style={{
-                  height: 50,
-                  width: '50%',
-                  backgroundColor: '#886a6a',
-                  borderTopRightRadius: 7,
-                  borderBottomRightRadius: 7
-                }}
-              > */}
+            <View style={{ flex: 1 }}>
               <Text
                 style={{
                   color: 'white',
                   fontFamily: 'avenir',
                   fontWeight: 'bold',
-                  marginLeft: 10,
+                  alignSelf: 'center',
                   fontSize: 20
                 }}
               >
                 League Settings
               </Text>
-              {/* </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  // backgroundColor: '#886a6a',
-                  // borderTopLeftRadius: 7,
-                  // borderBottomLeftRadius: 7,
-                  width: '50%'
-                }}
-              >
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'avenir',
-                    fontWeight: 'bold',
-                    marginLeft: 10,
-                    fontSize: 20
-                  }}
-                >
-                  Create a League
-                </Text>
-              </TouchableOpacity> */}
             </View>
             <TextInput
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="League Name"
+              placeholder="  League Name"
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
             />
+            {this.upcomingRounds()}
             <TextInput
               secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
-              placeholder="Password"
+              placeholder="  Password"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />
