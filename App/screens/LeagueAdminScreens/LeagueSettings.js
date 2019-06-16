@@ -19,12 +19,20 @@ export default class LeagueSettings extends React.Component {
   }
 
   upcomingRounds() {
-    const nextDates = ['06/17/2019', '06/24/2019', '07/01/2019'];
+    const nextDates = ['2019/06/17', '2019/06/24', '2019/07/01'];
 
     return nextDates.map(date => (
-      <View style={{ flex: 1, marginLeft: 20 }} key={date}>
+      <View
+        style={{ flex: 1, marginLeft: 20, marginTop: 10, marginBottom: 10 }}
+        key={date}
+      >
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Icon name="circle-o" type="font-awesome" color="white" size={20} />
+          <Icon
+            name="dot-circle-o"
+            type="font-awesome"
+            color="white"
+            size={20}
+          />
           <Text
             style={{
               color: 'white',
@@ -63,8 +71,8 @@ export default class LeagueSettings extends React.Component {
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              height: '60%',
-              marginTop: '20%',
+              height: '75%',
+              marginTop: '15%',
               width: '85%',
               borderRadius: 5,
               justifyContent: 'center',
@@ -92,34 +100,142 @@ export default class LeagueSettings extends React.Component {
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
             />
-            {this.upcomingRounds()}
-            <TextInput
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                fontWeight: 'bold',
+                marginTop: 10,
+                marginLeft: 15,
+                fontSize: 18
+              }}
+            >
+              Require a pass phrase for new members?
+            </Text>
+            <View style={{ flex: 1, marginLeft: 30, flexDirection: 'row' }}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'center'
+                }}
+              >
+                <Icon
+                  name="circle-o"
+                  type="font-awesome"
+                  color="white"
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+
+                    marginLeft: 10,
+                    fontSize: 18
+                  }}
+                >
+                  Yes
+                </Text>
+              </View>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <Icon
+                  name="dot-circle-o"
+                  type="font-awesome"
+                  color="white"
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+                    // fontWeight: 'bold',
+                    marginLeft: 10,
+                    fontSize: 18
+                  }}
+                >
+                  No
+                </Text>
+              </View>
+            </View>
+            {/* <TextInput
               secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
               placeholder="  Password"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
-            />
+            /> */}
             <Text
               style={{
                 color: 'white',
                 fontFamily: 'avenir',
                 fontWeight: 'bold',
-                marginLeft: 10,
-                fontSize: 20
+                marginLeft: 15,
+                fontSize: 18,
+                textDecorationLine: 'underline'
               }}
             >
-              Invite Players
+              Select a start date:
             </Text>
-            <TextInput
-              secureTextEntry
-              style={styles.textInput}
-              autoCapitalize="none"
-              placeholder="Password"
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-            />
+            {this.upcomingRounds()}
+
+            <Text
+              style={{
+                color: 'white',
+                fontFamily: 'avenir',
+                fontWeight: 'bold',
+                fontSize: 18,
+                marginLeft: 15
+              }}
+            >
+              Require unique invite codes for each member?
+            </Text>
+            <View style={{ flex: 1, marginLeft: 10, flexDirection: 'row' }}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'center'
+                }}
+              >
+                <Icon
+                  name="circle-o"
+                  type="font-awesome"
+                  color="white"
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+                    marginLeft: 10,
+                    fontSize: 18
+                  }}
+                >
+                  Yes
+                </Text>
+              </View>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <Icon
+                  name="dot-circle-o"
+                  type="font-awesome"
+                  color="white"
+                  size={20}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+
+                    marginLeft: 10,
+                    fontSize: 18
+                  }}
+                >
+                  No
+                </Text>
+              </View>
+            </View>
           </LinearGradient>
         </View>
 
@@ -129,7 +245,7 @@ export default class LeagueSettings extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 600,
+            marginTop: 630,
             position: 'absolute'
           }}
           // onPress={this.handleLogin}

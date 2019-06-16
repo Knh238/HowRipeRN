@@ -31,7 +31,6 @@ export default class SignUpScreen extends React.Component {
     const self = this;
     firebase.auth().onAuthStateChanged(user => {
       if (user != null) {
-        Alert.alert('this is state in home screen', user.uid);
         const currTime = Date.now();
         const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
         const newUser = {

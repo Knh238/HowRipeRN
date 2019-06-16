@@ -132,7 +132,6 @@ export default class LoginScreen extends React.Component {
               colors={['#405993', '#263558']}
               style={{
                 flex: 1,
-
                 borderRadius: 5
               }}
             >

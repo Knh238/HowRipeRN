@@ -25,8 +25,6 @@ export default class ChooseIcon extends React.Component {
     const self = this;
     firebase.auth().onAuthStateChanged(user => {
       if (user != null) {
-        Alert.alert('this is state in home screen', user.uid);
-
         db.collection('users')
           .doc(user.uid)
           .update({
@@ -49,12 +47,12 @@ export default class ChooseIcon extends React.Component {
         {this.state.errorMessage && (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
         )}
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginTop: 180 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
               height: '40%',
-              marginTop: '20%',
+              marginTop: '10%',
               width: '90%',
               borderRadius: 5,
               justifyContent: 'center',
@@ -78,7 +76,7 @@ export default class ChooseIcon extends React.Component {
               <TextInput
                 style={styles.textInput}
                 autoCapitalize="none"
-                placeholder="Username"
+                placeholder="  Username"
                 onChangeText={userName => this.setState({ userName })}
                 value={this.state.userName}
               />
@@ -171,7 +169,7 @@ export default class ChooseIcon extends React.Component {
               <Icon
                 name="play-arrow"
                 type="materialIcons"
-                color="white"
+                color={'#a19595'}
                 size={38}
               />
               {/* </TouchableOpacity> */}
@@ -198,15 +196,16 @@ export default class ChooseIcon extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 0,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 510,
+            position: 'absolute'
           }}
           onPress={this.submitInfo}
         >
           <LinearGradient
             colors={['#902227', '#761b1f', '#5d1419']}
             style={{
-              // flex: 1,
+              flex: 1,
               flexDirection: 'row',
               borderRadius: 5,
               justifyContent: 'center'
@@ -225,12 +224,6 @@ export default class ChooseIcon extends React.Component {
             </Text>
           </LinearGradient>
         </TouchableOpacity>
-        <Button
-          title="enroll in a league"
-          onPress={() =>
-            this.props.navigation.navigate('LeagueSelectionScreen')
-          }
-        />
       </View>
     );
   }
