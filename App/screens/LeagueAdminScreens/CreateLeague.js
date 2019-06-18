@@ -8,53 +8,94 @@ import {
   TouchableOpacity
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+
 export default class CreateLeague extends React.Component {
-  state = { email: '', password: '', errorMessage: null };
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', errorMessage: '' };
+    // this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.state.errorMessage && (
+        {this.state.errorMessage ? (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        )} */}
-        <LinearGradient
-          colors={['#633836', '#5b2d2d', '#402423']}
-          style={{
-            height: '30%',
-            marginTop: '20%',
-            width: '85%',
-            borderRadius: 5,
-            justifyContent: 'center',
-            alignSelf: 'center',
-            alignContent: 'center'
-          }}
-        >
-          <Text
+        ) : null}
+        <View style={{ flex: 1, marginTop: 180, marginBottom: 20 }}>
+          <LinearGradient
+            colors={['#633836', '#5b2d2d', '#402423']}
             style={{
-              color: 'white',
-              fontFamily: 'avenir',
-              fontWeight: 'bold',
-              marginLeft: 15,
-              fontSize: 20
+              height: '30%',
+              marginTop: '20%',
+              width: '89%',
+              borderRadius: 5,
+              justifyContent: 'center',
+              alignSelf: 'center',
+              alignContent: 'center'
             }}
           >
-            Sign up{' '}
-          </Text>
-          <TextInput
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="Email"
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-          />
-          <TextInput
-            secureTextEntry
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="Password"
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-          />
-        </LinearGradient>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <TouchableOpacity
+                style={{
+                  width: '50%',
+                  backgroundColor: '#886a6a',
+                  borderTopRightRadius: 7,
+                  borderBottomRightRadius: 7
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate('LeagueSelectionScreen')
+                }
+              >
+                <Text
+                  style={{
+                    color: '#673a38',
+                    fontFamily: 'avenir',
+                    marginLeft: 10,
+                    fontSize: 20
+                  }}
+                >
+                  Join a League
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: '50%',
+                  height: 50
+                }}
+                onPress={() => this.props.navigation.navigate('CreateLeague')}
+              >
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+                    fontWeight: 'bold',
+                    marginLeft: 10,
+                    fontSize: 20
+                  }}
+                >
+                  Create a League
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <TextInput
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="  League Name"
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+            />
+            <TextInput
+              // secureTextEntry
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="  League Pass Phrase"
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
+          </LinearGradient>
+        </View>
 
         <TouchableOpacity
           style={{
@@ -62,10 +103,10 @@ export default class CreateLeague extends React.Component {
             width: '60%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 30,
-            justifyContent: 'center'
+            marginTop: 500,
+            position: 'absolute'
           }}
-          onPress={this.handleLogin}
+          onPress={() => this.props.navigation.navigate('LeagueSettings')}
         >
           <LinearGradient
             colors={['#902227', '#761b1f', '#5d1419']}
@@ -85,7 +126,7 @@ export default class CreateLeague extends React.Component {
                 alignSelf: 'center'
               }}
             >
-              Sign Up
+              Next
             </Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -100,10 +141,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3c1715',
     alignContent: 'center'
   },
-  subscreen: {
-    height: '40%',
-    backgroundColor: '#6e3737'
-  },
+
   textInput: {
     height: 40,
     width: '90%',

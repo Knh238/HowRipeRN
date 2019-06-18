@@ -18,72 +18,76 @@ export default class LandingScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            color: 'white',
-            fontFamily: 'avenir',
-            alignSelf: 'center',
-            fontSize: 28,
-            marginTop: 50
-          }}
-        >
-          Watch Trailers
-        </Text>
+        <View style={{ flex: 1 }}>
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              alignSelf: 'center',
+              fontSize: 28,
+              marginTop: 50
+            }}
+          >
+            Watch Trailers
+          </Text>
 
-        <Image
-          source={require('HowRipeMobile/imageAssets/redReel.png')}
-          style={{
-            width: 180,
-            height: 180,
-            alignSelf: 'center',
-            marginTop: 50
-          }}
-        />
-        <View
-          style={{
-            display: 'flex',
-            flex: 1,
-            marginTop: 20,
-            flexDirection: 'row',
-            justifyContent: 'center'
-          }}
-        >
-          <TouchableOpacity
+          <Image
+            source={require('HowRipeMobile/imageAssets/redReel.png')}
             style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#942328',
-              marginRight: '7%'
+              width: 180,
+              height: 180,
+              alignSelf: 'center',
+              marginTop: 50
             }}
           />
-          <TouchableOpacity
+          <View
             style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#8a6c6c',
-              marginRight: '7%'
+              display: 'flex',
+              flex: 1,
+              marginTop: 20,
+              flexDirection: 'row',
+              justifyContent: 'center'
             }}
-          />
+          >
+            <TouchableOpacity
+              style={{
+                height: 16,
+                width: 16,
+                borderRadius: 8,
+                backgroundColor: '#942328',
+                marginRight: '7%'
+              }}
+            />
+            <TouchableOpacity
+              style={{
+                height: 16,
+                width: 16,
+                borderRadius: 8,
+                backgroundColor: '#8a6c6c',
+                marginRight: '7%'
+              }}
+            />
 
-          <TouchableOpacity
-            style={{
-              height: 16,
-              width: 16,
-              borderRadius: 8,
-              backgroundColor: '#8a6c6c'
-            }}
-          />
+            <TouchableOpacity
+              style={{
+                height: 16,
+                width: 16,
+                borderRadius: 8,
+                backgroundColor: '#8a6c6c'
+              }}
+            />
+          </View>
         </View>
+
         <TouchableOpacity
           style={{
             height: '5%',
-            width: '60%',
+            width: '70%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginBottom: 20,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 450,
+            position: 'absolute'
           }}
           onPress={() => this.props.navigation.navigate('SignUp')}
         >
@@ -91,31 +95,41 @@ export default class LandingScreen extends React.Component {
             colors={['#902227', '#761b1f', '#5d1419']}
             style={{
               flex: 1,
-              flexDirection: 'row',
               borderRadius: 5,
               justifyContent: 'center'
             }}
           >
-            <Text
+            <View
               style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 20
+                flex: 1,
+                flexDirection: 'row',
+                marginTop: 5,
+                justifyContent: 'center',
+                alignContent: 'center'
               }}
             >
-              {' '}
-              Sign Up{' '}
-            </Text>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  paddingLeft: 5,
+                  fontSize: 20
+                }}
+              >
+                Sign Up
+              </Text>
+            </View>
           </LinearGradient>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
             height: '5%',
-            width: '60%',
+            width: '70%',
             alignContent: 'center',
             alignSelf: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 510,
+            position: 'absolute'
           }}
           onPress={() => this.props.navigation.navigate('Login')}
         >
@@ -123,32 +137,42 @@ export default class LandingScreen extends React.Component {
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
               flex: 1,
-              flexDirection: 'row',
               borderRadius: 5,
               justifyContent: 'center'
             }}
           >
-            <Text
+            <View
               style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 20
+                flex: 1,
+                flexDirection: 'row',
+                marginTop: 5,
+                justifyContent: 'center',
+                alignContent: 'center'
               }}
             >
-              Login
-            </Text>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  paddingLeft: 5,
+                  fontSize: 20
+                }}
+              >
+                Login
+              </Text>
+            </View>
           </LinearGradient>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={{
             height: '5%',
-            width: '60%',
+            width: '70%',
             alignContent: 'center',
             alignSelf: 'center',
-            marginTop: 30,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginTop: 570,
+            position: 'absolute'
           }}
           onPress={this.handleLogin}
         >
@@ -156,37 +180,80 @@ export default class LandingScreen extends React.Component {
             colors={['#405993', '#263558']}
             style={{
               flex: 1,
-              flexDirection: 'row',
-              borderRadius: 5,
-              justifyContent: 'center'
+              borderRadius: 5
             }}
           >
-            <Icon
+            <View
               style={{
-                marginTop: 10
-              }}
-              name="facebook-official"
-              type="font-awesome"
-              color="white"
-              size={25}
-            />
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 15,
-                alignSelf: 'center'
+                flex: 1,
+                flexDirection: 'row',
+                marginTop: 5,
+                justifyContent: 'center',
+                alignContent: 'center'
               }}
             >
-              Login with Facebook
-            </Text>
+              <Icon
+                name="facebook-official"
+                type="font-awesome"
+                color="white"
+                size={25}
+              />
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  paddingLeft: 5,
+                  fontSize: 15,
+                  alignSelf: 'center'
+                }}
+              >
+                Login with Facebook
+              </Text>
+            </View>
           </LinearGradient>
         </TouchableOpacity>
-        <Button
-          title="choose fake icon"
-          onPress={() => this.props.navigation.navigate('FakeChooseIcon')}
-        />
+        <TouchableOpacity
+          style={{
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            marginTop: 650,
+            position: 'absolute',
+            borderWidth: 1,
+            borderColor: 'white'
+          }}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        >
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              paddingLeft: 5,
+              fontSize: 15,
+              alignSelf: 'center'
+            }}
+          >
+            sign up for a league
+          </Text>
+        </TouchableOpacity>
+        {/* <Button
+          title="sign up for a league"
+          style={{
+            marginTop: 50,
+            position: 'absolute',
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center'
+          }}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        /> */}
       </View>
     );
   }

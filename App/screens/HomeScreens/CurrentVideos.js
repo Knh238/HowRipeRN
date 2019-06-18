@@ -76,7 +76,7 @@ export default class CurrentVideos extends React.Component {
             fontSize: 16
           }}
         >
-          1/3
+          1/2
         </Text>
 
         <Image
@@ -147,7 +147,7 @@ export default class CurrentVideos extends React.Component {
             fontSize: 16
           }}
         >
-          1/3
+          1/2
         </Text>
         <Text
           style={{
@@ -260,10 +260,10 @@ export default class CurrentVideos extends React.Component {
               >
                 <Icon name="check-circle" type="material" color="green" />
                 <Icon name="cancel" type="material" color="red" />
-                <Icon name="cancel" type="material" color="red" />
               </View>
             </LinearGradient>
           </View>
+
           <View
             style={{
               borderBottomWidth: 1,
@@ -286,7 +286,7 @@ export default class CurrentVideos extends React.Component {
                     fontWeight: 'bold'
                   }}
                 >
-                  Christopher Robin
+                  Avengers End Game
                 </Text>
 
                 <Text
@@ -298,19 +298,18 @@ export default class CurrentVideos extends React.Component {
                     fontSize: 16
                   }}
                 >
-                  1/3
+                  1/2
                 </Text>
               </CardItem>
             </Card>
             <YouTube
-              videoId={'0URpDxIjZrQ'}
+              videoId={'hA6hldpSTF8'}
               play={false}
-              // fullscreen={true}
               loop={false}
               apiKey={config.API_KEY}
               controls={1}
               onReady={e => this.setState({ isReady: true })}
-              onChangeState={e => this.handleStateChange(e)}
+              onChangeState={e => this.setState({ status: e.state })}
               onChangeQuality={e => this.setState({ quality: e.quality })}
               onError={e => this.setState({ error: e.error })}
               style={{ alignSelf: 'stretch', height: 300 }}
@@ -393,74 +392,6 @@ export default class CurrentVideos extends React.Component {
             {this.renderSplatterModal()}
             <TouchableOpacity
               onPress={() =>
-                this.openInfo('https://www.imdb.com/title/tt4575576/')
-              }
-            >
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  fontFamily: 'avenir',
-                  fontSize: 16,
-                  textDecorationLine: 'underline',
-                  alignSelf: 'center'
-                }}
-              >
-                Learn more about the cast
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              borderBottomWidth: 1,
-              borderColor: '#A89C9C',
-              flex: 1,
-              width: '100%',
-              paddingBottom: 15
-            }}
-          >
-            <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-              <CardItem
-                style={{ backgroundColor: '#441515', flexDirection: 'row' }}
-              >
-                <Text
-                  style={{
-                    color: '#A89C9C',
-                    fontFamily: 'avenir',
-                    alignSelf: 'center',
-                    fontSize: 20,
-                    fontWeight: 'bold'
-                  }}
-                >
-                  Avengers End Game
-                </Text>
-
-                <Text
-                  style={{
-                    paddingLeft: 30,
-                    color: '#A89C9C',
-                    alignSelf: 'flex-end',
-                    fontFamily: 'avenir',
-                    fontSize: 16
-                  }}
-                >
-                  2/3
-                </Text>
-              </CardItem>
-            </Card>
-            <YouTube
-              videoId={'hA6hldpSTF8'}
-              play={false}
-              loop={false}
-              apiKey={config.API_KEY}
-              controls={1}
-              onReady={e => this.setState({ isReady: true })}
-              onChangeState={e => this.setState({ status: e.state })}
-              onChangeQuality={e => this.setState({ quality: e.quality })}
-              onError={e => this.setState({ error: e.error })}
-              style={{ alignSelf: 'stretch', height: 300 }}
-            />
-            <TouchableOpacity
-              onPress={() =>
                 this.openInfo(
                   'https://www.imdb.com/title/tt4154796/?ref_=nv_sr_1?ref_=nv_sr_1'
                 )
@@ -501,7 +432,7 @@ export default class CurrentVideos extends React.Component {
                     fontWeight: 'bold'
                   }}
                 >
-                  Shazam
+                  Aladdin(2019)
                 </Text>
 
                 <Text
@@ -513,12 +444,12 @@ export default class CurrentVideos extends React.Component {
                     fontSize: 16
                   }}
                 >
-                  3/3
+                  2/2
                 </Text>
               </CardItem>
             </Card>
             <YouTube
-              videoId={'-oD7B7oiBtw'}
+              videoId={'foyufD52aog'}
               play={false}
               // fullscreen={true}
               loop={false}
@@ -530,9 +461,85 @@ export default class CurrentVideos extends React.Component {
               onError={e => this.setState({ error: e.error })}
               style={{ alignSelf: 'stretch', height: 300 }}
             />
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  fontFamily: 'avenir',
+                  color: 'white',
+                  fontSize: 16,
+                  fontWeight: 'bold'
+                }}
+              >
+                Scored:{' '}
+              </Text>
+              {this.state.scored ? (
+                <Icon name="check-circle" type="material" color="green" />
+              ) : (
+                <Icon name="cancel" type="material" color="red" />
+              )}
+            </View>
+            <Button
+              type="outline"
+              icon={
+                <Icon
+                  name="thermometer"
+                  type="font-awesome"
+                  size={25}
+                  color="white"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
+              buttonStyle={{
+                borderColor: 'white'
+              }}
+              title="score this trailer"
+              titleStyle={{ color: 'white' }}
+              onPress={this.toggleModal}
+            />
+            {this.renderScoreModal()}
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  fontFamily: 'avenir',
+                  color: 'white',
+                  fontSize: 16,
+                  fontWeight: 'bold'
+                }}
+              >
+                {' '}
+                Chatter:{' '}
+              </Text>
+              {this.state.chatted ? (
+                <Icon name="check-circle" type="material" color="green" />
+              ) : (
+                <Icon name="cancel" type="material" color="red" />
+              )}
+            </View>
+            <Button
+              type="outline"
+              icon={
+                <Icon
+                  name="chat"
+                  type="entypo"
+                  size={25}
+                  color="white"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
+              buttonStyle={{
+                borderColor: 'white'
+              }}
+              title="splatter chatter"
+              titleStyle={{ color: 'white' }}
+              onPress={this.toggleModal2}
+            />
+            {this.renderSplatterModal()}
             <TouchableOpacity
               onPress={() =>
-                this.openInfo('https://www.imdb.com/title/tt0448115/')
+                this.openInfo('https://www.imdb.com/title/tt6139732/')
               }
             >
               <Text
