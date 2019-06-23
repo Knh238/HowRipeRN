@@ -10,41 +10,6 @@ import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class LeagueSelectionScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'How Ripe',
-      headerStyle: {
-        backgroundColor: '#6e3737',
-        borderBottomWidth: 0
-      },
-      headerTitleStyle: {
-        color: 'white',
-        fontSize: 20,
-        fontFamily: 'Avenir',
-        fontWeight: 'bold'
-      },
-      headerLeft: (
-        <Button
-          type="clear"
-          onPress={() => navigation.goBack()}
-          onPress={() => navigation.navigate('LeagueSelectionScreen')}
-          icon={<Icon name="add" type="material" color="white" size={30} />}
-        />
-      ),
-      headerRight: (
-        <Avatar
-          size="medium"
-          source={{ uri: 'https://loremflickr.com/320/240' }}
-          rounded
-          title="MT"
-          containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          onPress={() => navigation.navigate('Profile')}
-          activeOpacity={0.7}
-        />
-      )
-    };
-  };
-
   constructor(props) {
     super(props);
     this.state = { email: '', password: '', errorMessage: '' };
@@ -57,7 +22,8 @@ export default class LeagueSelectionScreen extends React.Component {
         {this.state.errorMessage ? (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
         ) : null}
-        <View style={{ flex: 1, marginTop: 180, marginBottom: 20 }}>
+
+        <View style={{ flex: 1, marginTop: 160, marginBottom: 20 }}>
           <LinearGradient
             colors={['#633836', '#5b2d2d', '#402423']}
             style={{
@@ -159,6 +125,19 @@ export default class LeagueSelectionScreen extends React.Component {
             </Text>
           </LinearGradient>
         </TouchableOpacity>
+        <Button
+          type="clear"
+          style={{ marginBottom: 50 }}
+          onPress={() => this.props.navigation.navigate('Home')}
+          icon={
+            <Icon
+              name="chevron-circle-left"
+              type="font-awesome"
+              color="white"
+              size={30}
+            />
+          }
+        />
       </View>
     );
   }

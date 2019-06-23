@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+import firebase from '../../.././firebase';
 
 export default class LandingScreen extends React.Component {
   constructor(props) {
@@ -17,8 +18,11 @@ export default class LandingScreen extends React.Component {
     this.state = { currentUser: null, userName: '', authenticated: false };
   }
   componentDidMount() {
-    const { currentUser } = firebase.auth();
-    this.setState({ currentUser });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+        this.props.navigation.navigate('Home');
+      }
+    });
   }
   // doesUserExist(user) {
   //   const userRef = db.collection('users').doc(user.uid);
