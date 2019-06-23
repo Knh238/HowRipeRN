@@ -10,11 +10,7 @@ import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelection
 
 import CreateLeague from '../screens/LeagueAdminScreens/CreateLeague';
 import LeagueSettings from '../screens/LeagueAdminScreens/LeagueSettings';
-// export default createAppContainer(
-//   createSwitchNavigator({
-//     Main: MainTabNavigator
-//   })
-// );
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 
 export default createAppContainer(
   createSwitchNavigator(
@@ -27,7 +23,8 @@ export default createAppContainer(
       Main: MainTabNavigator,
       LeagueSelectionScreen: LeagueSelectionScreen,
       CreateLeague: CreateLeague,
-      LeagueSettings: LeagueSettings
+      LeagueSettings: LeagueSettings,
+      Profile: ProfileScreen
     },
     {
       initialRouteName: 'LandingScreen'

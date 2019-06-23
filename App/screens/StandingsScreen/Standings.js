@@ -52,7 +52,7 @@ export default class Standings extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { selected: 'detailed' };
+    this.state = { selected: 'snapshot' };
   }
 
   handleSelect(view) {

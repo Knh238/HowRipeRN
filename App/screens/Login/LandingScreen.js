@@ -10,11 +10,53 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+
 export default class LandingScreen extends React.Component {
-  // static navigationOptions = {
-  //   header: null
-  // };
-  state = { email: '', password: '', errorMessage: null };
+  constructor(props) {
+    super(props);
+    this.state = { currentUser: null, userName: '', authenticated: false };
+  }
+  componentDidMount() {
+    const { currentUser } = firebase.auth();
+    this.setState({ currentUser });
+  }
+  // doesUserExist(user) {
+  //   const userRef = db.collection('users').doc(user.uid);
+  //   return userRef.get().then(function(dbUser) {
+  //     if (dbUser.exists) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  // }
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     if (user != null) {
+  //       doesUserExist(user).then(exists => {
+  //         if (exists) {
+  //           store.dispatch(logUserIn(user));
+  //         } else {
+  //           this.setState({
+  //             ...this.state,
+  //             initialized: true,
+  //             errorMessage: null
+  //           });
+  //           this.props.navigation.navigate('InviteCodePage');
+  //         }
+  //       });
+  //     } else {
+  //       this.setState({ ...this.state, initialized: true });
+  //     }
+  //   });
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   if (!prevProps.authenticated && this.props.authenticated) {
+  //     this.setState({ ...this.state, authenticated: true });
+  //     this.props.navigation.navigate('MainScreen');
+  //   }
+  // }
   render() {
     return (
       <View style={styles.container}>
@@ -212,48 +254,6 @@ export default class LandingScreen extends React.Component {
             </View>
           </LinearGradient>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            marginTop: 650,
-            position: 'absolute',
-            borderWidth: 1,
-            borderColor: 'white'
-          }}
-          onPress={() =>
-            this.props.navigation.navigate('LeagueSelectionScreen')
-          }
-        >
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'avenir',
-              paddingLeft: 5,
-              fontSize: 15,
-              alignSelf: 'center'
-            }}
-          >
-            sign up for a league
-          </Text>
-        </TouchableOpacity>
-        {/* <Button
-          title="sign up for a league"
-          style={{
-            marginTop: 50,
-            position: 'absolute',
-            height: '5%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center'
-          }}
-          onPress={() =>
-            this.props.navigation.navigate('LeagueSelectionScreen')
-          }
-        /> */}
       </View>
     );
   }

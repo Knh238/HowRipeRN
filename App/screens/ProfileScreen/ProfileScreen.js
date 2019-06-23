@@ -12,34 +12,12 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
-import LeaderBoard from './LeaderBoard';
-import CurrentVideos from './CurrentVideos';
+import UserDetailsScreen from './UserDetailsScreen';
+import UserFavoritesScreen from './UserFavoritesScreen';
 import firebase from '../../.././firebase';
 import db from '../../.././db';
 
-// function testDB() {
-//   firebase.auth().onAuthStateChanged(user => {
-//     if (user != null) {
-//       Alert.alert('this is state in home screen', user.uid);
-//       db.collection('users')
-//         .add({
-//           first: user.uid,
-//           last: user.email,
-//           born: 1815
-//         })
-//         .then(function(docRef) {
-//           console.log('Document written with ID: ', docRef.id);
-//         })
-//         .catch(function(error) {
-//           console.error('Error adding document: ', error);
-//         });
-//     }
-//   });
-// }
-
-// testDB();
-
-export default class HomeScreen extends React.Component {
+export default class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'How Ripe',
@@ -57,8 +35,7 @@ export default class HomeScreen extends React.Component {
         <Button
           type="clear"
           onPress={() => navigation.goBack()}
-          onPress={() => navigation.navigate('LeagueSelectionScreen')}
-          icon={<Icon name="add" type="material" color="white" size={30} />}
+          icon={<Icon name="menu" type="material" color="white" size={30} />}
         />
       ),
       headerRight: (
@@ -68,13 +45,12 @@ export default class HomeScreen extends React.Component {
           rounded
           title="MT"
           containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          onPress={() => navigation.navigate('Profile')}
+          onPress={() => console.log('Works!')}
           activeOpacity={0.7}
         />
       )
     };
   };
-
   constructor(props) {
     super(props);
     this.state = { currentUser: null, userName: '' };
@@ -86,12 +62,14 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    console.log('state here------------------------------', this.state);
     StatusBar.setBarStyle('light-content', true);
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <CurrentVideos />
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#6e3737' }}>
+        <View style={{ flex: 2 }}>
+          <UserDetailsScreen />
+        </View>
+        <View style={{ flex: 2 }}>
+          <UserFavoritesScreen />
         </View>
       </SafeAreaView>
     );

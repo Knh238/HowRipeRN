@@ -51,6 +51,34 @@ export default class LeaderBoard extends React.Component {
         <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
           League of Champs / Global
         </Text>
+        <TouchableOpacity
+          style={{
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            marginTop: 650,
+            position: 'absolute',
+            borderWidth: 1,
+            borderColor: 'white'
+          }}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        >
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'avenir',
+              paddingLeft: 5,
+              fontSize: 15,
+              alignSelf: 'center'
+            }}
+          >
+            sign up for a league
+          </Text>
+        </TouchableOpacity>
         {list.map((l, i) => (
           <ListItem
             style={{

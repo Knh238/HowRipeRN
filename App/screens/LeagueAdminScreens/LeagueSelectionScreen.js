@@ -4,14 +4,47 @@ import {
   Text,
   TextInput,
   View,
-  Button,
   TouchableOpacity
 } from 'react-native';
+import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
-// 886a6a
-// 816565
 export default class LeagueSelectionScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'How Ripe',
+      headerStyle: {
+        backgroundColor: '#6e3737',
+        borderBottomWidth: 0
+      },
+      headerTitleStyle: {
+        color: 'white',
+        fontSize: 20,
+        fontFamily: 'Avenir',
+        fontWeight: 'bold'
+      },
+      headerLeft: (
+        <Button
+          type="clear"
+          onPress={() => navigation.goBack()}
+          onPress={() => navigation.navigate('LeagueSelectionScreen')}
+          icon={<Icon name="add" type="material" color="white" size={30} />}
+        />
+      ),
+      headerRight: (
+        <Avatar
+          size="medium"
+          source={{ uri: 'https://loremflickr.com/320/240' }}
+          rounded
+          title="MT"
+          containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
+          onPress={() => navigation.navigate('Profile')}
+          activeOpacity={0.7}
+        />
+      )
+    };
+  };
+
   constructor(props) {
     super(props);
     this.state = { email: '', password: '', errorMessage: '' };
