@@ -44,7 +44,7 @@ export default class LeaderBoard extends React.Component {
 
   render() {
     return (
-      <View style={{ justifyContent: 'center', fontFamily: 'Avenir' }}>
+      <View style={styles.container}>
         <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
           LEADERBOARD
         </Text>
@@ -82,7 +82,7 @@ export default class LeaderBoard extends React.Component {
         {list.map((l, i) => (
           <ListItem
             style={{
-              backgroundColor: '#441515',
+              backgroundColor: '#3c1715',
               marginLeft: 50,
               marginRight: 50
             }}
@@ -122,7 +122,8 @@ export default class LeaderBoard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#441515',
-    fontFamily: 'AvenirBold'
+    backgroundColor: '#3c1715',
+    justifyContent: 'center',
+    fontFamily: 'Avenir'
   }
 });

@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   View,
   Linking,
-  WebView
+  WebView,
+  ImageBackground
 } from 'react-native';
 import YouTube from 'react-native-youtube';
 import Modal from 'react-native-modal';
@@ -213,243 +214,329 @@ export default class CurrentVideos extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <LeaderBoard />
-        <View
+        <ImageBackground
+          source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
           style={{
-            flex: 1,
-            paddingTop: 10,
-            justifyContent: 'center',
-            alignItems: 'center'
+            width: '100%',
+            height: '100%'
           }}
+          overflow="hidden"
+          resizeMode="contain"
         >
+          <LeaderBoard />
           <View
             style={{
-              display: 'flex',
-              flexDirection: 'row',
-              // flexWrap: 'wrap',
-              height: '2%',
-              justifyContent: 'space-around',
-              backgroundColor: '#4b1818'
+              flex: 1,
+              paddingTop: 10,
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
-            <LinearGradient
-              colors={['#6b3535', '#5b2d2d', '#492424']}
+            <View
               style={{
-                flex: 1,
+                display: 'flex',
                 flexDirection: 'row',
-                borderTopLeftRadius: 10,
-                borderBottomLeftRadius: 10,
-                justifyContent: 'space-between'
+                // flexWrap: 'wrap',
+                height: '2%',
+                justifyContent: 'space-around',
+                backgroundColor: '#4b1818'
               }}
             >
-              <Text
+              <LinearGradient
+                colors={['#6b3535', '#5b2d2d', '#492424']}
                 style={{
-                  color: 'white',
-                  fontFamily: 'avenir',
-                  paddingLeft: 5,
-                  fontSize: 20
+                  flex: 1,
+                  flexDirection: 'row',
+                  borderTopLeftRadius: 10,
+                  borderBottomLeftRadius: 10,
+                  justifyContent: 'space-between'
                 }}
               >
-                Week 3
-              </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    paddingLeft: 8,
+                    fontSize: 22,
+                    fontWeight: '800'
+                  }}
+                >
+                  WEEK 3
+                </Text>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row'
+                  }}
+                >
+                  <Icon name="check-circle" type="material" color="green" />
+                  <Icon name="cancel" type="material" color="red" />
+                </View>
+              </LinearGradient>
+            </View>
+
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderColor: '#A89C9C',
+                flex: 1,
+                width: '100%',
+                paddingBottom: 15
+              }}
+            >
+              <Card
+                fullWidth
+                transparent
+                style={{ backgroundColor: '#3c1715' }}
+              >
+                <CardItem
+                  style={{
+                    backgroundColor: '#3c1715',
+                    flexDirection: 'row',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#A39595',
+                      fontFamily: 'Avenir',
+                      alignSelf: 'center',
+                      fontSize: 22,
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    Avengers End Game
+                  </Text>
+                </CardItem>
+              </Card>
+              <YouTube
+                videoId={'hA6hldpSTF8'}
+                play={false}
+                loop={false}
+                apiKey={config.API_KEY}
+                controls={1}
+                onReady={e => this.setState({ isReady: true })}
+                onChangeState={e => this.setState({ status: e.state })}
+                onChangeQuality={e => this.setState({ quality: e.quality })}
+                onError={e => this.setState({ error: e.error })}
+                style={{ alignSelf: 'stretch', height: 300 }}
+              />
               <View
                 style={{
-                  display: 'flex',
-                  flexDirection: 'row'
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignContent: 'center'
                 }}
               >
-                <Icon name="check-circle" type="material" color="green" />
-                <Icon name="cancel" type="material" color="red" />
+                <Input
+                  inputStyle={{
+                    width: 80,
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    color: 'white'
+                  }}
+                  inputContainerStyle={{
+                    width: 90,
+                    marginTop: 20,
+                    alignSelf: 'center',
+                    backgroundColor: '#6E3737'
+                  }}
+                  // rightIcon={
+                  //   <Icon
+                  //     name="percent"
+                  //     type="font-awesome"
+                  //     size={25}
+                  //     color="white"
+                  //   />
+                  // }
+                />
               </View>
-            </LinearGradient>
-          </View>
-
-          <View
-            style={{
-              borderBottomWidth: 1,
-              borderColor: '#A89C9C',
-              flex: 1,
-              width: '100%',
-              paddingBottom: 15
-            }}
-          >
-            <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-              <CardItem
-                style={{ backgroundColor: '#441515', flexDirection: 'row' }}
+              <TouchableOpacity
+                onPress={() =>
+                  this.openInfo(
+                    'https://www.imdb.com/title/tt4154796/?ref_=nv_sr_1?ref_=nv_sr_1'
+                  )
+                }
               >
                 <Text
                   style={{
                     color: '#A89C9C',
                     fontFamily: 'avenir',
-                    alignSelf: 'center',
                     fontSize: 20,
-                    fontWeight: 'bold'
+                    textDecorationLine: 'underline',
+                    alignSelf: 'center'
                   }}
                 >
-                  Avengers End Game
+                  more about the cast
                 </Text>
-
-                <Text
-                  style={{
-                    paddingLeft: 30,
-                    color: '#A89C9C',
-                    alignSelf: 'flex-end',
-                    fontFamily: 'avenir',
-                    fontSize: 16
-                  }}
-                >
-                  1/2
-                </Text>
-              </CardItem>
-            </Card>
-            <YouTube
-              videoId={'hA6hldpSTF8'}
-              play={false}
-              loop={false}
-              apiKey={config.API_KEY}
-              controls={1}
-              onReady={e => this.setState({ isReady: true })}
-              onChangeState={e => this.setState({ status: e.state })}
-              onChangeQuality={e => this.setState({ quality: e.quality })}
-              onError={e => this.setState({ error: e.error })}
-              style={{ alignSelf: 'stretch', height: 300 }}
-            />
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontFamily: 'avenir',
-                  color: 'white',
-                  fontSize: 16,
-                  fontWeight: 'bold'
-                }}
-              >
-                Scored:{' '}
-              </Text>
-              {this.state.scored ? (
-                <Icon name="check-circle" type="material" color="green" />
-              ) : (
-                <Icon name="cancel" type="material" color="red" />
-              )}
+              </TouchableOpacity>
             </View>
-            <Button
-              type="outline"
-              icon={
-                <Icon
-                  name="thermometer"
-                  type="font-awesome"
-                  size={25}
-                  color="white"
-                  iconStyle={{ marginRight: 10 }}
-                />
-              }
-              buttonStyle={{
-                borderColor: 'white'
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderColor: '#A89C9C',
+                flex: 1,
+                width: '100%',
+                paddingBottom: 15
               }}
-              title="score this trailer"
-              titleStyle={{ color: 'white' }}
-              onPress={this.toggleModal}
-            />
-            {this.renderScoreModal()}
-
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontFamily: 'avenir',
-                  color: 'white',
-                  fontSize: 16,
-                  fontWeight: 'bold'
-                }}
-              >
-                {' '}
-                Chatter:{' '}
-              </Text>
-              {this.state.chatted ? (
-                <Icon name="check-circle" type="material" color="green" />
-              ) : (
-                <Icon name="cancel" type="material" color="red" />
-              )}
-            </View>
-            <Button
-              type="outline"
-              icon={
-                <Icon
-                  name="chat"
-                  type="entypo"
-                  size={25}
-                  color="white"
-                  iconStyle={{ marginRight: 10 }}
-                />
-              }
-              buttonStyle={{
-                borderColor: 'white'
-              }}
-              title="splatter chatter"
-              titleStyle={{ color: 'white' }}
-              onPress={this.toggleModal2}
-            />
-            {this.renderSplatterModal()}
-            <TouchableOpacity
-              onPress={() =>
-                this.openInfo(
-                  'https://www.imdb.com/title/tt4154796/?ref_=nv_sr_1?ref_=nv_sr_1'
-                )
-              }
             >
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  fontFamily: 'avenir',
-                  fontSize: 20,
-                  textDecorationLine: 'underline',
-                  alignSelf: 'center'
-                }}
+              <Card
+                fullWidth
+                transparent
+                style={{ backgroundColor: '#3c1715' }}
               >
-                more about the cast
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              borderBottomWidth: 1,
-              borderColor: '#A89C9C',
-              flex: 1,
-              width: '100%',
-              paddingBottom: 15
-            }}
-          >
-            <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-              <CardItem
-                style={{ backgroundColor: '#441515', flexDirection: 'row' }}
-              >
+                <CardItem
+                  style={{
+                    backgroundColor: '#3c1715',
+                    flexDirection: 'row',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#A39595',
+                      fontFamily: 'Avenir',
+                      alignSelf: 'center',
+                      fontSize: 22,
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    Aladdin(2019)
+                  </Text>
+                </CardItem>
+              </Card>
+              <YouTube
+                videoId={'foyufD52aog'}
+                play={false}
+                // fullscreen={true}
+                loop={false}
+                apiKey={config.API_KEY}
+                controls={1}
+                onReady={e => this.setState({ isReady: true })}
+                onChangeState={e => this.setState({ status: e.state })}
+                onChangeQuality={e => this.setState({ quality: e.quality })}
+                onError={e => this.setState({ error: e.error })}
+                style={{ alignSelf: 'stretch', height: 300 }}
+              />
+              <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Text
                   style={{
-                    color: '#A89C9C',
-                    fontFamily: 'avenir',
                     alignSelf: 'center',
-                    fontSize: 20,
+                    fontFamily: 'avenir',
+                    color: 'white',
+                    fontSize: 16,
                     fontWeight: 'bold'
                   }}
                 >
-                  Aladdin(2019)
+                  Scored:{' '}
                 </Text>
+                {this.state.scored ? (
+                  <Icon name="check-circle" type="material" color="green" />
+                ) : (
+                  <Icon name="cancel" type="material" color="red" />
+                )}
+              </View>
+              <Button
+                type="outline"
+                icon={
+                  <Icon
+                    name="thermometer"
+                    type="font-awesome"
+                    size={25}
+                    color="white"
+                    iconStyle={{ marginRight: 10 }}
+                  />
+                }
+                buttonStyle={{
+                  borderColor: 'white'
+                }}
+                title="score this trailer"
+                titleStyle={{ color: 'white' }}
+                onPress={this.toggleModal}
+              />
+              {this.renderScoreModal()}
 
+              <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Text
                   style={{
-                    paddingLeft: 30,
-                    color: '#A89C9C',
-                    alignSelf: 'flex-end',
+                    alignSelf: 'center',
                     fontFamily: 'avenir',
-                    fontSize: 16
+                    color: 'white',
+                    fontSize: 16,
+                    fontWeight: 'bold'
                   }}
                 >
-                  2/2
+                  {' '}
+                  Chatter:{' '}
+                </Text>
+                {this.state.chatted ? (
+                  <Icon name="check-circle" type="material" color="green" />
+                ) : (
+                  <Icon name="cancel" type="material" color="red" />
+                )}
+              </View>
+              <Button
+                type="outline"
+                icon={
+                  <Icon
+                    name="chat"
+                    type="entypo"
+                    size={25}
+                    color="white"
+                    iconStyle={{ marginRight: 10 }}
+                  />
+                }
+                buttonStyle={{
+                  borderColor: 'white'
+                }}
+                title="splatter chatter"
+                titleStyle={{ color: 'white' }}
+                onPress={this.toggleModal2}
+              />
+              {this.renderSplatterModal()}
+              <TouchableOpacity
+                onPress={() =>
+                  this.openInfo('https://www.imdb.com/title/tt6139732/')
+                }
+              >
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontFamily: 'avenir',
+                    fontSize: 20,
+                    textDecorationLine: 'underline',
+                    alignSelf: 'center'
+                  }}
+                >
+                  more about the cast
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <Card fullWidth transparent style={{ backgroundColor: '#3c1715' }}>
+              <CardItem style={{ backgroundColor: '#3c1715' }}>
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    fontFamily: 'avenir',
+                    fontSize: 20
+                  }}
+                >
+                  Film title
+                </Text>
+                <Text
+                  style={{
+                    color: '#A89C9C',
+                    justifyContent: 'flex-end',
+                    fontFamily: 'avenir',
+                    fontSize: 20
+                  }}
+                >
+                  3/3
                 </Text>
               </CardItem>
             </Card>
             <YouTube
-              videoId={'foyufD52aog'}
+              videoId={'CtWoJ-YhTeg'}
               play={false}
               // fullscreen={true}
               loop={false}
@@ -461,147 +548,18 @@ export default class CurrentVideos extends React.Component {
               onError={e => this.setState({ error: e.error })}
               style={{ alignSelf: 'stretch', height: 300 }}
             />
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontFamily: 'avenir',
-                  color: 'white',
-                  fontSize: 16,
-                  fontWeight: 'bold'
-                }}
-              >
-                Scored:{' '}
-              </Text>
-              {this.state.scored ? (
-                <Icon name="check-circle" type="material" color="green" />
-              ) : (
-                <Icon name="cancel" type="material" color="red" />
-              )}
-            </View>
-            <Button
-              type="outline"
-              icon={
-                <Icon
-                  name="thermometer"
-                  type="font-awesome"
-                  size={25}
-                  color="white"
-                  iconStyle={{ marginRight: 10 }}
-                />
-              }
-              buttonStyle={{
-                borderColor: 'white'
+            <Text
+              style={{
+                color: '#A89C9C',
+                fontFamily: 'avenir',
+                fontSize: 20,
+                alignSelf: 'center'
               }}
-              title="score this trailer"
-              titleStyle={{ color: 'white' }}
-              onPress={this.toggleModal}
-            />
-            {this.renderScoreModal()}
-
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontFamily: 'avenir',
-                  color: 'white',
-                  fontSize: 16,
-                  fontWeight: 'bold'
-                }}
-              >
-                {' '}
-                Chatter:{' '}
-              </Text>
-              {this.state.chatted ? (
-                <Icon name="check-circle" type="material" color="green" />
-              ) : (
-                <Icon name="cancel" type="material" color="red" />
-              )}
-            </View>
-            <Button
-              type="outline"
-              icon={
-                <Icon
-                  name="chat"
-                  type="entypo"
-                  size={25}
-                  color="white"
-                  iconStyle={{ marginRight: 10 }}
-                />
-              }
-              buttonStyle={{
-                borderColor: 'white'
-              }}
-              title="splatter chatter"
-              titleStyle={{ color: 'white' }}
-              onPress={this.toggleModal2}
-            />
-            {this.renderSplatterModal()}
-            <TouchableOpacity
-              onPress={() =>
-                this.openInfo('https://www.imdb.com/title/tt6139732/')
-              }
             >
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  fontFamily: 'avenir',
-                  fontSize: 20,
-                  textDecorationLine: 'underline',
-                  alignSelf: 'center'
-                }}
-              >
-                more about the cast
-              </Text>
-            </TouchableOpacity>
+              more about the cast
+            </Text>
           </View>
-          <Card fullWidth transparent style={{ backgroundColor: '#441515' }}>
-            <CardItem style={{ backgroundColor: '#441515' }}>
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  fontFamily: 'avenir',
-                  fontSize: 20
-                }}
-              >
-                Film title
-              </Text>
-              <Text
-                style={{
-                  color: '#A89C9C',
-                  justifyContent: 'flex-end',
-                  fontFamily: 'avenir',
-                  fontSize: 20
-                }}
-              >
-                3/3
-              </Text>
-            </CardItem>
-          </Card>
-          <YouTube
-            videoId={'CtWoJ-YhTeg'}
-            play={false}
-            // fullscreen={true}
-            loop={false}
-            apiKey={config.API_KEY}
-            controls={1}
-            onReady={e => this.setState({ isReady: true })}
-            onChangeState={e => this.setState({ status: e.state })}
-            onChangeQuality={e => this.setState({ quality: e.quality })}
-            onError={e => this.setState({ error: e.error })}
-            style={{ alignSelf: 'stretch', height: 300 }}
-          />
-          <Text
-            style={{
-              color: '#A89C9C',
-              fontFamily: 'avenir',
-              fontSize: 20,
-              alignSelf: 'center'
-            }}
-          >
-            more about the cast
-          </Text>
-        </View>
+        </ImageBackground>
       </ScrollView>
     );
   }
@@ -610,7 +568,7 @@ export default class CurrentVideos extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#441515',
+    backgroundColor: '#3c1715',
     fontFamily: 'Avenir'
   },
   videoBackground: {

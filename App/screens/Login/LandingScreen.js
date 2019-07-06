@@ -6,7 +6,8 @@ import {
   View,
   Button,
   TouchableOpacity,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,7 +16,16 @@ import firebase from '../../.././firebase';
 export default class LandingScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentUser: null, userName: '', authenticated: false };
+    this.state = {
+      currentUser: null,
+      userName: '',
+      authenticated: false,
+      scrollIcon: 'redReel',
+      scrollText: 'Watch Trailers',
+      currentSelection: 1
+    };
+    this.renderIcon = this.renderIcon.bind(this);
+    this.renderScrollDots = this.renderScrollDots.bind(this);
   }
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
@@ -24,6 +34,263 @@ export default class LandingScreen extends React.Component {
       }
     });
   }
+
+  renderText() {
+    if (this.state.scrollIcon === 'predictIcon') {
+      return (
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'Avenir',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            fontSize: 24,
+            marginTop: '35%',
+            fontWeight: '500'
+          }}
+        >
+          {this.state.scrollText}
+        </Text>
+      );
+    } else {
+      return (
+        <Text
+          style={{
+            color: 'white',
+            fontFamily: 'Avenir',
+            alignSelf: 'center',
+            fontSize: 28,
+            marginTop: '35%',
+            fontWeight: '500'
+          }}
+        >
+          {this.state.scrollText}
+        </Text>
+      );
+    }
+  }
+  renderIcon() {
+    if (this.state.scrollIcon === 'redReel') {
+      return (
+        <Image
+          source={require(`HowRipeMobile/imageAssets/redReel.png`)}
+          style={{
+            width: 175,
+            height: 175,
+            alignSelf: 'center',
+            marginTop: 30
+          }}
+        />
+      );
+    }
+    if (this.state.scrollIcon === 'predictIcon') {
+      return (
+        <Image
+          source={require(`HowRipeMobile/imageAssets/predictIcon.png`)}
+          style={{
+            width: 200,
+            height: 175,
+            alignSelf: 'center',
+            marginTop: 10
+          }}
+          resizeMode="contain"
+        />
+      );
+    }
+    if (this.state.scrollIcon === 'earnPointsIcon') {
+      return (
+        <Image
+          source={require(`HowRipeMobile/imageAssets/earnPointsIcon.png`)}
+          style={{
+            width: 210,
+            height: 210,
+            alignSelf: 'center',
+            marginTop: 5
+          }}
+          resizeMode="contain"
+        />
+      );
+    }
+  }
+
+  renderScrollDots() {
+    if (this.state.scrollIcon === 'redReel') {
+      return (
+        <View
+          style={{
+            display: 'flex',
+            flex: 1,
+            marginTop: 20,
+            flexDirection: 'row',
+            justifyContent: 'center'
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#A11123',
+              marginRight: '7%'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'redReel',
+                scrollText: 'Watch Trailers'
+              })
+            }
+          />
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#8a6c6c',
+              marginRight: '7%'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'predictIcon',
+                scrollText: "Predict each movie's Rotten Tomatoes Score"
+              })
+            }
+          />
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#8a6c6c'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'earnPointsIcon',
+                scrollText: 'Earn Points'
+              })
+            }
+          />
+        </View>
+      );
+    }
+    if (this.state.scrollIcon === 'predictIcon') {
+      return (
+        <View
+          style={{
+            display: 'flex',
+            flex: 1,
+            marginTop: 20,
+            flexDirection: 'row',
+            justifyContent: 'center'
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#8a6c6c',
+              marginRight: '7%'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'redReel',
+                scrollText: 'Watch Trailers'
+              })
+            }
+          />
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#A11123',
+              marginRight: '7%'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'predictIcon',
+                scrollText: "Predict each movie's Rotten Tomatoes Score"
+              })
+            }
+          />
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#8a6c6c'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'earnPointsIcon',
+                scrollText: 'Earn Points'
+              })
+            }
+          />
+        </View>
+      );
+    }
+    if (this.state.scrollIcon === 'earnPointsIcon') {
+      return (
+        <View
+          style={{
+            display: 'flex',
+            flex: 1,
+            marginTop: 20,
+            flexDirection: 'row',
+            justifyContent: 'center'
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#8a6c6c',
+              marginRight: '7%'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'redReel',
+                scrollText: 'Watch Trailers'
+              })
+            }
+          />
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#8a6c6c',
+              marginRight: '7%'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'predictIcon',
+                scrollText: "Predict each movie's Rotten Tomatoes Score"
+              })
+            }
+          />
+
+          <TouchableOpacity
+            style={{
+              height: 16,
+              width: 16,
+              borderRadius: 8,
+              backgroundColor: '#A11123'
+            }}
+            onPress={() =>
+              this.setState({
+                scrollIcon: 'earnPointsIcon',
+                scrollText: 'Earn Points'
+              })
+            }
+          />
+        </View>
+      );
+    }
+  }
+
   // doesUserExist(user) {
   //   const userRef = db.collection('users').doc(user.uid);
   //   return userRef.get().then(function(dbUser) {
@@ -62,202 +329,161 @@ export default class LandingScreen extends React.Component {
   //   }
   // }
   render() {
+    const scrollIcon = this.state.scrollIcon;
     return (
       <View style={styles.container}>
-        <View style={{ flex: 1 }}>
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'avenir',
-              alignSelf: 'center',
-              fontSize: 28,
-              marginTop: 50
-            }}
-          >
-            Watch Trailers
-          </Text>
-
-          <Image
-            source={require('HowRipeMobile/imageAssets/redReel.png')}
-            style={{
-              width: 180,
-              height: 180,
-              alignSelf: 'center',
-              marginTop: 50
-            }}
-          />
-          <View
-            style={{
-              display: 'flex',
-              flex: 1,
-              marginTop: 20,
-              flexDirection: 'row',
-              justifyContent: 'center'
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 8,
-                backgroundColor: '#942328',
-                marginRight: '7%'
-              }}
-            />
-            <TouchableOpacity
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 8,
-                backgroundColor: '#8a6c6c',
-                marginRight: '7%'
-              }}
-            />
-
-            <TouchableOpacity
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 8,
-                backgroundColor: '#8a6c6c'
-              }}
-            />
+        <ImageBackground
+          source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
+          overflow="hidden"
+          resizeMode="contain"
+        >
+          <View style={{ flex: 1 }}>
+            {this.renderText()}
+            {this.renderIcon()}
+            {this.renderScrollDots()}
           </View>
-        </View>
 
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '70%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            marginTop: 450,
-            position: 'absolute'
-          }}
-          onPress={() => this.props.navigation.navigate('SignUp')}
-        >
-          <LinearGradient
-            colors={['#902227', '#761b1f', '#5d1419']}
+          <TouchableOpacity
             style={{
-              flex: 1,
-              borderRadius: 5,
-              justifyContent: 'center'
+              height: '5%',
+              width: '70%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginTop: 450,
+              position: 'absolute'
             }}
+            onPress={() => this.props.navigation.navigate('SignUp')}
           >
-            <View
+            <LinearGradient
+              colors={['#A11123', '#761b1f', '#5d1419']}
               style={{
                 flex: 1,
-                flexDirection: 'row',
-                marginTop: 5,
-                justifyContent: 'center',
-                alignContent: 'center'
+                borderRadius: 5,
+                justifyContent: 'center'
               }}
             >
-              <Text
+              <View
                 style={{
-                  color: 'white',
-                  fontFamily: 'avenir',
-                  paddingLeft: 5,
-                  fontSize: 20
+                  flex: 1,
+                  flexDirection: 'row',
+                  marginTop: 5,
+                  justifyContent: 'center',
+                  alignContent: 'center'
                 }}
               >
-                Sign Up
-              </Text>
-            </View>
-          </LinearGradient>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '70%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            marginTop: 510,
-            position: 'absolute'
-          }}
-          onPress={() => this.props.navigation.navigate('Login')}
-        >
-          <LinearGradient
-            colors={['#633836', '#5b2d2d', '#402423']}
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    paddingLeft: 5,
+                    fontSize: 18,
+                    fontWeight: '500'
+                  }}
+                >
+                  Sign Up
+                </Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity
             style={{
-              flex: 1,
-              borderRadius: 5,
-              justifyContent: 'center'
+              height: '5%',
+              width: '70%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginTop: 510,
+              position: 'absolute'
             }}
+            onPress={() => this.props.navigation.navigate('Login')}
           >
-            <View
+            <LinearGradient
+              colors={['#6E3737', '#5b2d2d', '#402423']}
               style={{
                 flex: 1,
-                flexDirection: 'row',
-                marginTop: 5,
-                justifyContent: 'center',
-                alignContent: 'center'
+                borderRadius: 5,
+                justifyContent: 'center'
               }}
             >
-              <Text
+              <View
                 style={{
-                  color: 'white',
-                  fontFamily: 'avenir',
-                  paddingLeft: 5,
-                  fontSize: 20
+                  flex: 1,
+                  flexDirection: 'row',
+                  marginTop: 5,
+                  justifyContent: 'center',
+                  alignContent: 'center'
                 }}
               >
-                Login
-              </Text>
-            </View>
-          </LinearGradient>
-        </TouchableOpacity>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    paddingLeft: 5,
+                    fontSize: 18,
+                    fontWeight: '500'
+                  }}
+                >
+                  Login
+                </Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '70%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            marginTop: 570,
-            position: 'absolute'
-          }}
-          onPress={this.handleLogin}
-        >
-          <LinearGradient
-            colors={['#405993', '#263558']}
+          <TouchableOpacity
             style={{
-              flex: 1,
-              borderRadius: 5
+              height: '5%',
+              width: '70%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginTop: 570,
+              position: 'absolute'
             }}
+            onPress={this.handleLogin}
           >
-            <View
+            <LinearGradient
+              colors={['#3B5998', '#263558']}
               style={{
                 flex: 1,
-                flexDirection: 'row',
-                marginTop: 5,
-                justifyContent: 'center',
-                alignContent: 'center'
+                borderRadius: 5
               }}
             >
-              <Icon
-                name="facebook-official"
-                type="font-awesome"
-                color="white"
-                size={25}
-              />
-              <Text
+              <View
                 style={{
-                  color: 'white',
-                  fontFamily: 'avenir',
-                  paddingLeft: 5,
-                  fontSize: 15,
-                  alignSelf: 'center'
+                  flex: 1,
+                  flexDirection: 'row',
+                  marginTop: 5,
+                  justifyContent: 'center',
+                  alignContent: 'center'
                 }}
               >
-                Login with Facebook
-              </Text>
-            </View>
-          </LinearGradient>
-        </TouchableOpacity>
+                <Icon
+                  name="facebook-official"
+                  type="font-awesome"
+                  color="white"
+                  size={25}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    paddingLeft: 5,
+                    fontSize: 14,
+                    fontWeight: '500',
+                    alignSelf: 'center'
+                  }}
+                >
+                  Login with Facebook
+                </Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+        </ImageBackground>
       </View>
     );
   }

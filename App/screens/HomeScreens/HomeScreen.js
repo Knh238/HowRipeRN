@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
+  ImageBackground,
   Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
@@ -68,7 +69,8 @@ export default class HomeScreen extends React.Component {
           rounded
           title="MT"
           containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          onPress={() => navigation.navigate('Profile')}
+          // onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('ChooseIcon')}
           activeOpacity={0.7}
         />
       )
@@ -91,7 +93,17 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <CurrentVideos />
+          <ImageBackground
+            source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
+            style={{
+              width: '100%',
+              height: '100%'
+            }}
+            overflow="hidden"
+            resizeMode="contain"
+          >
+            <CurrentVideos />
+          </ImageBackground>
         </View>
       </SafeAreaView>
     );

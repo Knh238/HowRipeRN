@@ -5,7 +5,8 @@ import {
   TextInput,
   View,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
@@ -64,101 +65,110 @@ export default class LeagueSettings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.errorMessage ? (
-          <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-        ) : null}
-        <View style={{ flex: 1, marginTop: 60 }}>
-          <LinearGradient
-            colors={['#633836', '#5b2d2d', '#402423']}
-            style={{
-              height: '75%',
-              marginTop: '15%',
-              width: '85%',
-              borderRadius: 5,
-              justifyContent: 'center',
-              alignSelf: 'center',
-              alignContent: 'center'
-            }}
-          >
-            <View style={{ flex: 1 }}>
+        <ImageBackground
+          source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
+          overflow="hidden"
+          resizeMode="contain"
+        >
+          {this.state.errorMessage ? (
+            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+          ) : null}
+          <View style={{ flex: 1, marginTop: 60 }}>
+            <LinearGradient
+              colors={['#633836', '#5b2d2d', '#402423']}
+              style={{
+                height: '75%',
+                marginTop: '15%',
+                width: '85%',
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignContent: 'center'
+              }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'avenir',
+                    fontWeight: 'bold',
+                    alignSelf: 'center',
+                    fontSize: 20
+                  }}
+                >
+                  League Settings
+                </Text>
+              </View>
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  League Name"
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
               <Text
                 style={{
                   color: 'white',
                   fontFamily: 'avenir',
                   fontWeight: 'bold',
-                  alignSelf: 'center',
-                  fontSize: 20
+                  marginTop: 10,
+                  marginLeft: 15,
+                  fontSize: 18
                 }}
               >
-                League Settings
+                Require a pass phrase for new members?
               </Text>
-            </View>
-            <TextInput
-              style={styles.textInput}
-              autoCapitalize="none"
-              placeholder="  League Name"
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-            />
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                fontWeight: 'bold',
-                marginTop: 10,
-                marginLeft: 15,
-                fontSize: 18
-              }}
-            >
-              Require a pass phrase for new members?
-            </Text>
-            <View style={{ flex: 1, marginLeft: 30, flexDirection: 'row' }}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'center'
-                }}
-              >
-                <Icon
-                  name="circle-o"
-                  type="font-awesome"
-                  color="white"
-                  size={20}
-                />
-                <Text
+              <View style={{ flex: 1, marginLeft: 30, flexDirection: 'row' }}>
+                <View
                   style={{
-                    color: 'white',
-                    fontFamily: 'avenir',
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Icon
+                    name="circle-o"
+                    type="font-awesome"
+                    color="white"
+                    size={20}
+                  />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'avenir',
 
-                    marginLeft: 10,
-                    fontSize: 18
-                  }}
-                >
-                  Yes
-                </Text>
+                      marginLeft: 10,
+                      fontSize: 18
+                    }}
+                  >
+                    Yes
+                  </Text>
+                </View>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                  <Icon
+                    name="dot-circle-o"
+                    type="font-awesome"
+                    color="white"
+                    size={20}
+                  />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'avenir',
+                      // fontWeight: 'bold',
+                      marginLeft: 10,
+                      fontSize: 18
+                    }}
+                  >
+                    No
+                  </Text>
+                </View>
               </View>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <Icon
-                  name="dot-circle-o"
-                  type="font-awesome"
-                  color="white"
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'avenir',
-                    // fontWeight: 'bold',
-                    marginLeft: 10,
-                    fontSize: 18
-                  }}
-                >
-                  No
-                </Text>
-              </View>
-            </View>
-            {/* <TextInput
+              {/* <TextInput
               secureTextEntry
               style={styles.textInput}
               autoCapitalize="none"
@@ -166,112 +176,113 @@ export default class LeagueSettings extends React.Component {
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             /> */}
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                fontWeight: 'bold',
-                marginLeft: 15,
-                fontSize: 18,
-                textDecorationLine: 'underline'
-              }}
-            >
-              Select a start date:
-            </Text>
-            {this.upcomingRounds()}
-
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                fontWeight: 'bold',
-                fontSize: 18,
-                marginLeft: 15
-              }}
-            >
-              Require unique invite codes for each member?
-            </Text>
-            <View style={{ flex: 1, marginLeft: 10, flexDirection: 'row' }}>
-              <View
+              <Text
                 style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'center'
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  fontWeight: 'bold',
+                  marginLeft: 15,
+                  fontSize: 18,
+                  textDecorationLine: 'underline'
                 }}
               >
-                <Icon
-                  name="circle-o"
-                  type="font-awesome"
-                  color="white"
-                  size={20}
-                />
-                <Text
+                Select a start date:
+              </Text>
+              {this.upcomingRounds()}
+
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  fontWeight: 'bold',
+                  fontSize: 18,
+                  marginLeft: 15
+                }}
+              >
+                Require unique invite codes for each member?
+              </Text>
+              <View style={{ flex: 1, marginLeft: 10, flexDirection: 'row' }}>
+                <View
                   style={{
-                    color: 'white',
-                    fontFamily: 'avenir',
-                    marginLeft: 10,
-                    fontSize: 18
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'center'
                   }}
                 >
-                  Yes
-                </Text>
-              </View>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <Icon
-                  name="dot-circle-o"
-                  type="font-awesome"
-                  color="white"
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'avenir',
+                  <Icon
+                    name="circle-o"
+                    type="font-awesome"
+                    color="white"
+                    size={20}
+                  />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'avenir',
+                      marginLeft: 10,
+                      fontSize: 18
+                    }}
+                  >
+                    Yes
+                  </Text>
+                </View>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                  <Icon
+                    name="dot-circle-o"
+                    type="font-awesome"
+                    color="white"
+                    size={20}
+                  />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'avenir',
 
-                    marginLeft: 10,
-                    fontSize: 18
-                  }}
-                >
-                  No
-                </Text>
+                      marginLeft: 10,
+                      fontSize: 18
+                    }}
+                  >
+                    No
+                  </Text>
+                </View>
               </View>
-            </View>
-          </LinearGradient>
-        </View>
+            </LinearGradient>
+          </View>
 
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            marginTop: 630,
-            position: 'absolute'
-          }}
-          // onPress={this.handleLogin}
-        >
-          <LinearGradient
-            colors={['#902227', '#761b1f', '#5d1419']}
+          <TouchableOpacity
             style={{
-              flex: 1,
-              flexDirection: 'row',
-              borderRadius: 5,
-              justifyContent: 'center'
+              height: '5%',
+              width: '60%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              marginTop: 630,
+              position: 'absolute'
             }}
+            // onPress={this.handleLogin}
           >
-            <Text
+            <LinearGradient
+              colors={['#902227', '#761b1f', '#5d1419']}
               style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 20,
-                alignSelf: 'center'
+                flex: 1,
+                flexDirection: 'row',
+                borderRadius: 5,
+                justifyContent: 'center'
               }}
             >
-              Finish
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'avenir',
+                  paddingLeft: 5,
+                  fontSize: 20,
+                  alignSelf: 'center'
+                }}
+              >
+                Finish
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </ImageBackground>
       </View>
     );
   }
