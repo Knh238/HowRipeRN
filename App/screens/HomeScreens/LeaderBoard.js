@@ -70,7 +70,7 @@ export default class LeaderBoard extends React.Component {
           <Text
             style={{
               color: 'white',
-              fontFamily: 'avenir',
+              fontFamily: 'Avenir',
               paddingLeft: 5,
               fontSize: 15,
               alignSelf: 'center'

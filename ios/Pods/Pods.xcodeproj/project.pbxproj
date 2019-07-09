@@ -1,0 +1,931 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		116F0B6423598F7866287565EA5AD055 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */; };
+		24261F276D72BA2FE85FDD35B1F9C2B0 /* Pods-HowRipeMobile-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 06857770F2B0AFBC9B5C86859121ECAE /* Pods-HowRipeMobile-tvOS-dummy.m */; };
+		5BBCDD340B12C14BA979DB41D08D44A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */; };
+		B7B81B44415575D839995FA4DCC67E90 /* Pods-HowRipeMobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC8D323244A9B1B3ED1F07A41EF45EF /* Pods-HowRipeMobile-dummy.m */; };
+		BB2E1C2842838E22FF1C8A15C89D9F96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */; };
+		BCF2F26BC23BE1CCBB331FE35D5E24D7 /* Pods-HowRipeMobileTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5811662723E5E742741BA2EC6E8BC70C /* Pods-HowRipeMobileTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD687780965EDB6DF0A29E2AC8BFA481 /* Pods-HowRipeMobile-tvOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60099A3CA9163B46C968156E26F7D7F1 /* Pods-HowRipeMobile-tvOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D87618A3101F7598993970B693D8ECC9 /* Pods-HowRipeMobile-tvOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EB7C0226B827C5858477224ED482D7 /* Pods-HowRipeMobile-tvOSTests-dummy.m */; };
+		D9CA6B4251C39AF6C4A7479BF4599E0F /* Pods-HowRipeMobile-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 36CDFF671FEA2FA239075A81C3BD9E60 /* Pods-HowRipeMobile-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E466A32B4F970004165428CC41CB8AC2 /* Pods-HowRipeMobileTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7DD221E186352EC8665689467009E0 /* Pods-HowRipeMobileTests-dummy.m */; };
+		E71E2265935299A07775CBDB2D5B6E9A /* Pods-HowRipeMobile-tvOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1E4DB8C0803FE2CAA9B38E0E0684BDB /* Pods-HowRipeMobile-tvOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF6942D0E0AE01DA33833CE9DC957C66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A4450E96B89337D26C9DEF85FD1B6FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B8E410812466545E9713F5B6B3DFA10;
+			remoteInfo = "Pods-HowRipeMobile-tvOS";
+		};
+		F412AE08C8799DF3E11C90A0C3C5A5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 745965EB284AD833111718A9D4A5874B;
+			remoteInfo = "Pods-HowRipeMobile";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01803250AF5A9E970B3243BA72E863CB /* Pods-HowRipeMobile-tvOSTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobile-tvOSTests-Info.plist"; sourceTree = "<group>"; };
+		0464FAA38BA67D1D30EF5883C5A24AF8 /* Pods-HowRipeMobile-tvOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobile-tvOS-Info.plist"; sourceTree = "<group>"; };
+		06857770F2B0AFBC9B5C86859121ECAE /* Pods-HowRipeMobile-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HowRipeMobile-tvOS-dummy.m"; sourceTree = "<group>"; };
+		0F255B000808DB56F621AE08034B6851 /* Pods-HowRipeMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1E3D05BE1C555895ECF0F08B6EA5502E /* Pods-HowRipeMobileTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobileTests-Info.plist"; sourceTree = "<group>"; };
+		2A7DD221E186352EC8665689467009E0 /* Pods-HowRipeMobileTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HowRipeMobileTests-dummy.m"; sourceTree = "<group>"; };
+		3269D57A4278331BBEBEB70E36E1C446 /* Pods_HowRipeMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		356F7AF46720F3B8663D45C196D511C5 /* Pods-HowRipeMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		36CDFF671FEA2FA239075A81C3BD9E60 /* Pods-HowRipeMobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HowRipeMobile-umbrella.h"; sourceTree = "<group>"; };
+		3EF04E6BE803B79153E73429AA4C948A /* Pods-HowRipeMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobile.release.xcconfig"; sourceTree = "<group>"; };
+		5139C901A9EAFAF3C781F1B854F01A94 /* Pods-HowRipeMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		5811662723E5E742741BA2EC6E8BC70C /* Pods-HowRipeMobileTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HowRipeMobileTests-umbrella.h"; sourceTree = "<group>"; };
+		5ED3D06D8A39A1871FA9B3C346426E68 /* Pods-HowRipeMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		60099A3CA9163B46C968156E26F7D7F1 /* Pods-HowRipeMobile-tvOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HowRipeMobile-tvOSTests-umbrella.h"; sourceTree = "<group>"; };
+		616080A6C2084F059DA1BEC2A7CDD36D /* Pods-HowRipeMobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobile-acknowledgements.plist"; sourceTree = "<group>"; };
+		61EB7C0226B827C5858477224ED482D7 /* Pods-HowRipeMobile-tvOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HowRipeMobile-tvOSTests-dummy.m"; sourceTree = "<group>"; };
+		79E0AC2CF6F6B424F99540905F79236E /* Pods_HowRipeMobile_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobile_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AE2B4907CF7C6A9DE2D6949D4DCCA7B /* Pods-HowRipeMobileTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobileTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		7D108E09B1926ED6EF53145CA92AF420 /* Pods-HowRipeMobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HowRipeMobile.modulemap"; sourceTree = "<group>"; };
+		80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		87546AC5ED924A6643BF0AB40A2F6145 /* Pods-HowRipeMobileTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HowRipeMobileTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A4541F7D3F20AE6708401B4E8B80A47D /* Pods_HowRipeMobile_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobile_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB2A7EDB2B5569B93F9289F5FBF349B9 /* Pods-HowRipeMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		AC9611392B54E72711C49CB984BE10EE /* Pods-HowRipeMobileTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HowRipeMobileTests.modulemap"; sourceTree = "<group>"; };
+		ADE95447F155C5E3BA0A0A1FEB2D07E8 /* Pods-HowRipeMobile-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobile-Info.plist"; sourceTree = "<group>"; };
+		B1E4DB8C0803FE2CAA9B38E0E0684BDB /* Pods-HowRipeMobile-tvOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HowRipeMobile-tvOS-umbrella.h"; sourceTree = "<group>"; };
+		B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		BC5C48E2F9F338B2187DE06A27BB3AF0 /* Pods-HowRipeMobile-tvOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HowRipeMobile-tvOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BFFB4C3BAFB811591A55DD78E444AE86 /* Pods-HowRipeMobile-tvOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HowRipeMobile-tvOS.modulemap"; sourceTree = "<group>"; };
+		C4F4066B5952197C56876298981E4A59 /* Pods-HowRipeMobile-tvOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HowRipeMobile-tvOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CA1CC94522096F0BF9FE52C79EEB577F /* Pods-HowRipeMobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HowRipeMobile-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CB0DCEA66C685FDB7356D686B35FC2E3 /* Pods-HowRipeMobile-tvOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HowRipeMobile-tvOSTests.modulemap"; sourceTree = "<group>"; };
+		D189DCCA6B77D7DAA132A0A0B281744B /* Pods_HowRipeMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowRipeMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D7BAB3296D8D6F474129F563D15444 /* Pods-HowRipeMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		DBC8D323244A9B1B3ED1F07A41EF45EF /* Pods-HowRipeMobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HowRipeMobile-dummy.m"; sourceTree = "<group>"; };
+		DFAA319DDB58DAC0A539337729DA504D /* Pods-HowRipeMobile-tvOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobile-tvOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		F5906688FC185F3CAB5D851C0E7C4FB8 /* Pods-HowRipeMobile-tvOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowRipeMobile-tvOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		FA11A828254AFCE89510DE9AD2468435 /* Pods-HowRipeMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowRipeMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14FE01070565E7731E30CB75E996C3B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF6942D0E0AE01DA33833CE9DC957C66 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4774277A75BFD55827248A9086BD1715 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BBCDD340B12C14BA979DB41D08D44A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4ED8687B7F6F2EBF5B4E7ED132C5C73E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				116F0B6423598F7866287565EA5AD055 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1C029F1BE3B84D3E6FB26AEDA3F6BD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB2E1C2842838E22FF1C8A15C89D9F96 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		051A607279128C667B9EBE88ABBE7478 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6FA06694BD0816872F42100F45D16C1 /* Pods-HowRipeMobile */,
+				F687A8164DEA5CAE88E17808C526BDCA /* Pods-HowRipeMobile-tvOS */,
+				803EFCCD0008F919ED248683C1906A71 /* Pods-HowRipeMobile-tvOSTests */,
+				C6866D09E0376240E11A8155BE5E92A3 /* Pods-HowRipeMobileTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		71BF10D9671F60B91D333968CED34958 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				B712C7D27EB7CD8F8A18A3EDE52765C0 /* Foundation.framework */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
+		803EFCCD0008F919ED248683C1906A71 /* Pods-HowRipeMobile-tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB0DCEA66C685FDB7356D686B35FC2E3 /* Pods-HowRipeMobile-tvOSTests.modulemap */,
+				C4F4066B5952197C56876298981E4A59 /* Pods-HowRipeMobile-tvOSTests-acknowledgements.markdown */,
+				DFAA319DDB58DAC0A539337729DA504D /* Pods-HowRipeMobile-tvOSTests-acknowledgements.plist */,
+				61EB7C0226B827C5858477224ED482D7 /* Pods-HowRipeMobile-tvOSTests-dummy.m */,
+				01803250AF5A9E970B3243BA72E863CB /* Pods-HowRipeMobile-tvOSTests-Info.plist */,
+				60099A3CA9163B46C968156E26F7D7F1 /* Pods-HowRipeMobile-tvOSTests-umbrella.h */,
+				5ED3D06D8A39A1871FA9B3C346426E68 /* Pods-HowRipeMobile-tvOSTests.debug.xcconfig */,
+				D1D7BAB3296D8D6F474129F563D15444 /* Pods-HowRipeMobile-tvOSTests.release.xcconfig */,
+			);
+			name = "Pods-HowRipeMobile-tvOSTests";
+			path = "Target Support Files/Pods-HowRipeMobile-tvOSTests";
+			sourceTree = "<group>";
+		};
+		8910DE18F4068EE7F2F8E36E5101A369 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A88CC71D6E55F0202A23277A509BCA0 /* iOS */,
+				71BF10D9671F60B91D333968CED34958 /* tvOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A88CC71D6E55F0202A23277A509BCA0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				80D50031945639C9CFCD3CBF24E18561 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B3C91884904BDD08361E875D2D6CD171 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3269D57A4278331BBEBEB70E36E1C446 /* Pods_HowRipeMobile.framework */,
+				79E0AC2CF6F6B424F99540905F79236E /* Pods_HowRipeMobile_tvOS.framework */,
+				A4541F7D3F20AE6708401B4E8B80A47D /* Pods_HowRipeMobile_tvOSTests.framework */,
+				D189DCCA6B77D7DAA132A0A0B281744B /* Pods_HowRipeMobileTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6866D09E0376240E11A8155BE5E92A3 /* Pods-HowRipeMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC9611392B54E72711C49CB984BE10EE /* Pods-HowRipeMobileTests.modulemap */,
+				87546AC5ED924A6643BF0AB40A2F6145 /* Pods-HowRipeMobileTests-acknowledgements.markdown */,
+				7AE2B4907CF7C6A9DE2D6949D4DCCA7B /* Pods-HowRipeMobileTests-acknowledgements.plist */,
+				2A7DD221E186352EC8665689467009E0 /* Pods-HowRipeMobileTests-dummy.m */,
+				1E3D05BE1C555895ECF0F08B6EA5502E /* Pods-HowRipeMobileTests-Info.plist */,
+				5811662723E5E742741BA2EC6E8BC70C /* Pods-HowRipeMobileTests-umbrella.h */,
+				0F255B000808DB56F621AE08034B6851 /* Pods-HowRipeMobileTests.debug.xcconfig */,
+				356F7AF46720F3B8663D45C196D511C5 /* Pods-HowRipeMobileTests.release.xcconfig */,
+			);
+			name = "Pods-HowRipeMobileTests";
+			path = "Target Support Files/Pods-HowRipeMobileTests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				8910DE18F4068EE7F2F8E36E5101A369 /* Frameworks */,
+				B3C91884904BDD08361E875D2D6CD171 /* Products */,
+				051A607279128C667B9EBE88ABBE7478 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D6FA06694BD0816872F42100F45D16C1 /* Pods-HowRipeMobile */ = {
+			isa = PBXGroup;
+			children = (
+				7D108E09B1926ED6EF53145CA92AF420 /* Pods-HowRipeMobile.modulemap */,
+				CA1CC94522096F0BF9FE52C79EEB577F /* Pods-HowRipeMobile-acknowledgements.markdown */,
+				616080A6C2084F059DA1BEC2A7CDD36D /* Pods-HowRipeMobile-acknowledgements.plist */,
+				DBC8D323244A9B1B3ED1F07A41EF45EF /* Pods-HowRipeMobile-dummy.m */,
+				ADE95447F155C5E3BA0A0A1FEB2D07E8 /* Pods-HowRipeMobile-Info.plist */,
+				36CDFF671FEA2FA239075A81C3BD9E60 /* Pods-HowRipeMobile-umbrella.h */,
+				5139C901A9EAFAF3C781F1B854F01A94 /* Pods-HowRipeMobile.debug.xcconfig */,
+				3EF04E6BE803B79153E73429AA4C948A /* Pods-HowRipeMobile.release.xcconfig */,
+			);
+			name = "Pods-HowRipeMobile";
+			path = "Target Support Files/Pods-HowRipeMobile";
+			sourceTree = "<group>";
+		};
+		F687A8164DEA5CAE88E17808C526BDCA /* Pods-HowRipeMobile-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				BFFB4C3BAFB811591A55DD78E444AE86 /* Pods-HowRipeMobile-tvOS.modulemap */,
+				BC5C48E2F9F338B2187DE06A27BB3AF0 /* Pods-HowRipeMobile-tvOS-acknowledgements.markdown */,
+				F5906688FC185F3CAB5D851C0E7C4FB8 /* Pods-HowRipeMobile-tvOS-acknowledgements.plist */,
+				06857770F2B0AFBC9B5C86859121ECAE /* Pods-HowRipeMobile-tvOS-dummy.m */,
+				0464FAA38BA67D1D30EF5883C5A24AF8 /* Pods-HowRipeMobile-tvOS-Info.plist */,
+				B1E4DB8C0803FE2CAA9B38E0E0684BDB /* Pods-HowRipeMobile-tvOS-umbrella.h */,
+				FA11A828254AFCE89510DE9AD2468435 /* Pods-HowRipeMobile-tvOS.debug.xcconfig */,
+				AB2A7EDB2B5569B93F9289F5FBF349B9 /* Pods-HowRipeMobile-tvOS.release.xcconfig */,
+			);
+			name = "Pods-HowRipeMobile-tvOS";
+			path = "Target Support Files/Pods-HowRipeMobile-tvOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5849E88013C124314A8C0B97B22ABF0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF2F26BC23BE1CCBB331FE35D5E24D7 /* Pods-HowRipeMobileTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B8931FD137671DB78E14F827C5BF69 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E71E2265935299A07775CBDB2D5B6E9A /* Pods-HowRipeMobile-tvOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCAAAC139C0C8A6D64A8395111FCB1C5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9CA6B4251C39AF6C4A7479BF4599E0F /* Pods-HowRipeMobile-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FBA04203FBFCB578ADBF296079B435 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD687780965EDB6DF0A29E2AC8BFA481 /* Pods-HowRipeMobile-tvOSTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		745965EB284AD833111718A9D4A5874B /* Pods-HowRipeMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61E14DF86D22D772F0DB2D4422712340 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobile" */;
+			buildPhases = (
+				BCAAAC139C0C8A6D64A8395111FCB1C5 /* Headers */,
+				4B419984E6B63333777B63845B5A1BC6 /* Sources */,
+				4774277A75BFD55827248A9086BD1715 /* Frameworks */,
+				41582FAC6E57B6033BECAF388EFEC791 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-HowRipeMobile";
+			productName = "Pods-HowRipeMobile";
+			productReference = 3269D57A4278331BBEBEB70E36E1C446 /* Pods_HowRipeMobile.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8B8E410812466545E9713F5B6B3DFA10 /* Pods-HowRipeMobile-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2EE655A372A0BEC8121954B00C78061 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobile-tvOS" */;
+			buildPhases = (
+				61B8931FD137671DB78E14F827C5BF69 /* Headers */,
+				035D22CF8D949E35F07338CAA72FBB0C /* Sources */,
+				D1C029F1BE3B84D3E6FB26AEDA3F6BD9 /* Frameworks */,
+				38E1CD7F80A52C5823D84062466596A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-HowRipeMobile-tvOS";
+			productName = "Pods-HowRipeMobile-tvOS";
+			productReference = 79E0AC2CF6F6B424F99540905F79236E /* Pods_HowRipeMobile_tvOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9259F3482EA1D19EADEEF58A93DA7AF5 /* Pods-HowRipeMobile-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C938391304BB0074D46479C1521E7F7 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobile-tvOSTests" */;
+			buildPhases = (
+				F3FBA04203FBFCB578ADBF296079B435 /* Headers */,
+				DA41B153BB8EC448ABFA3291C0A9AC8A /* Sources */,
+				14FE01070565E7731E30CB75E996C3B8 /* Frameworks */,
+				491B80E4BD5792C2FA695B98F688FECA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2A78C244EA213D94BEA32817CAE8031 /* PBXTargetDependency */,
+			);
+			name = "Pods-HowRipeMobile-tvOSTests";
+			productName = "Pods-HowRipeMobile-tvOSTests";
+			productReference = A4541F7D3F20AE6708401B4E8B80A47D /* Pods_HowRipeMobile_tvOSTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E620AD991AA9B302F60535DF957F0FF0 /* Pods-HowRipeMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A344440454EACE21A5CA5145768A8A26 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobileTests" */;
+			buildPhases = (
+				5849E88013C124314A8C0B97B22ABF0A /* Headers */,
+				02831F0D602A4F7D028C4F9EF41A07E6 /* Sources */,
+				4ED8687B7F6F2EBF5B4E7ED132C5C73E /* Frameworks */,
+				B33C5D546373209D096E179E59BF11E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				444386A88573F7FD82A5D3C9DBFB11AD /* PBXTargetDependency */,
+			);
+			name = "Pods-HowRipeMobileTests";
+			productName = "Pods-HowRipeMobileTests";
+			productReference = D189DCCA6B77D7DAA132A0A0B281744B /* Pods_HowRipeMobileTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+					745965EB284AD833111718A9D4A5874B = {
+						DevelopmentTeam = 6D6A3TKGHF;
+						ProvisioningStyle = Automatic;
+					};
+					8B8E410812466545E9713F5B6B3DFA10 = {
+						DevelopmentTeam = 6D6A3TKGHF;
+					};
+					9259F3482EA1D19EADEEF58A93DA7AF5 = {
+						DevelopmentTeam = 6D6A3TKGHF;
+					};
+					E620AD991AA9B302F60535DF957F0FF0 = {
+						DevelopmentTeam = 6D6A3TKGHF;
+					};
+				};
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = B3C91884904BDD08361E875D2D6CD171 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				745965EB284AD833111718A9D4A5874B /* Pods-HowRipeMobile */,
+				8B8E410812466545E9713F5B6B3DFA10 /* Pods-HowRipeMobile-tvOS */,
+				9259F3482EA1D19EADEEF58A93DA7AF5 /* Pods-HowRipeMobile-tvOSTests */,
+				E620AD991AA9B302F60535DF957F0FF0 /* Pods-HowRipeMobileTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		38E1CD7F80A52C5823D84062466596A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41582FAC6E57B6033BECAF388EFEC791 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		491B80E4BD5792C2FA695B98F688FECA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B33C5D546373209D096E179E59BF11E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		02831F0D602A4F7D028C4F9EF41A07E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E466A32B4F970004165428CC41CB8AC2 /* Pods-HowRipeMobileTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035D22CF8D949E35F07338CAA72FBB0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24261F276D72BA2FE85FDD35B1F9C2B0 /* Pods-HowRipeMobile-tvOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B419984E6B63333777B63845B5A1BC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7B81B44415575D839995FA4DCC67E90 /* Pods-HowRipeMobile-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA41B153BB8EC448ABFA3291C0A9AC8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D87618A3101F7598993970B693D8ECC9 /* Pods-HowRipeMobile-tvOSTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		444386A88573F7FD82A5D3C9DBFB11AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-HowRipeMobile";
+			target = 745965EB284AD833111718A9D4A5874B /* Pods-HowRipeMobile */;
+			targetProxy = F412AE08C8799DF3E11C90A0C3C5A5CB /* PBXContainerItemProxy */;
+		};
+		A2A78C244EA213D94BEA32817CAE8031 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-HowRipeMobile-tvOS";
+			target = 8B8E410812466545E9713F5B6B3DFA10 /* Pods-HowRipeMobile-tvOS */;
+			targetProxy = 5A4450E96B89337D26C9DEF85FD1B6FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E0950C7213DABB5392FDEE19541E5B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ED3D06D8A39A1871FA9B3C346426E68 /* Pods-HowRipeMobile-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6D6A3TKGHF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobile-tvOSTests/Pods-HowRipeMobile-tvOSTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobile-tvOSTests/Pods-HowRipeMobile-tvOSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2C389ECEE95A4352C5639170BD0F7036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA11A828254AFCE89510DE9AD2468435 /* Pods-HowRipeMobile-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6D6A3TKGHF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobile-tvOS/Pods-HowRipeMobile-tvOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobile-tvOS/Pods-HowRipeMobile-tvOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		68F07807C8D62F2D76C744A41F3D874D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		6A52DCD483E8398EB22689417B1B0414 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5139C901A9EAFAF3C781F1B854F01A94 /* Pods-HowRipeMobile.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6D6A3TKGHF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6BDD6A918CDAA75F33BA61999AFCB0A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 356F7AF46720F3B8663D45C196D511C5 /* Pods-HowRipeMobileTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobileTests/Pods-HowRipeMobileTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobileTests/Pods-HowRipeMobileTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6D61CAF2E238092EE99C07EBE82A5560 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB2A7EDB2B5569B93F9289F5FBF349B9 /* Pods-HowRipeMobile-tvOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobile-tvOS/Pods-HowRipeMobile-tvOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobile-tvOS/Pods-HowRipeMobile-tvOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		83AF393B03A6F5113A1D806F1E5DA579 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F255B000808DB56F621AE08034B6851 /* Pods-HowRipeMobileTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6D6A3TKGHF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobileTests/Pods-HowRipeMobileTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobileTests/Pods-HowRipeMobileTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9AFD41C3BDC5944B71650FA009A85FC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EF04E6BE803B79153E73429AA4C948A /* Pods-HowRipeMobile.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6D6A3TKGHF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobile/Pods-HowRipeMobile.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D0EB123D58AF7DAA9DC116341E4F6C70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1D7BAB3296D8D6F474129F563D15444 /* Pods-HowRipeMobile-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-HowRipeMobile-tvOSTests/Pods-HowRipeMobile-tvOSTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HowRipeMobile-tvOSTests/Pods-HowRipeMobile-tvOSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E1ED6DABFEFD9C54EE38EDA3D2F7092C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1ED6DABFEFD9C54EE38EDA3D2F7092C /* Debug */,
+				68F07807C8D62F2D76C744A41F3D874D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61E14DF86D22D772F0DB2D4422712340 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A52DCD483E8398EB22689417B1B0414 /* Debug */,
+				9AFD41C3BDC5944B71650FA009A85FC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C938391304BB0074D46479C1521E7F7 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobile-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E0950C7213DABB5392FDEE19541E5B6 /* Debug */,
+				D0EB123D58AF7DAA9DC116341E4F6C70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A344440454EACE21A5CA5145768A8A26 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83AF393B03A6F5113A1D806F1E5DA579 /* Debug */,
+				6BDD6A918CDAA75F33BA61999AFCB0A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2EE655A372A0BEC8121954B00C78061 /* Build configuration list for PBXNativeTarget "Pods-HowRipeMobile-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C389ECEE95A4352C5639170BD0F7036 /* Debug */,
+				6D61CAF2E238092EE99C07EBE82A5560 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

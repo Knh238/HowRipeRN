@@ -37,7 +37,7 @@ export default class LeagueSelectionScreen extends React.Component {
             <LinearGradient
               colors={['#6E3737', '#5b2d2d', '#402423']}
               style={{
-                height: '30%',
+                height: '40%',
                 marginTop: '20%',
                 width: '89%',
                 borderRadius: 5,
@@ -46,15 +46,15 @@ export default class LeagueSelectionScreen extends React.Component {
                 alignContent: 'center'
               }}
             >
-              <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ flex: 1, flexDirection: 'row', height: 40 }}>
                 <TouchableOpacity
-                  style={{ height: 50, width: '50%' }}
+                  style={{ height: 40, width: '50%' }}
                   onPress={() => this.props.navigation.navigate('CreateLeague')}
                 >
                   <Text
                     style={{
                       color: 'white',
-                      fontFamily: 'avenir',
+                      fontFamily: 'Avenir',
                       fontWeight: 'bold',
                       marginLeft: 10,
                       fontSize: 20
@@ -68,14 +68,15 @@ export default class LeagueSelectionScreen extends React.Component {
                     backgroundColor: '#886a6a',
                     borderTopLeftRadius: 7,
                     borderBottomLeftRadius: 7,
-                    width: '50%'
+                    width: '50%',
+                    height: 40
                   }}
                   onPress={() => this.props.navigation.navigate('CreateLeague')}
                 >
                   <Text
                     style={{
                       color: '#673a38',
-                      fontFamily: 'avenir',
+                      fontFamily: 'Avenir',
                       marginLeft: 10,
                       fontSize: 20
                     }}
@@ -169,6 +170,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'white',
     borderWidth: 1,
-    marginTop: 8
+    marginTop: 10,
+    marginBottom: 10
   }
 });

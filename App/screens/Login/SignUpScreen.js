@@ -45,7 +45,7 @@ export default class SignUpScreen extends React.Component {
           .doc(user.uid)
           .set(newUser)
           .then(function(docRef) {
-            self.props.navigation.navigate('ChooseIcon');
+            self.props.navigation.navigate('Home');
           })
           .catch(function(error) {
             self.setState({ errorMessage: error.message });

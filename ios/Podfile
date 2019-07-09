@@ -1,0 +1,29 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'HowRipeMobile' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for HowRipeMobile
+
+
+  target 'HowRipeMobileTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'HowRipeMobile-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for HowRipeMobile-tvOS
+
+  target 'HowRipeMobile-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

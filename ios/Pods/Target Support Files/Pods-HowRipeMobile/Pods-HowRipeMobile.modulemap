@@ -1,0 +1,6 @@
+framework module Pods_HowRipeMobile {
+  umbrella header "Pods-HowRipeMobile-umbrella.h"
+
+  export *
+  module * { export * }
+}
