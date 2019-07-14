@@ -7,7 +7,8 @@ import {
   Button,
   TouchableOpacity,
   ImageBackground,
-  Picker
+  Picker,
+  Linking
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
@@ -20,7 +21,6 @@ import {
   Item,
   Input,
   Label
-  // Picker
 } from 'native-base';
 
 export default class LeagueSettings extends React.Component {
@@ -30,7 +30,8 @@ export default class LeagueSettings extends React.Component {
       email: '',
       password: '',
       errorMessage: '',
-      selectedStartDate: '2019/07/08'
+      selectedStartDate: '2019/07/08',
+      sendEmailTo: ''
       // selected2: undefined
     };
     // this.handleSignUp = this.handleSignUp.bind(this);
@@ -261,6 +262,15 @@ export default class LeagueSettings extends React.Component {
                 >
                   Max # of players: 15
                 </Text>
+                <Button
+                  style={{ backgroundColor: 'yellow' }}
+                  onPress={() =>
+                    Linking.openURL(
+                      'sms:1-225-315-8623&body=join the league! league name: , password:'
+                    )
+                  }
+                  title="test the sms"
+                />
                 <View
                   style={{
                     display: 'flex',
@@ -276,8 +286,10 @@ export default class LeagueSettings extends React.Component {
                     style={styles.emailInput}
                     autoCapitalize="none"
                     placeholder="  enter your friend's email"
-                    onChangeText={email => this.setState({ email })}
-                    value={this.state.email}
+                    onChangeText={email =>
+                      this.setState({ sendEmailTo: email })
+                    }
+                    value={this.state.sendEmailTo}
                   />
 
                   <TouchableOpacity
@@ -286,6 +298,16 @@ export default class LeagueSettings extends React.Component {
                       width: '10%',
                       flex: 1
                     }}
+                    onPress={
+                      () =>
+                        Linking.openURL(
+                          'mailto:kristinnharper@gmail.com?cc=&subject=yourSubject&body=yourMessage'
+                        )
+                      // Linking.openURL(
+                      //   'mailto:kristinnharper@gmail.com?subject=SendMail&body=join the party'
+                      // )
+                    }
+                    title="support@example.com"
                     // onPress={this.handleLogin}
                   >
                     <LinearGradient
@@ -341,6 +363,7 @@ export default class LeagueSettings extends React.Component {
                 marginTop: '5%'
               }}
               // onPress={this.handleLogin}
+              onPress={() => this.props.navigation.navigate('Home')}
             >
               <LinearGradient
                 colors={['#902227', '#761b1f', '#5d1419']}
