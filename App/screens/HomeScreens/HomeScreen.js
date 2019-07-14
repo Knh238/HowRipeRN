@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
+  ImageBackground,
   Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
@@ -40,13 +41,6 @@ import db from '../../.././db';
 // testDB();
 
 export default class HomeScreen extends React.Component {
-  state = { currentUser: null };
-  componentDidMount() {
-    const { currentUser } = firebase.auth();
-    this.setState({ currentUser });
-    console.log('this is state in home screen', this.currentUser);
-  }
-
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'How Ripe',
@@ -64,7 +58,8 @@ export default class HomeScreen extends React.Component {
         <Button
           type="clear"
           onPress={() => navigation.goBack()}
-          icon={<Icon name="menu" type="material" color="white" size={30} />}
+          onPress={() => navigation.navigate('LeagueSelectionScreen')}
+          icon={<Icon name="add" type="material" color="white" size={30} />}
         />
       ),
       headerRight: (
@@ -74,12 +69,23 @@ export default class HomeScreen extends React.Component {
           rounded
           title="MT"
           containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          onPress={() => console.log('Works!')}
+          // onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('ChooseIcon')}
           activeOpacity={0.7}
         />
       )
     };
   };
+
+  constructor(props) {
+    super(props);
+    this.state = { currentUser: null, userName: '' };
+  }
+  componentDidMount() {
+    const { currentUser } = firebase.auth();
+    this.setState({ currentUser });
+    console.log('this is state in home screen', this.currentUser);
+  }
 
   render() {
     console.log('state here------------------------------', this.state);
@@ -87,7 +93,17 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <CurrentVideos />
+          <ImageBackground
+            source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
+            style={{
+              width: '100%',
+              height: '100%'
+            }}
+            overflow="hidden"
+            resizeMode="contain"
+          >
+            <CurrentVideos />
+          </ImageBackground>
         </View>
       </SafeAreaView>
     );

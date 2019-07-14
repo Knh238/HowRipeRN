@@ -6,7 +6,8 @@ import {
   View,
   Button,
   TouchableOpacity,
-  Alert
+  Alert,
+  ImageBackground
 } from 'react-native';
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
@@ -44,7 +45,7 @@ export default class SignUpScreen extends React.Component {
           .doc(user.uid)
           .set(newUser)
           .then(function(docRef) {
-            self.props.navigation.navigate('ChooseIcon');
+            self.props.navigation.navigate('Home');
           })
           .catch(function(error) {
             self.setState({ errorMessage: error.message });
@@ -56,85 +57,96 @@ export default class SignUpScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ flex: 1, marginTop: 180 }}>
-          <LinearGradient
-            colors={['#633836', '#5b2d2d', '#402423']}
-            style={{
-              height: '30%',
-              marginTop: '20%',
-              width: '85%',
-              borderRadius: 5,
-              justifyContent: 'center',
-              alignSelf: 'center',
-              alignContent: 'center'
-            }}
-          >
-            <Text
+        <ImageBackground
+          source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
+          overflow="hidden"
+          resizeMode="contain"
+        >
+          <View style={{ flex: 1, marginTop: 180 }}>
+            <LinearGradient
+              colors={['#633836', '#5b2d2d', '#402423']}
               style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                fontWeight: 'bold',
-                marginLeft: 15,
-                fontSize: 20
+                height: '30%',
+                marginTop: '20%',
+                width: '85%',
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignContent: 'center'
               }}
             >
-              Sign up{' '}
-            </Text>
-            {this.state.errorMessage ? (
-              <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-            ) : null}
-            <TextInput
-              style={styles.textInput}
-              autoCapitalize="none"
-              placeholder="  Email"
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-            />
-            <TextInput
-              secureTextEntry
-              style={styles.textInput}
-              autoCapitalize="none"
-              placeholder="  Password"
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-            />
-          </LinearGradient>
-        </View>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Avenir',
+                  fontWeight: 'bold',
+                  marginLeft: 15,
+                  fontSize: 20
+                }}
+              >
+                Sign up
+              </Text>
+              {this.state.errorMessage ? (
+                <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
+              ) : null}
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  Email"
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+              <TextInput
+                secureTextEntry
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  Password"
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
+            </LinearGradient>
+          </View>
 
-        <TouchableOpacity
-          style={{
-            height: '5%',
-            width: '60%',
-            alignContent: 'center',
-            alignSelf: 'center',
-            marginTop: 500,
-            position: 'absolute',
-            justifyContent: 'center'
-          }}
-          onPress={this.handleSignUp}
-        >
-          <LinearGradient
-            colors={['#902227', '#761b1f', '#5d1419']}
+          <TouchableOpacity
             style={{
-              flex: 1,
-              flexDirection: 'row',
-              borderRadius: 5,
+              height: '5%',
+              width: '60%',
+              alignContent: 'center',
+              alignSelf: 'center',
+              marginTop: 500,
+              position: 'absolute',
               justifyContent: 'center'
             }}
+            onPress={this.handleSignUp}
           >
-            <Text
+            <LinearGradient
+              colors={['#A11123', '#761b1f', '#5d1419']}
               style={{
-                color: 'white',
-                fontFamily: 'avenir',
-                paddingLeft: 5,
-                fontSize: 20,
-                alignSelf: 'center'
+                flex: 1,
+                flexDirection: 'row',
+                borderRadius: 5,
+                justifyContent: 'center'
               }}
             >
-              Sign Up
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Avenir',
+                  paddingLeft: 5,
+                  fontSize: 18,
+                  fontWeight: '500',
+                  alignSelf: 'center'
+                }}
+              >
+                Sign Up
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </ImageBackground>
       </View>
     );
   }

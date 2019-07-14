@@ -44,17 +44,45 @@ export default class LeaderBoard extends React.Component {
 
   render() {
     return (
-      <View style={{ justifyContent: 'center', fontFamily: 'Avenir' }}>
+      <View style={styles.container}>
         <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
           LEADERBOARD
         </Text>
         <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
           League of Champs / Global
         </Text>
+        <TouchableOpacity
+          style={{
+            height: '5%',
+            width: '60%',
+            alignContent: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            marginTop: 650,
+            position: 'absolute',
+            borderWidth: 1,
+            borderColor: 'white'
+          }}
+          onPress={() =>
+            this.props.navigation.navigate('LeagueSelectionScreen')
+          }
+        >
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'Avenir',
+              paddingLeft: 5,
+              fontSize: 15,
+              alignSelf: 'center'
+            }}
+          >
+            sign up for a league
+          </Text>
+        </TouchableOpacity>
         {list.map((l, i) => (
           <ListItem
             style={{
-              backgroundColor: '#441515',
+              backgroundColor: '#3c1715',
               marginLeft: 50,
               marginRight: 50
             }}
@@ -94,7 +122,8 @@ export default class LeaderBoard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#441515',
-    fontFamily: 'AvenirBold'
+    backgroundColor: '#3c1715',
+    justifyContent: 'center',
+    fontFamily: 'Avenir'
   }
 });
