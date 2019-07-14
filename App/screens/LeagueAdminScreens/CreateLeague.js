@@ -63,7 +63,7 @@ export default class CreateLeague extends React.Component {
                     marginLeft: 10
                   }}
                 >
-                  Yes
+                  Yes ?
                 </Text>
               </View>
             </TouchableOpacity>
