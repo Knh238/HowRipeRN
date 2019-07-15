@@ -5,21 +5,73 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Alert
 } from 'react-native';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+import firebase from '../../../firebase';
+import db from '../../.././db';
 
 export default class CreateLeague extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      league: '',
       password: '',
       errorMessage: '',
       requirePassword: true
     };
     this.renderPasswordSetting = this.renderPasswordSetting.bind(this);
+    this.setLeagueInfo = this.setLeagueInfo.bind(this);
+    this.checkLeagueName = this.checkLeagueName.bind(this);
+  }
+
+  checkLeagueName() {
+    const { league } = this.state;
+    const currLeagues = db.collection('leagues').doc('CXVBGxhXbY9dw1IUKYHs');
+    const currLeagueNames = [];
+    currLeagues
+      .get()
+      .then(function(doc) {
+        const currL = doc.data();
+        currLeagueNames.push(currL.name);
+      })
+      .catch(function(error) {
+        console.log('Error getting cached document:', error);
+      });
+
+    console.log('curr leagues', currLeagueNames);
+    if (currLeagueNames.indexOf(league) < 0) {
+      this.setState({ errorMessage: 'name not taken. Yay! ' });
+    } else {
+      this.setState({ errorMessage: 'Name already taken. Try again!' });
+    }
+  }
+
+  setLeagueInfo() {
+    const { league, password } = this.state;
+    const user = firebase.auth().currentUser;
+    const currUserRef = db.collection('users').doc(user.uid);
+    const currLeagues = db.collection('leagues');
+
+    currLeagues
+      .add({ name: league, password: password })
+      .then(function(doc) {
+        // const currL = doc.data();
+        // currLeagueNames.push(currL.name);
+        console.log('new league created with!', doc.data());
+        //adds but doesnt return key yet
+      })
+      .then(() => this.props.navigation.navigate('LeagueSettings'))
+      .catch(function(error) {
+        console.log('Error getting cached document:', error);
+      });
+    // check if league exists
+    //add to leagues
+    //await to get id
+    //add league to user
+    // onPress={() => this.props.navigation.navigate('LeagueSettings')}
   }
 
   renderPasswordSetting() {
@@ -182,9 +234,6 @@ export default class CreateLeague extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          {this.state.errorMessage ? (
-            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          ) : null}
           <View style={{ flex: 1, marginTop: 160 }}>
             <LinearGradient
               colors={['#6E3737', '#5b2d2d', '#402423']}
@@ -242,13 +291,19 @@ export default class CreateLeague extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
+
               <TextInput
                 style={styles.textInput}
                 autoCapitalize="none"
                 placeholder="  League Name"
-                onChangeText={email => this.setState({ email })}
-                value={this.state.email}
+                onChangeText={league => this.setState({ league })}
+                value={this.state.league}
               />
+              {this.state.errorMessage ? (
+                <Text style={{ color: 'red', marginLeft: 15 }}>
+                  {this.state.errorMessage}
+                </Text>
+              ) : null}
               <Text
                 style={{
                   color: 'white',
@@ -274,7 +329,7 @@ export default class CreateLeague extends React.Component {
               marginTop: 600,
               position: 'absolute'
             }}
-            onPress={() => this.props.navigation.navigate('LeagueSettings')}
+            onPress={() => this.setLeagueInfo()}
           >
             <LinearGradient
               colors={['#A11123', '#761b1f', '#5d1419']}
@@ -301,7 +356,8 @@ export default class CreateLeague extends React.Component {
           <Button
             type="clear"
             style={{ marginBottom: 50 }}
-            onPress={() => this.props.navigation.navigate('Home')}
+            // onPress={() => this.props.navigation.navigate('Home')}
+            onPress={() => this.checkLeagueName()}
             icon={
               <Icon
                 name="chevron-circle-left"

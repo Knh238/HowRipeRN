@@ -50,7 +50,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* HowRipeMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HowRipeMobileTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2E1026539001483CA53DCC9D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8751CF0AD6C4D9D8AA82D59 /* Zocial.ttf */; };
-		362FD11086784C43812F3250 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8333C901F3E4AC689C66946 /* libRNFirebase.a */; };
 		4088709D38FF43498DC9DEF1 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3682DAB0534CCE9C8FB881 /* Foundation.ttf */; };
 		4432B106B9D9F0C8F7720AB3 /* Pods_HowRipeMobile_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F459C41E1AAA42F8ED7DA6 /* Pods_HowRipeMobile_tvOS.framework */; };
 		492C74451CCC4BDB8FF9835A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52C731193A004EBA9D44F9E2 /* Entypo.ttf */; };
@@ -573,7 +572,6 @@
 				239BE3F63A664EA388C02D59 /* libRCTYouTube.a in Frameworks */,
 				1076AC1E61874054BEA3B965 /* libRNSVG.a in Frameworks */,
 				1709CCAB79FF4063B74DB588 /* libBVLinearGradient.a in Frameworks */,
-				362FD11086784C43812F3250 /* libRNFirebase.a in Frameworks */,
 				1C2F67D9325619667EF42039 /* Pods_HowRipeMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
