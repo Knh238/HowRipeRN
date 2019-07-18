@@ -23,7 +23,7 @@ import {
   Label
 } from 'native-base';
 
-export default class LeagueSettings extends React.Component {
+export default class LeagueInvites extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,120 +33,44 @@ export default class LeagueSettings extends React.Component {
       leagueID: '',
       errorMessage: '',
       upcomingRounds: [],
-      selectedStartDate: '2019/07/08',
+      selectedStartDate: '',
       sendEmailTo: '',
       sendTextTo: ''
       // selected2: undefined
     };
-    this.setUpcomingDates = this.setUpcomingDates.bind(this);
+    this.setEndDate = this.setEndDate.bind(this);
   }
 
   componentWillMount() {
     const paramsPassed = this.props.navigation.state.params;
-    const name = this.props.navigation.state.params.name;
-    const password = this.props.navigation.state.params.password;
-    const leagueID = this.props.navigation.state.params.leagueID;
-    console.log('params passed', paramsPassed);
+    const {
+      name,
+      password,
+      leagueID,
+      selectedStartDate
+    } = this.props.navigation.state.params;
     this.setState({
       name,
       password,
-      leagueID
+      leagueID,
+      selectedStartDate
     });
-    this.setUpcomingDates();
-  }
-  selectStartDate(str) {
-    this.setState({
-      selectedStartDate: value
-    });
+    this.setEndDate();
   }
 
-  setUpcomingDates() {
-    const todaysDate = Date.now();
-
-    var closestMonday = function(inputDate) {
-      var curr_date = new Date(inputDate); // current date
-      var day_info = 8.64e7; // milliseconds per day
-      var days_to_monday = 8 - curr_date.getDay(); // days left to closest Monday
-      var monday_in_sec = curr_date.getTime() + days_to_monday * day_info; // aleary Monday in seconds from 1970
-      var next_monday = new Date(monday_in_sec); // Monday in date object
-      next_monday.setHours(0, 0, 0);
-      return next_monday;
-    };
-    const mondayOne = closestMonday(todaysDate);
-    const mondayTwo = closestMonday(mondayOne);
-    const mondayThree = closestMonday(mondayTwo);
-
-    const nextDates = [];
-    nextDates.push(moment(mondayOne).format('MMMM Do YYYY'));
-    nextDates.push(moment(mondayTwo).format('MMMM Do YYYY'));
-    nextDates.push(moment(mondayThree).format('MMMM Do YYYY'));
-
-    this.setState({ upcomingRounds: nextDates });
-  }
-
-  upcomingRounds() {
-    // const nextDates = ['2019-07-08', '2019-07-15', '2019-07-22'];
-    const nextDates = this.state.upcomingRounds;
-
-    return nextDates.map(date => (
-      <TouchableOpacity
-        key={date}
-        onPress={() => this.setState({ selectedStartDate: `${date}` })}
-      >
-        <View
-          style={{
-            display: 'flex',
-            marginLeft: 30,
-            marginBottom: 0,
-            padding: 0,
-            flexDirection: 'row',
-            marginTop: 0,
-            height: 40
-          }}
-          key={date}
-        >
-          {this.state.selectedStartDate === date ? (
-            <Icon
-              name="dot-circle-o"
-              type="font-awesome"
-              color="white"
-              size={20}
-            />
-          ) : (
-            <Icon name="circle-o" type="font-awesome" color="white" size={20} />
-          )}
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'Avenir',
-              fontWeight: 'bold',
-              marginTop: 0,
-              marginLeft: 10,
-              fontSize: 18,
-              padding: 0,
-              marginBottom: 0
-            }}
-          >
-            {date}
-          </Text>
-          <Text
-            style={{
-              color: '#DAA520',
-              fontFamily: 'Avenir',
-              marginLeft: 20,
-              fontSize: 16,
-              marginTop: 0,
-              marginBottom: 0,
-              padding: 0
-            }}
-          >
-            {moment(date, 'MMMM Do YYYY')
-              .startOf('day')
-              .fromNow()}
-          </Text>
-        </View>
-      </TouchableOpacity>
-    ));
+  setEndDate() {
+    const startDay = this.state.selectedStartDate;
+    // const startDayVal = moment(startDay).format('MM Do YY');
+    // const endDateCalc = moment(startDayVal)
+    //   .add(8, 'weeks')
+    //   .calender();
+    console.log(startDay);
+    const endDate = moment(startDay)
+      .add(8, 'weeks')
+      .calendar();
+    // // const endDate = endDateCalc.format('MMMM Do YYYY');
+    // //   .format('MMMM Do YYYY');
+    console.log('end date is', endDate);
   }
 
   render() {
@@ -273,12 +197,11 @@ export default class LeagueSettings extends React.Component {
                     marginLeft: 15,
                     fontSize: 18,
                     marginBottom: 5,
-                    textDecorationLine: 'underline',
                     marginTop: 10,
                     marginBottom: 5
                   }}
                 >
-                  Select a start date:
+                  Selected start date: {this.state.selectedStartDate}
                 </Text>
                 <Text
                   style={{
@@ -290,10 +213,157 @@ export default class LeagueSettings extends React.Component {
                     marginTop: 0
                   }}
                 >
-                  **Leagues are 8 weeks long.
+                  end date:
+                </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    marginLeft: 15,
+                    fontSize: 15,
+                    marginBottom: 5
+                  }}
+                >
+                  Max # of players: 15
                 </Text>
 
-                <View style={{ flex: 1 }}>{this.upcomingRounds()}</View>
+                <View
+                  style={{
+                    display: 'flex',
+                    flex: 1,
+                    marginLeft: 10,
+                    marginRight: 10,
+                    flexDirection: 'row',
+                    height: '15%',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <TextInput
+                    style={styles.emailInput}
+                    autoCapitalize="none"
+                    placeholder="  enter your friend's email"
+                    onChangeText={email =>
+                      this.setState({ sendEmailTo: email })
+                    }
+                    value={this.state.sendEmailTo}
+                  />
+
+                  <TouchableOpacity
+                    style={{
+                      height: '20%',
+                      width: '10%',
+                      flex: 1
+                    }}
+                    onPress={
+                      () =>
+                        Linking.openURL(
+                          'mailto:kristinnharper@gmail.com?cc=&subject=yourSubject&body=yourMessage'
+                        )
+                      // Linking.openURL(
+                      //   'mailto:kristinnharper@gmail.com?subject=SendMail&body=join the party'
+                      // )
+                    }
+                    title="support@example.com"
+                    // onPress={this.handleLogin}
+                  >
+                    <LinearGradient
+                      colors={['#902227', '#761b1f', '#5d1419']}
+                      style={{
+                        borderTopRightRadius: 5,
+                        borderBottomRightRadius: 5,
+                        flex: 1
+                        // height: '15%'
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: 'white',
+                          fontFamily: 'Avenir',
+                          paddingLeft: 5,
+                          fontSize: 18,
+                          alignSelf: 'center',
+                          fontWeight: '500',
+                          letterSpacing: 1
+                        }}
+                      >
+                        Invite
+                      </Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+
+                <View
+                  style={{
+                    display: 'flex',
+                    flex: 1,
+                    marginLeft: 10,
+                    marginRight: 10,
+                    flexDirection: 'row',
+                    height: '15%',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <TextInput
+                    style={styles.emailInput}
+                    autoCapitalize="none"
+                    placeholder="  enter your friend's email"
+                    onChangeText={text => this.setState({ sendTextTo: text })}
+                    value={this.state.sendTextTo}
+                  />
+
+                  <TouchableOpacity
+                    style={{
+                      height: '20%',
+                      width: '10%',
+                      flex: 1
+                    }}
+                    onPress={() =>
+                      Linking.openURL(
+                        'sms:1-225-315-8623&body=join the league! league name: , password:'
+                      )
+                    }
+                    // onPress={this.handleLogin}
+                  >
+                    <LinearGradient
+                      colors={['#902227', '#761b1f', '#5d1419']}
+                      style={{
+                        borderTopRightRadius: 5,
+                        borderBottomRightRadius: 5,
+                        flex: 1
+                        // height: '15%'
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: 'white',
+                          fontFamily: 'Avenir',
+                          paddingLeft: 5,
+                          fontSize: 18,
+                          alignSelf: 'center',
+                          fontWeight: '500',
+                          letterSpacing: 1
+                        }}
+                      >
+                        Invite
+                      </Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+
+                {/* </View> */}
+                {/* <View style={{ height: '10%' }}>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'Avenir',
+                      marginLeft: 15,
+                      fontSize: 18,
+                      marginTop: 0
+                    }}
+                  >
+                    Already Invited:
+                  </Text>
+                </View> */}
               </View>
             </LinearGradient>
           </View>
@@ -307,14 +377,7 @@ export default class LeagueSettings extends React.Component {
                 marginTop: '5%'
               }}
               // onPress={this.handleLogin}
-              onPress={() =>
-                this.props.navigation.navigate('LeagueInvites', {
-                  name: this.state.name,
-                  password: this.state.password,
-                  leagueID: this.state.leagueID,
-                  selectedStartDate: this.state.selectedStartDate
-                })
-              }
+              onPress={() => this.props.navigation.navigate('Home')}
             >
               <LinearGradient
                 colors={['#902227', '#761b1f', '#5d1419']}
@@ -334,7 +397,7 @@ export default class LeagueSettings extends React.Component {
                     alignSelf: 'center'
                   }}
                 >
-                  Invite Players
+                  Finish
                 </Text>
               </LinearGradient>
             </TouchableOpacity>

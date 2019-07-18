@@ -20,7 +20,8 @@ export default class CreateLeague extends React.Component {
       league: '',
       password: '',
       errorMessage: '',
-      requirePassword: true
+      requirePassword: true,
+      uniqueName: true
     };
     this.renderPasswordSetting = this.renderPasswordSetting.bind(this);
     this.setLeagueInfo = this.setLeagueInfo.bind(this);
@@ -28,50 +29,65 @@ export default class CreateLeague extends React.Component {
   }
 
   checkLeagueName() {
-    const { league } = this.state;
-    const currLeagues = db.collection('leagues').doc('CXVBGxhXbY9dw1IUKYHs');
+    let { league } = this.state;
+    const currLeagues = db.collection('leagues');
     const currLeagueNames = [];
     currLeagues
       .get()
-      .then(function(doc) {
-        const currL = doc.data();
-        currLeagueNames.push(currL.name);
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          // console.log(doc.id, ' => ', doc.data());
+          const info = doc.data();
+          currLeagueNames.push(info.name.toLowerCase());
+        });
       })
-      .catch(function(error) {
-        console.log('Error getting cached document:', error);
+      .then(() => {
+        // console.log('curr leagues', currLeagueNames);
+        const leagueLC = league.toLowerCase();
+        // console.log('league is now', leagueLC);
+        if (currLeagueNames.indexOf(leagueLC) === -1) {
+          this.setState({
+            errorMessage: 'YAY! Name not taken. Yay! ',
+            uniqueName: true
+          });
+        } else {
+          this.setState({
+            errorMessage: 'OOPS!! Name already taken. Try again!',
+            uniqueName: false
+          });
+        }
       });
-
-    console.log('curr leagues', currLeagueNames);
-    if (currLeagueNames.indexOf(league) < 0) {
-      this.setState({ errorMessage: 'name not taken. Yay! ' });
-    } else {
-      this.setState({ errorMessage: 'Name already taken. Try again!' });
-    }
   }
 
   setLeagueInfo() {
+    // this.checkLeagueName();
+    //maybe grey button out or disable button for next if the previous hasnt returned ok
     const { league, password } = this.state;
     const user = firebase.auth().currentUser;
     const currUserRef = db.collection('users').doc(user.uid);
+    console.log(user.uid);
     const currLeagues = db.collection('leagues');
+    let leagueID = '';
 
     currLeagues
       .add({ name: league, password: password })
       .then(function(doc) {
-        // const currL = doc.data();
-        // currLeagueNames.push(currL.name);
-        console.log('new league created with!', doc.data());
-        //adds but doesnt return key yet
+        console.log('doc id', doc.id);
+        leagueID = doc.id;
       })
-      .then(() => this.props.navigation.navigate('LeagueSettings'))
+      .then(() => {
+        currUserRef.set({ currentLeague: leagueID });
+      })
+      .then(() =>
+        this.props.navigation.navigate('LeagueSettings', {
+          name: league,
+          password: password,
+          leagueID: leagueID
+        })
+      )
       .catch(function(error) {
         console.log('Error getting cached document:', error);
       });
-    // check if league exists
-    //add to leagues
-    //await to get id
-    //add league to user
-    // onPress={() => this.props.navigation.navigate('LeagueSettings')}
   }
 
   renderPasswordSetting() {
@@ -291,7 +307,19 @@ export default class CreateLeague extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Avenir',
+                  fontWeight: 'bold',
+                  marginTop: 5,
+                  marginBottom: 5,
+                  fontSize: 15,
+                  marginLeft: 15
+                }}
+              >
+                Enter your new league's details
+              </Text>
               <TextInput
                 style={styles.textInput}
                 autoCapitalize="none"
@@ -299,25 +327,59 @@ export default class CreateLeague extends React.Component {
                 onChangeText={league => this.setState({ league })}
                 value={this.state.league}
               />
+              <View style={{ flexDirection: 'row' }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    fontWeight: 'bold',
+                    marginTop: 5,
+                    fontSize: 12,
+                    marginLeft: 25
+                  }}
+                >
+                  check league name availability
+                </Text>
+                <Button
+                  type="clear"
+                  // style={{ marginBottom: 50 }}
+                  // onPress={() => this.props.navigation.navigate('Home')}
+                  onPress={() => this.checkLeagueName()}
+                  icon={
+                    <Icon
+                      name="question-circle"
+                      type="font-awesome"
+                      color="white"
+                      size={20}
+                    />
+                  }
+                />
+              </View>
               {this.state.errorMessage ? (
                 <Text style={{ color: 'red', marginLeft: 15 }}>
                   {this.state.errorMessage}
                 </Text>
               ) : null}
+
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  League Pass Phrase"
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
               <Text
                 style={{
                   color: 'white',
                   fontFamily: 'Avenir',
                   fontWeight: 'bold',
-                  marginTop: 15,
-                  marginBottom: 15,
-                  fontSize: 15,
+                  marginTop: 5,
+                  fontSize: 12,
                   marginLeft: 15
                 }}
               >
-                Require a pass phrase for new members?
+                All new members will need this passphrase to join your league
               </Text>
-              {this.renderPasswordSetting()}
             </LinearGradient>
           </View>
           <TouchableOpacity
@@ -353,20 +415,6 @@ export default class CreateLeague extends React.Component {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-          <Button
-            type="clear"
-            style={{ marginBottom: 50 }}
-            // onPress={() => this.props.navigation.navigate('Home')}
-            onPress={() => this.checkLeagueName()}
-            icon={
-              <Icon
-                name="chevron-circle-left"
-                type="font-awesome"
-                color="white"
-                size={30}
-              />
-            }
-          />
         </ImageBackground>
       </View>
     );

@@ -10,6 +10,7 @@ import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelection
 
 import CreateLeague from '../screens/LeagueAdminScreens/CreateLeague';
 import LeagueSettings from '../screens/LeagueAdminScreens/LeagueSettings';
+import LeagueInvites from '../screens/LeagueAdminScreens/LeagueInvites';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 
 export default createAppContainer(
@@ -24,6 +25,7 @@ export default createAppContainer(
       LeagueSelectionScreen: LeagueSelectionScreen,
       CreateLeague: CreateLeague,
       LeagueSettings: LeagueSettings,
+      LeagueInvites: LeagueInvites,
       Profile: ProfileScreen
     },
     {
