@@ -85,7 +85,6 @@ export default class LeagueSettings extends React.Component {
   }
 
   upcomingRounds() {
-    // const nextDates = ['2019-07-08', '2019-07-15', '2019-07-22'];
     const nextDates = this.state.upcomingRounds;
 
     return nextDates.map(date => (
@@ -168,17 +167,17 @@ export default class LeagueSettings extends React.Component {
             style={{
               flex: 1,
               marginTop: 100,
-              maxHeight: 600,
-              minHeight: 300
+              maxHeight: 400,
+              minHeight: 200
             }}
           >
             <LinearGradient
               colors={['#633836', '#5b2d2d', '#402423']}
               style={{
-                // maxHeight: 600,
-                // minHeight: 300,
+                maxHeight: 400,
+                minHeight: 200,
                 flex: 1,
-                // marginTop: '10%',
+                marginTop: '10%',
                 width: '85%',
                 borderRadius: 5,
                 alignSelf: 'center',
@@ -210,10 +209,10 @@ export default class LeagueSettings extends React.Component {
                 </View>
                 <View
                   style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    marginTop: 10
                   }}
                 >
                   <Text
@@ -239,10 +238,10 @@ export default class LeagueSettings extends React.Component {
                 </View>
                 <View
                   style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    marginTop: 10
                   }}
                 >
                   <Text
@@ -252,7 +251,7 @@ export default class LeagueSettings extends React.Component {
                       fontSize: 18
                     }}
                   >
-                    Pass Phrase:
+                    Password:
                   </Text>
                   <Text
                     style={{
@@ -270,11 +269,11 @@ export default class LeagueSettings extends React.Component {
                   style={{
                     color: 'white',
                     fontFamily: 'Avenir',
-                    marginLeft: 15,
+                    marginLeft: 10,
                     fontSize: 18,
                     marginBottom: 5,
                     textDecorationLine: 'underline',
-                    marginTop: 10,
+                    marginTop: 20,
                     marginBottom: 5
                   }}
                 >
@@ -297,7 +296,13 @@ export default class LeagueSettings extends React.Component {
               </View>
             </LinearGradient>
           </View>
-          <View style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'space-around',
+              alignContent: 'center'
+            }}
+          >
             <TouchableOpacity
               style={{
                 height: '15%',
@@ -306,7 +311,6 @@ export default class LeagueSettings extends React.Component {
                 alignSelf: 'center',
                 marginTop: '5%'
               }}
-              // onPress={this.handleLogin}
               onPress={() =>
                 this.props.navigation.navigate('LeagueInvites', {
                   name: this.state.name,

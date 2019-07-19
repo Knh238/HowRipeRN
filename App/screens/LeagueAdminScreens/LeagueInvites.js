@@ -36,9 +36,9 @@ export default class LeagueInvites extends React.Component {
       selectedStartDate: '',
       sendEmailTo: '',
       sendTextTo: ''
-      // selected2: undefined
     };
-    this.setEndDate = this.setEndDate.bind(this);
+    this.sendEmailInvite = this.sendEmailInvite.bind(this);
+    this.sendTextInvite = this.sendTextInvite.bind(this);
   }
 
   componentWillMount() {
@@ -55,22 +55,35 @@ export default class LeagueInvites extends React.Component {
       leagueID,
       selectedStartDate
     });
-    this.setEndDate();
   }
 
-  setEndDate() {
-    const startDay = this.state.selectedStartDate;
-    // const startDayVal = moment(startDay).format('MM Do YY');
-    // const endDateCalc = moment(startDayVal)
-    //   .add(8, 'weeks')
-    //   .calender();
-    console.log(startDay);
-    const endDate = moment(startDay)
-      .add(8, 'weeks')
-      .calendar();
-    // // const endDate = endDateCalc.format('MMMM Do YYYY');
-    // //   .format('MMMM Do YYYY');
-    console.log('end date is', endDate);
+  sendEmailInvite() {
+    const friendToEmail = this.state.sendEmailTo;
+    const leagueName = this.state.name;
+    const leaguePassword = this.state.password;
+    Linking.openURL(
+      'mailto:' +
+        friendToEmail +
+        '?cc=&subject=Join my league on HowRipe!&body="Love movies? join me in a game of HowRipe. League Name: ' +
+        leagueName +
+        'League Password: ' +
+        leaguePassword
+    );
+    this.setState({ sendEmailTo: '' });
+  }
+  sendTextInvite() {
+    const friendToText = this.state.sendTextTo;
+    const leagueName = this.state.name;
+    const leaguePassword = this.state.password;
+    Linking.openURL(
+      'sms:' +
+        friendToText +
+        '&body=join the league! league name: ' +
+        leagueName +
+        'password: ' +
+        leaguePassword
+    );
+    this.setState({ sendTextTo: '' });
   }
 
   render() {
@@ -85,24 +98,18 @@ export default class LeagueInvites extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          {this.state.errorMessage ? (
-            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          ) : null}
           <View
             style={{
               flex: 1,
               marginTop: 100,
-              maxHeight: 600,
+              maxHeight: 450,
               minHeight: 300
             }}
           >
             <LinearGradient
               colors={['#633836', '#5b2d2d', '#402423']}
               style={{
-                // maxHeight: 600,
-                // minHeight: 300,
                 flex: 1,
-                // marginTop: '10%',
                 width: '85%',
                 borderRadius: 5,
                 alignSelf: 'center',
@@ -134,10 +141,10 @@ export default class LeagueInvites extends React.Component {
                 </View>
                 <View
                   style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    marginTop: 10
                   }}
                 >
                   <Text
@@ -163,10 +170,10 @@ export default class LeagueInvites extends React.Component {
                 </View>
                 <View
                   style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    marginTop: 10
                   }}
                 >
                   <Text
@@ -176,7 +183,7 @@ export default class LeagueInvites extends React.Component {
                       fontSize: 18
                     }}
                   >
-                    Pass Phrase:
+                    Password:
                   </Text>
                   <Text
                     style={{
@@ -190,58 +197,110 @@ export default class LeagueInvites extends React.Component {
                   </Text>
                 </View>
 
+                <View
+                  style={{
+                    display: 'flex',
+                    // marginLeft: 30,
+                    // marginBottom: 0,
+                    // padding: 0,
+                    flexDirection: 'row'
+                    // marginTop: 0,
+                    // height: 40
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'Avenir',
+                      marginLeft: 10,
+                      fontSize: 18,
+                      marginBottom: 5,
+                      marginTop: 10
+                    }}
+                  >
+                    Start date: {this.state.selectedStartDate}
+                  </Text>
+                  <Text
+                    style={{
+                      color: '#DAA520',
+                      fontFamily: 'Avenir',
+                      marginLeft: 5,
+                      fontSize: 14,
+                      marginBottom: 5,
+                      marginTop: 10,
+                      alignSelf: 'center'
+                    }}
+                  >
+                    {moment(this.state.selectedStartDate, 'MMMM Do YYYY')
+                      .startOf('day')
+                      .fromNow()}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    borderBottomWidth: 1,
+                    borderTopWidth: 1,
+                    borderColor: 'white',
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                    height: 50,
+                    marginTop: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'Avenir',
+                      fontWeight: 'bold',
+                      alignSelf: 'center',
+                      fontSize: 18
+                    }}
+                  >
+                    Let's Invite Some Friends!
+                  </Text>
+                </View>
                 <Text
                   style={{
                     color: 'white',
                     fontFamily: 'Avenir',
-                    marginLeft: 15,
-                    fontSize: 18,
+                    fontSize: 15,
                     marginBottom: 5,
-                    marginTop: 10,
-                    marginBottom: 5
-                  }}
-                >
-                  Selected start date: {this.state.selectedStartDate}
-                </Text>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'Avenir',
-                    marginLeft: 20,
-                    fontSize: 15,
-                    marginBottom: 10,
-                    marginTop: 0
-                  }}
-                >
-                  end date:
-                </Text>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'Avenir',
-                    marginLeft: 15,
-                    fontSize: 15,
-                    marginBottom: 5
+                    marginTop: 5,
+                    alignSelf: 'center'
                   }}
                 >
                   Max # of players: 15
                 </Text>
-
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    fontSize: 18,
+                    marginLeft: 15,
+                    marginBottom: 5,
+                    alignSelf: 'center',
+                    marginTop: 15
+                  }}
+                >
+                  Send Invites via e-mail:
+                </Text>
                 <View
                   style={{
                     display: 'flex',
                     flex: 1,
                     marginLeft: 10,
                     marginRight: 10,
+                    marginBottom: 10,
                     flexDirection: 'row',
-                    height: '15%',
+                    height: 35,
                     justifyContent: 'center'
                   }}
                 >
                   <TextInput
                     style={styles.emailInput}
                     autoCapitalize="none"
-                    placeholder="  enter your friend's email"
+                    placeholder="  enter friend's email"
                     onChangeText={email =>
                       this.setState({ sendEmailTo: email })
                     }
@@ -250,29 +309,19 @@ export default class LeagueInvites extends React.Component {
 
                   <TouchableOpacity
                     style={{
-                      height: '20%',
+                      height: 35,
                       width: '10%',
                       flex: 1
                     }}
-                    onPress={
-                      () =>
-                        Linking.openURL(
-                          'mailto:kristinnharper@gmail.com?cc=&subject=yourSubject&body=yourMessage'
-                        )
-                      // Linking.openURL(
-                      //   'mailto:kristinnharper@gmail.com?subject=SendMail&body=join the party'
-                      // )
-                    }
                     title="support@example.com"
-                    // onPress={this.handleLogin}
+                    onPress={() => this.sendEmailInvite()}
                   >
                     <LinearGradient
                       colors={['#902227', '#761b1f', '#5d1419']}
                       style={{
                         borderTopRightRadius: 5,
                         borderBottomRightRadius: 5,
-                        flex: 1
-                        // height: '15%'
+                        height: 35
                       }}
                     >
                       <Text
@@ -283,7 +332,8 @@ export default class LeagueInvites extends React.Component {
                           fontSize: 18,
                           alignSelf: 'center',
                           fontWeight: '500',
-                          letterSpacing: 1
+                          letterSpacing: 1,
+                          marginTop: 5
                         }}
                       >
                         Invite
@@ -291,6 +341,18 @@ export default class LeagueInvites extends React.Component {
                     </LinearGradient>
                   </TouchableOpacity>
                 </View>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    fontSize: 18,
+                    marginLeft: 15,
+                    marginBottom: 5,
+                    alignSelf: 'center'
+                  }}
+                >
+                  Send Invites via Text Message:
+                </Text>
 
                 <View
                   style={{
@@ -299,38 +361,32 @@ export default class LeagueInvites extends React.Component {
                     marginLeft: 10,
                     marginRight: 10,
                     flexDirection: 'row',
-                    height: '15%',
+                    height: 35,
                     justifyContent: 'center'
                   }}
                 >
                   <TextInput
                     style={styles.emailInput}
                     autoCapitalize="none"
-                    placeholder="  enter your friend's email"
+                    placeholder="  enter friend's phone #"
                     onChangeText={text => this.setState({ sendTextTo: text })}
                     value={this.state.sendTextTo}
                   />
 
                   <TouchableOpacity
                     style={{
-                      height: '20%',
+                      height: 35,
                       width: '10%',
                       flex: 1
                     }}
-                    onPress={() =>
-                      Linking.openURL(
-                        'sms:1-225-315-8623&body=join the league! league name: , password:'
-                      )
-                    }
-                    // onPress={this.handleLogin}
+                    onPress={() => this.sendTextInvite()}
                   >
                     <LinearGradient
                       colors={['#902227', '#761b1f', '#5d1419']}
                       style={{
                         borderTopRightRadius: 5,
                         borderBottomRightRadius: 5,
-                        flex: 1
-                        // height: '15%'
+                        height: 35
                       }}
                     >
                       <Text
@@ -341,7 +397,8 @@ export default class LeagueInvites extends React.Component {
                           fontSize: 18,
                           alignSelf: 'center',
                           fontWeight: '500',
-                          letterSpacing: 1
+                          letterSpacing: 1,
+                          marginTop: 5
                         }}
                       >
                         Invite
@@ -349,34 +406,24 @@ export default class LeagueInvites extends React.Component {
                     </LinearGradient>
                   </TouchableOpacity>
                 </View>
-
-                {/* </View> */}
-                {/* <View style={{ height: '10%' }}>
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontFamily: 'Avenir',
-                      marginLeft: 15,
-                      fontSize: 18,
-                      marginTop: 0
-                    }}
-                  >
-                    Already Invited:
-                  </Text>
-                </View> */}
               </View>
             </LinearGradient>
           </View>
-          <View style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1,
+              alignContent: 'center',
+              justifyContent: 'space-around'
+            }}
+          >
             <TouchableOpacity
               style={{
                 height: '15%',
                 width: '60%',
                 alignContent: 'center',
-                alignSelf: 'center',
-                marginTop: '5%'
+                alignSelf: 'center'
+                // marginTop: '5%'
               }}
-              // onPress={this.handleLogin}
               onPress={() => this.props.navigation.navigate('Home')}
             >
               <LinearGradient
@@ -416,7 +463,7 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    height: 40,
+    height: 35,
     width: '90%',
     borderColor: 'gray',
     borderRadius: 5,
@@ -426,7 +473,7 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   emailInput: {
-    height: '20%',
+    height: 35,
     width: '60%',
     display: 'flex',
     backgroundColor: 'white',
