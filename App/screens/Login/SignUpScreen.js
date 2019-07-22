@@ -39,7 +39,8 @@ export default class SignUpScreen extends React.Component {
           email: user.email,
           icon: 'red',
           lastLoginAt: currentTime,
-          userName: ''
+          userName: '',
+          displayName: ''
         };
         db.collection('users')
           .doc(user.uid)

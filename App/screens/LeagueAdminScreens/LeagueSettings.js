@@ -22,6 +22,8 @@ import {
   Input,
   Label
 } from 'native-base';
+import firebase from '../../../firebase';
+import db from '../../.././db';
 
 export default class LeagueSettings extends React.Component {
   constructor(props) {
@@ -33,19 +35,18 @@ export default class LeagueSettings extends React.Component {
       leagueID: '',
       errorMessage: '',
       upcomingRounds: [],
-      selectedStartDate: '2019/07/08',
+      selectedStartDate: '',
       sendEmailTo: '',
       sendTextTo: ''
-      // selected2: undefined
     };
     this.setUpcomingDates = this.setUpcomingDates.bind(this);
+    this.setStartDateInDB = this.setStartDateInDB.bind(this);
+    this.selectStartDate = this.selectStartDate.bind(this);
   }
 
   componentWillMount() {
     const paramsPassed = this.props.navigation.state.params;
-    const name = this.props.navigation.state.params.name;
-    const password = this.props.navigation.state.params.password;
-    const leagueID = this.props.navigation.state.params.leagueID;
+    const { name, password, leagueID } = this.props.navigation.state.params;
     console.log('params passed', paramsPassed);
     this.setState({
       name,
@@ -54,10 +55,32 @@ export default class LeagueSettings extends React.Component {
     });
     this.setUpcomingDates();
   }
-  selectStartDate(str) {
+
+  selectStartDate(val) {
     this.setState({
-      selectedStartDate: value
+      selectedStartDate: val
     });
+    this.setStartDateInDB();
+  }
+
+  setStartDateInDB() {
+    const leagueID = this.state.leagueID;
+    const startDate = this.state.selectedStartDate;
+    const currLeagues = db.collection('leagues').doc(leagueID);
+
+    currLeagues
+      .update({ startDate })
+      .then(() => {
+        console.log('new date added!');
+      })
+      .then(() =>
+        this.props.navigation.navigate('LeagueInvites', {
+          name: this.state.name,
+          password: this.state.password,
+          leagueID: this.state.leagueID,
+          selectedStartDate: this.state.selectedStartDate
+        })
+      );
   }
 
   setUpcomingDates() {
@@ -91,6 +114,7 @@ export default class LeagueSettings extends React.Component {
       <TouchableOpacity
         key={date}
         onPress={() => this.setState({ selectedStartDate: `${date}` })}
+        // onPress={date => this.selectStartDate(`${date}`)}
       >
         <View
           style={{
@@ -311,14 +335,7 @@ export default class LeagueSettings extends React.Component {
                 alignSelf: 'center',
                 marginTop: '5%'
               }}
-              onPress={() =>
-                this.props.navigation.navigate('LeagueInvites', {
-                  name: this.state.name,
-                  password: this.state.password,
-                  leagueID: this.state.leagueID,
-                  selectedStartDate: this.state.selectedStartDate
-                })
-              }
+              onPress={() => this.setStartDateInDB()}
             >
               <LinearGradient
                 colors={['#902227', '#761b1f', '#5d1419']}

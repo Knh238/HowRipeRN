@@ -83,13 +83,15 @@ export default class LeagueSelectionScreen extends React.Component {
   }
   addLeagueToUser() {
     const leagueID = this.state.dbLeagueInfo.id;
+
     const currLeagues = db
       .collection('leagues')
       .doc(this.state.dbLeagueInfo.id);
     const user = firebase.auth().currentUser;
+    const players = { displayName: 'Kristin', userID: user.uid };
     const currUserRef = db.collection('users').doc(user.uid);
     currLeagues
-      .update({ players: firebase.firestore.FieldValue.arrayUnion(user.uid) })
+      .update({ players: firebase.firestore.FieldValue.arrayUnion(players) })
       .then(function(doc) {
         console.log('added user to the league!');
       })

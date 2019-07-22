@@ -23,7 +23,7 @@ export default class CreateLeague extends React.Component {
       requirePassword: true,
       uniqueName: false
     };
-    this.renderPasswordSetting = this.renderPasswordSetting.bind(this);
+    // this.renderPasswordSetting = this.renderPasswordSetting.bind(this);
     this.setLeagueInfo = this.setLeagueInfo.bind(this);
     this.checkLeagueName = this.checkLeagueName.bind(this);
   }
@@ -36,15 +36,12 @@ export default class CreateLeague extends React.Component {
       .get()
       .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-          // console.log(doc.id, ' => ', doc.data());
           const info = doc.data();
           currLeagueNames.push(info.name.toLowerCase());
         });
       })
       .then(() => {
-        // console.log('curr leagues', currLeagueNames);
         const leagueLC = league.toLowerCase();
-        // console.log('league is now', leagueLC);
         if (currLeagueNames.indexOf(leagueLC) === -1) {
           this.setState({
             errorMessage: 'YAY! Name not taken. Yay! ',
@@ -59,7 +56,8 @@ export default class CreateLeague extends React.Component {
       });
   }
 
-  setLeagueInfo() {
+  async setLeagueInfo() {
+    await this.checkLeagueName();
     const { league, password } = this.state;
     if (league === '') {
       Alert.alert('Uhoh! Your league still needs a name!');
@@ -68,25 +66,27 @@ export default class CreateLeague extends React.Component {
     if (password === '') {
       Alert.alert('No password entered! Password required.');
       return;
-    }
-    if (!this.state.uniqueName) {
-      Alert.alert('Looks like this league name is taken. Try again');
-      return;
     } else {
       const user = firebase.auth().currentUser;
       const currUserRef = db.collection('users').doc(user.uid);
-      console.log(user.uid);
       const currLeagues = db.collection('leagues');
       let leagueID = '';
+      const players = [];
+      players.push({ displayName: 'Kristin', userID: user.uid });
 
       currLeagues
-        .add({ name: league, password: password })
+        .add({
+          name: league,
+          password: password,
+          players,
+          startDate: '',
+          scores: []
+        })
         .then(function(doc) {
-          console.log('doc id', doc.id);
           leagueID = doc.id;
         })
         .then(() => {
-          currUserRef.set({ currentLeague: leagueID });
+          currUserRef.update({ currentLeague: leagueID });
         })
         .then(() =>
           this.props.navigation.navigate('LeagueSettings', {
@@ -101,153 +101,153 @@ export default class CreateLeague extends React.Component {
     }
   }
 
-  renderPasswordSetting() {
-    if (this.state.requirePassword) {
-      return (
-        <View
-          style={{
-            flex: 1,
-            marginLeft: 10
-          }}
-        >
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => this.setState({ requirePassword: true })}
-            >
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  marginBottom: 5
-                }}
-              >
-                <Icon
-                  name="dot-circle-o"
-                  type="font-awesome"
-                  color="white"
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'Avenir',
-                    fontSize: 18,
-                    marginLeft: 10
-                  }}
-                >
-                  Yes ?
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.setState({ requirePassword: false })}
-            >
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'center'
-                }}
-              >
-                <Icon
-                  name="circle-o"
-                  type="font-awesome"
-                  color="white"
-                  size={20}
-                />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'Avenir',
-                    fontSize: 18,
-                    marginLeft: 10
-                  }}
-                >
-                  No
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            autoCapitalize="none"
-            placeholder="  League Pass Phrase"
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-          />
-        </View>
-      );
-    } else {
-      return (
-        <View
-          style={{
-            flex: 1,
-            marginLeft: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-around'
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.setState({ requirePassword: true })}
-          >
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'center'
-              }}
-            >
-              <Icon
-                name="circle-o"
-                type="font-awesome"
-                color="white"
-                size={20}
-              />
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: 'Avenir',
-                  fontSize: 18,
-                  marginLeft: 10
-                }}
-              >
-                Yes
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this.setState({ requirePassword: false })}
-          >
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <Icon
-                name="dot-circle-o"
-                type="font-awesome"
-                color="white"
-                size={20}
-              />
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: 'Avenir',
-                  fontSize: 18,
-                  marginLeft: 10
-                }}
-              >
-                No
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      );
-    }
-  }
+  // renderPasswordSetting() {
+  //   if (this.state.requirePassword) {
+  //     return (
+  //       <View
+  //         style={{
+  //           flex: 1,
+  //           marginLeft: 10
+  //         }}
+  //       >
+  //         <View
+  //           style={{
+  //             flex: 1,
+  //             flexDirection: 'row',
+  //             justifyContent: 'space-around'
+  //           }}
+  //         >
+  //           <TouchableOpacity
+  //             onPress={() => this.setState({ requirePassword: true })}
+  //           >
+  //             <View
+  //               style={{
+  //                 flex: 1,
+  //                 flexDirection: 'row',
+  //                 justifyContent: 'center',
+  //                 marginBottom: 5
+  //               }}
+  //             >
+  //               <Icon
+  //                 name="dot-circle-o"
+  //                 type="font-awesome"
+  //                 color="white"
+  //                 size={20}
+  //               />
+  //               <Text
+  //                 style={{
+  //                   color: 'white',
+  //                   fontFamily: 'Avenir',
+  //                   fontSize: 18,
+  //                   marginLeft: 10
+  //                 }}
+  //               >
+  //                 Yes ?
+  //               </Text>
+  //             </View>
+  //           </TouchableOpacity>
+  //           <TouchableOpacity
+  //             onPress={() => this.setState({ requirePassword: false })}
+  //           >
+  //             <View
+  //               style={{
+  //                 flex: 1,
+  //                 flexDirection: 'row',
+  //                 justifyContent: 'center'
+  //               }}
+  //             >
+  //               <Icon
+  //                 name="circle-o"
+  //                 type="font-awesome"
+  //                 color="white"
+  //                 size={20}
+  //               />
+  //               <Text
+  //                 style={{
+  //                   color: 'white',
+  //                   fontFamily: 'Avenir',
+  //                   fontSize: 18,
+  //                   marginLeft: 10
+  //                 }}
+  //               >
+  //                 No
+  //               </Text>
+  //             </View>
+  //           </TouchableOpacity>
+  //         </View>
+  //         <TextInput
+  //           style={styles.textInput}
+  //           autoCapitalize="none"
+  //           placeholder="  League Pass Phrase"
+  //           onChangeText={password => this.setState({ password })}
+  //           value={this.state.password}
+  //         />
+  //       </View>
+  //     );
+  //   } else {
+  //     return (
+  //       <View
+  //         style={{
+  //           flex: 1,
+  //           marginLeft: 10,
+  //           flexDirection: 'row',
+  //           justifyContent: 'space-around'
+  //         }}
+  //       >
+  //         <TouchableOpacity
+  //           onPress={() => this.setState({ requirePassword: true })}
+  //         >
+  //           <View
+  //             style={{
+  //               flex: 1,
+  //               flexDirection: 'row',
+  //               justifyContent: 'center'
+  //             }}
+  //           >
+  //             <Icon
+  //               name="circle-o"
+  //               type="font-awesome"
+  //               color="white"
+  //               size={20}
+  //             />
+  //             <Text
+  //               style={{
+  //                 color: 'white',
+  //                 fontFamily: 'Avenir',
+  //                 fontSize: 18,
+  //                 marginLeft: 10
+  //               }}
+  //             >
+  //               Yes
+  //             </Text>
+  //           </View>
+  //         </TouchableOpacity>
+  //         <TouchableOpacity
+  //           onPress={() => this.setState({ requirePassword: false })}
+  //         >
+  //           <View style={{ flex: 1, flexDirection: 'row' }}>
+  //             <Icon
+  //               name="dot-circle-o"
+  //               type="font-awesome"
+  //               color="white"
+  //               size={20}
+  //             />
+  //             <Text
+  //               style={{
+  //                 color: 'white',
+  //                 fontFamily: 'Avenir',
+  //                 fontSize: 18,
+  //                 marginLeft: 10
+  //               }}
+  //             >
+  //               No
+  //             </Text>
+  //           </View>
+  //         </TouchableOpacity>
+  //       </View>
+  //     );
+  //   }
+  // }
 
   render() {
     return (
@@ -366,8 +366,6 @@ export default class CreateLeague extends React.Component {
                 </Text>
                 <Button
                   type="clear"
-                  // style={{ marginBottom: 50 }}
-                  // onPress={() => this.props.navigation.navigate('Home')}
                   onPress={() => this.checkLeagueName()}
                   icon={
                     <Icon
