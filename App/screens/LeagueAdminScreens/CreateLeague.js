@@ -5,21 +5,100 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Alert
 } from 'react-native';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+import firebase from '../../../firebase';
+import db from '../../.././db';
 
 export default class CreateLeague extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      league: '',
       password: '',
       errorMessage: '',
-      requirePassword: true
+      requirePassword: true,
+      uniqueName: false
     };
     this.renderPasswordSetting = this.renderPasswordSetting.bind(this);
+    this.setLeagueInfo = this.setLeagueInfo.bind(this);
+    this.checkLeagueName = this.checkLeagueName.bind(this);
+  }
+
+  checkLeagueName() {
+    let { league } = this.state;
+    const currLeagues = db.collection('leagues');
+    const currLeagueNames = [];
+    currLeagues
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          // console.log(doc.id, ' => ', doc.data());
+          const info = doc.data();
+          currLeagueNames.push(info.name.toLowerCase());
+        });
+      })
+      .then(() => {
+        // console.log('curr leagues', currLeagueNames);
+        const leagueLC = league.toLowerCase();
+        // console.log('league is now', leagueLC);
+        if (currLeagueNames.indexOf(leagueLC) === -1) {
+          this.setState({
+            errorMessage: 'YAY! Name not taken. Yay! ',
+            uniqueName: true
+          });
+        } else {
+          this.setState({
+            errorMessage: 'OOPS!! Name already taken. Try again!',
+            uniqueName: false
+          });
+        }
+      });
+  }
+
+  setLeagueInfo() {
+    const { league, password } = this.state;
+    if (league === '') {
+      Alert.alert('Uhoh! Your league still needs a name!');
+      return;
+    }
+    if (password === '') {
+      Alert.alert('No password entered! Password required.');
+      return;
+    }
+    if (!this.state.uniqueName) {
+      Alert.alert('Looks like this league name is taken. Try again');
+      return;
+    } else {
+      const user = firebase.auth().currentUser;
+      const currUserRef = db.collection('users').doc(user.uid);
+      console.log(user.uid);
+      const currLeagues = db.collection('leagues');
+      let leagueID = '';
+
+      currLeagues
+        .add({ name: league, password: password })
+        .then(function(doc) {
+          console.log('doc id', doc.id);
+          leagueID = doc.id;
+        })
+        .then(() => {
+          currUserRef.set({ currentLeague: leagueID });
+        })
+        .then(() =>
+          this.props.navigation.navigate('LeagueSettings', {
+            name: league,
+            password: password,
+            leagueID: leagueID
+          })
+        )
+        .catch(function(error) {
+          console.log('Error getting cached document:', error);
+        });
+    }
   }
 
   renderPasswordSetting() {
@@ -182,9 +261,6 @@ export default class CreateLeague extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          {this.state.errorMessage ? (
-            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          ) : null}
           <View style={{ flex: 1, marginTop: 160 }}>
             <LinearGradient
               colors={['#6E3737', '#5b2d2d', '#402423']}
@@ -242,27 +318,93 @@ export default class CreateLeague extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-              <TextInput
-                style={styles.textInput}
-                autoCapitalize="none"
-                placeholder="  League Name"
-                onChangeText={email => this.setState({ email })}
-                value={this.state.email}
-              />
               <Text
                 style={{
                   color: 'white',
                   fontFamily: 'Avenir',
                   fontWeight: 'bold',
-                  marginTop: 15,
-                  marginBottom: 15,
+                  marginTop: 5,
+                  marginBottom: 5,
                   fontSize: 15,
+                  marginLeft: 15,
+                  alignSelf: 'center'
+                }}
+              >
+                Enter your new league's details
+              </Text>
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Avenir',
+                  fontWeight: 'bold',
+                  marginTop: 5,
+                  fontSize: 12,
                   marginLeft: 15
                 }}
               >
-                Require a pass phrase for new members?
+                Let's pick a name for your league
               </Text>
-              {this.renderPasswordSetting()}
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  League Name"
+                onChangeText={league => this.setState({ league })}
+                value={this.state.league}
+              />
+              <View style={{ flexDirection: 'row' }}>
+                <Text
+                  style={{
+                    color: '#DAA520',
+                    fontFamily: 'Avenir',
+                    fontWeight: 'bold',
+                    marginTop: 5,
+                    fontSize: 12,
+                    marginLeft: 25
+                  }}
+                >
+                  League name already in use?
+                </Text>
+                <Button
+                  type="clear"
+                  // style={{ marginBottom: 50 }}
+                  // onPress={() => this.props.navigation.navigate('Home')}
+                  onPress={() => this.checkLeagueName()}
+                  icon={
+                    <Icon
+                      name="question-circle"
+                      type="font-awesome"
+                      color="white"
+                      size={20}
+                    />
+                  }
+                />
+              </View>
+              {this.state.errorMessage ? (
+                <Text style={{ color: 'red', marginLeft: 15 }}>
+                  {this.state.errorMessage}
+                </Text>
+              ) : null}
+              <Text
+                style={{
+                  color: 'white',
+                  fontFamily: 'Avenir',
+                  fontWeight: 'bold',
+                  marginTop: 5,
+                  fontSize: 12,
+                  marginLeft: 15
+                }}
+              >
+                All new members will need to enter a password to join your
+                league
+              </Text>
+
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  League Pass Phrase"
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
             </LinearGradient>
           </View>
           <TouchableOpacity
@@ -274,7 +416,7 @@ export default class CreateLeague extends React.Component {
               marginTop: 600,
               position: 'absolute'
             }}
-            onPress={() => this.props.navigation.navigate('LeagueSettings')}
+            onPress={() => this.setLeagueInfo()}
           >
             <LinearGradient
               colors={['#A11123', '#761b1f', '#5d1419']}
@@ -298,19 +440,6 @@ export default class CreateLeague extends React.Component {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-          <Button
-            type="clear"
-            style={{ marginBottom: 50 }}
-            onPress={() => this.props.navigation.navigate('Home')}
-            icon={
-              <Icon
-                name="chevron-circle-left"
-                type="font-awesome"
-                color="white"
-                size={30}
-              />
-            }
-          />
         </ImageBackground>
       </View>
     );

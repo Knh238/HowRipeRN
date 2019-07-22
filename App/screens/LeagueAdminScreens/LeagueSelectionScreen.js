@@ -5,16 +5,113 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Alert
 } from 'react-native';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+import firebase from '../../../firebase';
+import db from '../../.././db';
 
 export default class LeagueSelectionScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', errorMessage: '' };
-    // this.handleSignUp = this.handleSignUp.bind(this);
+    this.state = {
+      errorMessageLeague: '',
+      errorMessagePassword: '',
+      league: '',
+      password: '',
+      leagueExists: false,
+      dbLeagueInfo: {}
+    };
+    this.verifyLeague = this.verifyLeague.bind(this);
+    this.verifyPassword = this.verifyPassword.bind(this);
+    this.submitRegistration = this.submitRegistration.bind(this);
+    this.addLeagueToUser = this.addLeagueToUser.bind(this);
+  }
+
+  verifyLeague() {
+    let { league, password } = this.state;
+    const currLeagues = db.collection('leagues');
+    const currLeagueNames = [];
+    const leagueDetails = {};
+    league = league.toLowerCase();
+
+    currLeagues
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          const info = doc.data();
+          const lName = info.name.toLowerCase();
+          currLeagueNames.push(lName);
+          leagueDetails[lName] = { password: info.password, id: doc.id };
+        });
+      })
+      .then(() => {
+        if (currLeagueNames.indexOf(league) >= 0) {
+          const leagueInfoObj = leagueDetails[league];
+          this.setState({
+            errorMessageLeague: 'League Found ',
+            leagueExists: true,
+            dbLeagueInfo: leagueInfoObj
+          });
+          this.verifyPassword();
+        }
+        if (currLeagueNames.indexOf(league) === -1) {
+          this.setState({
+            errorMessageLeague:
+              'League not found! Make sure you entered it correctly',
+            leagueExists: false
+          });
+        }
+      });
+  }
+  verifyPassword() {
+    let { league, password } = this.state;
+    if (this.state.dbLeagueInfo.password === password) {
+      this.setState({
+        errorMessagePassword: 'Correct password!'
+      });
+      this.addLeagueToUser();
+    } else {
+      this.setState({
+        errorMessagePassword: 'Incorrect password.Try again!'
+      });
+      Alert.alert('Incorrect password!Try again.');
+      return;
+    }
+  }
+  addLeagueToUser() {
+    const leagueID = this.state.dbLeagueInfo.id;
+    const currLeagues = db
+      .collection('leagues')
+      .doc(this.state.dbLeagueInfo.id);
+    const user = firebase.auth().currentUser;
+    const currUserRef = db.collection('users').doc(user.uid);
+    currLeagues
+      .update({ players: firebase.firestore.FieldValue.arrayUnion(user.uid) })
+      .then(function(doc) {
+        console.log('added user to the league!');
+      })
+      .then(() => {
+        currUserRef.update({ currentLeague: leagueID });
+      })
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(function(error) {
+        console.log('Error getting cached document:', error);
+      });
+  }
+
+  async submitRegistration() {
+    let { league, password } = this.state;
+    const currLeagues = db.collection('leagues');
+
+    await this.verifyLeague();
+    if (this.state.leagueExists) {
+      this.verifyPassword();
+    } else {
+      return;
+    }
   }
 
   render() {
@@ -29,10 +126,6 @@ export default class LeagueSelectionScreen extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          {this.state.errorMessage ? (
-            <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
-          ) : null}
-
           <View style={{ flex: 1, marginTop: 160 }}>
             <LinearGradient
               colors={['#6E3737', '#5b2d2d', '#402423']}
@@ -85,13 +178,23 @@ export default class LeagueSelectionScreen extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
+              {this.state.errorMessageLeague ? (
+                <Text style={{ color: 'red' }}>
+                  {this.state.errorMessageLeague}
+                </Text>
+              ) : null}
               <TextInput
                 style={styles.textInput}
                 autoCapitalize="none"
                 placeholder="  League Name"
-                onChangeText={email => this.setState({ email })}
-                value={this.state.email}
+                onChangeText={league => this.setState({ league })}
+                value={this.state.league}
               />
+              {this.state.errorMessagePassword ? (
+                <Text style={{ color: 'red' }}>
+                  {this.state.errorMessagePassword}
+                </Text>
+              ) : null}
               <TextInput
                 secureTextEntry
                 style={styles.textInput}
@@ -112,7 +215,7 @@ export default class LeagueSelectionScreen extends React.Component {
               marginTop: 500,
               position: 'absolute'
             }}
-            // onPress={this.handleLogin}
+            onPress={() => this.submitRegistration()}
           >
             <LinearGradient
               colors={['#A11123', '#761b1f', '#5d1419']}

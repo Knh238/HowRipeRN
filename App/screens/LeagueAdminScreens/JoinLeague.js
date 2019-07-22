@@ -9,12 +9,91 @@ import {
   ImageBackground
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import firebase from '../../../firebase';
+import db from '../../.././db';
+
 export default class JoinLeague extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', errorMessage: '' };
-    // this.handleSignUp = this.handleSignUp.bind(this);
+    this.state = {
+      email: '',
+      password: '',
+      errorMessage: '',
+      league: '',
+      password: '',
+      leagueExists: false,
+      dbLeagueInfo: {}
+    };
+    this.verfiyLeagueName = this.verfiyLeagueName.bind(this);
+    this.verifyPassword = this.verifyPassword.bind(this);
   }
+  verifyPassword() {
+    let { league, password } = this.state;
+    const currLeagues = db.collection('leagues');
+    const currLeagueNames = [];
+    const leagueDetails = {};
+
+    currLeagues
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          const info = doc.data();
+          const lName = info.name.toLowerCase();
+          currLeagueNames.push(lName);
+          leagueDetails.lname = { password: info.password, id: info.id };
+        });
+      })
+      .then(() => {
+        // console.log('curr leagues', currLeagueNames);
+        const leagueLC = league.toLowerCase();
+        // console.log('league is now', leagueLC);
+        if (currLeagueNames.indexOf(leagueLC) >= 0) {
+          const leagueInfoObj = leagueDetails[leagueLC];
+          this.setState({
+            errorMessage: 'League Found ',
+            leagueExists: true,
+            dbLeagueInfo: leagueInfoObj
+          });
+        } else {
+          this.setState({
+            errorMessage:
+              'League not found! Make sure you entered it correctly',
+            leagueExists: false
+          });
+        }
+      });
+  }
+  // verfiyLeagueName() {
+  //   let { league } = this.state;
+  //   const currLeagues = db.collection('leagues');
+  //   const currLeagueNames = [];
+  //   currLeagues
+  //     .get()
+  //     .then(function(querySnapshot) {
+  //       querySnapshot.forEach(function(doc) {
+  //         // console.log(doc.id, ' => ', doc.data());
+  //         const info = doc.data();
+  //         currLeagueNames.push(info.name.toLowerCase());
+  //       });
+  //     })
+  //     .then(() => {
+  //       // console.log('curr leagues', currLeagueNames);
+  //       const leagueLC = league.toLowerCase();
+  //       // console.log('league is now', leagueLC);
+  //       if (currLeagueNames.indexOf(leagueLC) === -1) {
+  //         this.setState({
+  //           errorMessage: 'YAY! Name not taken. Yay! ',
+  //           uniqueName: true
+  //         });
+  //       } else {
+  //         this.setState({
+  //           errorMessage: 'OOPS!! Name already taken. Try again!',
+  //           uniqueName: false
+  //         });
+  //       }
+  //     });
+  // }
+
   render() {
     return (
       <View style={styles.container}>

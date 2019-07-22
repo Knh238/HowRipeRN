@@ -28,13 +28,31 @@ export default class LeagueSettings extends React.Component {
     super(props);
     this.state = {
       email: '',
+      name: '',
       password: '',
+      leagueID: '',
       errorMessage: '',
+      upcomingRounds: [],
       selectedStartDate: '2019/07/08',
-      sendEmailTo: ''
+      sendEmailTo: '',
+      sendTextTo: ''
       // selected2: undefined
     };
-    // this.handleSignUp = this.handleSignUp.bind(this);
+    this.setUpcomingDates = this.setUpcomingDates.bind(this);
+  }
+
+  componentWillMount() {
+    const paramsPassed = this.props.navigation.state.params;
+    const name = this.props.navigation.state.params.name;
+    const password = this.props.navigation.state.params.password;
+    const leagueID = this.props.navigation.state.params.leagueID;
+    console.log('params passed', paramsPassed);
+    this.setState({
+      name,
+      password,
+      leagueID
+    });
+    this.setUpcomingDates();
   }
   selectStartDate(str) {
     this.setState({
@@ -42,8 +60,32 @@ export default class LeagueSettings extends React.Component {
     });
   }
 
+  setUpcomingDates() {
+    const todaysDate = Date.now();
+
+    var closestMonday = function(inputDate) {
+      var curr_date = new Date(inputDate); // current date
+      var day_info = 8.64e7; // milliseconds per day
+      var days_to_monday = 8 - curr_date.getDay(); // days left to closest Monday
+      var monday_in_sec = curr_date.getTime() + days_to_monday * day_info; // aleary Monday in seconds from 1970
+      var next_monday = new Date(monday_in_sec); // Monday in date object
+      next_monday.setHours(0, 0, 0);
+      return next_monday;
+    };
+    const mondayOne = closestMonday(todaysDate);
+    const mondayTwo = closestMonday(mondayOne);
+    const mondayThree = closestMonday(mondayTwo);
+
+    const nextDates = [];
+    nextDates.push(moment(mondayOne).format('MMMM Do YYYY'));
+    nextDates.push(moment(mondayTwo).format('MMMM Do YYYY'));
+    nextDates.push(moment(mondayThree).format('MMMM Do YYYY'));
+
+    this.setState({ upcomingRounds: nextDates });
+  }
+
   upcomingRounds() {
-    const nextDates = ['2019/07/08', '2019/07/15', '2019/07/22'];
+    const nextDates = this.state.upcomingRounds;
 
     return nextDates.map(date => (
       <TouchableOpacity
@@ -84,7 +126,7 @@ export default class LeagueSettings extends React.Component {
               marginBottom: 0
             }}
           >
-            {moment(date).format('MMMM Do')}
+            {date}
           </Text>
           <Text
             style={{
@@ -97,7 +139,7 @@ export default class LeagueSettings extends React.Component {
               padding: 0
             }}
           >
-            {moment(date)
+            {moment(date, 'MMMM Do YYYY')
               .startOf('day')
               .fromNow()}
           </Text>
@@ -125,17 +167,17 @@ export default class LeagueSettings extends React.Component {
             style={{
               flex: 1,
               marginTop: 100,
-              maxHeight: 600,
-              minHeight: 300
+              maxHeight: 400,
+              minHeight: 200
             }}
           >
             <LinearGradient
               colors={['#633836', '#5b2d2d', '#402423']}
               style={{
-                // maxHeight: 600,
-                // minHeight: 300,
+                maxHeight: 400,
+                minHeight: 200,
                 flex: 1,
-                // marginTop: '10%',
+                marginTop: '10%',
                 width: '85%',
                 borderRadius: 5,
                 alignSelf: 'center',
@@ -167,10 +209,10 @@ export default class LeagueSettings extends React.Component {
                 </View>
                 <View
                   style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    marginTop: 10
                   }}
                 >
                   <Text
@@ -191,15 +233,15 @@ export default class LeagueSettings extends React.Component {
                       marginLeft: 5
                     }}
                   >
-                    League of Extraordinary
+                    {this.state.name}
                   </Text>
                 </View>
                 <View
                   style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    marginTop: 10
                   }}
                 >
                   <Text
@@ -209,7 +251,7 @@ export default class LeagueSettings extends React.Component {
                       fontSize: 18
                     }}
                   >
-                    Pass Phrase:
+                    Password:
                   </Text>
                   <Text
                     style={{
@@ -219,7 +261,7 @@ export default class LeagueSettings extends React.Component {
                       marginLeft: 5
                     }}
                   >
-                    supercalifragilistic
+                    {this.state.password}
                   </Text>
                 </View>
 
@@ -227,11 +269,11 @@ export default class LeagueSettings extends React.Component {
                   style={{
                     color: 'white',
                     fontFamily: 'Avenir',
-                    marginLeft: 15,
+                    marginLeft: 10,
                     fontSize: 18,
                     marginBottom: 5,
                     textDecorationLine: 'underline',
-                    marginTop: 10,
+                    marginTop: 20,
                     marginBottom: 5
                   }}
                 >
@@ -251,109 +293,16 @@ export default class LeagueSettings extends React.Component {
                 </Text>
 
                 <View style={{ flex: 1 }}>{this.upcomingRounds()}</View>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'Avenir',
-                    marginLeft: 15,
-                    fontSize: 15,
-                    marginBottom: 5
-                  }}
-                >
-                  Max # of players: 15
-                </Text>
-                <Button
-                  style={{ backgroundColor: 'yellow' }}
-                  onPress={() =>
-                    Linking.openURL(
-                      'sms:1-225-315-8623&body=join the league! league name: , password:'
-                    )
-                  }
-                  title="test the sms"
-                />
-                <View
-                  style={{
-                    display: 'flex',
-                    flex: 1,
-                    marginLeft: 10,
-                    marginRight: 10,
-                    flexDirection: 'row',
-                    height: '15%',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <TextInput
-                    style={styles.emailInput}
-                    autoCapitalize="none"
-                    placeholder="  enter your friend's email"
-                    onChangeText={email =>
-                      this.setState({ sendEmailTo: email })
-                    }
-                    value={this.state.sendEmailTo}
-                  />
-
-                  <TouchableOpacity
-                    style={{
-                      height: '20%',
-                      width: '10%',
-                      flex: 1
-                    }}
-                    onPress={
-                      () =>
-                        Linking.openURL(
-                          'mailto:kristinnharper@gmail.com?cc=&subject=yourSubject&body=yourMessage'
-                        )
-                      // Linking.openURL(
-                      //   'mailto:kristinnharper@gmail.com?subject=SendMail&body=join the party'
-                      // )
-                    }
-                    title="support@example.com"
-                    // onPress={this.handleLogin}
-                  >
-                    <LinearGradient
-                      colors={['#902227', '#761b1f', '#5d1419']}
-                      style={{
-                        borderTopRightRadius: 5,
-                        borderBottomRightRadius: 5,
-                        flex: 1
-                        // height: '15%'
-                      }}
-                    >
-                      <Text
-                        style={{
-                          color: 'white',
-                          fontFamily: 'Avenir',
-                          paddingLeft: 5,
-                          fontSize: 18,
-                          alignSelf: 'center',
-                          fontWeight: '500',
-                          letterSpacing: 1
-                        }}
-                      >
-                        Invite
-                      </Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                </View>
-
-                {/* </View> */}
-                {/* <View style={{ height: '10%' }}>
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontFamily: 'Avenir',
-                      marginLeft: 15,
-                      fontSize: 18,
-                      marginTop: 0
-                    }}
-                  >
-                    Already Invited:
-                  </Text>
-                </View> */}
               </View>
             </LinearGradient>
           </View>
-          <View style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'space-around',
+              alignContent: 'center'
+            }}
+          >
             <TouchableOpacity
               style={{
                 height: '15%',
@@ -362,8 +311,14 @@ export default class LeagueSettings extends React.Component {
                 alignSelf: 'center',
                 marginTop: '5%'
               }}
-              // onPress={this.handleLogin}
-              onPress={() => this.props.navigation.navigate('Home')}
+              onPress={() =>
+                this.props.navigation.navigate('LeagueInvites', {
+                  name: this.state.name,
+                  password: this.state.password,
+                  leagueID: this.state.leagueID,
+                  selectedStartDate: this.state.selectedStartDate
+                })
+              }
             >
               <LinearGradient
                 colors={['#902227', '#761b1f', '#5d1419']}
@@ -383,7 +338,7 @@ export default class LeagueSettings extends React.Component {
                     alignSelf: 'center'
                   }}
                 >
-                  Finish
+                  Invite Players
                 </Text>
               </LinearGradient>
             </TouchableOpacity>
