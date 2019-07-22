@@ -66,7 +66,7 @@ export default class LeagueInvites extends React.Component {
         friendToEmail +
         '?cc=&subject=Join my league on HowRipe!&body=Love movies? join me in a game of HowRipe. League Name: ' +
         leagueName +
-        'League Password: ' +
+        ' | Password: ' +
         leaguePassword
     );
     this.setState({ sendEmailTo: '' });
@@ -76,7 +76,7 @@ export default class LeagueInvites extends React.Component {
     const leagueName = this.state.name;
     const leaguePassword = this.state.password;
     Linking.openURL(
-      `sms: ${friendToText}&body=Join My League! Love movies? join me in a game of HowRipe. League Name:  ${leagueName}  Password: ${leaguePassword}`
+      `sms: ${friendToText}&body=Love movies? Join my league in HowRipe! League Name:  ${leagueName} |  Password: ${leaguePassword}`
     );
     this.setState({ sendTextTo: '' });
   }
