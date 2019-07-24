@@ -6,7 +6,10 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
-  Alert
+  Alert,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
@@ -83,7 +86,6 @@ export default class LeagueSelectionScreen extends React.Component {
   }
   addLeagueToUser() {
     const leagueID = this.state.dbLeagueInfo.id;
-
     const currLeagues = db
       .collection('leagues')
       .doc(this.state.dbLeagueInfo.id);
@@ -118,143 +120,153 @@ export default class LeagueSelectionScreen extends React.Component {
 
   render() {
     return (
+      // <KeyboardAvoidingView enabled>
       <View style={styles.container}>
-        <ImageBackground
-          source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
-          style={{
-            width: '100%',
-            height: '100%'
-          }}
-          overflow="hidden"
-          resizeMode="contain"
-        >
-          <View style={{ flex: 1, marginTop: 160 }}>
-            <LinearGradient
-              colors={['#6E3737', '#5b2d2d', '#402423']}
-              style={{
-                height: '40%',
-                marginTop: '20%',
-                width: '89%',
-                borderRadius: 5,
-                justifyContent: 'center',
-                alignSelf: 'center',
-                alignContent: 'center'
-              }}
-            >
-              <View style={{ flex: 1, flexDirection: 'row', height: 40 }}>
-                <TouchableOpacity
-                  style={{ height: 40, width: '50%' }}
-                  onPress={() => this.props.navigation.navigate('CreateLeague')}
-                >
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontFamily: 'Avenir',
-                      fontWeight: 'bold',
-                      marginLeft: 10,
-                      fontSize: 20
-                    }}
-                  >
-                    Join a League
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: '#886a6a',
-                    borderTopLeftRadius: 7,
-                    borderBottomLeftRadius: 7,
-                    width: '50%',
-                    height: 40
-                  }}
-                  onPress={() => this.props.navigation.navigate('CreateLeague')}
-                >
-                  <Text
-                    style={{
-                      color: '#673a38',
-                      fontFamily: 'Avenir',
-                      marginLeft: 10,
-                      fontSize: 20
-                    }}
-                  >
-                    Create a League
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              {this.state.errorMessageLeague ? (
-                <Text style={{ color: 'red' }}>
-                  {this.state.errorMessageLeague}
-                </Text>
-              ) : null}
-              <TextInput
-                style={styles.textInput}
-                autoCapitalize="none"
-                placeholder="  League Name"
-                onChangeText={league => this.setState({ league })}
-                value={this.state.league}
-              />
-              {this.state.errorMessagePassword ? (
-                <Text style={{ color: 'red' }}>
-                  {this.state.errorMessagePassword}
-                </Text>
-              ) : null}
-              <TextInput
-                secureTextEntry
-                style={styles.textInput}
-                autoCapitalize="none"
-                placeholder="  League Pass Phrase"
-                onChangeText={password => this.setState({ password })}
-                value={this.state.password}
-              />
-            </LinearGradient>
-          </View>
-
-          <TouchableOpacity
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <ImageBackground
+            source={require('HowRipeMobile/imageAssets/SplatterBackground.png')}
             style={{
-              height: '5%',
-              width: '60%',
-              alignContent: 'center',
-              alignSelf: 'center',
-              marginTop: 500,
-              position: 'absolute'
+              width: '100%',
+              height: '100%'
             }}
-            onPress={() => this.submitRegistration()}
+            overflow="hidden"
+            resizeMode="contain"
           >
-            <LinearGradient
-              colors={['#A11123', '#761b1f', '#5d1419']}
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                borderRadius: 5,
-                justifyContent: 'center'
-              }}
-            >
-              <Text
+            <View style={{ flex: 1, marginTop: 160 }}>
+              <LinearGradient
+                colors={['#6E3737', '#5b2d2d', '#402423']}
                 style={{
-                  color: 'white',
-                  fontFamily: 'Avenir',
-                  paddingLeft: 5,
-                  fontSize: 20,
-                  alignSelf: 'center'
+                  height: '40%',
+                  marginTop: '20%',
+                  width: '89%',
+                  borderRadius: 5,
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                  alignContent: 'center'
                 }}
               >
-                Join
-              </Text>
-            </LinearGradient>
-          </TouchableOpacity>
-          <Button
-            type="clear"
-            style={{ marginBottom: 50 }}
-            onPress={() => this.props.navigation.navigate('Home')}
-            icon={
-              <Icon
-                name="chevron-circle-left"
-                type="font-awesome"
-                color="white"
-                size={30}
-              />
-            }
-          />
-        </ImageBackground>
+                <View style={{ flex: 1, flexDirection: 'row', height: 40 }}>
+                  <TouchableOpacity
+                    style={{ height: 40, width: '50%' }}
+                    onPress={() =>
+                      this.props.navigation.navigate('CreateLeague')
+                    }
+                  >
+                    <Text
+                      style={{
+                        color: 'white',
+                        fontFamily: 'Avenir',
+                        fontWeight: 'bold',
+                        marginLeft: 10,
+                        fontSize: 20
+                      }}
+                    >
+                      Join a League
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: '#886a6a',
+                      borderTopLeftRadius: 7,
+                      borderBottomLeftRadius: 7,
+                      width: '50%',
+                      height: 40
+                    }}
+                    onPress={() =>
+                      this.props.navigation.navigate('CreateLeague')
+                    }
+                  >
+                    <Text
+                      style={{
+                        color: '#673a38',
+                        fontFamily: 'Avenir',
+                        marginLeft: 10,
+                        fontSize: 20
+                      }}
+                    >
+                      Create a League
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                {this.state.errorMessageLeague ? (
+                  <Text style={{ color: 'red' }}>
+                    {this.state.errorMessageLeague}
+                  </Text>
+                ) : null}
+                <KeyboardAvoidingView enabled behavior="padding">
+                  <TextInput
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    placeholder="  League Name"
+                    onChangeText={league => this.setState({ league })}
+                    value={this.state.league}
+                  />
+                </KeyboardAvoidingView>
+                {this.state.errorMessagePassword ? (
+                  <Text style={{ color: 'red' }}>
+                    {this.state.errorMessagePassword}
+                  </Text>
+                ) : null}
+                <KeyboardAvoidingView enabled behavior="padding">
+                  <TextInput
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    placeholder="  League Pass Phrase"
+                    onChangeText={password => this.setState({ password })}
+                    value={this.state.password}
+                  />
+                </KeyboardAvoidingView>
+              </LinearGradient>
+            </View>
+
+            <TouchableOpacity
+              style={{
+                height: '5%',
+                width: '60%',
+                alignContent: 'center',
+                alignSelf: 'center',
+                marginTop: 500,
+                position: 'absolute'
+              }}
+              onPress={() => this.submitRegistration()}
+            >
+              <LinearGradient
+                colors={['#A11123', '#761b1f', '#5d1419']}
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  borderRadius: 5,
+                  justifyContent: 'center'
+                }}
+              >
+                <Text
+                  style={{
+                    color: 'white',
+                    fontFamily: 'Avenir',
+                    paddingLeft: 5,
+                    fontSize: 20,
+                    alignSelf: 'center'
+                  }}
+                >
+                  Join
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            <Button
+              type="clear"
+              style={{ marginBottom: 50 }}
+              onPress={() => this.props.navigation.navigate('Home')}
+              icon={
+                <Icon
+                  name="chevron-circle-left"
+                  type="font-awesome"
+                  color="white"
+                  size={30}
+                />
+              }
+            />
+          </ImageBackground>
+        </TouchableWithoutFeedback>
       </View>
     );
   }

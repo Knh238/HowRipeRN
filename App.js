@@ -28,6 +28,7 @@ export default class App extends Component {
     );
   }
 }
+console.disableYellowBox = true;
 
 const styles = StyleSheet.create({
   container: {
