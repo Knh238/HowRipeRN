@@ -1,9 +1,11 @@
 import moment from 'moment';
-import firebase from './firebase';
-import db from './db';
+import firebase from '../../../../firebase';
+import db from '../../../../db';
 
 export const ALL_LEAGUES_FETCHED = 'ALL_LEAGUES_FETCHED';
 export const CURR_LEAGUE_FETCHED = 'CURR_LEAGUE_FETCHED';
+export const LEAGUE_NOT_FOUND = 'LEAGUE_NOT_FOUND';
+
 export const LEAGUE_CREATED = 'LEAGUE_CREATED';
 export const LEAGUE_JOINED = 'LEAGUE_JOINED';
 export const LEFT_LEAGUE = 'LEFT_LEAGUE';
@@ -19,12 +21,19 @@ export const UPDATE_LEAGUE_WEEK_INFO = 'UPDATE_LEAGUE_WEEK_INFO';
 //   };
 // };
 
-// export const userInfoNotFound = errorMsg => {
-//   return {
-//     type: USER_INFO_NOT_FOUND,
-//     errorMsg
-//   };
-// };
+export const currLeaguefetched = currLeague => {
+  return {
+    type: CURR_LEAGUE_FETCHED,
+    currLeague
+  };
+};
+
+export const leagueNotFound = errorMsg => {
+  return {
+    type: LEAGUE_NOT_FOUND,
+    errorMsg
+  };
+};
 
 // export const createProfileError = errorMsg => {
 //   return {
@@ -125,27 +134,34 @@ export const UPDATE_LEAGUE_WEEK_INFO = 'UPDATE_LEAGUE_WEEK_INFO';
 //   };
 // }
 
-// export const fetchUserInfo = userID => {
-//   return async dispatch => {
-//     var docRef = db.collection('users').doc(`${userID}`);
+// export const fetchCurrLeague = leagueID => {
 
-//     docRef
-//       .get()
-//       .then(function(doc) {
-//         if (doc.exists) {
-//           const profile = doc.data();
-//           dispatch(userInfoFetched(profile));
-//         } else {
-//           const msg = 'No such user with that uid';
-//           dispatch(userInfoNotFound(msg));
-//         }
-//       })
-//       .catch(function(error) {
-//         const msg2 = 'Error Retrieving User Document';
-//         dispatch(profileNotFound(msg2));
-//       });
-//   };
-// };
+export function fetchCurrLeague(leagueID) {
+  return async dispatch => {
+    console.log('this has been called with this id-------', leagueID);
+    var docRef = db.collection('leagues').doc(`${leagueID}`);
+    // console.log('this has been called with this id-------', leagueID);
+    docRef
+      .get()
+      .then(function(doc) {
+        if (doc.exists) {
+          const currLeague = doc.data();
+          console.log(
+            'curent league data in featch currently league',
+            currLeague
+          );
+          dispatch(currLeaguefetched(currLeague));
+        } else {
+          const msg = 'No such user with that uid';
+          dispatch(leagueNotFound(msg));
+        }
+      })
+      .catch(function(error) {
+        const msg2 = 'Error Retrieving User Document';
+        dispatch(leagueNotFound(msg2));
+      });
+  };
+}
 
 // export const followUser = (userObj, currUserInfo) => {
 //   return async dispatch => {

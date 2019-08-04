@@ -1,19 +1,31 @@
 import moment from 'moment';
-import firebase from './firebase';
-import db from './db';
+
+import firebase from '../../../../firebase';
+import db from '../../../../db';
+import { fetchCurrLeague } from '../leagues';
+import {
+  ALL_LEAGUES_FETCHED,
+  CURR_LEAGUE_FETCHED,
+  LEAGUE_CREATED,
+  LEAGUE_JOINED,
+  LEFT_LEAGUE,
+  LEAGUE_SCORES_UPDATED,
+  LEAGUE_SCORES_FETCHED,
+  SET_LEAGUE_WEEK_INFO,
+  UPDATE_LEAGUE_WEEK_INFO
+} from '../leagues';
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const CREATE_PROFILE_ERROR = 'CREATE_PROFILE_ERROR';
+export const USER_CREATED = 'USER_CREATED';
 export const USER_INFO_FETCHED = 'USER_INFO_FETCHED';
 export const USER_INFO_NOT_FOUND = 'USER_INFO_NOT_FOUND';
 export const USER_UPDATED = 'USER_UPDATED';
-export const EDIT_USER_FAIL = 'EDIT_USER_FAIL';
 
-export const userInfoFetched = userProfile => {
+export const userInfoFetched = userInfo => {
   return {
     type: USER_INFO_FETCHED,
-    userProfile
+    userInfo
   };
 };
 
@@ -34,6 +46,13 @@ export const createProfileError = errorMsg => {
 export const authSuccess = () => {
   return {
     type: AUTH_SUCCESS
+  };
+};
+
+export const userCreated = userInfo => {
+  return {
+    type: USER_CREATED,
+    userInfo
   };
 };
 
@@ -74,43 +93,92 @@ export function doesUserExist(user) {
   });
 }
 
-export function logUserIn(user) {
+export function logUserIn() {
   return async dispatch => {
-    const userRef = db.collection('users').doc(user.uid);
-    userRef.get().then(function(dbUser) {
-      if (dbUser.exists) {
-        dispatch(userUpdated(dbUser.data()));
-        dispatch(authSuccess());
-      } else {
-        dispatch(authReady());
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+        const userRef = db.collection('users').doc(user.uid);
+        userRef.get().then(function(dbUser) {
+          if (dbUser.exists) {
+            const userData = dbUser.data();
+            dispatch(userInfoFetched(dbUser.data()));
+            console.log('this is user data object', userData);
+            if (userData.currentLeague) {
+              console.log('this returned true', userData.currentLeague);
+              console.log('this is what fetchCurrLeague is', fetchCurrLeague);
+              dispatch(fetchCurrLeague(userData.currentLeague));
+            }
+            dispatch(authSuccess());
+          } else {
+            dispatch(authReady());
+          }
+        });
       }
     });
   };
 }
-
-export function createUser(user) {
+// export function fetchCurrLeague(leagueID) {
+//   return async dispatch => {
+//     console.log('this has been called with this id-------', leagueID);
+//     var docRef = db.collection('leagues').doc(`${leagueID}`);
+//     // console.log('this has been called with this id-------', leagueID);
+//     docRef
+//       .get()
+//       .then(function(doc) {
+//         if (doc.exists) {
+//           const currLeague = doc.data();
+//           dispatch(currLeaguefetched(currLeague));
+//         } else {
+//           const msg = 'No such user with that uid';
+//           dispatch(userInfoNotFound(msg));
+//         }
+//       })
+//       .catch(function(error) {
+//         const msg2 = 'Error Retrieving User Document';
+//         dispatch(profileNotFound(msg2));
+//       });
+//   };
+// }
+export function createUser(userInfo) {
   return async dispatch => {
-    const currTime = Date.now();
-    const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
-    const newUser = {
-      uid: user.uid,
-      email: user.email,
-      photoURL: 'red',
-      lastLoginAt: currentTime
-    };
-    db.collection('users')
-      .doc(user.uid)
-      .set(newUser)
-      .then(function() {
-        dispatch(userUpdated(newUser));
-        dispatch(authSuccess());
-      })
-      .catch(function(error) {
-        console.error('Error adding document: ', error);
-        dispatch(createProfileError(error));
-      });
+    const self = this;
+    firebase.auth().onAuthStateChanged(user => {
+      if (user != null) {
+        const currTime = Date.now();
+        const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
+        const newUser = {
+          uid: user.uid,
+          email: userInfo.email,
+          icon: 'red',
+          lastLoginAt: currentTime,
+          userName: '',
+          displayName: '',
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName
+        };
+        db.collection('users')
+          .doc(user.uid)
+          .set(newUser)
+          .then(function(docRef) {
+            dispatch(userCreated(newUser));
+            self.props.navigation.navigate('Home');
+          })
+          .catch(function(error) {
+            self.setState({ errorMessage: error.message });
+          });
+      }
+    });
   };
+
+  //   dispatch(userUpdated(newUser));
+  //   dispatch(authSuccess());
+  // })
+  // .catch(function(error) {
+  //   console.error('Error adding document: ', error);
+  //   dispatch(createProfileError(error));
+  // });
 }
+// }
 
 export function userLogout() {
   return async dispatch => {
@@ -145,46 +213,6 @@ export const fetchUserInfo = userID => {
   };
 };
 
-export const followUser = (userObj, currUserInfo) => {
-  return async dispatch => {
-    const user = firebase.auth().currentUser;
-    const currUserRef = db.collection('users').doc(user.uid);
-    const currUserInfoUpdated = currUserInfo;
-    const currFollowing = [...currUserInfo.following, userObj];
-
-    currUserInfoUpdated.following = currFollowing;
-
-    currUserRef
-      .update({
-        following: firebase.firestore.FieldValue.arrayUnion(userObj)
-      })
-      .then(function() {
-        dispatch(userUpdated(currUserInfoUpdated));
-      });
-  };
-};
-
-export const unfollowUser = (userObj, currUserInfo) => {
-  return async dispatch => {
-    const user = firebase.auth().currentUser;
-    const currUserInfoUpdated = currUserInfo;
-    const currFollowing = currUserInfo.following.filter(item => {
-      if (item.uid !== userObj.uid) {
-        return item;
-      }
-    });
-    currUserInfoUpdated.following = currFollowing;
-    const currUserRef = db.collection('users').doc(user.uid);
-    currUserRef
-      .update({
-        following: firebase.firestore.FieldValue.arrayRemove(userObj)
-      })
-      .then(function() {
-        dispatch(userUpdated(currUserInfoUpdated));
-      });
-  };
-};
-
 export const addNetwork = (networkObj, currentUser) => {
   return async dispatch => {
     const userRef = db.collection('users').doc(currentUser.uid);
@@ -206,50 +234,6 @@ export const addNetwork = (networkObj, currentUser) => {
       })
       .catch(function(error) {
         console.error('Error updating document: ', error);
-      });
-  };
-};
-
-export const removeNetwork = (networkObj, currentUser) => {
-  return async dispatch => {
-    const userRef = db.collection('users').doc(currentUser.uid);
-    return db
-      .runTransaction(transaction => {
-        return transaction.get(userRef).then(function(user) {
-          if (!user.exists) {
-            throw 'Document does not exist!';
-          }
-          const currentNetworks = user.data().socialNetworks;
-          const filteredNetworks = currentNetworks.filter(networks => {
-            return networks.source !== networkObj.source;
-          });
-          // currentUser.socialNetworks = filteredNetworks;
-          transaction.update(userRef, { socialNetworks: filteredNetworks });
-          return user.data().uid;
-        });
-      })
-      .then(function(uid) {
-        console.log('Document successfully updated ', uid);
-        dispatch(updateUser(uid));
-        // dispatch(userUpdated(currentUser));
-      })
-      .catch(function(error) {
-        console.error('Error updating document: ', error);
-      });
-  };
-};
-export const addNewChatToCurrentUser = (userToMsgInfo, userInfo) => {
-  return async dispatch => {
-    const userChatsUpdated = userInfo.conversations.concat(userToMsgInfo);
-    const updatedUserInfo = userInfo;
-    updatedUserInfo.conversations = userChatsUpdated;
-    const currUserOnRef = db.collection('users').doc(userInfo.uid);
-    currUserOnRef
-      .update({
-        conversations: firebase.firestore.FieldValue.arrayUnion(userToMsgInfo)
-      })
-      .then(function() {
-        dispatch(userUpdated(updatedUserInfo));
       });
   };
 };

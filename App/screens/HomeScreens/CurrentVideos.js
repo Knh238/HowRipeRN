@@ -22,7 +22,7 @@ import {
 } from 'react-native-elements';
 import { Card, Text, CardItem, Left, Right, Body } from 'native-base';
 import config from '../../../youTubeConfig';
-import LeaderBoard from './LeaderBoard';
+import LeaderBoardScreen from './LeaderBoard';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class CurrentVideos extends React.Component {
@@ -223,7 +223,7 @@ export default class CurrentVideos extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          <LeaderBoard />
+          <LeaderBoardScreen />
           <View
             style={{
               flex: 1,

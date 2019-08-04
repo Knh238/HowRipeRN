@@ -1,13 +1,12 @@
 import {
   AUTH_SUCCESS,
-  AUTH_FAIL,
   LOGOUT_SUCCESS,
   CREATE_PROFILE_ERROR,
+  USER_CREATED,
   USER_INFO_FETCHED,
   USER_INFO_NOT_FOUND,
-  USER_UPDATED,
-  EDIT_USER_FAIL
-} from 'actions/login/index';
+  USER_UPDATED
+} from '../../actions/login';
 
 const initialState = {
   authenticated: false,
@@ -22,11 +21,10 @@ export default function(state = initialState, action) {
         ...state,
         authenticated: true
       };
-    case AUTH_FAIL:
+    case USER_CREATED:
       return {
         ...state,
-        authenticated: false,
-        errorMsg: action.errorMsg
+        userInfo: action.userInfo
       };
     case CREATE_PROFILE_ERROR:
       return {
@@ -42,7 +40,7 @@ export default function(state = initialState, action) {
     case USER_INFO_FETCHED:
       return {
         ...state,
-        userInfo: action.userProfile
+        userInfo: action.userInfo
       };
     case USER_INFO_NOT_FOUND:
       return {
@@ -54,11 +52,7 @@ export default function(state = initialState, action) {
         ...state,
         userInfo: action.userInfo
       };
-    case EDIT_USER_FAIL:
-      return {
-        ...state,
-        errorMsg: ''
-      };
+
     default:
       return state;
   }

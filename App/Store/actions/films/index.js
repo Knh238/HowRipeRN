@@ -1,6 +1,9 @@
 import moment from 'moment';
-import firebase from './firebase';
-import db from './db';
+// import firebase from './firebase';
+// import firebase from '../../../firebase';
+// import db from './db';
+import firebase from '../../../../firebase';
+import db from '../../../../db';
 
 export const FILM_ADDED = 'FILM_ADDED';
 export const FILM_DETAILS_UPDATED = 'FILM_DETAILS_UPDATED';

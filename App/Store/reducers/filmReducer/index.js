@@ -7,7 +7,7 @@ import {
   USER_SCORED_FILM,
   USER_BLOGGED_FILM,
   FILM_SCORES_LOCKED
-} from 'actions/films/index';
+} from '../../actions/films';
 
 const initialState = {
   authenticated: false,

@@ -1,6 +1,7 @@
 import {
   ALL_LEAGUES_FETCHED,
   CURR_LEAGUE_FETCHED,
+  LEAGUE_NOT_FOUND,
   LEAGUE_CREATED,
   LEAGUE_JOINED,
   LEFT_LEAGUE,
@@ -8,11 +9,10 @@ import {
   LEAGUE_SCORES_FETCHED,
   SET_LEAGUE_WEEK_INFO,
   UPDATE_LEAGUE_WEEK_INFO
-} from 'actions/leagues/index';
+} from '../../actions/leagues';
 
 const initialState = {
-  authenticated: false,
-  userInfo: {},
+  currentLeague: {},
   errorMsg: ''
 };
 
@@ -26,8 +26,7 @@ export default function(state = initialState, action) {
     case CURR_LEAGUE_FETCHED:
       return {
         ...state,
-        authenticated: false,
-        errorMsg: action.errorMsg
+        currentLeague: action.currLeague
       };
     case LEAGUE_CREATED:
       return {
@@ -44,6 +43,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         userInfo: action.userProfile
+      };
+    case LEAGUE_NOT_FOUND:
+      return {
+        ...state,
+        errorMsg: action.errorMsg
       };
     case LEAGUE_SCORES_UPDATED:
       return {

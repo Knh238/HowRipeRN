@@ -12,8 +12,11 @@ import {
 import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
+import { connect } from 'react-redux';
 
-export default class LoginScreen extends React.Component {
+import { createUser, logUserIn } from '../../Store/actions/login';
+
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { email: '', password: '', errorMessage: '' };
@@ -25,6 +28,7 @@ export default class LoginScreen extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.logUserIn())
       .then(() => this.props.navigation.navigate('Home'))
       .catch(error => this.setState({ errorMessage: error.message }));
   }
@@ -204,3 +208,24 @@ const styles = StyleSheet.create({
     marginTop: 8
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUserIn: () => {
+      dispatch(logUserIn());
+    }
+  };
+};
+
+const LoginScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);
+
+export default LoginScreen;

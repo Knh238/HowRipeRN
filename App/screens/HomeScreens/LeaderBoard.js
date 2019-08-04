@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { ListItem, Left, Right, Body } from 'native-base';
 import { Icon, Button, Avatar } from 'react-native-elements';
+import { connect } from 'react-redux';
 const list = [
   {
     name: 'Greg',
@@ -36,20 +37,55 @@ const list = [
     scoreChange: '+1'
   }
 ];
-export default class LeaderBoard extends React.Component {
+
+class LeaderBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.renderRankings = this.renderRankings.bind(this);
+  }
+
+  renderRankings() {
+    console.log('this props players', this.props.league.currentLeague.players);
+
+    const players = this.props.league.currentLeague.players;
+    console.log('individiual player is', players[0]);
+    return list.map((l, i) => (
+      <ListItem
+        style={{
+          backgroundColor: '#3c1715',
+          marginLeft: 50,
+          marginRight: 50
+        }}
+        key={i}
+      >
+        <Left>
+          <Text style={{ color: 'white', fontSize: 20 }}>
+            {l.currentRank + '. ' + l.name}{' '}
+          </Text>
+        </Left>
+        <Body>
+          <Text style={{ color: 'white', fontSize: 20 }}>
+            {' '}
+            {l.score.toString()}{' '}
+          </Text>
+        </Body>
+        <Right>
+          <Text style={{ color: 'white', fontSize: 20 }}>{l.scoreChange}</Text>
+        </Right>
+      </ListItem>
+    ));
   }
 
   render() {
+    console.log('this state league in leader board is', this.props.league);
     return (
       <View style={styles.container}>
         <Text style={{ color: '#A89C9C', fontSize: 28, alignSelf: 'center' }}>
           LEADERBOARD
         </Text>
         <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-          League of Champs / Global
+          {this.props.league.currentLeague.name}/ Global
         </Text>
         <TouchableOpacity
           style={{
@@ -79,7 +115,8 @@ export default class LeaderBoard extends React.Component {
             sign up for a league
           </Text>
         </TouchableOpacity>
-        {list.map((l, i) => (
+        {this.renderRankings()}
+        {/* {list.map((l, i) => (
           <ListItem
             style={{
               backgroundColor: '#3c1715',
@@ -105,7 +142,7 @@ export default class LeaderBoard extends React.Component {
               </Text>
             </Right>
           </ListItem>
-        ))}
+        ))} */}
 
         <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
           <Image
@@ -127,3 +164,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir'
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUserIn: () => {
+      dispatch(logUserIn());
+    }
+  };
+};
+
+const LeaderBoardScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeaderBoard);
+
+export default LeaderBoardScreen;

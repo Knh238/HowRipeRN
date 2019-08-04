@@ -1,16 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import AppNavigator from './App/navigation/AppNavigator';
-// import { Provider, connect } from 'react-redux';
+import { Provider, connect } from 'react-redux';
+import store from './App/Store';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,9 +15,9 @@ const instructions = Platform.select({
 export default class App extends Component {
   render() {
     return (
-      // <Provider store={store}>
-      <AppNavigator StatusBarStyle="light-content" />
-      // </Provider>
+      <Provider store={store}>
+        <AppNavigator StatusBarStyle="light-content" />
+      </Provider>
     );
   }
 }

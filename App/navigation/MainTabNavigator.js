@@ -11,7 +11,7 @@ import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
 import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
 import ChooseIcon from '../screens/Login/ChooseIcon';
 import LoginScreen from '../screens/Login/LoginScreen';
-
+import SignUpScreen from '../screens/Login/SignUpScreen';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Login: LoginScreen
@@ -77,11 +77,7 @@ SplatterStack.navigationOptions = {
   )
 };
 const TheRipeStack = createStackNavigator({
-  // FakeLandingScreen: FakeLandingScreen,
-  // FakeSignUp: FakeSignUp,
-  // FakeLogin: FakeLogin,
-  ChooseIcon: ChooseIcon
-  // LeagueSelectionScreen: LeagueSelectionScreen
+  SignUp: SignUpScreen
 });
 
 TheRipeStack.navigationOptions = {

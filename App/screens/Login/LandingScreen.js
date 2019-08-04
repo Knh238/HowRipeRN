@@ -12,8 +12,11 @@ import {
 import { Icon } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../.././firebase';
+import { connect } from 'react-redux';
 
-export default class LandingScreen extends React.Component {
+import { createUser, logUserIn } from '../../Store/actions/login';
+
+class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +33,7 @@ export default class LandingScreen extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user != null) {
+        this.props.logUserIn();
         this.props.navigation.navigate('Home');
       }
     });
@@ -506,3 +510,23 @@ const styles = StyleSheet.create({
     marginTop: 8
   }
 });
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUserIn: () => {
+      dispatch(logUserIn());
+    }
+  };
+};
+
+const LandingScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LandingPage);
+
+export default LandingScreen;

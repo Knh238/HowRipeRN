@@ -13,32 +13,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Icon, Button, Avatar } from 'react-native-elements';
-import LeaderBoard from './LeaderBoard';
+import LeaderBoardScreen from './LeaderBoard';
 import CurrentVideos from './CurrentVideos';
 import firebase from '../../.././firebase';
 import db from '../../.././db';
-
-// function testDB() {
-//   firebase.auth().onAuthStateChanged(user => {
-//     if (user != null) {
-//       Alert.alert('this is state in home screen', user.uid);
-//       db.collection('users')
-//         .add({
-//           first: user.uid,
-//           last: user.email,
-//           born: 1815
-//         })
-//         .then(function(docRef) {
-//           console.log('Document written with ID: ', docRef.id);
-//         })
-//         .catch(function(error) {
-//           console.error('Error adding document: ', error);
-//         });
-//     }
-//   });
-// }
-
-// testDB();
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {

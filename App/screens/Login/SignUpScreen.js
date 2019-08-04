@@ -11,48 +11,55 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
+import { connect } from 'react-redux';
 
+import { createUser } from '../../Store/actions/login';
 import firebase from '../../../firebase';
-import db from '../../.././db';
 
-export default class SignUpScreen extends React.Component {
+class SignUp extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', errorMessage: '' };
+    this.state = {
+      email: '',
+      password: '',
+      errorMessage: '',
+      lastName: '',
+      firstName: ''
+    };
     this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleSignUp() {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(this.createUser());
-  }
-  createUser() {
-    const self = this;
-    firebase.auth().onAuthStateChanged(user => {
-      if (user != null) {
-        const currTime = Date.now();
-        const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
-        const newUser = {
-          uid: user.uid,
-          email: user.email,
-          icon: 'red',
-          lastLoginAt: currentTime,
-          userName: '',
-          displayName: ''
-        };
-        db.collection('users')
-          .doc(user.uid)
-          .set(newUser)
-          .then(function(docRef) {
-            self.props.navigation.navigate('Home');
-          })
-          .catch(function(error) {
-            self.setState({ errorMessage: error.message });
-          });
-      }
-    });
+    if (this.state.firstName === '') {
+      Alert.alert('First Name is required');
+      return;
+    }
+    if (this.state.lastName === '') {
+      Alert.alert('Uhoh! Must enter a last name or initial');
+      return;
+    }
+    if (this.state.password === '') {
+      Alert.alert('Password is a required for login.');
+      return;
+    }
+    if (this.state.email === '') {
+      Alert.alert(
+        'Yeah, we really do need your email. In case your forget your password!'
+      );
+      return;
+    } else {
+      const { email, password, firstName, lastName } = this.state;
+      const userInfo = { email, password, firstName, lastName };
+      //ToDo: error handle for when the user is already in the db
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(this.props.createUser(userInfo));
+      // .then(self.props.navigation.navigate('Home'));
+    }
   }
 
   render() {
@@ -67,11 +74,11 @@ export default class SignUpScreen extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          <View style={{ flex: 1, marginTop: 180 }}>
+          <View style={{ flex: 1, marginTop: 100 }}>
             <LinearGradient
               colors={['#633836', '#5b2d2d', '#402423']}
               style={{
-                height: '30%',
+                height: '50%',
                 marginTop: '20%',
                 width: '85%',
                 borderRadius: 5,
@@ -94,6 +101,20 @@ export default class SignUpScreen extends React.Component {
               {this.state.errorMessage ? (
                 <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
               ) : null}
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  First Name"
+                onChangeText={firstName => this.setState({ firstName })}
+                value={this.state.firstName}
+              />
+              <TextInput
+                style={styles.textInput}
+                autoCapitalize="none"
+                placeholder="  Last Name"
+                onChangeText={lastName => this.setState({ lastName })}
+                value={this.state.lastName}
+              />
               <TextInput
                 style={styles.textInput}
                 autoCapitalize="none"
@@ -153,6 +174,20 @@ export default class SignUpScreen extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createUser: userInfo => {
+      dispatch(createUser(userInfo));
+    }
+  };
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -174,3 +209,10 @@ const styles = StyleSheet.create({
     marginTop: 8
   }
 });
+
+const SignUpScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);
+
+export default SignUpScreen;
