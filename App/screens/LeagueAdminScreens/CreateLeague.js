@@ -15,28 +15,9 @@ import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
 import db from '../../.././db';
+import { connect } from 'react-redux';
 
-addMembersToDb = () => {
-  const currLeagues = db.collection('leagues').doc('tMoWEsfhmLupfR5ce7qt');
-  const players = [];
-  players.push({ displayName: 'Keith', userID: '123' });
-  players.push({ displayName: 'Brandon', userID: '456' });
-  players.push({ displayName: 'Abby', userID: '789' });
-  currLeagues
-    .update({
-      players: firebase.firestore.FieldValue.arrayUnion({
-        displayName: 'Abby',
-        userID: '789'
-      })
-    })
-    .catch(function(error) {
-      console.log('Error getting cached document:', error);
-    });
-};
-
-// addMembersToDb();
-
-export default class CreateLeague extends React.Component {
+class CreateLeagueScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,32 +34,21 @@ export default class CreateLeague extends React.Component {
 
   checkLeagueName() {
     let { league } = this.state;
-    const currLeagues = db.collection('leagues');
-    const currLeagueNames = [];
-    currLeagues
-      .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          const info = doc.data();
-          currLeagueNames.push(info.name.toLowerCase());
-        });
-      })
-      .then(() => {
-        const leagueLC = league.toLowerCase();
-        if (currLeagueNames.indexOf(leagueLC) === -1) {
-          this.setState({
-            errorMessage: 'YAY! Name not taken. Yay! ',
-            uniqueName: true
-          });
-        } else {
-          this.setState({
-            errorMessage: 'OOPS!! Name already taken. Try again!',
-            uniqueName: false
-          });
-          Alert.alert('Uhoh! Name Taken. Try again');
-          return;
-        }
+    const currLeagueNames = this.props.leagueList;
+    const leagueLC = league.toLowerCase();
+    if (currLeagueNames.indexOf(leagueLC) === -1) {
+      this.setState({
+        errorMessage: 'YAY! Name not taken. Yay! ',
+        uniqueName: true
       });
+    } else {
+      this.setState({
+        errorMessage: 'OOPS!! Name already taken. Try again!',
+        uniqueName: false
+      });
+      Alert.alert('Uhoh! Name Taken. Try again');
+      return;
+    }
   }
 
   setLeagueInfo() {
@@ -94,60 +64,34 @@ export default class CreateLeague extends React.Component {
       Alert.alert('No password entered! Password required.');
       return;
     } else {
-      currLeagues
-        .get()
-        .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            const info = doc.data();
-            currLeagueNames.push(info.name.toLowerCase());
-          });
-        })
-        .then(() => {
-          const leagueLC = league.toLowerCase();
-          if (currLeagueNames.indexOf(leagueLC) === -1) {
-            this.setState({
-              errorMessage: 'YAY! Name not taken. Yay! ',
-              uniqueName: true
-            });
-            const user = firebase.auth().currentUser;
-            const currUserRef = db.collection('users').doc(user.uid);
-            let leagueID = '';
-            const players = [];
-            players.push({ displayName: 'Kristin', userID: user.uid });
-
-            currLeagues
-              .add({
-                name: league,
-                password: password,
-                players,
-                startDate: '',
-                scores: []
-              })
-              .then(function(doc) {
-                leagueID = doc.id;
-              })
-              .then(() => {
-                currUserRef.update({ currentLeague: leagueID });
-              })
-              .then(() =>
-                this.props.navigation.navigate('LeagueSettings', {
-                  name: league,
-                  password: password,
-                  leagueID: leagueID
-                })
-              )
-              .catch(function(error) {
-                console.log('Error getting cached document:', error);
-              });
-          } else {
-            this.setState({
-              errorMessage: 'OOPS!! Name already taken. Try again!',
-              uniqueName: false
-            });
-            Alert.alert('Uhoh! Name Taken. Try again');
-            return;
-          }
+      const currLeagueNames = this.props.leagueList;
+      const leagueLC = league.toLowerCase();
+      if (currLeagueNames.indexOf(leagueLC) === -1) {
+        this.setState({
+          errorMessage: 'YAY! Name not taken. Yay! ',
+          uniqueName: true
         });
+        const userInfo = {};
+        userInfo.id = this.props.user.id;
+        userInfo.displayName = this.props.user.displayName;
+        this.props
+          .createLeague(name, password, userInfo)
+
+          .then(() =>
+            this.props.navigation.navigate('LeagueSettings', {
+              name: league,
+              password: password,
+              leagueID: leagueID
+            })
+          );
+      } else {
+        this.setState({
+          errorMessage: 'OOPS!! Name already taken. Try again!',
+          uniqueName: false
+        });
+        Alert.alert('Uhoh! Name Taken. Try again');
+        return;
+      }
     }
   }
 
@@ -379,3 +323,25 @@ const styles = StyleSheet.create({
     marginTop: 8
   }
 });
+const mapStateToProps = state => {
+  return {
+    ...state,
+    league: state.league,
+    leagueList: state.league.allLeagues
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createLeague: (name, password, userInfo) => {
+      dispatch(createLeague(name, password, userInfo));
+    }
+  };
+};
+
+const CreateLeague = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateLeagueScreen);
+
+export default CreateLeague;

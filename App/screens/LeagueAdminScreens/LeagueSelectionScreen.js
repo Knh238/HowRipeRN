@@ -15,8 +15,9 @@ import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
 import db from '../../.././db';
+import { connect } from 'react-redux';
 
-export default class LeagueSelectionScreen extends React.Component {
+class JoinLeague extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,41 +36,30 @@ export default class LeagueSelectionScreen extends React.Component {
 
   verifyLeague() {
     let { league, password } = this.state;
-    const currLeagues = db.collection('leagues');
-    const currLeagueNames = [];
     const leagueDetails = {};
+    const currLeagueNames = this.props.leagueList;
     league = league.toLowerCase();
-
-    currLeagues
-      .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          const info = doc.data();
-          const lName = info.name.toLowerCase();
-          currLeagueNames.push(lName);
-          leagueDetails[lName] = { password: info.password, id: doc.id };
-        });
-      })
-      .then(() => {
-        if (currLeagueNames.indexOf(league) >= 0) {
-          const leagueInfoObj = leagueDetails[league];
-          this.setState({
-            errorMessageLeague: 'League Found ',
-            leagueExists: true,
-            dbLeagueInfo: leagueInfoObj
-          });
-          this.verifyPassword();
-        }
-        if (currLeagueNames.indexOf(league) === -1) {
-          this.setState({
-            errorMessageLeague:
-              'League not found! Make sure you entered it correctly',
-            leagueExists: false
-          });
-        }
+    const leagueLC = league.toLowerCase();
+    if (currLeagueNames.indexOf(league) >= 0) {
+      const leagueInfoObj = leagueDetails[league];
+      this.setState({
+        errorMessageLeague: 'League Found ',
+        leagueExists: true,
+        dbLeagueInfo: leagueInfoObj
       });
+      this.verifyPassword();
+    }
+    if (currLeagueNames.indexOf(league) === -1) {
+      this.setState({
+        errorMessageLeague:
+          'League not found! Make sure you entered it correctly',
+        leagueExists: false
+      });
+    }
   }
+
   verifyPassword() {
+    //check right here i think?
     let { league, password } = this.state;
     if (this.state.dbLeagueInfo.password === password) {
       this.setState({
@@ -291,3 +281,26 @@ const styles = StyleSheet.create({
     marginBottom: 10
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    ...state,
+    league: state.league,
+    leagueList: state.league.allLeagues
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUserIn: () => {
+      dispatch(logUserIn());
+    }
+  };
+};
+
+const LeagueSelectionScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(JoinLeague);
+
+export default LeagueSelectionScreen;

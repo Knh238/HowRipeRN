@@ -46,35 +46,39 @@ class LeaderBoard extends React.Component {
   }
 
   renderRankings() {
-    console.log('this props players', this.props.league.currentLeague.players);
-
-    const players = this.props.league.currentLeague.players;
-    console.log('individiual player is', players[0]);
-    return list.map((l, i) => (
-      <ListItem
-        style={{
-          backgroundColor: '#3c1715',
-          marginLeft: 50,
-          marginRight: 50
-        }}
-        key={i}
-      >
-        <Left>
-          <Text style={{ color: 'white', fontSize: 20 }}>
-            {l.currentRank + '. ' + l.name}{' '}
-          </Text>
-        </Left>
-        <Body>
-          <Text style={{ color: 'white', fontSize: 20 }}>
-            {' '}
-            {l.score.toString()}{' '}
-          </Text>
-        </Body>
-        <Right>
-          <Text style={{ color: 'white', fontSize: 20 }}>{l.scoreChange}</Text>
-        </Right>
-      </ListItem>
-    ));
+    const players = this.props.league.players;
+    console.log('individiual player is', players);
+    if (players.length) {
+      return players.map((l, i) => (
+        <ListItem
+          style={{
+            backgroundColor: '#3c1715',
+            marginLeft: 50,
+            marginRight: 50
+          }}
+          key={i}
+        >
+          <Left>
+            <Text style={{ color: 'white', fontSize: 20 }}>
+              {l.currentRank + '. ' + l.displayName}{' '}
+            </Text>
+          </Left>
+          <Body>
+            <Text style={{ color: 'white', fontSize: 20 }}>
+              {' '}
+              {l.score.toString()}{' '}
+            </Text>
+          </Body>
+          <Right>
+            <Text style={{ color: 'white', fontSize: 20 }}>
+              {l.scoreChange}
+            </Text>
+          </Right>
+        </ListItem>
+      ));
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -85,7 +89,7 @@ class LeaderBoard extends React.Component {
           LEADERBOARD
         </Text>
         <Text style={{ color: '#A89C9C', fontSize: 14, alignSelf: 'center' }}>
-          {this.props.league.currentLeague.name}/ Global
+          {this.props.league.currentLeagueName}/ Global
         </Text>
         <TouchableOpacity
           style={{
@@ -116,33 +120,6 @@ class LeaderBoard extends React.Component {
           </Text>
         </TouchableOpacity>
         {this.renderRankings()}
-        {/* {list.map((l, i) => (
-          <ListItem
-            style={{
-              backgroundColor: '#3c1715',
-              marginLeft: 50,
-              marginRight: 50
-            }}
-            key={i}
-          >
-            <Left>
-              <Text style={{ color: 'white', fontSize: 20 }}>
-                {l.currentRank + '. ' + l.name}{' '}
-              </Text>
-            </Left>
-            <Body>
-              <Text style={{ color: 'white', fontSize: 20 }}>
-                {' '}
-                {l.score.toString()}{' '}
-              </Text>
-            </Body>
-            <Right>
-              <Text style={{ color: 'white', fontSize: 20 }}>
-                {l.scoreChange}
-              </Text>
-            </Right>
-          </ListItem>
-        ))} */}
 
         <Text style={{ color: '#A89C9C', alignSelf: 'center', fontSize: 14 }}>
           <Image
@@ -167,7 +144,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state,
+    league: state.league,
+    players: state.league.players
   };
 };
 

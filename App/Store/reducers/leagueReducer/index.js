@@ -3,7 +3,8 @@ import {
   CURR_LEAGUE_FETCHED,
   LEAGUE_NOT_FOUND,
   LEAGUE_CREATED,
-  LEAGUE_JOINED,
+  JOINED_LEAGUE,
+  LEAGUE_UPDATED,
   LEFT_LEAGUE,
   LEAGUE_SCORES_UPDATED,
   LEAGUE_SCORES_FETCHED,
@@ -12,7 +13,10 @@ import {
 } from '../../actions/leagues';
 
 const initialState = {
+  allLeagues: [],
   currentLeague: {},
+  currentLeagueName: '',
+  players: [],
   errorMsg: ''
 };
 
@@ -21,19 +25,20 @@ export default function(state = initialState, action) {
     case ALL_LEAGUES_FETCHED:
       return {
         ...state,
-        authenticated: true
+        allLeagues: action.leagueList
       };
     case CURR_LEAGUE_FETCHED:
       return {
         ...state,
-        currentLeague: action.currLeague
+        currentLeagueName: action.currLeagueName,
+        players: action.players
       };
     case LEAGUE_CREATED:
       return {
         ...state,
         errorMsg: action.errorMsg
       };
-    case LEAGUE_JOINED:
+    case JOINED_LEAGUE:
       return {
         ...state,
         authenticated: false,

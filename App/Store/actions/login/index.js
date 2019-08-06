@@ -102,10 +102,8 @@ export function logUserIn() {
           if (dbUser.exists) {
             const userData = dbUser.data();
             dispatch(userInfoFetched(dbUser.data()));
-            console.log('this is user data object', userData);
+            //console.log('this is user data object', userData);
             if (userData.currentLeague) {
-              console.log('this returned true', userData.currentLeague);
-              console.log('this is what fetchCurrLeague is', fetchCurrLeague);
               dispatch(fetchCurrLeague(userData.currentLeague));
             }
             dispatch(authSuccess());

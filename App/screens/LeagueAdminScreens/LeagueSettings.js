@@ -24,8 +24,9 @@ import {
 } from 'native-base';
 import firebase from '../../../firebase';
 import db from '../../.././db';
+import { connect } from 'react-redux';
 
-export default class LeagueSettings extends React.Component {
+class LeagueSettingsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -393,3 +394,25 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+const mapStateToProps = state => {
+  return {
+    ...state,
+    league: state.league,
+    players: state.league.players
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUserIn: () => {
+      dispatch(logUserIn());
+    }
+  };
+};
+
+const LeagueSettings = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeagueSettingsScreen);
+
+export default LeagueSettings;

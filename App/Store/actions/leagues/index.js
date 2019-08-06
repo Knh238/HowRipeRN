@@ -7,7 +7,11 @@ export const CURR_LEAGUE_FETCHED = 'CURR_LEAGUE_FETCHED';
 export const LEAGUE_NOT_FOUND = 'LEAGUE_NOT_FOUND';
 
 export const LEAGUE_CREATED = 'LEAGUE_CREATED';
-export const LEAGUE_JOINED = 'LEAGUE_JOINED';
+
+export const JOINED_LEAGUE = 'JOINED_LEAGUE';
+
+export const LEAGUE_UPDATED = 'LEAGUE_UPDATED';
+
 export const LEFT_LEAGUE = 'LEFT_LEAGUE';
 export const LEAGUE_SCORES_UPDATED = 'LEAGUE_SCORES_UPDATED';
 export const LEAGUE_SCORES_FETCHED = 'LEAGUE_SCORES_FETCHED';
@@ -21,10 +25,34 @@ export const UPDATE_LEAGUE_WEEK_INFO = 'UPDATE_LEAGUE_WEEK_INFO';
 //   };
 // };
 
+// join league needs to add
+//score: 0, scoreChange:0,currentRank:1
+//also needs to add schedule of Scores: week1:{} weekTotal: 0 , film1:0 , film2:0, weekRank:1, seasonTotal:}
+//week2{weekTotal: 0 , film1:0 , film2:0, weekRank:1 seasonTotal:}}
+//etc
+
+//all being zero until scores locked
+
+//maybe rank is determined by sorting the array of scores and isnt stable on the league?
+//or only change when film is scored- maybe updated when film scored.
+
+//when rate a film
+//store on user ? as seasonRatings{week 1{ film: , rated: 0, finalRT: 0, pointsEarned:pending}}
+//grab data form film?
+
+//need to sort out what screens will have acecss to what
+
+export const allLeaguesfetched = leagueList => {
+  return {
+    type: ALL_LEAGUES_FETCHED,
+    leagueList: leagueList
+  };
+};
 export const currLeaguefetched = currLeague => {
   return {
     type: CURR_LEAGUE_FETCHED,
-    currLeague
+    currLeagueName: currLeague.name,
+    players: currLeague.players
   };
 };
 
@@ -35,38 +63,168 @@ export const leagueNotFound = errorMsg => {
   };
 };
 
-// export const createProfileError = errorMsg => {
-//   return {
-//     type: CREATE_PROFILE_ERROR,
-//     errorMsg
-//   };
-// };
+export const leagueCreated = leagueInfo => {
+  return {
+    type: LEAGUE_CREATED,
+    leagueInfo
+  };
+};
+export const joinedLeague = league => {
+  return {
+    type: JOINED_LEAGUE,
+    league
+  };
+};
 
-// export const authSuccess = () => {
-//   return {
-//     type: AUTH_SUCCESS
-//   };
-// };
+export const leagueUpdated = leagueList => {
+  return {
+    type: LEAGUE_UPDATED,
+    leagueList: leagueList
+  };
+};
 
-// export const logOutSuccess = () => {
-//   return {
-//     type: LOGOUT_SUCCESS
-//   };
-// };
+export function fetchAllLeagues() {
+  return async dispatch => {
+    //maybe add leagueName and password to this so can check password etc.
+    const currLeagues = db.collection('leagues');
+    const currLeagueNames = [];
+    currLeagues
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          const info = doc.data();
+          const league = {
+            id: doc.id,
+            name: info.name.toLowerCase,
+            password: info.password
+          };
+          currLeagueNames.push(league);
+        });
+      })
+      .then(() => {
+        dispatch(allLeaguesfetched(currLeagueNames));
+      })
+      .catch(function(error) {
+        const msg = 'No leagues in DB';
+        dispatch(leagueNotFound(msg));
+      });
+  };
+}
 
-// export const userUpdated = updatedUserInfo => {
-//   return {
-//     type: USER_UPDATED,
-//     userInfo: updatedUserInfo
-//   };
-// };
+export function fetchCurrLeague(leagueID) {
+  return async dispatch => {
+    var docRef = db.collection('leagues').doc(`${leagueID}`);
 
-// export const editUserFail = errorMsg => {
-//   return {
-//     type: EDIT_USER_FAIL,
-//     errorMsg
+    docRef
+      .get()
+      .then(function(doc) {
+        if (doc.exists) {
+          const currLeague = doc.data();
+          console.log(
+            'current league data in fetch currently league',
+            currLeague
+          );
+          dispatch(currLeaguefetched(currLeague));
+        } else {
+          const msg = 'No such user with that uid';
+          dispatch(leagueNotFound(msg));
+        }
+      })
+      .catch(function(error) {
+        const msg2 = 'Error Retrieving User Document';
+        dispatch(leagueNotFound(msg2));
+      });
+  };
+}
+export function createLeague(name, password, userInfo) {
+  return async dispatch => {
+    const user = firebase.auth().currentUser;
+    const currUserRef = db.collection('users').doc(user.uid);
+    let leagueID = '';
+    const players = [];
+    players.push({ displayName: 'Kristin', userID: user.uid });
+
+    currLeagues
+      .add({
+        name: league,
+        password: password,
+        players,
+        startDate: '',
+        scores: []
+      })
+      .then(function(doc) {
+        leagueID = doc.id;
+      })
+      .then(() => {
+        currUserRef.update({ currentLeague: leagueID });
+      })
+      .then(function() {
+        dispatch(userUpdated(newUser));
+        dispatch(leagueCreated());
+      })
+      .catch(function(error) {
+        console.error('Error adding document: ', error);
+        dispatch(createProfileError(error));
+      });
+  };
+}
+
+// export function joinLeague(user,leagueID) {
+//   return async dispatch => {
+//     const userRef = db.collection('users').doc(user.uid);
+//     userRef.get().then(function(dbUser) {
+//       if (dbUser.exists) {
+//         dispatch(userUpdated(dbUser.data()));
+//         dispatch(authSuccess());
+//       } else {
+//         dispatch(authReady());
+//       }
+//     });
 //   };
-// };
+// }
+
+export function updateLeague(property, value) {
+  return async dispatch => {
+    // const user = firebase.auth().currentUser;
+    // const currUserRef = db.collection('users').doc(user.uid);
+    // let leagueID = '';
+    // const players = [];
+    // players.push({ displayName: 'Kristin', userID: user.uid });
+    // currLeagues
+    //   .add({
+    //     name: league,
+    //     password: password,
+    //     players,
+    //     startDate: '',
+    //     scores: []
+    //   })
+    //   .then(function(doc) {
+    //     leagueID = doc.id;
+    //   })
+    //   .then(() => {
+    //     currUserRef.update({ currentLeague: leagueID });
+    //   })
+    // .then(function() {
+    //   dispatch(userUpdated(newUser));
+    //   dispatch(leagueCreated());
+    // })
+    // .catch(function(error) {
+    //   console.error('Error adding document: ', error);
+    //   dispatch(createProfileError(error));
+    // });
+  };
+}
+
+// export function userLogout() {
+//   return async dispatch => {
+//     try {
+//       await firebase.auth().signOut();
+//       dispatch(logOutSuccess());
+//     } catch (e) {
+//       console.log('Error: ', e);
+//     }
+//   };
+// }
 
 // export const inviteError = () => {
 //   return {
@@ -84,84 +242,6 @@ export const leagueNotFound = errorMsg => {
 //     }
 //   });
 // }
-
-// export function logUserIn(user) {
-//   return async dispatch => {
-//     const userRef = db.collection('users').doc(user.uid);
-//     userRef.get().then(function(dbUser) {
-//       if (dbUser.exists) {
-//         dispatch(userUpdated(dbUser.data()));
-//         dispatch(authSuccess());
-//       } else {
-//         dispatch(authReady());
-//       }
-//     });
-//   };
-// }
-
-// export function createUser(user) {
-//   return async dispatch => {
-//     const currTime = Date.now();
-//     const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
-//     const newUser = {
-//       uid: user.uid,
-//       email: user.email,
-//       photoURL: 'red',
-//       lastLoginAt: currentTime
-//     };
-//     db.collection('users')
-//       .doc(user.uid)
-//       .set(newUser)
-//       .then(function() {
-//         dispatch(userUpdated(newUser));
-//         dispatch(authSuccess());
-//       })
-//       .catch(function(error) {
-//         console.error('Error adding document: ', error);
-//         dispatch(createProfileError(error));
-//       });
-//   };
-// }
-
-// export function userLogout() {
-//   return async dispatch => {
-//     try {
-//       await firebase.auth().signOut();
-//       dispatch(logOutSuccess());
-//     } catch (e) {
-//       console.log('Error: ', e);
-//     }
-//   };
-// }
-
-// export const fetchCurrLeague = leagueID => {
-
-export function fetchCurrLeague(leagueID) {
-  return async dispatch => {
-    console.log('this has been called with this id-------', leagueID);
-    var docRef = db.collection('leagues').doc(`${leagueID}`);
-    // console.log('this has been called with this id-------', leagueID);
-    docRef
-      .get()
-      .then(function(doc) {
-        if (doc.exists) {
-          const currLeague = doc.data();
-          console.log(
-            'curent league data in featch currently league',
-            currLeague
-          );
-          dispatch(currLeaguefetched(currLeague));
-        } else {
-          const msg = 'No such user with that uid';
-          dispatch(leagueNotFound(msg));
-        }
-      })
-      .catch(function(error) {
-        const msg2 = 'Error Retrieving User Document';
-        dispatch(leagueNotFound(msg2));
-      });
-  };
-}
 
 // export const followUser = (userObj, currUserInfo) => {
 //   return async dispatch => {

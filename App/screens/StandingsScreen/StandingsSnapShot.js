@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { ListItem, Left, Right, Body } from 'native-base';
 import { Icon, Button, Avatar } from 'react-native-elements';
+import { connect } from 'react-redux';
 const list = [
   {
     name: 'Greg',
@@ -80,7 +81,7 @@ const list = [
   }
 ];
 
-export default class StandingsSnapShot extends React.Component {
+class StandingsList extends React.Component {
   renderPlayerRow(player) {
     return (
       <View
@@ -305,3 +306,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#4b1818'
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    ...state,
+    league: state.league,
+    players: state.league.players
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUserIn: () => {
+      dispatch(logUserIn());
+    }
+  };
+};
+
+const StandingsSnapShot = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StandingsList);
+
+export default StandingsSnapShot;
