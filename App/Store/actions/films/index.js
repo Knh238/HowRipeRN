@@ -92,29 +92,42 @@ export const FILM_SCORES_LOCKED = 'FILM_SCORES_LOCKED';
 //   };
 // }
 
-// export function createUser(user) {
-//   return async dispatch => {
-//     const currTime = Date.now();
-//     const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
-//     const newUser = {
-//       uid: user.uid,
-//       email: user.email,
-//       photoURL: 'red',
-//       lastLoginAt: currentTime
-//     };
-//     db.collection('users')
-//       .doc(user.uid)
-//       .set(newUser)
-//       .then(function() {
-//         dispatch(userUpdated(newUser));
-//         dispatch(authSuccess());
-//       })
-//       .catch(function(error) {
-//         console.error('Error adding document: ', error);
-//         dispatch(createProfileError(error));
-//       });
-//   };
-// }
+export function addFilmToDB(filmInfo) {
+  return async dispatch => {
+    const currTime = Date.now();
+    const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
+
+    db.collection('films')
+      .doc(user.uid)
+      .set(newUser)
+      .then(function() {
+        dispatch(userUpdated(newUser));
+        dispatch(authSuccess());
+      })
+      .catch(function(error) {
+        console.error('Error adding document: ', error);
+        dispatch(createProfileError(error));
+      });
+  };
+}
+export function addFilmToLeagueSchedule(filmInfo, leagueID, week) {
+  return async dispatch => {
+    const currTime = Date.now();
+    const currentTime = moment(currTime).format('MMMM Do YYYY, h:mm:ss a');
+
+    db.collection('films')
+      .doc(user.uid)
+      .set(newUser)
+      .then(function() {
+        dispatch(userUpdated(newUser));
+        dispatch(authSuccess());
+      })
+      .catch(function(error) {
+        console.error('Error adding document: ', error);
+        dispatch(createProfileError(error));
+      });
+  };
+}
 
 // export function userLogout() {
 //   return async dispatch => {

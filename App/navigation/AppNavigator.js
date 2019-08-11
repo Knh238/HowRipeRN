@@ -3,10 +3,10 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/Login/SignUpScreen';
 import LandingScreen from '../screens/Login/LandingScreen';
-import ChooseIcon from '../screens/Login/ChooseIcon';
+import UserSettingsScreen from '../screens/Login/UserSettingsScreen';
 import MainTabNavigator from './MainTabNavigator';
 import Loading from '../screens/Login/Loading';
-import LeagueSelectionScreen from '../screens/LeagueAdminScreens/LeagueSelectionScreen';
+import JoinLeagueScreen from '../screens/LeagueAdminScreens/JoinLeagueScreen';
 
 import CreateLeague from '../screens/LeagueAdminScreens/CreateLeague';
 import LeagueSettings from '../screens/LeagueAdminScreens/LeagueSettings';
@@ -20,9 +20,9 @@ export default createAppContainer(
       LandingScreen: LandingScreen,
       Login: LoginScreen,
       SignUp: SignUpScreen,
-      ChooseIcon: ChooseIcon,
+      UserSettings: UserSettingsScreen,
       Main: MainTabNavigator,
-      LeagueSelectionScreen: LeagueSelectionScreen,
+      JoinLeague: JoinLeagueScreen,
       CreateLeague: CreateLeague,
       LeagueSettings: LeagueSettings,
       LeagueInvites: LeagueInvites,

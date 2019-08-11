@@ -223,7 +223,7 @@ export default class CurrentVideos extends React.Component {
           overflow="hidden"
           resizeMode="contain"
         >
-          <LeaderBoardScreen />
+          {/* <LeaderBoardScreen /> */}
           <View
             style={{
               flex: 1,

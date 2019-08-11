@@ -14,8 +14,8 @@ import {
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
-import db from '../../.././db';
 import { connect } from 'react-redux';
+import { createLeagueInDB } from '../../Store/actions/leagues';
 
 class CreateLeagueScreen extends React.Component {
   constructor(props) {
@@ -27,7 +27,6 @@ class CreateLeagueScreen extends React.Component {
       requirePassword: true,
       uniqueName: false
     };
-    // this.renderPasswordSetting = this.renderPasswordSetting.bind(this);
     this.setLeagueInfo = this.setLeagueInfo.bind(this);
     this.checkLeagueName = this.checkLeagueName.bind(this);
   }
@@ -54,8 +53,6 @@ class CreateLeagueScreen extends React.Component {
   setLeagueInfo() {
     const { league, password } = this.state;
 
-    const currLeagues = db.collection('leagues');
-    const currLeagueNames = [];
     if (league === '') {
       Alert.alert('Uhoh! Your league still needs a name!');
       return;
@@ -71,19 +68,14 @@ class CreateLeagueScreen extends React.Component {
           errorMessage: 'YAY! Name not taken. Yay! ',
           uniqueName: true
         });
-        const userInfo = {};
-        userInfo.id = this.props.user.id;
-        userInfo.displayName = this.props.user.displayName;
-        this.props
-          .createLeague(name, password, userInfo)
-
-          .then(() =>
-            this.props.navigation.navigate('LeagueSettings', {
-              name: league,
-              password: password,
-              leagueID: leagueID
-            })
-          );
+        const userInfo = this.props.userInfo;
+        this.props.createLeagueInDB(name, password, userInfo).then(() =>
+          this.props.navigation.navigate('LeagueSettings', {
+            name: league,
+            password: password,
+            leagueID: leagueID
+          })
+        );
       } else {
         this.setState({
           errorMessage: 'OOPS!! Name already taken. Try again!',
@@ -138,9 +130,7 @@ class CreateLeagueScreen extends React.Component {
                       borderBottomRightRadius: 7,
                       height: 40
                     }}
-                    onPress={() =>
-                      this.props.navigation.navigate('LeagueSelectionScreen')
-                    }
+                    onPress={() => this.props.navigation.navigate('JoinLeague')}
                   >
                     <Text
                       style={{
@@ -318,7 +308,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignSelf: 'center',
     backgroundColor: 'white',
-    // flex: 1,
     borderWidth: 1,
     marginTop: 8
   }
@@ -327,14 +316,15 @@ const mapStateToProps = state => {
   return {
     ...state,
     league: state.league,
-    leagueList: state.league.allLeagues
+    leagueList: state.league.allLeagues,
+    userInfo: state.login.userInfo
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    createLeague: (name, password, userInfo) => {
-      dispatch(createLeague(name, password, userInfo));
+    createLeagueInDB: (name, password, userInfo) => {
+      dispatch(createLeagueInDB(name, password, userInfo));
     }
   };
 };

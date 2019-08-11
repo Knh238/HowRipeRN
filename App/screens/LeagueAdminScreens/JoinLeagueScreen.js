@@ -14,8 +14,8 @@ import {
 import { Icon, Button, Avatar } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../../firebase';
-import db from '../../.././db';
 import { connect } from 'react-redux';
+import { joinLeagueInDB } from '../../Store/actions/leagues';
 
 class JoinLeague extends React.Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class JoinLeague extends React.Component {
     this.verifyLeague = this.verifyLeague.bind(this);
     this.verifyPassword = this.verifyPassword.bind(this);
     this.submitRegistration = this.submitRegistration.bind(this);
-    this.addLeagueToUser = this.addLeagueToUser.bind(this);
   }
 
   verifyLeague() {
@@ -65,7 +64,11 @@ class JoinLeague extends React.Component {
       this.setState({
         errorMessagePassword: 'Correct password!'
       });
-      this.addLeagueToUser();
+      const leagueID = this.state.dbLeagueInfo.id;
+      const currUser = this.props.userInfo;
+      this.props
+        .joinLeagueInDB(userInfo, leagueID)
+        .then(() => this.props.navigation.navigate('Home'));
     } else {
       this.setState({
         errorMessagePassword: 'Incorrect password.Try again!'
@@ -74,32 +77,10 @@ class JoinLeague extends React.Component {
       return;
     }
   }
-  addLeagueToUser() {
-    const leagueID = this.state.dbLeagueInfo.id;
-    const currLeagues = db
-      .collection('leagues')
-      .doc(this.state.dbLeagueInfo.id);
-    const user = firebase.auth().currentUser;
-    const players = { displayName: 'Kristin', userID: user.uid };
-    const currUserRef = db.collection('users').doc(user.uid);
-    currLeagues
-      .update({ players: firebase.firestore.FieldValue.arrayUnion(players) })
-      .then(function(doc) {
-        console.log('added user to the league!');
-      })
-      .then(() => {
-        currUserRef.update({ currentLeague: leagueID });
-      })
-      .then(() => this.props.navigation.navigate('Home'))
-      .catch(function(error) {
-        console.log('Error getting cached document:', error);
-      });
-  }
 
   async submitRegistration() {
     let { league, password } = this.state;
     const currLeagues = db.collection('leagues');
-
     await this.verifyLeague();
     if (this.state.leagueExists) {
       this.verifyPassword();
@@ -286,21 +267,22 @@ const mapStateToProps = state => {
   return {
     ...state,
     league: state.league,
-    leagueList: state.league.allLeagues
+    leagueList: state.league.allLeagues,
+    userInfo: state.login.userInfo
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    logUserIn: () => {
-      dispatch(logUserIn());
+    joinLeagueInDB: (userInfo, leagueID) => {
+      dispatch(joinLeagueInDB(userInfo, leagueID));
     }
   };
 };
 
-const LeagueSelectionScreen = connect(
+const JoinLeagueScreen = connect(
   mapStateToProps,
   mapDispatchToProps
 )(JoinLeague);
 
-export default LeagueSelectionScreen;
+export default JoinLeagueScreen;

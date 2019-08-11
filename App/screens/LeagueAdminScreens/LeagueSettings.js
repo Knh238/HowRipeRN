@@ -23,8 +23,8 @@ import {
   Label
 } from 'native-base';
 import firebase from '../../../firebase';
-import db from '../../.././db';
 import { connect } from 'react-redux';
+import { setStartDateInDB } from '../../Store/actions/leagues';
 
 class LeagueSettingsScreen extends React.Component {
   constructor(props) {
@@ -41,14 +41,13 @@ class LeagueSettingsScreen extends React.Component {
       sendTextTo: ''
     };
     this.setUpcomingDates = this.setUpcomingDates.bind(this);
-    this.setStartDateInDB = this.setStartDateInDB.bind(this);
+    this.setLeagueStartDate = this.setLeagueStartDateInDB.bind(this);
     this.selectStartDate = this.selectStartDate.bind(this);
   }
 
   componentWillMount() {
     const paramsPassed = this.props.navigation.state.params;
     const { name, password, leagueID } = this.props.navigation.state.params;
-    console.log('params passed', paramsPassed);
     this.setState({
       name,
       password,
@@ -61,27 +60,21 @@ class LeagueSettingsScreen extends React.Component {
     this.setState({
       selectedStartDate: val
     });
-    this.setStartDateInDB();
+    this.setLeagueStartDate();
   }
 
-  setStartDateInDB() {
+  setLeagueStartDate() {
     const leagueID = this.state.leagueID;
     const startDate = this.state.selectedStartDate;
     const currLeagues = db.collection('leagues').doc(leagueID);
-
-    currLeagues
-      .update({ startDate })
-      .then(() => {
-        console.log('new date added!');
+    this.props.setStartDateInDB(leagueID, startDate).then(() =>
+      this.props.navigation.navigate('LeagueInvites', {
+        name: this.state.name,
+        password: this.state.password,
+        leagueID: this.state.leagueID,
+        selectedStartDate: this.state.selectedStartDate
       })
-      .then(() =>
-        this.props.navigation.navigate('LeagueInvites', {
-          name: this.state.name,
-          password: this.state.password,
-          leagueID: this.state.leagueID,
-          selectedStartDate: this.state.selectedStartDate
-        })
-      );
+    );
   }
 
   setUpcomingDates() {
@@ -404,8 +397,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logUserIn: () => {
-      dispatch(logUserIn());
+    setStartDateInDB: (leagueID, startDate) => {
+      dispatch(setStartDateInDB(leagueID, startDate));
     }
   };
 };

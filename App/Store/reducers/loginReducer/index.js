@@ -5,13 +5,15 @@ import {
   USER_CREATED,
   USER_INFO_FETCHED,
   USER_INFO_NOT_FOUND,
-  USER_UPDATED
+  USER_UPDATED,
+  LEAGUE_JOINED
 } from '../../actions/login';
 
 const initialState = {
   authenticated: false,
   userInfo: {},
-  errorMsg: ''
+  errorMsg: '',
+  currentLeague: ''
 };
 
 export default function(state = initialState, action) {
@@ -50,9 +52,13 @@ export default function(state = initialState, action) {
     case USER_UPDATED:
       return {
         ...state,
-        userInfo: action.userInfo
+        userInfo: action.updatedUserInfo
       };
-
+    case LEAGUE_JOINED:
+      return {
+        ...state,
+        currentLeague: action.leagueID
+      };
     default:
       return state;
   }

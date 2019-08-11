@@ -9,7 +9,7 @@ import HomeScreen from '../screens/HomeScreens/HomeScreen';
 import Standings from '../screens/StandingsScreen/Standings';
 import ScoresScreen from '../screens/ScoresScreen/ScoresScreen';
 import SplatterScreen from '../screens/SplatterScreen/SplatterScreen';
-import ChooseIcon from '../screens/Login/ChooseIcon';
+import UserSettingsScreen from '../screens/Login/UserSettingsScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/Login/SignUpScreen';
 const HomeStack = createStackNavigator({
@@ -64,7 +64,7 @@ ScoresStack.navigationOptions = {
   )
 };
 const SplatterStack = createStackNavigator({
-  Spallter: SplatterScreen
+  Splatter: SplatterScreen
 });
 
 SplatterStack.navigationOptions = {

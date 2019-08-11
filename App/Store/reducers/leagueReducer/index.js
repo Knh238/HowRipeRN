@@ -5,6 +5,7 @@ import {
   LEAGUE_CREATED,
   JOINED_LEAGUE,
   LEAGUE_UPDATED,
+  LEAGUE_START_DATE_UPDATED,
   LEFT_LEAGUE,
   LEAGUE_SCORES_UPDATED,
   LEAGUE_SCORES_FETCHED,
@@ -17,6 +18,7 @@ const initialState = {
   currentLeague: {},
   currentLeagueName: '',
   players: [],
+  leagueStartDate: '',
   errorMsg: ''
 };
 
@@ -31,11 +33,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         currentLeagueName: action.currLeagueName,
-        players: action.players
+        players: action.players,
+        startDate: action.startDate
       };
     case LEAGUE_CREATED:
       return {
         ...state,
+        allLeagues: [...action.newLeagueData],
+        currentLeague: action.leagueInfo,
+        currentLeagueName: action.leagueInfo.name,
+        players: action.leagueInfo.players,
+        startDate: action.leagueInfo.startDate,
         errorMsg: action.errorMsg
       };
     case JOINED_LEAGUE:
@@ -44,6 +52,12 @@ export default function(state = initialState, action) {
         authenticated: false,
         userInfo: {}
       };
+    case LEAGUE_START_DATE_UPDATED:
+      return {
+        ...state,
+        leagueStartDate: action.startDate
+      };
+
     case LEFT_LEAGUE:
       return {
         ...state,

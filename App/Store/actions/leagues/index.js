@@ -1,16 +1,16 @@
 import moment from 'moment';
 import firebase from '../../../../firebase';
 import db from '../../../../db';
+import { userJoinedLeague } from '../login';
 
 export const ALL_LEAGUES_FETCHED = 'ALL_LEAGUES_FETCHED';
 export const CURR_LEAGUE_FETCHED = 'CURR_LEAGUE_FETCHED';
 export const LEAGUE_NOT_FOUND = 'LEAGUE_NOT_FOUND';
 
 export const LEAGUE_CREATED = 'LEAGUE_CREATED';
-
 export const JOINED_LEAGUE = 'JOINED_LEAGUE';
-
 export const LEAGUE_UPDATED = 'LEAGUE_UPDATED';
+export const LEAGUE_START_DATE_UPDATED = 'LEAGUE_START_DATE_UPDATED';
 
 export const LEFT_LEAGUE = 'LEFT_LEAGUE';
 export const LEAGUE_SCORES_UPDATED = 'LEAGUE_SCORES_UPDATED';
@@ -52,7 +52,8 @@ export const currLeaguefetched = currLeague => {
   return {
     type: CURR_LEAGUE_FETCHED,
     currLeagueName: currLeague.name,
-    players: currLeague.players
+    players: currLeague.players,
+    startDate: currLeague.startDate
   };
 };
 
@@ -63,16 +64,24 @@ export const leagueNotFound = errorMsg => {
   };
 };
 
-export const leagueCreated = leagueInfo => {
+export const leagueCreated = (leagueInfo, newLeagueData) => {
   return {
     type: LEAGUE_CREATED,
-    leagueInfo
+    leagueInfo: leagueInfo,
+    newLeagueData: newLeagueData
   };
 };
-export const joinedLeague = league => {
+export const joinedLeague = leagueID => {
   return {
     type: JOINED_LEAGUE,
-    league
+    leagueID
+  };
+};
+
+export const leagueStartDateUpdated = startDate => {
+  return {
+    type: LEAGUE_START_DATE_UPDATED,
+    startDate
   };
 };
 
@@ -120,10 +129,7 @@ export function fetchCurrLeague(leagueID) {
       .then(function(doc) {
         if (doc.exists) {
           const currLeague = doc.data();
-          console.log(
-            'current league data in fetch currently league',
-            currLeague
-          );
+
           dispatch(currLeaguefetched(currLeague));
         } else {
           const msg = 'No such user with that uid';
@@ -136,31 +142,41 @@ export function fetchCurrLeague(leagueID) {
       });
   };
 }
-export function createLeague(name, password, userInfo) {
+export function createLeagueInDB(name, password, userInfo) {
   return async dispatch => {
     const user = firebase.auth().currentUser;
     const currUserRef = db.collection('users').doc(user.uid);
     let leagueID = '';
     const players = [];
-    players.push({ displayName: 'Kristin', userID: user.uid });
-
+    players.push({
+      displayName: userInfo.displayName,
+      userID: userInfo.uid,
+      currentRank: 1,
+      score: 0,
+      scoreChange: '0'
+    });
+    const newLeagueInfo = {
+      password: password,
+      name: name,
+      startDate: '',
+      scores: [],
+      players,
+      schedule: {},
+      currentWeek: 0
+    };
+    const newLeagueData = { password: password, name: name };
     currLeagues
-      .add({
-        name: league,
-        password: password,
-        players,
-        startDate: '',
-        scores: []
-      })
+      .add(newLeagueDetails)
       .then(function(doc) {
-        leagueID = doc.id;
+        newLeagueInfo.leagueID = doc.id;
+        newLeagueData.id = doc.id;
       })
       .then(() => {
-        currUserRef.update({ currentLeague: leagueID });
+        currUserRef.update({ currentLeague: newLeagueInfo });
       })
       .then(function() {
-        dispatch(userUpdated(newUser));
-        dispatch(leagueCreated());
+        dispatch(joinedLeague(leagueID));
+        dispatch(leagueCreated(newLeagueInfo, newLeagueData));
       })
       .catch(function(error) {
         console.error('Error adding document: ', error);
@@ -169,49 +185,48 @@ export function createLeague(name, password, userInfo) {
   };
 }
 
-// export function joinLeague(user,leagueID) {
-//   return async dispatch => {
-//     const userRef = db.collection('users').doc(user.uid);
-//     userRef.get().then(function(dbUser) {
-//       if (dbUser.exists) {
-//         dispatch(userUpdated(dbUser.data()));
-//         dispatch(authSuccess());
-//       } else {
-//         dispatch(authReady());
-//       }
-//     });
-//   };
-// }
-
-export function updateLeague(property, value) {
+export function joinLeagueInDB(userInfo, leagueID) {
   return async dispatch => {
-    // const user = firebase.auth().currentUser;
-    // const currUserRef = db.collection('users').doc(user.uid);
-    // let leagueID = '';
-    // const players = [];
-    // players.push({ displayName: 'Kristin', userID: user.uid });
-    // currLeagues
-    //   .add({
-    //     name: league,
-    //     password: password,
-    //     players,
-    //     startDate: '',
-    //     scores: []
-    //   })
-    //   .then(function(doc) {
-    //     leagueID = doc.id;
-    //   })
-    //   .then(() => {
-    //     currUserRef.update({ currentLeague: leagueID });
-    //   })
-    // .then(function() {
-    //   dispatch(userUpdated(newUser));
-    //   dispatch(leagueCreated());
-    // })
-    // .catch(function(error) {
-    //   console.error('Error adding document: ', error);
-    //   dispatch(createProfileError(error));
-    // });
+    const currLeagues = db
+      .collection('leagues')
+      .doc(this.state.dbLeagueInfo.id);
+    const user = firebase.auth().currentUser;
+    const newPlayer = {
+      displayName: userInfo.displayName,
+      userID: userInfo.uid,
+      currentRank: 1,
+      score: 0,
+      scoreChange: '0'
+    };
+    const currUserRef = db.collection('users').doc(user.uid);
+    currLeagues
+      .update({ players: firebase.firestore.FieldValue.arrayUnion(newPlayer) })
+      .then(function(doc) {
+        console.log('added user to the league!');
+        dispatch(leagueUpdated(leagueID, newPlayer));
+      })
+      .then(() => {
+        currUserRef.update({ currentLeague: leagueID });
+        dispatch(userJoinedLeague(leagueID));
+      })
+      .catch(function(error) {
+        console.log('Error getting cached document:', error);
+      });
+  };
+}
+
+export function setStartDateInDB(leagueID, startDate) {
+  return async dispatch => {
+    const currLeagues = db.collection('leagues').doc(leagueID);
+
+    currLeagues
+      .update({ startDate })
+      .then(() => {
+        dispatch(leagueStartDateUpdated(startDate));
+      })
+      .catch(function(error) {
+        console.error('Error adding document: ', error);
+      });
   };
 }
 
@@ -242,71 +257,6 @@ export function updateLeague(property, value) {
 //     }
 //   });
 // }
-
-// export const followUser = (userObj, currUserInfo) => {
-//   return async dispatch => {
-//     const user = firebase.auth().currentUser;
-//     const currUserRef = db.collection('users').doc(user.uid);
-//     const currUserInfoUpdated = currUserInfo;
-//     const currFollowing = [...currUserInfo.following, userObj];
-
-//     currUserInfoUpdated.following = currFollowing;
-
-//     currUserRef
-//       .update({
-//         following: firebase.firestore.FieldValue.arrayUnion(userObj)
-//       })
-//       .then(function() {
-//         dispatch(userUpdated(currUserInfoUpdated));
-//       });
-//   };
-// };
-
-// export const unfollowUser = (userObj, currUserInfo) => {
-//   return async dispatch => {
-//     const user = firebase.auth().currentUser;
-//     const currUserInfoUpdated = currUserInfo;
-//     const currFollowing = currUserInfo.following.filter(item => {
-//       if (item.uid !== userObj.uid) {
-//         return item;
-//       }
-//     });
-//     currUserInfoUpdated.following = currFollowing;
-//     const currUserRef = db.collection('users').doc(user.uid);
-//     currUserRef
-//       .update({
-//         following: firebase.firestore.FieldValue.arrayRemove(userObj)
-//       })
-//       .then(function() {
-//         dispatch(userUpdated(currUserInfoUpdated));
-//       });
-//   };
-// };
-
-// export const addNetwork = (networkObj, currentUser) => {
-//   return async dispatch => {
-//     const userRef = db.collection('users').doc(currentUser.uid);
-//     return db
-//       .runTransaction(transaction => {
-//         return transaction.get(userRef).then(function(user) {
-//           if (!user.exists) {
-//             throw 'Document does not exist!';
-//           }
-//           const networksUpdate = user.data().socialNetworks;
-//           networksUpdate.push(networkObj);
-//           transaction.update(userRef, { socialNetworks: networksUpdate });
-//           return user.data().uid;
-//         });
-//       })
-//       .then(function(uid) {
-//         console.log('Document successfully updated');
-//         dispatch(updateUser(uid));
-//       })
-//       .catch(function(error) {
-//         console.error('Error updating document: ', error);
-//       });
-//   };
-// };
 
 // export const removeNetwork = (networkObj, currentUser) => {
 //   return async dispatch => {

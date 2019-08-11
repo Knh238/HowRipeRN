@@ -295,43 +295,6 @@ class LandingPage extends React.Component {
     }
   }
 
-  // doesUserExist(user) {
-  //   const userRef = db.collection('users').doc(user.uid);
-  //   return userRef.get().then(function(dbUser) {
-  //     if (dbUser.exists) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  // }
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     if (user != null) {
-  //       doesUserExist(user).then(exists => {
-  //         if (exists) {
-  //           store.dispatch(logUserIn(user));
-  //         } else {
-  //           this.setState({
-  //             ...this.state,
-  //             initialized: true,
-  //             errorMessage: null
-  //           });
-  //           this.props.navigation.navigate('InviteCodePage');
-  //         }
-  //       });
-  //     } else {
-  //       this.setState({ ...this.state, initialized: true });
-  //     }
-  //   });
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (!prevProps.authenticated && this.props.authenticated) {
-  //     this.setState({ ...this.state, authenticated: true });
-  //     this.props.navigation.navigate('MainScreen');
-  //   }
-  // }
   render() {
     const scrollIcon = this.state.scrollIcon;
     return (

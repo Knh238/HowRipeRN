@@ -36,7 +36,7 @@ export default class HomeScreen extends React.Component {
         <Button
           type="clear"
           onPress={() => navigation.goBack()}
-          onPress={() => navigation.navigate('LeagueSelectionScreen')}
+          onPress={() => navigation.navigate('JoinLeague')}
           icon={<Icon name="add" type="material" color="white" size={30} />}
         />
       ),
@@ -47,8 +47,7 @@ export default class HomeScreen extends React.Component {
           rounded
           title="MT"
           containerStyle={{ flex: 2, marginRight: 5, marginTop: 12 }}
-          // onPress={() => navigation.navigate('Profile')}
-          onPress={() => navigation.navigate('ChooseIcon')}
+          onPress={() => navigation.navigate('UserSettings')}
           activeOpacity={0.7}
         />
       )
@@ -80,6 +79,7 @@ export default class HomeScreen extends React.Component {
             overflow="hidden"
             resizeMode="contain"
           >
+            <LeaderBoardScreen />
             <CurrentVideos />
           </ImageBackground>
         </View>

@@ -11,10 +11,13 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon, Button } from 'react-native-elements';
-import firebase from '../../../firebase';
 import db from '../../.././db';
+import firebase from '../../../firebase';
+import { connect } from 'react-redux';
 
-export default class ChooseIcon extends React.Component {
+import { updateUser } from '../../Store/actions/login';
+
+class UserSettings extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'How Ripe',
@@ -47,28 +50,29 @@ export default class ChooseIcon extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.state = { selectedIcon: '', userName: '' };
+    this.state = { selectedIcon: '', displayName: '' };
     this.submitInfo = this.submitInfo.bind(this);
   }
 
   submitInfo() {
-    const self = this;
-    firebase.auth().onAuthStateChanged(user => {
-      if (user != null) {
-        db.collection('users')
-          .doc(user.uid)
-          .update({
-            icon: self.state.selectedIcon,
-            userName: self.state.userName
-          })
-          .then(function(docRef) {
-            self.props.navigation.navigate('Home');
-          })
-          .catch(function(error) {
-            self.setState({ errorMessage: error.message });
-          });
-      }
-    });
+    const userInfo = this.props.userInfo;
+    if (this.state.displayName && this.state.selectedIcon) {
+      userInfo.iconColor = this.state.selectedIcon;
+      userInfo.displayName = this.state.displayName;
+      this.props.updateUser('iconColor', this.state.selectedIcon, userInfo);
+      this.props.updateUser('displayName', this.state.displayName, userInfo);
+      this.props.navigation.navigate('Home');
+    } else if (this.state.selectedIcon) {
+      userInfo.iconColor = this.state.selectedIcon;
+      this.props.updateUser('iconColor', this.state.selectedIcon, userInfo);
+      this.props.navigation.navigate('Home');
+    } else if (this.state.displayName) {
+      userInfo.displayName = this.state.displayName;
+      this.props.updateUser('displayName', this.state.displayName, userInfo);
+      this.props.navigation.navigate('Home');
+    } else {
+      this.props.navigation.navigate('Home');
+    }
   }
 
   render() {
@@ -110,14 +114,14 @@ export default class ChooseIcon extends React.Component {
                     fontSize: 20
                   }}
                 >
-                  Profile
+                  Settings
                 </Text>
                 <TextInput
                   style={styles.textInput}
                   autoCapitalize="none"
-                  placeholder="  Username"
-                  onChangeText={userName => this.setState({ userName })}
-                  value={this.state.userName}
+                  placeholder="  Display Name"
+                  onChangeText={displayName => this.setState({ displayName })}
+                  value={this.state.displayName}
                 />
                 <Text
                   style={{
@@ -129,7 +133,7 @@ export default class ChooseIcon extends React.Component {
                     fontSize: 18
                   }}
                 >
-                  Choose User Icon
+                  Choose Your Icon
                 </Text>
               </View>
               <View
@@ -208,7 +212,6 @@ export default class ChooseIcon extends React.Component {
                   type="materialIcons"
                   color={'#8F6B6B'}
                   size={38}
-                  // style={{ height: 16, width: 16 }}
                 />
                 {/* </TouchableOpacity> */}
               </View>
@@ -290,3 +293,24 @@ const styles = StyleSheet.create({
     marginTop: 8
   }
 });
+const mapStateToProps = state => {
+  return {
+    ...state,
+    userInfo: state.login.userInfo
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateUser: (propToUpdate, newPropVal, updatedUserInfo) => {
+      dispatch(updateUser(propToUpdate, newPropVal, updatedUserInfo));
+    }
+  };
+};
+
+const UserSettingsScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserSettings);
+
+export default UserSettingsScreen;

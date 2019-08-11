@@ -12,7 +12,6 @@ import {
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
-
 import { createUser } from '../../Store/actions/login';
 import firebase from '../../../firebase';
 
@@ -52,13 +51,15 @@ class SignUp extends React.Component {
       return;
     } else {
       const { email, password, firstName, lastName } = this.state;
-      const userInfo = { email, password, firstName, lastName };
+      const displayName = firstName + ' ' + lastName;
+      const userInfo = { email, password, displayName, firstName, lastName };
       //ToDo: error handle for when the user is already in the db
+      const self = this;
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(this.props.createUser(userInfo));
-      // .then(self.props.navigation.navigate('Home'));
+        .then(this.props.createUser(userInfo))
+        .then(this.props.navigation.navigate('Home'));
     }
   }
 
@@ -173,21 +174,6 @@ class SignUp extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    ...state
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    createUser: userInfo => {
-      dispatch(createUser(userInfo));
-    }
-  };
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -209,6 +195,19 @@ const styles = StyleSheet.create({
     marginTop: 8
   }
 });
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createUser: userInfo => {
+      dispatch(createUser(userInfo));
+    }
+  };
+};
 
 const SignUpScreen = connect(
   mapStateToProps,
