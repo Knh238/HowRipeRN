@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon, Button } from 'react-native-elements';
-import db from '../../.././db';
 import firebase from '../../../firebase';
 import { connect } from 'react-redux';
 

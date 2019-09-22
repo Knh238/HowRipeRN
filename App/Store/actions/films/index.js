@@ -4,6 +4,7 @@ import moment from 'moment';
 // import db from './db';
 import firebase from '../../../../firebase';
 import db from '../../../../db';
+import { Title } from 'native-base';
 
 export const FILM_ADDED = 'FILM_ADDED';
 export const FILM_DETAILS_UPDATED = 'FILM_DETAILS_UPDATED';
@@ -91,6 +92,17 @@ export const FILM_SCORES_LOCKED = 'FILM_SCORES_LOCKED';
 //     });
 //   };
 // }
+
+// film
+// Title:
+// releaseDate:
+// trailerLink:''
+// imdbLink:''
+// currentRTScore:0,
+// scoreLocked:true/false
+
+// add to schedule
+// week1:{film1:filmTitle, filmID, imdbLink, tailerLink}
 
 export function addFilmToDB(filmInfo) {
   return async dispatch => {
