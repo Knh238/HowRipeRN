@@ -20,7 +20,7 @@
     "moment": "^2.24.0",
     "native-base": "^2.12.2",
     "react": "16.8.3",
-    "react-native": "^0.60.4",
+    "react-native": "^0.62.3",
     "react-native-chart-kit": "^2.4.0",
     "react-native-elements": "^1.1.0",
     "react-native-firebase": "^5.4.2",
